@@ -1,0 +1,266 @@
+
+Starting Unicycler (2025-11-07 16:02:51)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 SRR29644155_1.fastq.gz -2 SRR29644155_2.fastq.gz -o NCPPB3959.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon                     not used
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        ?         too old 
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+Error: Unspecified error with Unicycler dependencies
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Unicycler (2025-11-07 19:05:48)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 SRR29644155_1.fastq.gz -2 SRR29644155_2.fastq.gz -o NCPPB3959.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+The output directory already exists and files may be reused or overwritten:
+  /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon                     not used
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-07 19:06:22)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/PRJNA1129555/SRR29644155_1.fastq.gz -2 /data/djs217/PROJECTS/PRJNA1129555/SRR29644155_2.fastq.gz -o /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2025-11-07 19:28:55)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 250
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2025-11-07 19:29:18)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       217           1   1.54e-03 <-best
+
+Read depth filter: removed 97 contigs totalling 39429 bp
+Deleting /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-11-07 19:59:30)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2025-11-07 19:59:30)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    147, 148, 153, 176, 178, 179, 190, 191, 193, 205, 207
+
+Removed zero-length segments:
+    198
+
+Merged small segments:
+    180, 181, 182, 183, 189, 192, 195, 196, 201, 208, 212, 214
+
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+62 anchor segments (4,650,616 bp) out of 193 total segments (5,269,541 bp)
+
+
+Creating SPAdes contig bridges (2025-11-07 19:59:31)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                             Bridge
+Start              Path             End     quality
+  -65                               66         62.9
+  -51      -123 -> -83 -> -127      69         11.3
+  -33                               57         63.0
+  -31   32 -> -162 -> -108 -> 163   39          2.6
+  -12              130              30         63.2
+   -9                               64         63.1
+   -8                               14         62.6
+   -5                               41         61.5
+   -1              -128             36         62.9
+    2       -129 -> 93 -> -129      -14        16.4
+    7                               -9         62.9
+    8                               35         62.7
+   10                               -24        63.1
+   11              118              -53        63.1
+   12      -121 -> -100 -> -124     55         27.6
+   13                               67         62.6
+   15    118 -> -73 -> 26 -> 132    56          2.2
+   17              130              -75        62.9
+   18                               68         61.4
+   25                               34         61.2
+   28              -125             44         62.9
+   30                               -38        63.2
+   31              -114             -54        63.2
+   34              109              77         62.2
+   35                               28         63.1
+   36          -126 -> -48          -62         3.8
+   39              -126             -70        63.1
+   40       124 -> -99 -> 121       -55        27.7
+   44          133 -> -132          47         62.8
+   45              109              -69        56.7
+   47              128              -65        63.1
+   56       -136 -> 190 -> 131      -64        63.0
+   58      -123 -> -84 -> -127      -77        12.2
+   67              -131             -68        63.2
+   71              -114             40         62.2
+   74                               15         62.9
+
+
+Creating loop unrolling bridges (2025-11-07 19:59:31)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+    2     -129       93     -14         0.89         1.08       1      41.8
+   37      122      191       4         0.82         0.85       1      39.9
+
+
+Applying bridges (2025-11-07 19:59:31)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type   Start -> end   Path               Quality
+SPAdes         -12 -> 30     130                 63.237
+SPAdes          67 -> -68    -131                63.229
+SPAdes          31 -> -54    -114                63.219
+SPAdes          30 -> -38                        63.187
+SPAdes          11 -> -53    118                 63.149
+SPAdes          47 -> -65    128                 63.146
+SPAdes          10 -> -24                        63.090
+SPAdes          -9 -> 64                         63.082
+SPAdes          35 -> 28                         63.054
+SPAdes          39 -> -70    -126                63.052
+SPAdes         -33 -> 57                         63.026
+SPAdes          56 -> -64    -136, 190, 131      62.967
+SPAdes          74 -> 15                         62.945
+SPAdes          -1 -> 36     -128                62.944
+SPAdes         -65 -> 66                         62.926
+SPAdes          17 -> -75    130                 62.897
+SPAdes           7 -> -9                         62.873
+SPAdes          28 -> 44     -125                62.860
+SPAdes          44 -> 47     133, -132           62.841
+SPAdes           8 -> 35                         62.709
+SPAdes          -8 -> 14                         62.621
+SPAdes          13 -> 67                         62.584
+SPAdes          34 -> 77     109                 62.214
+SPAdes          71 -> 40     -114                62.192
+SPAdes          -5 -> 41                         61.463
+SPAdes          18 -> 68                         61.387
+SPAdes          25 -> 34                         61.237
+SPAdes          45 -> -69    109                 56.664
+SPAdes          40 -> -55    124, -99, 121       27.725
+SPAdes          12 -> 55     -121, -100, -124    27.619
+SPAdes           2 -> -14    -129, 93, -129      16.404
+SPAdes          58 -> -77    -123, -84, -127     12.179
+SPAdes         -51 -> 69     -123, -83, -127     11.349
+loop            37 -> 4      122, 191, 122       39.934
+
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-11-07 19:59:31)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+        1         80      98   5,163,770   258,183           755,867   incomplete
+
+
+Polishing assembly with Pilon (2025-11-07 19:59:31)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  251
+Insert size 99th percentile: 719
+
+Pilon polish round 1
+Total number of changes: 3
+
+Pilon polish round 2
+No Pilon changes
+
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/005_polished.gfa
+
+
+Assembly complete (2025-11-07 20:30:35)
+---------------------------------------
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/PRJNA1129555/NCPPB3959.unicycler/assembly.fasta
+
