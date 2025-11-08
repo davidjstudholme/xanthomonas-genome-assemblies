@@ -1,0 +1,473 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2025-11-07 11:09:23)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  PRJNA1131443.hybracter/processing/incomplete/medaka_incomplete/NCPPB_1335/consensus.fasta
+
+Input short-read alignments:
+  PRJNA1131443.hybracter/processing/incomplete/bwa_incomplete/NCPPB_1335_1.sam
+  PRJNA1131443.hybracter/processing/incomplete/bwa_incomplete/NCPPB_1335_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2025-11-07 11:09:23)[0m
+contig_12 (32,082 bp)
+contig_21 (4,432 bp)
+contig_28 (164,532 bp)
+contig_32 (191,078 bp)
+contig_22 (224,985 bp)
+contig_16 (241,745 bp)
+contig_13 (9,109 bp)
+contig_55 (86,731 bp)
+contig_72 (22,989 bp)
+contig_70 (10,783 bp)
+contig_40 (221,326 bp)
+contig_37 (21,897 bp)
+contig_57 (86,146 bp)
+contig_34 (15,550 bp)
+contig_64 (23,625 bp)
+contig_59 (4,032 bp)
+contig_41 (18,610 bp)
+contig_29 (96,012 bp)
+contig_51 (5,642 bp)
+contig_43 (55,207 bp)
+contig_68 (4,420 bp)
+contig_14 (7,592 bp)
+contig_56 (104,437 bp)
+contig_52 (14,177 bp)
+contig_23 (57,281 bp)
+contig_63 (72,521 bp)
+contig_66 (106,856 bp)
+contig_15 (249,745 bp)
+contig_73 (68,941 bp)
+contig_26 (180,326 bp)
+contig_74 (76,667 bp)
+contig_67 (2,274 bp)
+contig_30 (2,237 bp)
+contig_20 (499,031 bp)
+contig_50 (37,717 bp)
+contig_17 (31,398 bp)
+contig_69 (43,306 bp)
+contig_5 (6,911 bp)
+contig_39 (48,171 bp)
+contig_19 (643,721 bp)
+contig_2 (176,386 bp)
+contig_38 (574,705 bp)
+contig_10 (11,378 bp)
+contig_44 (9,716 bp)
+contig_35 (165,684 bp)
+contig_1 (5,603 bp)
+contig_6 (237,486 bp)
+contig_65 (10,974 bp)
+contig_42 (47,299 bp)
+contig_9 (218,498 bp)
+contig_4 (40,234 bp)
+contig_60 (163,568 bp)
+contig_49 (1,042 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2025-11-07 11:09:23)[0m
+PRJNA1131443.hybracter/processing/incomplete/bwa_incomplete/NCPPB_1335_1.sam: 7,115,751 alignments from 2,166,691 reads
+PRJNA1131443.hybracter/processing/incomplete/bwa_incomplete/NCPPB_1335_2.sam: 7,249,325 alignments from 2,165,892 reads
+
+Filtering for high-quality end-to-end alignments:
+  7,795,490 alignments kept
+  6,569,586 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2025-11-07 11:10:04)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_12 (32,082 bp):
+  mean read depth: 169.7x
+  2 bp have a depth of zero (99.9938% coverage)
+  2 positions changed (0.0062% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9938% (Q42.05)
+
+Polishing contig_21 (4,432 bp):
+  mean read depth: 88.0x
+  20 bp have a depth of zero (99.5487% coverage)
+  16 positions changed (0.3610% of total positions)
+  estimated pre-polishing sequence accuracy: 99.6390% (Q24.42)
+
+Polishing contig_28 (164,532 bp):
+  mean read depth: 90.2x
+  1,090 bp have a depth of zero (99.3375% coverage)
+  316 positions changed (0.1921% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8079% (Q27.17)
+
+Polishing contig_32 (191,078 bp):
+  mean read depth: 84.8x
+  323 bp have a depth of zero (99.8310% coverage)
+  135 positions changed (0.0707% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9293% (Q31.51)
+
+Polishing contig_22 (224,985 bp):
+  mean read depth: 87.9x
+  575 bp have a depth of zero (99.7444% coverage)
+  103 positions changed (0.0458% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9542% (Q33.39)
+
+Polishing contig_16 (241,745 bp):
+  mean read depth: 100.0x
+  2,809 bp have a depth of zero (98.8380% coverage)
+  604 positions changed (0.2499% of total positions)
+  estimated pre-polishing sequence accuracy: 99.7501% (Q26.02)
+
+Polishing contig_13 (9,109 bp):
+  mean read depth: 105.9x
+  11 bp have a depth of zero (99.8792% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+Polishing contig_55 (86,731 bp):
+  mean read depth: 106.6x
+  223 bp have a depth of zero (99.7429% coverage)
+  84 positions changed (0.0969% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9031% (Q30.14)
+
+Polishing contig_72 (22,989 bp):
+  mean read depth: 7.9x
+  9,760 bp have a depth of zero (57.5449% coverage)
+  265 positions changed (1.1527% of total positions)
+  estimated pre-polishing sequence accuracy: 98.8473% (Q19.38)
+
+Polishing contig_70 (10,783 bp):
+  mean read depth: 90.2x
+  6 bp have a depth of zero (99.9444% coverage)
+  2 positions changed (0.0185% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9815% (Q37.32)
+
+Polishing contig_40 (221,326 bp):
+  mean read depth: 81.8x
+  1,837 bp have a depth of zero (99.1700% coverage)
+  189 positions changed (0.0854% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9146% (Q30.69)
+
+Polishing contig_37 (21,897 bp):
+  mean read depth: 18.3x
+  4,569 bp have a depth of zero (79.1341% coverage)
+  506 positions changed (2.3108% of total positions)
+  estimated pre-polishing sequence accuracy: 97.6892% (Q16.36)
+
+Polishing contig_57 (86,146 bp):
+  mean read depth: 89.4x
+  2,226 bp have a depth of zero (97.4160% coverage)
+  107 positions changed (0.1242% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8758% (Q29.06)
+
+Polishing contig_34 (15,550 bp):
+  mean read depth: 93.5x
+  647 bp have a depth of zero (95.8392% coverage)
+  9 positions changed (0.0579% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9421% (Q32.37)
+
+Polishing contig_64 (23,625 bp):
+  mean read depth: 81.0x
+  5 bp have a depth of zero (99.9788% coverage)
+  44 positions changed (0.1862% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8138% (Q27.30)
+
+Polishing contig_59 (4,032 bp):
+  mean read depth: 48.0x
+  2 bp have a depth of zero (99.9504% coverage)
+  38 positions changed (0.9425% of total positions)
+  estimated pre-polishing sequence accuracy: 99.0575% (Q20.26)
+
+Polishing contig_41 (18,610 bp):
+  mean read depth: 83.7x
+  232 bp have a depth of zero (98.7534% coverage)
+  97 positions changed (0.5212% of total positions)
+  estimated pre-polishing sequence accuracy: 99.4788% (Q22.83)
+
+Polishing contig_29 (96,012 bp):
+  mean read depth: 102.1x
+  30 bp have a depth of zero (99.9688% coverage)
+  94 positions changed (0.0979% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9021% (Q30.09)
+
+Polishing contig_51 (5,642 bp):
+  mean read depth: 121.6x
+  2 bp have a depth of zero (99.9646% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+Polishing contig_43 (55,207 bp):
+  mean read depth: 83.5x
+  12 bp have a depth of zero (99.9783% coverage)
+  77 positions changed (0.1395% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8605% (Q28.56)
+
+Polishing contig_68 (4,420 bp):
+  mean read depth: 76.0x
+  288 bp have a depth of zero (93.4842% coverage)
+  10 positions changed (0.2262% of total positions)
+  estimated pre-polishing sequence accuracy: 99.7738% (Q26.45)
+
+Polishing contig_14 (7,592 bp):
+  mean read depth: 124.9x
+  5 bp have a depth of zero (99.9341% coverage)
+  1 position changed (0.0132% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9868% (Q38.80)
+
+Polishing contig_56 (104,437 bp):
+  mean read depth: 87.7x
+  20 bp have a depth of zero (99.9808% coverage)
+  49 positions changed (0.0469% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9531% (Q33.29)
+
+Polishing contig_52 (14,177 bp):
+  mean read depth: 68.3x
+  640 bp have a depth of zero (95.4856% coverage)
+  23 positions changed (0.1622% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8378% (Q27.90)
+
+Polishing contig_23 (57,281 bp):
+  mean read depth: 97.2x
+  2,130 bp have a depth of zero (96.2815% coverage)
+  2 positions changed (0.0035% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9965% (Q44.57)
+
+Polishing contig_63 (72,521 bp):
+  mean read depth: 90.7x
+  231 bp have a depth of zero (99.6815% coverage)
+  45 positions changed (0.0621% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9379% (Q32.07)
+
+Polishing contig_66 (106,856 bp):
+  mean read depth: 94.1x
+  2,177 bp have a depth of zero (97.9627% coverage)
+  58 positions changed (0.0543% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9457% (Q32.65)
+
+Polishing contig_15 (249,745 bp):
+  mean read depth: 104.1x
+  28 bp have a depth of zero (99.9888% coverage)
+  122 positions changed (0.0488% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9512% (Q33.11)
+
+Polishing contig_73 (68,941 bp):
+  mean read depth: 104.5x
+  6 bp have a depth of zero (99.9913% coverage)
+  35 positions changed (0.0508% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9492% (Q32.94)
+
+Polishing contig_26 (180,326 bp):
+  mean read depth: 103.9x
+  3,010 bp have a depth of zero (98.3308% coverage)
+  210 positions changed (0.1165% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8835% (Q29.34)
+
+Polishing contig_74 (76,667 bp):
+  mean read depth: 91.1x
+  16 bp have a depth of zero (99.9791% coverage)
+  138 positions changed (0.1800% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8200% (Q27.45)
+
+Polishing contig_67 (2,274 bp):
+  mean read depth: 70.3x
+  11 bp have a depth of zero (99.5163% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+Polishing contig_30 (2,237 bp):
+  mean read depth: 83.8x
+  9 bp have a depth of zero (99.5977% coverage)
+  13 positions changed (0.5811% of total positions)
+  estimated pre-polishing sequence accuracy: 99.4189% (Q22.36)
+
+Polishing contig_20 (499,031 bp):
+  mean read depth: 112.9x
+  1,849 bp have a depth of zero (99.6295% coverage)
+  260 positions changed (0.0521% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9479% (Q32.83)
+
+Polishing contig_50 (37,717 bp):
+  mean read depth: 123.6x
+  3 bp have a depth of zero (99.9920% coverage)
+  1 position changed (0.0027% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9973% (Q45.77)
+
+Polishing contig_17 (31,398 bp):
+  mean read depth: 66.9x
+  29 bp have a depth of zero (99.9076% coverage)
+  15 positions changed (0.0478% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9522% (Q33.21)
+
+Polishing contig_69 (43,306 bp):
+  mean read depth: 226.6x
+  4 bp have a depth of zero (99.9908% coverage)
+  1 position changed (0.0023% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9977% (Q46.37)
+
+Polishing contig_5 (6,911 bp):
+  mean read depth: 9.8x
+  3,211 bp have a depth of zero (53.5378% coverage)
+  85 positions changed (1.2299% of total positions)
+  estimated pre-polishing sequence accuracy: 98.7701% (Q19.10)
+
+Polishing contig_39 (48,171 bp):
+  mean read depth: 92.1x
+  5 bp have a depth of zero (99.9896% coverage)
+  22 positions changed (0.0457% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9543% (Q33.40)
+
+Polishing contig_19 (643,721 bp):
+  mean read depth: 103.2x
+  688 bp have a depth of zero (99.8931% coverage)
+  433 positions changed (0.0673% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9327% (Q31.72)
+
+Polishing contig_2 (176,386 bp):
+  mean read depth: 87.0x
+  313 bp have a depth of zero (99.8225% coverage)
+  113 positions changed (0.0641% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9359% (Q31.93)
+
+Polishing contig_38 (574,705 bp):
+  mean read depth: 120.8x
+  460 bp have a depth of zero (99.9200% coverage)
+  231 positions changed (0.0402% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9598% (Q33.96)
+
+Polishing contig_10 (11,378 bp):
+  mean read depth: 77.3x
+  619 bp have a depth of zero (94.5597% coverage)
+  32 positions changed (0.2812% of total positions)
+  estimated pre-polishing sequence accuracy: 99.7188% (Q25.51)
+
+Polishing contig_44 (9,716 bp):
+  mean read depth: 34.2x
+  868 bp have a depth of zero (91.0663% coverage)
+  115 positions changed (1.1836% of total positions)
+  estimated pre-polishing sequence accuracy: 98.8164% (Q19.27)
+
+Polishing contig_35 (165,684 bp):
+  mean read depth: 88.5x
+  187 bp have a depth of zero (99.8871% coverage)
+  244 positions changed (0.1473% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8527% (Q28.32)
+
+Polishing contig_1 (5,603 bp):
+  mean read depth: 89.3x
+  8 bp have a depth of zero (99.8572% coverage)
+  14 positions changed (0.2499% of total positions)
+  estimated pre-polishing sequence accuracy: 99.7501% (Q26.02)
+
+Polishing contig_6 (237,486 bp):
+  mean read depth: 92.6x
+  345 bp have a depth of zero (99.8547% coverage)
+  159 positions changed (0.0670% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9330% (Q31.74)
+
+Polishing contig_65 (10,974 bp):
+  mean read depth: 75.5x
+  1,248 bp have a depth of zero (88.6277% coverage)
+  42 positions changed (0.3827% of total positions)
+  estimated pre-polishing sequence accuracy: 99.6173% (Q24.17)
+
+Polishing contig_42 (47,299 bp):
+  mean read depth: 85.7x
+  297 bp have a depth of zero (99.3721% coverage)
+  45 positions changed (0.0951% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9049% (Q30.22)
+
+Polishing contig_9 (218,498 bp):
+  mean read depth: 116.9x
+  197 bp have a depth of zero (99.9098% coverage)
+  100 positions changed (0.0458% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9542% (Q33.39)
+
+Polishing contig_4 (40,234 bp):
+  mean read depth: 49.8x
+  731 bp have a depth of zero (98.1831% coverage)
+  70 positions changed (0.1740% of total positions)
+  estimated pre-polishing sequence accuracy: 99.8260% (Q27.59)
+
+Polishing contig_60 (163,568 bp):
+  mean read depth: 101.9x
+  753 bp have a depth of zero (99.5396% coverage)
+  86 positions changed (0.0526% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9474% (Q32.79)
+
+Polishing contig_49 (1,042 bp):
+  mean read depth: 35.3x
+  3 bp have a depth of zero (99.7121% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+
+[1;4;93mFinished![0m [2m(2025-11-07 11:10:05)[0m
+Polished sequence (to stdout):
+  contig_12_polypolish (32,081 bp)
+  contig_21_polypolish (4,429 bp)
+  contig_28_polypolish (164,514 bp)
+  contig_32_polypolish (191,071 bp)
+  contig_22_polypolish (224,969 bp)
+  contig_16_polypolish (241,762 bp)
+  contig_13_polypolish (9,109 bp)
+  contig_55_polypolish (86,727 bp)
+  contig_72_polypolish (22,988 bp)
+  contig_70_polypolish (10,784 bp)
+  contig_40_polypolish (221,332 bp)
+  contig_37_polypolish (21,897 bp)
+  contig_57_polypolish (86,143 bp)
+  contig_34_polypolish (15,551 bp)
+  contig_64_polypolish (23,628 bp)
+  contig_59_polypolish (4,042 bp)
+  contig_41_polypolish (18,609 bp)
+  contig_29_polypolish (96,002 bp)
+  contig_51_polypolish (5,642 bp)
+  contig_43_polypolish (55,217 bp)
+  contig_68_polypolish (4,422 bp)
+  contig_14_polypolish (7,591 bp)
+  contig_56_polypolish (104,436 bp)
+  contig_52_polypolish (14,188 bp)
+  contig_23_polypolish (57,280 bp)
+  contig_63_polypolish (72,521 bp)
+  contig_66_polypolish (106,857 bp)
+  contig_15_polypolish (249,749 bp)
+  contig_73_polypolish (68,950 bp)
+  contig_26_polypolish (180,322 bp)
+  contig_74_polypolish (76,652 bp)
+  contig_67_polypolish (2,274 bp)
+  contig_30_polypolish (2,239 bp)
+  contig_20_polypolish (499,016 bp)
+  contig_50_polypolish (37,717 bp)
+  contig_17_polypolish (31,404 bp)
+  contig_69_polypolish (43,307 bp)
+  contig_5_polypolish (6,910 bp)
+  contig_39_polypolish (48,172 bp)
+  contig_19_polypolish (643,723 bp)
+  contig_2_polypolish (176,382 bp)
+  contig_38_polypolish (574,685 bp)
+  contig_10_polypolish (11,378 bp)
+  contig_44_polypolish (9,711 bp)
+  contig_35_polypolish (165,685 bp)
+  contig_1_polypolish (5,602 bp)
+  contig_6_polypolish (237,525 bp)
+  contig_65_polypolish (10,974 bp)
+  contig_42_polypolish (47,312 bp)
+  contig_9_polypolish (218,497 bp)
+  contig_4_polypolish (40,233 bp)
+  contig_60_polypolish (163,569 bp)
+  contig_49_polypolish (1,042 bp)
+
+Time to run: 0:00:41.722682
+
