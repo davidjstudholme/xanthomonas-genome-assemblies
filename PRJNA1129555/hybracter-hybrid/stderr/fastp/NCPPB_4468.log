@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 2216326
+total bases: 554081500
+Q20 bases: 538075696(97.1113%)
+Q30 bases: 516809233(93.2731%)
+Q40 bases: 0(0%)
+
+Read2 before filtering:
+total reads: 2216326
+total bases: 554081500
+Q20 bases: 536610261(96.8468%)
+Q30 bases: 512199438(92.4412%)
+Q40 bases: 0(0%)
+
+Read1 after filtering:
+total reads: 2200294
+total bases: 521809014
+Q20 bases: 511164000(97.96%)
+Q30 bases: 492358921(94.3562%)
+Q40 bases: 0(0%)
+
+Read2 after filtering:
+total reads: 2200294
+total bases: 521809014
+Q20 bases: 509920065(97.7216%)
+Q30 bases: 488489465(93.6146%)
+Q40 bases: 0(0%)
+
+Filtering result:
+reads passed filter: 4400588
+reads failed due to low quality: 32008
+reads failed due to too many N: 56
+reads failed due to too short: 0
+reads with adapter trimmed: 1226464
+bases trimmed due to adapters: 56611372
+
+Duplication rate: 8.07083%
+
+Insert size peak (evaluated by paired-end reads): 277
+
+JSON report: hybracter-hybrid/processing/qc/fastp/NCPPB_4468.json
+HTML report: hybracter-hybrid/processing/qc/fastp/NCPPB_4468.html
+
+fastp --in1 SRR29644181_1.fastq.gz --in2 SRR29644181_2.fastq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_4468_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_4468_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_4468.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_4468.json --thread 1 
+fastp v1.0.1, time used: 41 seconds

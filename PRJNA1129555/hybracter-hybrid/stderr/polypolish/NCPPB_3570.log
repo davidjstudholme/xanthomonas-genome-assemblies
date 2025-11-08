@@ -1,0 +1,57 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2025-11-08 11:46:13)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_3570/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_3570_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_3570_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2025-11-08 11:46:13)[0m
+contig_1 (4,905,833 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2025-11-08 11:46:14)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_3570_1.sam: 2,238,510 alignments from 2,150,210 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_3570_2.sam: 2,238,268 alignments from 2,149,525 reads
+
+Filtering for high-quality end-to-end alignments:
+  4,259,751 alignments kept
+  217,027 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2025-11-08 11:46:37)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_1 (4,905,833 bp):
+  mean read depth: 195.1x
+  51 bp have a depth of zero (99.9990% coverage)
+  2 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q63.90)
+
+
+[1;4;93mFinished![0m [2m(2025-11-08 11:46:38)[0m
+Polished sequence (to stdout):
+  contig_1_polypolish (4,905,835 bp)
+
+Time to run: 0:00:24.359125
+

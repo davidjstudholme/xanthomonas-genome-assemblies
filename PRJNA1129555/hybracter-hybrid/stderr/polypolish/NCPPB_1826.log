@@ -1,0 +1,57 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2025-11-08 09:27:02)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_1826/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_1826_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_1826_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2025-11-08 09:27:02)[0m
+contig_1 (5,047,296 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2025-11-08 09:27:03)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_1826_1.sam: 2,243,924 alignments from 2,189,247 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_1826_2.sam: 2,243,469 alignments from 2,188,443 reads
+
+Filtering for high-quality end-to-end alignments:
+  4,294,473 alignments kept
+  192,920 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2025-11-08 09:27:27)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_1 (5,047,296 bp):
+  mean read depth: 200.6x
+  3 bp have a depth of zero (99.9999% coverage)
+  10 positions changed (0.0002% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9998% (Q57.03)
+
+
+[1;4;93mFinished![0m [2m(2025-11-08 09:27:28)[0m
+Polished sequence (to stdout):
+  contig_1_polypolish (5,047,295 bp)
+
+Time to run: 0:00:25.447590
+

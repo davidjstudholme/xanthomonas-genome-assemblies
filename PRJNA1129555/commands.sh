@@ -1,0 +1,31 @@
+./fastq-dump --gzip --split-files SRR30040118 SRR30040119 SRR30040120 SRR30040121 SRR30040122 SRR30040123 SRR30040124 SRR30040125 SRR30040126 SRR30040127 SRR30040128 SRR30040129 SRR30040130 SRR30040131 SRR30040132 SRR30040133 SRR30040134 SRR30040135 SRR30040136 SRR30040137 SRR30040138 SRR30040139 SRR30040140 SRR30040141 SRR30040142 SRR30040143 SRR30040144 SRR30040145 SRR30041396 SRR30016876 SRR29644152 SRR29644153 SRR29644154 SRR29644155 SRR29644156 SRR29644157 SRR29644158 SRR29644159 SRR29644160 SRR29644161 SRR29644162 SRR29644163 SRR29644164 SRR29644165 SRR29644166 SRR29644167 SRR29644168 SRR29644169 SRR29644170 SRR29644171 SRR29644172 SRR29644173 SRR29644174 SRR29644175 SRR29644176 SRR29644177 SRR29644178 SRR29644179 SRR29644180 SRR29644181 SRR29644182 SRR29644183
+
+
+
+
+conda create -n hybracter_env python=3.11
+conda activate hybracter_env
+conda install -c conda-forge -c bioconda hybracter
+
+hybracter install
+
+conda list -n hybracter_env > hybracter_env_packages.txt
+conda env export > hybracter_env.yaml
+
+hybracter hybrid -i PRJNA1129555.csv -o hybracter-hybrid -t 12
+
+hybracter long -i NCPPB3200.csv -o hybracter-long -t 8
+
+
+conda activate unicycler_env
+conda create -n unicycler_env
+conda activate unicycler_env
+conda install bioconda::unicycler
+
+conda list -n unicycler_env > hybracter_env_packages.txt
+conda env export > unicycler_env.yaml
+
+unicycler -1 SRR29644166_1.fastq.gz -2 SRR29644166_2.fastq.gz -o NCPPB2864.unicycler
+unicycler -1 SRR29644167_1.fastq.gz  -2 SRR29644167_2.fastq.gz -o NCPPB2856.unicycler
+unicycler -1 SRR29644155_1.fastq.gz  -2 SRR29644155_2.fastq.gz -o NCPPB3959.unicycler
+
