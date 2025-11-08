@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpcre2-posix
+Description: Posix compatible interface to libpcre2-8
+Version: 10.46
+Libs: -L${libdir} -lpcre2-posix
+Cflags: -I${includedir} -DPCRE2POSIX_SHARED
+Requires.private: libpcre2-8

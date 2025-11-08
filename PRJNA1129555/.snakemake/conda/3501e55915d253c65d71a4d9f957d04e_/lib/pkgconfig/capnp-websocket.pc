@@ -1,0 +1,11 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Cap'n Proto WebSocket RPC
+Description: WebSocket MessageStream for Cap'n Proto
+Version: 1.0.2
+Libs: -L${libdir} -lcapnp-websocket
+Requires: capnp = 1.0.2 capnp-rpc = 1.0.2 kj = 1.0.2 kj-async = 1.0.2 kj-http = 1.0.2
+Cflags: -I${includedir}

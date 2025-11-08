@@ -1,0 +1,10 @@
+Config file /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../config/config.yaml is extended by additional config specified via the command line.
+Assuming unrestricted shared filesystem usage.
+host: studholme-training-server
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/envs/plassembler.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/envs/plassembler.yaml created (location: .snakemake/conda/3501e55915d253c65d71a4d9f957d04e_)
+Nothing to be done (all requested files are present and up to date).

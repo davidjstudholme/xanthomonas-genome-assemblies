@@ -1,0 +1,9 @@
+#!/bin/sh
+'''exec' /data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_/bin/python "$0" "$@"
+' '''
+import sys
+from numpy._configtool import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

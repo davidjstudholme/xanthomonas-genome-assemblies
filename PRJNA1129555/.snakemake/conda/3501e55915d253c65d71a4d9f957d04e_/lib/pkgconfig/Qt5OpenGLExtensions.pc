@@ -1,0 +1,14 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+
+Name: Qt5 OpenGLExtensions
+Description: Qt OpenGLExtensions module
+Version: 5.15.15
+Libs: -L${libdir} -lQt5OpenGLExtensions 
+Libs.private: -L/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_/lib -L/home/conda/feedstock_root/build_artifacts/qt-main_1756063852334/_build_env/x86_64-conda-linux-gnu/sysroot/usr/lib64 -L/home/conda/feedstock_root/build_artifacts/qt-main_1756063852334/_build_env/x86_64-conda-linux-gnu/sysroot/usr/lib /data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_/lib/libQt5Gui.so /data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_/lib/libQt5Core.so -lpthread -lGL   
+Cflags: -DQT_OPENGLEXTENSIONS_LIB -I${includedir}/QtOpenGLExtensions -I${includedir}
+Requires: Qt5Core Qt5Gui
+

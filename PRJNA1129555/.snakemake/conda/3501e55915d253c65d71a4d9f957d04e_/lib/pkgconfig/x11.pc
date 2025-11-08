@@ -1,0 +1,16 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+xthreadlib=-lpthread
+
+Name: X11
+Description: X Library
+URL: https://gitlab.freedesktop.org/xorg/lib/libx11/
+Version: 1.8.12
+Requires: xproto kbproto
+Requires.private: xcb >= 1.11.1
+Cflags: -I${includedir} 
+Libs: -L${libdir} -lX11
+Libs.private: -lpthread

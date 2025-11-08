@@ -1,0 +1,57 @@
+{
+  "build": "default_h36abe19_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "binutils_impl_linux-64",
+    "clang-21 21.1.0 default_h99862b1_1",
+    "libgcc-devel_linux-64",
+    "sysroot_linux-64"
+  ],
+  "extracted_package_dir": "/data/djs217/miniconda3/pkgs/clang-21.1.0-default_h36abe19_1",
+  "files": [
+    "bin/clang",
+    "bin/clang-cl",
+    "bin/clang-cpp"
+  ],
+  "fn": "clang-21.1.0-default_h36abe19_1.conda",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "link": {
+    "source": "/data/djs217/miniconda3/pkgs/clang-21.1.0-default_h36abe19_1",
+    "type": 1
+  },
+  "md5": "2c539e1cb3e1af0dd4cb0f656e1093c0",
+  "name": "clang",
+  "package_tarball_full_path": "/data/djs217/miniconda3/pkgs/clang-21.1.0-default_h36abe19_1",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/clang",
+        "path_type": "softlink",
+        "sha256": "64845815f59baa330be3b0d04fd22c177b32a0d709f966c8dbd406392895704c",
+        "size_in_bytes": 203008
+      },
+      {
+        "_path": "bin/clang-cl",
+        "path_type": "softlink",
+        "sha256": "64845815f59baa330be3b0d04fd22c177b32a0d709f966c8dbd406392895704c",
+        "size_in_bytes": 203008
+      },
+      {
+        "_path": "bin/clang-cpp",
+        "path_type": "softlink",
+        "sha256": "64845815f59baa330be3b0d04fd22c177b32a0d709f966c8dbd406392895704c",
+        "size_in_bytes": 203008
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "5e112250853c16a9f2c3b4d7b553076ba765974ffb0c2d1321566b4f28b480e9",
+  "size": 24176,
+  "subdir": "linux-64",
+  "timestamp": 1757383310000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/clang-21.1.0-default_h36abe19_1.conda",
+  "version": "21.1.0"
+}

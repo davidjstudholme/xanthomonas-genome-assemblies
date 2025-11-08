@@ -1,0 +1,13 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include 
+enginesdir=${libdir}/engines-3
+modulesdir=${libdir}/ossl-modules
+
+Name: OpenSSL-libcrypto
+Description: OpenSSL cryptography library
+Version: 3.5.4
+Libs: -L${libdir} -lcrypto
+Libs.private: -ldl -pthread
+Cflags: -I${includedir}

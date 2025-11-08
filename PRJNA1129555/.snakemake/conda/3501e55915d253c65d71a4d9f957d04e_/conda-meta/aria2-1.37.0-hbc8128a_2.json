@@ -1,0 +1,514 @@
+{
+  "build": "hbc8128a_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "c-ares >=1.28.1,<2.0a0",
+    "libgcc-ng >=12",
+    "libsqlite >=3.46.0,<4.0a0",
+    "libssh2 >=1.11.0,<2.0a0",
+    "libstdcxx-ng >=12",
+    "libxml2 >=2.12.7,<2.14.0a0",
+    "libzlib >=1.3.1,<2.0a0",
+    "openssl >=3.3.1,<4.0a0"
+  ],
+  "extracted_package_dir": "/data/djs217/miniconda3/pkgs/aria2-1.37.0-hbc8128a_2",
+  "files": [
+    "bin/aria2c",
+    "include/aria2/aria2.h",
+    "lib/libaria2.so",
+    "lib/libaria2.so.0",
+    "lib/libaria2.so.0.0.0",
+    "lib/pkgconfig/libaria2.pc",
+    "share/doc/aria2/README",
+    "share/doc/aria2/README.html",
+    "share/doc/aria2/README.rst",
+    "share/doc/aria2/bash_completion/README.txt",
+    "share/doc/aria2/bash_completion/aria2c",
+    "share/doc/aria2/xmlrpc/README.txt",
+    "share/doc/aria2/xmlrpc/aria2mon",
+    "share/doc/aria2/xmlrpc/aria2rpc",
+    "share/locale/ar/LC_MESSAGES/aria2.mo",
+    "share/locale/bg/LC_MESSAGES/aria2.mo",
+    "share/locale/bn/LC_MESSAGES/aria2.mo",
+    "share/locale/ca/LC_MESSAGES/aria2.mo",
+    "share/locale/da/LC_MESSAGES/aria2.mo",
+    "share/locale/de/LC_MESSAGES/aria2.mo",
+    "share/locale/el/LC_MESSAGES/aria2.mo",
+    "share/locale/en@boldquot/LC_MESSAGES/aria2.mo",
+    "share/locale/en@quot/LC_MESSAGES/aria2.mo",
+    "share/locale/es/LC_MESSAGES/aria2.mo",
+    "share/locale/fa/LC_MESSAGES/aria2.mo",
+    "share/locale/fi/LC_MESSAGES/aria2.mo",
+    "share/locale/fil/LC_MESSAGES/aria2.mo",
+    "share/locale/fr/LC_MESSAGES/aria2.mo",
+    "share/locale/he/LC_MESSAGES/aria2.mo",
+    "share/locale/hr/LC_MESSAGES/aria2.mo",
+    "share/locale/hu/LC_MESSAGES/aria2.mo",
+    "share/locale/id/LC_MESSAGES/aria2.mo",
+    "share/locale/it/LC_MESSAGES/aria2.mo",
+    "share/locale/ja/LC_MESSAGES/aria2.mo",
+    "share/locale/kk/LC_MESSAGES/aria2.mo",
+    "share/locale/ko/LC_MESSAGES/aria2.mo",
+    "share/locale/ms/LC_MESSAGES/aria2.mo",
+    "share/locale/nb/LC_MESSAGES/aria2.mo",
+    "share/locale/nl/LC_MESSAGES/aria2.mo",
+    "share/locale/nn/LC_MESSAGES/aria2.mo",
+    "share/locale/oc/LC_MESSAGES/aria2.mo",
+    "share/locale/pl/LC_MESSAGES/aria2.mo",
+    "share/locale/pt/LC_MESSAGES/aria2.mo",
+    "share/locale/pt_BR/LC_MESSAGES/aria2.mo",
+    "share/locale/ro/LC_MESSAGES/aria2.mo",
+    "share/locale/ru/LC_MESSAGES/aria2.mo",
+    "share/locale/sk/LC_MESSAGES/aria2.mo",
+    "share/locale/sr/LC_MESSAGES/aria2.mo",
+    "share/locale/sv/LC_MESSAGES/aria2.mo",
+    "share/locale/th/LC_MESSAGES/aria2.mo",
+    "share/locale/tr/LC_MESSAGES/aria2.mo",
+    "share/locale/uk/LC_MESSAGES/aria2.mo",
+    "share/locale/vi/LC_MESSAGES/aria2.mo",
+    "share/locale/zh_CN/LC_MESSAGES/aria2.mo",
+    "share/locale/zh_HK/LC_MESSAGES/aria2.mo",
+    "share/locale/zh_TW/LC_MESSAGES/aria2.mo",
+    "share/man/man1/aria2c.1",
+    "share/man/pt/man1/aria2c.1",
+    "share/man/ru/man1/aria2c.1"
+  ],
+  "fn": "aria2-1.37.0-hbc8128a_2.conda",
+  "license": "GPL-2.0-only",
+  "link": {
+    "source": "/data/djs217/miniconda3/pkgs/aria2-1.37.0-hbc8128a_2",
+    "type": 1
+  },
+  "md5": "03b8874fa70df577f3eee53085d025cf",
+  "name": "aria2",
+  "package_tarball_full_path": "/data/djs217/miniconda3/pkgs/aria2-1.37.0-hbc8128a_2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/aria2c",
+        "path_type": "hardlink",
+        "sha256": "5c47c5b8bdcb28bb3b3de9d65fbdc9f32c51c8428dc386003b594bdc8b7fec7b",
+        "sha256_in_prefix": "5c47c5b8bdcb28bb3b3de9d65fbdc9f32c51c8428dc386003b594bdc8b7fec7b",
+        "size_in_bytes": 17432
+      },
+      {
+        "_path": "include/aria2/aria2.h",
+        "path_type": "hardlink",
+        "sha256": "b4dd81883d6b8c76ff63096ec8eae6e979313ddae3efd8f194be54336e4fe340",
+        "sha256_in_prefix": "b4dd81883d6b8c76ff63096ec8eae6e979313ddae3efd8f194be54336e4fe340",
+        "size_in_bytes": 27219
+      },
+      {
+        "_path": "lib/libaria2.so",
+        "path_type": "softlink",
+        "sha256": "fa270314b182734c83e2bbd172c8b353d7531c5b84629465021193ee6d66ad39",
+        "size_in_bytes": 5044792
+      },
+      {
+        "_path": "lib/libaria2.so.0",
+        "path_type": "softlink",
+        "sha256": "fa270314b182734c83e2bbd172c8b353d7531c5b84629465021193ee6d66ad39",
+        "size_in_bytes": 5044792
+      },
+      {
+        "_path": "lib/libaria2.so.0.0.0",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/aria2_1718840560416/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+        "sha256": "fa270314b182734c83e2bbd172c8b353d7531c5b84629465021193ee6d66ad39",
+        "sha256_in_prefix": "77f95dde119677dfc4bdaf0bf8fedac3c0fcdf43b57767239311734b68cbecc8",
+        "size_in_bytes": 5044792
+      },
+      {
+        "_path": "lib/pkgconfig/libaria2.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/aria2_1718840560416/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+        "sha256": "2685e7a6fad718f485025c84d2d6ae70320d8558249b10596c3c16b93bc27fc7",
+        "sha256_in_prefix": "f9baab2ec2bb83dcc68506ef0a2cb7dcb0c153006488f79385e9861582333c95",
+        "size_in_bytes": 2050
+      },
+      {
+        "_path": "share/doc/aria2/README",
+        "path_type": "hardlink",
+        "sha256": "f3c22082da5ff8b5313d36e2b8a1a83d28ff1d379a9dfd3f18582ce933b9159c",
+        "sha256_in_prefix": "f3c22082da5ff8b5313d36e2b8a1a83d28ff1d379a9dfd3f18582ce933b9159c",
+        "size_in_bytes": 15
+      },
+      {
+        "_path": "share/doc/aria2/README.html",
+        "path_type": "hardlink",
+        "sha256": "edcd2c4e4ed1e87b6ca1f4f820f3f078a86561a07fcbe6cc28ffb52c47118e33",
+        "sha256_in_prefix": "edcd2c4e4ed1e87b6ca1f4f820f3f078a86561a07fcbe6cc28ffb52c47118e33",
+        "size_in_bytes": 38343
+      },
+      {
+        "_path": "share/doc/aria2/README.rst",
+        "path_type": "hardlink",
+        "sha256": "dbc1894fbff5eec165b0e2970597b358343bf9bfc0ff302c7ed044f42a6a6486",
+        "sha256_in_prefix": "dbc1894fbff5eec165b0e2970597b358343bf9bfc0ff302c7ed044f42a6a6486",
+        "size_in_bytes": 22434
+      },
+      {
+        "_path": "share/doc/aria2/bash_completion/README.txt",
+        "path_type": "hardlink",
+        "sha256": "8bbce514d4689b74bc5950295509ea64f05158389bc371315aa3f17e110cc9eb",
+        "sha256_in_prefix": "8bbce514d4689b74bc5950295509ea64f05158389bc371315aa3f17e110cc9eb",
+        "size_in_bytes": 251
+      },
+      {
+        "_path": "share/doc/aria2/bash_completion/aria2c",
+        "path_type": "hardlink",
+        "sha256": "7578cefa1c5d38cd8e900b5eb9177465cfa068f8a770f5f5f117020398786ee1",
+        "sha256_in_prefix": "7578cefa1c5d38cd8e900b5eb9177465cfa068f8a770f5f5f117020398786ee1",
+        "size_in_bytes": 8153
+      },
+      {
+        "_path": "share/doc/aria2/xmlrpc/README.txt",
+        "path_type": "hardlink",
+        "sha256": "933067a4ce962a56c5a319ab9cbea72a47a95d16648e2f047f023c4098069244",
+        "sha256_in_prefix": "933067a4ce962a56c5a319ab9cbea72a47a95d16648e2f047f023c4098069244",
+        "size_in_bytes": 166
+      },
+      {
+        "_path": "share/doc/aria2/xmlrpc/aria2mon",
+        "path_type": "hardlink",
+        "sha256": "164f5e5fbe12bb36b45ee204fcabf3c80dfc09fd98fb22436bcdd00f248e085a",
+        "sha256_in_prefix": "164f5e5fbe12bb36b45ee204fcabf3c80dfc09fd98fb22436bcdd00f248e085a",
+        "size_in_bytes": 4855
+      },
+      {
+        "_path": "share/doc/aria2/xmlrpc/aria2rpc",
+        "path_type": "hardlink",
+        "sha256": "7b8d790861e72fcff4f4f407e1f408d677314aa1a6a486dc5b4f8a447c337c34",
+        "sha256_in_prefix": "7b8d790861e72fcff4f4f407e1f408d677314aa1a6a486dc5b4f8a447c337c34",
+        "size_in_bytes": 18872
+      },
+      {
+        "_path": "share/locale/ar/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "79263f306db63ad6fd250edc8f9f74ba8e28bd9b17121eab4f4133fc657fde13",
+        "sha256_in_prefix": "79263f306db63ad6fd250edc8f9f74ba8e28bd9b17121eab4f4133fc657fde13",
+        "size_in_bytes": 2201
+      },
+      {
+        "_path": "share/locale/bg/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "d924a59c61d502221f727e64d88bea64c60b53356b86d2981484dd3f947772b4",
+        "sha256_in_prefix": "d924a59c61d502221f727e64d88bea64c60b53356b86d2981484dd3f947772b4",
+        "size_in_bytes": 48691
+      },
+      {
+        "_path": "share/locale/bn/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "0ed128b5ebae709a1c00f8aebf1e2e9bbe8bb14175fd8860da6e0088d3921e9a",
+        "sha256_in_prefix": "0ed128b5ebae709a1c00f8aebf1e2e9bbe8bb14175fd8860da6e0088d3921e9a",
+        "size_in_bytes": 950
+      },
+      {
+        "_path": "share/locale/ca/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "5902b2acf51fedefd9d9f7f9b14f7631393df593b4f7d2de2523b6e3c82f359f",
+        "sha256_in_prefix": "5902b2acf51fedefd9d9f7f9b14f7631393df593b4f7d2de2523b6e3c82f359f",
+        "size_in_bytes": 17442
+      },
+      {
+        "_path": "share/locale/da/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "1c3e827d70cfb672e09d4ba07545925ddc41e6913a9f1435c188192a48f0fcab",
+        "sha256_in_prefix": "1c3e827d70cfb672e09d4ba07545925ddc41e6913a9f1435c188192a48f0fcab",
+        "size_in_bytes": 19279
+      },
+      {
+        "_path": "share/locale/de/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "4a170a5493475e40dbdb05f5b03ad399641586d2527f6939b9deecae89b8249d",
+        "sha256_in_prefix": "4a170a5493475e40dbdb05f5b03ad399641586d2527f6939b9deecae89b8249d",
+        "size_in_bytes": 159438
+      },
+      {
+        "_path": "share/locale/el/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "aa886e22b0e37b5f36fc3babf85dbe266465fa16387fc4374833773af689b025",
+        "sha256_in_prefix": "aa886e22b0e37b5f36fc3babf85dbe266465fa16387fc4374833773af689b025",
+        "size_in_bytes": 111939
+      },
+      {
+        "_path": "share/locale/en@boldquot/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "297a46ffa50feca700f88eee872f8a38bc57648dc06106eee050b97cd4d31c58",
+        "sha256_in_prefix": "297a46ffa50feca700f88eee872f8a38bc57648dc06106eee050b97cd4d31c58",
+        "size_in_bytes": 155107
+      },
+      {
+        "_path": "share/locale/en@quot/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "a76626f350e0019405b0bc8e93474e19e091ec6c0d5ce8530c65aeda33d65a23",
+        "sha256_in_prefix": "a76626f350e0019405b0bc8e93474e19e091ec6c0d5ce8530c65aeda33d65a23",
+        "size_in_bytes": 154615
+      },
+      {
+        "_path": "share/locale/es/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "0e8f2dfdcea6adef60b4ce6ce4ce8a26e07ac77b7f1322f541eeb97d6013f59e",
+        "sha256_in_prefix": "0e8f2dfdcea6adef60b4ce6ce4ce8a26e07ac77b7f1322f541eeb97d6013f59e",
+        "size_in_bytes": 22298
+      },
+      {
+        "_path": "share/locale/fa/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "23dafad75dbdf39fa2bd11e38e7a0d452572d704b9b87e3ef50b735fa44f1f50",
+        "sha256_in_prefix": "23dafad75dbdf39fa2bd11e38e7a0d452572d704b9b87e3ef50b735fa44f1f50",
+        "size_in_bytes": 3436
+      },
+      {
+        "_path": "share/locale/fi/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "68cb9e9f32a10a4e22475d1bb7eb08c88b8ba2c1d9072607c0f7f733ddcf89e4",
+        "sha256_in_prefix": "68cb9e9f32a10a4e22475d1bb7eb08c88b8ba2c1d9072607c0f7f733ddcf89e4",
+        "size_in_bytes": 15613
+      },
+      {
+        "_path": "share/locale/fil/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "7f8459c1c0f6964e3f627c548bb4ad2b4287fa5be17ba78c2d4c88e5983c6945",
+        "sha256_in_prefix": "7f8459c1c0f6964e3f627c548bb4ad2b4287fa5be17ba78c2d4c88e5983c6945",
+        "size_in_bytes": 1662
+      },
+      {
+        "_path": "share/locale/fr/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "cc39e962608c7f2fa3b9015475c95e6e554ff8b1e2424a893c2503f982cbb0ce",
+        "sha256_in_prefix": "cc39e962608c7f2fa3b9015475c95e6e554ff8b1e2424a893c2503f982cbb0ce",
+        "size_in_bytes": 54244
+      },
+      {
+        "_path": "share/locale/he/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "1afdfed8d846976066793bf700d72d6eebc6bcc55befadab2b9e3eea4724d66f",
+        "sha256_in_prefix": "1afdfed8d846976066793bf700d72d6eebc6bcc55befadab2b9e3eea4724d66f",
+        "size_in_bytes": 9691
+      },
+      {
+        "_path": "share/locale/hr/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "b172972b8e03d8c0e9a0e899cc80f6ac4996b46ed1c0e53a41e728bb258b254e",
+        "sha256_in_prefix": "b172972b8e03d8c0e9a0e899cc80f6ac4996b46ed1c0e53a41e728bb258b254e",
+        "size_in_bytes": 1326
+      },
+      {
+        "_path": "share/locale/hu/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "8f7c5fc2290ba9fc1f952bfcc812c53673633face291e69a46e2040854282433",
+        "sha256_in_prefix": "8f7c5fc2290ba9fc1f952bfcc812c53673633face291e69a46e2040854282433",
+        "size_in_bytes": 892
+      },
+      {
+        "_path": "share/locale/id/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "aaddf264a5195aa6c65f3a4371590e2859d49622b2c4aab7c48838655897d03c",
+        "sha256_in_prefix": "aaddf264a5195aa6c65f3a4371590e2859d49622b2c4aab7c48838655897d03c",
+        "size_in_bytes": 21326
+      },
+      {
+        "_path": "share/locale/it/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "35ad38a458c28d39682e674160b9013724de4291db1bea6b8273203ed3379b11",
+        "sha256_in_prefix": "35ad38a458c28d39682e674160b9013724de4291db1bea6b8273203ed3379b11",
+        "size_in_bytes": 56514
+      },
+      {
+        "_path": "share/locale/ja/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "39c2cfaae185726bb2e7e3709f7c42a47cfa4fab516405011e5e31498255dc4d",
+        "sha256_in_prefix": "39c2cfaae185726bb2e7e3709f7c42a47cfa4fab516405011e5e31498255dc4d",
+        "size_in_bytes": 86549
+      },
+      {
+        "_path": "share/locale/kk/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "1de364618c22bd3dc72634beba4aa8b66c5cd05da5334670b739434539bc4c90",
+        "sha256_in_prefix": "1de364618c22bd3dc72634beba4aa8b66c5cd05da5334670b739434539bc4c90",
+        "size_in_bytes": 1788
+      },
+      {
+        "_path": "share/locale/ko/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "a354bac944e92b46b3efd550c1c54e98b521c62451b0a801d4e7cb4474a5c821",
+        "sha256_in_prefix": "a354bac944e92b46b3efd550c1c54e98b521c62451b0a801d4e7cb4474a5c821",
+        "size_in_bytes": 3117
+      },
+      {
+        "_path": "share/locale/ms/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "460b5fcb924c6912c43730988e5eb92f3664dcd3a35ba0f7936af441d2906a35",
+        "sha256_in_prefix": "460b5fcb924c6912c43730988e5eb92f3664dcd3a35ba0f7936af441d2906a35",
+        "size_in_bytes": 1460
+      },
+      {
+        "_path": "share/locale/nb/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "35961939c5cf4bfe42140efbe0819c32a20201764ba27277d3e7f2e20da6e4f5",
+        "sha256_in_prefix": "35961939c5cf4bfe42140efbe0819c32a20201764ba27277d3e7f2e20da6e4f5",
+        "size_in_bytes": 1003
+      },
+      {
+        "_path": "share/locale/nl/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "66109a76900ed42e646736dd6ee9ecc116065dc278843972eb833063b3dee81c",
+        "sha256_in_prefix": "66109a76900ed42e646736dd6ee9ecc116065dc278843972eb833063b3dee81c",
+        "size_in_bytes": 5800
+      },
+      {
+        "_path": "share/locale/nn/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "6f42d52f051237c1794a302a5dd2829767d0898db059beca83cf31199e141d49",
+        "sha256_in_prefix": "6f42d52f051237c1794a302a5dd2829767d0898db059beca83cf31199e141d49",
+        "size_in_bytes": 1550
+      },
+      {
+        "_path": "share/locale/oc/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "8c317254731950f324badda971b530ce0a18cf402ff542db18c7dff208b47756",
+        "sha256_in_prefix": "8c317254731950f324badda971b530ce0a18cf402ff542db18c7dff208b47756",
+        "size_in_bytes": 1000
+      },
+      {
+        "_path": "share/locale/pl/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "9d92a8edb38d0869b858074c60b99217227a0fafbb1c6edb397c86ca1c3e050f",
+        "sha256_in_prefix": "9d92a8edb38d0869b858074c60b99217227a0fafbb1c6edb397c86ca1c3e050f",
+        "size_in_bytes": 14081
+      },
+      {
+        "_path": "share/locale/pt/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "f9adb2168abecb4eaede663274747c717fe9ac4e718e53be2f811ca2261b671c",
+        "sha256_in_prefix": "f9adb2168abecb4eaede663274747c717fe9ac4e718e53be2f811ca2261b671c",
+        "size_in_bytes": 17642
+      },
+      {
+        "_path": "share/locale/pt_BR/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "9ec5a8e0cf042ea3900aacfc0159009c068222f30c640cfcd2af34d594f9eb41",
+        "sha256_in_prefix": "9ec5a8e0cf042ea3900aacfc0159009c068222f30c640cfcd2af34d594f9eb41",
+        "size_in_bytes": 159986
+      },
+      {
+        "_path": "share/locale/ro/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "d20c36e22b53d8d5b351e1b9d19402ac0f9b849eaf5cffdab47f19bae81ee809",
+        "sha256_in_prefix": "d20c36e22b53d8d5b351e1b9d19402ac0f9b849eaf5cffdab47f19bae81ee809",
+        "size_in_bytes": 4624
+      },
+      {
+        "_path": "share/locale/ru/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "161f6377537c3edc1ac5e69730007c22229d165f9de1a584235e657a750c17e4",
+        "sha256_in_prefix": "161f6377537c3edc1ac5e69730007c22229d165f9de1a584235e657a750c17e4",
+        "size_in_bytes": 192131
+      },
+      {
+        "_path": "share/locale/sk/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "4a204d438454f218dbce3427e65fa4398f9a1da89a733886ac22f3640522ad25",
+        "sha256_in_prefix": "4a204d438454f218dbce3427e65fa4398f9a1da89a733886ac22f3640522ad25",
+        "size_in_bytes": 3219
+      },
+      {
+        "_path": "share/locale/sr/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "061801c5ead914bd3de94196be963594d9604b452339f667831b6f2f939b3b0f",
+        "sha256_in_prefix": "061801c5ead914bd3de94196be963594d9604b452339f667831b6f2f939b3b0f",
+        "size_in_bytes": 3348
+      },
+      {
+        "_path": "share/locale/sv/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "3213ebcad00d77c7020c5b0676e413ad6d25fef086a1eea4ee5e81432f1b34bf",
+        "sha256_in_prefix": "3213ebcad00d77c7020c5b0676e413ad6d25fef086a1eea4ee5e81432f1b34bf",
+        "size_in_bytes": 10127
+      },
+      {
+        "_path": "share/locale/th/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "03d146b38fc8d95680ab30c28046624aff8bb1a096e3fc3d5573594899250e40",
+        "sha256_in_prefix": "03d146b38fc8d95680ab30c28046624aff8bb1a096e3fc3d5573594899250e40",
+        "size_in_bytes": 1019
+      },
+      {
+        "_path": "share/locale/tr/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "624971170852faa72babc7c6050bc7e84c296888e3f9262d9a2b7f99e8f413a0",
+        "sha256_in_prefix": "624971170852faa72babc7c6050bc7e84c296888e3f9262d9a2b7f99e8f413a0",
+        "size_in_bytes": 24761
+      },
+      {
+        "_path": "share/locale/uk/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "d6055d7018a6f040491e5dc9f1f627536611d594a89cdde2ba20aa92f3d5cb5d",
+        "sha256_in_prefix": "d6055d7018a6f040491e5dc9f1f627536611d594a89cdde2ba20aa92f3d5cb5d",
+        "size_in_bytes": 74023
+      },
+      {
+        "_path": "share/locale/vi/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "13bbdd407c46429680702634b8f4de7d1d01ada43042182fae7d3c2b1ec23cd5",
+        "sha256_in_prefix": "13bbdd407c46429680702634b8f4de7d1d01ada43042182fae7d3c2b1ec23cd5",
+        "size_in_bytes": 1638
+      },
+      {
+        "_path": "share/locale/zh_CN/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "f37af6803ed2a88854d8e053ef22d323ce1c82dcad0d1355f9a4cc476ca65183",
+        "sha256_in_prefix": "f37af6803ed2a88854d8e053ef22d323ce1c82dcad0d1355f9a4cc476ca65183",
+        "size_in_bytes": 140156
+      },
+      {
+        "_path": "share/locale/zh_HK/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "e500b692ba8b22f89449ac1e5ccd91843991e594feb7d3da5da547438df18771",
+        "sha256_in_prefix": "e500b692ba8b22f89449ac1e5ccd91843991e594feb7d3da5da547438df18771",
+        "size_in_bytes": 2973
+      },
+      {
+        "_path": "share/locale/zh_TW/LC_MESSAGES/aria2.mo",
+        "path_type": "hardlink",
+        "sha256": "2ae9b86be5a7957be4ec0dafa65b931b73dca6ea971ca793da41ebb166389452",
+        "sha256_in_prefix": "2ae9b86be5a7957be4ec0dafa65b931b73dca6ea971ca793da41ebb166389452",
+        "size_in_bytes": 82471
+      },
+      {
+        "_path": "share/man/man1/aria2c.1",
+        "path_type": "hardlink",
+        "sha256": "281e5fbabd0154d4ea4ffe1068a28a55953d1db5e3c12ee72b5c763abce44b8b",
+        "sha256_in_prefix": "281e5fbabd0154d4ea4ffe1068a28a55953d1db5e3c12ee72b5c763abce44b8b",
+        "size_in_bytes": 169751
+      },
+      {
+        "_path": "share/man/pt/man1/aria2c.1",
+        "path_type": "hardlink",
+        "sha256": "3dc6de982ca09753a53498ab97dc132639a86bb40df7c14f79dbc808b91a7d10",
+        "sha256_in_prefix": "3dc6de982ca09753a53498ab97dc132639a86bb40df7c14f79dbc808b91a7d10",
+        "size_in_bytes": 155217
+      },
+      {
+        "_path": "share/man/ru/man1/aria2c.1",
+        "path_type": "hardlink",
+        "sha256": "55d1cce7a808b9d1e099de045e8d8bfd0b97aed8d653c9ac91c4058112daf352",
+        "sha256_in_prefix": "55d1cce7a808b9d1e099de045e8d8bfd0b97aed8d653c9ac91c4058112daf352",
+        "size_in_bytes": 254464
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "06ac389ee45049af40aeb9940eacef92f04d6b5741fc1154be282f420479a49f",
+  "size": 1638055,
+  "subdir": "linux-64",
+  "timestamp": 1718840932000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aria2-1.37.0-hbc8128a_2.conda",
+  "version": "1.37.0"
+}

@@ -1,0 +1,56 @@
+{
+  "build": "hd6d6fdc_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "_openmp_mutex >=4.5",
+    "aria2",
+    "bzip2 >=1.0.8,<2.0a0",
+    "gawk",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libzlib >=1.3.1,<2.0a0",
+    "zlib"
+  ],
+  "extracted_package_dir": "/data/djs217/miniconda3/pkgs/mmseqs2-18.8cc5c-hd6d6fdc_0",
+  "files": [
+    "bin/mmseqs",
+    "util/bash-completion.sh"
+  ],
+  "fn": "mmseqs2-18.8cc5c-hd6d6fdc_0.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/data/djs217/miniconda3/pkgs/mmseqs2-18.8cc5c-hd6d6fdc_0",
+    "type": 1
+  },
+  "md5": "a11c5e78c9e77099aa3a2291710292e3",
+  "name": "mmseqs2",
+  "package_tarball_full_path": "/data/djs217/miniconda3/pkgs/mmseqs2-18.8cc5c-hd6d6fdc_0",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/mmseqs",
+        "path_type": "hardlink",
+        "sha256": "d6d1bf1b50c095eb0cb66f685a7fb1d9b8b69497e1e88416fd48f28e313cc773",
+        "sha256_in_prefix": "d6d1bf1b50c095eb0cb66f685a7fb1d9b8b69497e1e88416fd48f28e313cc773",
+        "size_in_bytes": 206201408
+      },
+      {
+        "_path": "util/bash-completion.sh",
+        "path_type": "hardlink",
+        "sha256": "375982c85ad591f12f4d4acbc29a7adefa687569267516a25f24cbee735c0dd2",
+        "sha256_in_prefix": "375982c85ad591f12f4d4acbc29a7adefa687569267516a25f24cbee735c0dd2",
+        "size_in_bytes": 444
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "466c7bc19eecc58a6043e73f7c80865fc610b4f545af8498565547d87c45d9a9",
+  "size": 133026020,
+  "subdir": "linux-64",
+  "timestamp": 1753615341000,
+  "url": "https://conda.anaconda.org/bioconda/linux-64/mmseqs2-18.8cc5c-hd6d6fdc_0.tar.bz2",
+  "version": "18.8cc5c"
+}

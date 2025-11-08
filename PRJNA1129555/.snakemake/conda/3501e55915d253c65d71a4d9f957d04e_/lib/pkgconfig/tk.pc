@@ -1,0 +1,15 @@
+# tk pkg-config source file
+
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+libdir=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_/lib
+includedir=${prefix}/include
+
+Name: The Tk Toolkit
+Description: Tk is a cross-platform graphical user interface toolkit, the standard GUI not only for Tcl, but for many other dynamic languages as well.
+URL: https://www.tcl-lang.org/
+Version: 8.6.13
+Requires: tcl >= 8.6
+Libs: -L${libdir} -ltk8.6 -ltkstub8.6
+Libs.private:  -lX11
+Cflags: -I${includedir}

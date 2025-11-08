@@ -1,0 +1,11 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: History
+Description: Gnu History library for managing previously-entered lines
+URL: http://tiswww.cwru.edu/php/chet/readline/rltop.html
+Version: 8.2
+Libs: -L${libdir} -lhistory
+Cflags: -I${includedir}

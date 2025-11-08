@@ -1,0 +1,8 @@
+prefix=/data/djs217/PROJECTS/PRJNA1129555/.snakemake/conda/3501e55915d253c65d71a4d9f957d04e_
+includedir=${prefix}/include
+
+Name: GIO unix specific APIs
+Description: unix specific headers for glib I/O library
+Version: 2.86.1
+Requires: gobject-2.0, gio-2.0
+Cflags: -I${includedir}/gio-unix-2.0

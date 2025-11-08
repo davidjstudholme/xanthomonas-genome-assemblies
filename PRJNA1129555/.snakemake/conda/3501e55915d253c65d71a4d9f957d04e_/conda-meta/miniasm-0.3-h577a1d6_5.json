@@ -1,0 +1,50 @@
+{
+  "build": "h577a1d6_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc >=13",
+    "libzlib >=1.3.1,<2.0a0"
+  ],
+  "extracted_package_dir": "/data/djs217/miniconda3/pkgs/miniasm-0.3-h577a1d6_5",
+  "files": [
+    "bin/miniasm",
+    "bin/minidot"
+  ],
+  "fn": "miniasm-0.3-h577a1d6_5.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/data/djs217/miniconda3/pkgs/miniasm-0.3-h577a1d6_5",
+    "type": 1
+  },
+  "md5": "4ceaff059c5a5322862bdce4e912e69c",
+  "name": "miniasm",
+  "package_tarball_full_path": "/data/djs217/miniconda3/pkgs/miniasm-0.3-h577a1d6_5",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/miniasm",
+        "path_type": "hardlink",
+        "sha256": "0a23ba7e4723132f2cb32fc2f0e3dd9583d20874cc7ba21dc649f7f2b9f124de",
+        "sha256_in_prefix": "0a23ba7e4723132f2cb32fc2f0e3dd9583d20874cc7ba21dc649f7f2b9f124de",
+        "size_in_bytes": 65464
+      },
+      {
+        "_path": "bin/minidot",
+        "path_type": "hardlink",
+        "sha256": "868087198d881c26e492b3276af947e468246ef488fb9a18602fd99fc7bc3c57",
+        "sha256_in_prefix": "868087198d881c26e492b3276af947e468246ef488fb9a18602fd99fc7bc3c57",
+        "size_in_bytes": 25608
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "3035e0fb00f0494c2c3de68ebfd2151a79ba52fbf175abdd244872ac6abf9702",
+  "size": 44655,
+  "subdir": "linux-64",
+  "timestamp": 1737966637000,
+  "url": "https://conda.anaconda.org/bioconda/linux-64/miniasm-0.3-h577a1d6_5.tar.bz2",
+  "version": "0.3"
+}

@@ -1,0 +1,179 @@
+{
+  "build": "h577a1d6_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "k8",
+    "libgcc >=13",
+    "libzlib >=1.3.1,<2.0a0"
+  ],
+  "extracted_package_dir": "/data/djs217/miniconda3/pkgs/minimap2-2.30-h577a1d6_0",
+  "files": [
+    "bin/minimap2",
+    "bin/paftools.js",
+    "bin/sdust",
+    "include/bseq.h",
+    "include/kalloc.h",
+    "include/kdq.h",
+    "include/ketopt.h",
+    "include/khash.h",
+    "include/krmq.h",
+    "include/kseq.h",
+    "include/ksort.h",
+    "include/ksw2.h",
+    "include/kthread.h",
+    "include/kvec.h",
+    "include/minimap.h",
+    "include/mmpriv.h",
+    "include/sdust.h",
+    "lib/libminimap2.a"
+  ],
+  "fn": "minimap2-2.30-h577a1d6_0.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/data/djs217/miniconda3/pkgs/minimap2-2.30-h577a1d6_0",
+    "type": 1
+  },
+  "md5": "c90788b08f45337f68b717ee8fd10fea",
+  "name": "minimap2",
+  "package_tarball_full_path": "/data/djs217/miniconda3/pkgs/minimap2-2.30-h577a1d6_0",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/minimap2",
+        "path_type": "hardlink",
+        "sha256": "5ef4a631a6318c66d1184007f87bedc55f712c27472d141da4d35e80df82e3cc",
+        "sha256_in_prefix": "5ef4a631a6318c66d1184007f87bedc55f712c27472d141da4d35e80df82e3cc",
+        "size_in_bytes": 1232336
+      },
+      {
+        "_path": "bin/paftools.js",
+        "path_type": "hardlink",
+        "sha256": "687e317df75032df93ac06877042ed1fa252d6960d4b323184ca7bc0e74e7888",
+        "sha256_in_prefix": "687e317df75032df93ac06877042ed1fa252d6960d4b323184ca7bc0e74e7888",
+        "size_in_bytes": 122734
+      },
+      {
+        "_path": "bin/sdust",
+        "path_type": "hardlink",
+        "sha256": "e8626e75e9361160008dd9198c6db3b6bb2cce0a8b4f8693e3a27365c8952099",
+        "sha256_in_prefix": "e8626e75e9361160008dd9198c6db3b6bb2cce0a8b4f8693e3a27365c8952099",
+        "size_in_bytes": 69072
+      },
+      {
+        "_path": "include/bseq.h",
+        "path_type": "hardlink",
+        "sha256": "14f0359aa4878a9813429337acfc2c06872503e6fdbda9e40f4a1f05e4fe4a0b",
+        "sha256_in_prefix": "14f0359aa4878a9813429337acfc2c06872503e6fdbda9e40f4a1f05e4fe4a0b",
+        "size_in_bytes": 1811
+      },
+      {
+        "_path": "include/kalloc.h",
+        "path_type": "hardlink",
+        "sha256": "aaa32a69fab6ec946bbc218c4fa962fb9ee97548c6877817b1007b00f637d7e1",
+        "sha256_in_prefix": "aaa32a69fab6ec946bbc218c4fa962fb9ee97548c6877817b1007b00f637d7e1",
+        "size_in_bytes": 2822
+      },
+      {
+        "_path": "include/kdq.h",
+        "path_type": "hardlink",
+        "sha256": "9d2e21abb886ba500724d3a75b33a3301d652a9002170bd3b7d6e22c2b8cd68a",
+        "sha256_in_prefix": "9d2e21abb886ba500724d3a75b33a3301d652a9002170bd3b7d6e22c2b8cd68a",
+        "size_in_bytes": 4400
+      },
+      {
+        "_path": "include/ketopt.h",
+        "path_type": "hardlink",
+        "sha256": "f1f4aea1e269d7327e87c6bdf536c1008cefb55a4ef102f67d234bba642b985c",
+        "sha256_in_prefix": "f1f4aea1e269d7327e87c6bdf536c1008cefb55a4ef102f67d234bba642b985c",
+        "size_in_bytes": 3969
+      },
+      {
+        "_path": "include/khash.h",
+        "path_type": "hardlink",
+        "sha256": "8657c031be13afccec83469d9d1c178f1c40cac2ad51986b27234985b8bd1db9",
+        "sha256_in_prefix": "8657c031be13afccec83469d9d1c178f1c40cac2ad51986b27234985b8bd1db9",
+        "size_in_bytes": 21381
+      },
+      {
+        "_path": "include/krmq.h",
+        "path_type": "hardlink",
+        "sha256": "5c335783a84bb2f27fe44ccc66d1fbc78fbf5dc718fddb5f64acc3dda01d28ed",
+        "sha256_in_prefix": "5c335783a84bb2f27fe44ccc66d1fbc78fbf5dc718fddb5f64acc3dda01d28ed",
+        "size_in_bytes": 16446
+      },
+      {
+        "_path": "include/kseq.h",
+        "path_type": "hardlink",
+        "sha256": "a4a2b959d849965c48ca33c0c3714ab369a33e0e34538f3f1258d8194d1e1662",
+        "sha256_in_prefix": "a4a2b959d849965c48ca33c0c3714ab369a33e0e34538f3f1258d8194d1e1662",
+        "size_in_bytes": 8780
+      },
+      {
+        "_path": "include/ksort.h",
+        "path_type": "hardlink",
+        "sha256": "2ed9cf5fc6bcae55ee961df7222fe1ef0ea8f5dc93156990f5ab0c277e0026e0",
+        "sha256_in_prefix": "2ed9cf5fc6bcae55ee961df7222fe1ef0ea8f5dc93156990f5ab0c277e0026e0",
+        "size_in_bytes": 5145
+      },
+      {
+        "_path": "include/ksw2.h",
+        "path_type": "hardlink",
+        "sha256": "e6499bda435ebd55940d2fa5f4c70c108b603c5077587fb5528ed1fbe9adfaf0",
+        "sha256_in_prefix": "e6499bda435ebd55940d2fa5f4c70c108b603c5077587fb5528ed1fbe9adfaf0",
+        "size_in_bytes": 8770
+      },
+      {
+        "_path": "include/kthread.h",
+        "path_type": "hardlink",
+        "sha256": "ed92aa2bd8692741cbf787adace74ba72583a2bb18a450e07ef03fc9ce1fc9a9",
+        "sha256_in_prefix": "ed92aa2bd8692741cbf787adace74ba72583a2bb18a450e07ef03fc9ce1fc9a9",
+        "size_in_bytes": 291
+      },
+      {
+        "_path": "include/kvec.h",
+        "path_type": "hardlink",
+        "sha256": "074ac9bdd03acc0763f4e8640bb62fb894200c217d6333e0fb9eb06353431a30",
+        "sha256_in_prefix": "074ac9bdd03acc0763f4e8640bb62fb894200c217d6333e0fb9eb06353431a30",
+        "size_in_bytes": 3029
+      },
+      {
+        "_path": "include/minimap.h",
+        "path_type": "hardlink",
+        "sha256": "0f077a6751fd4ba00010f6ab5c2fcce89fde5d1e7b11a4b910ea8d24a03a4c27",
+        "sha256_in_prefix": "0f077a6751fd4ba00010f6ab5c2fcce89fde5d1e7b11a4b910ea8d24a03a4c27",
+        "size_in_bytes": 15062
+      },
+      {
+        "_path": "include/mmpriv.h",
+        "path_type": "hardlink",
+        "sha256": "6032156ee4bd0e0511a755fc9fcd56b8e010834b2fc774c89066b05d20248c7e",
+        "sha256_in_prefix": "6032156ee4bd0e0511a755fc9fcd56b8e010834b2fc774c89066b05d20248c7e",
+        "size_in_bytes": 7460
+      },
+      {
+        "_path": "include/sdust.h",
+        "path_type": "hardlink",
+        "sha256": "86ebb6b0061166328747e49222bc74e4d2089f45d302bda28bd233e977795004",
+        "sha256_in_prefix": "86ebb6b0061166328747e49222bc74e4d2089f45d302bda28bd233e977795004",
+        "size_in_bytes": 574
+      },
+      {
+        "_path": "lib/libminimap2.a",
+        "path_type": "hardlink",
+        "sha256": "b312bd4932f8f87e7edf9f7fda3737e0abf0f386ff559fdd6bc00b33ff681bdc",
+        "sha256_in_prefix": "b312bd4932f8f87e7edf9f7fda3737e0abf0f386ff559fdd6bc00b33ff681bdc",
+        "size_in_bytes": 1583968
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "a82a861a2c0e5a01bbe73701dcc6af8ba3f1da430a9fa6c94ed53b5c4a7a2b55",
+  "size": 1357974,
+  "subdir": "linux-64",
+  "timestamp": 1750025868000,
+  "url": "https://conda.anaconda.org/bioconda/linux-64/minimap2-2.30-h577a1d6_0.tar.bz2",
+  "version": "2.30"
+}
