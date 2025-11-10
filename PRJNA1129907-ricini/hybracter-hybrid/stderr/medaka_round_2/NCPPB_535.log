@@ -1,0 +1,29 @@
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[20:59:48 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp8ittxfhg.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[20:59:50 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp0mh3eh8h.
+Creating fai index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_535/NCPPB_535_reoriented_chrom_and_plasmids.fasta.fai
+Creating mmi index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_535/NCPPB_535_reoriented_chrom_and_plasmids.fasta.map-ont.mmi
+[M::mm_idx_gen::0.175*1.02] collected minimizers
+[M::mm_idx_gen::0.233*1.44] sorted minimizers
+[M::main::0.295*1.35] loaded/built the index for 3 target sequence(s)
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 3
+[M::mm_idx_stat::0.308*1.33] distinct minimizers: 902960 (94.60% are singletons); average occurrences: 1.083; average spacing: 5.351; total length: 5232972
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 -I 16G -x map-ont -d /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_535/NCPPB_535_reoriented_chrom_and_plasmids.fasta.map-ont.mmi /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_535/NCPPB_535_reoriented_chrom_and_plasmids.fasta
+[M::main] Real time: 0.314 sec; CPU: 0.416 sec; Peak RSS: 0.052 GB
+[M::main::0.062*1.01] loaded/built the index for 3 target sequence(s)
+[M::mm_mapopt_update::0.080*1.01] mid_occ = 39
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 3
+[M::mm_idx_stat::0.093*1.01] distinct minimizers: 902960 (94.60% are singletons); average occurrences: 1.083; average spacing: 5.351; total length: 5232972
+[M::worker_pipeline::22.908*7.45] mapped 17499 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 12 -a /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_535/NCPPB_535_reoriented_chrom_and_plasmids.fasta.map-ont.mmi /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/qc/NCPPB_535_filt_trim.fastq.gz
+[M::main] Real time: 22.919 sec; CPU: 170.612 sec; Peak RSS: 2.101 GB
+[bam_sort_core] merging from 0 files and 12 in-memory blocks...

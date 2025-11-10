@@ -1,0 +1,202 @@
+
+Starting Unicycler (2025-11-10 11:29:24)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 SRR29654667_1.fastq.gz -2 SRR29654667_2.fastq.gz -o NCPPB_1324.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon                     not used
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-10 11:29:50)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/SRR29654667_1.fastq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/SRR29654667_2.fastq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2025-11-10 11:47:42)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 250
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2025-11-10 11:48:04)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       660           0   7.58e-04 <-best
+
+Read depth filter: removed 38 contigs totalling 15094 bp
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-11-10 12:09:36)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2025-11-10 12:09:36)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    280, 281, 282, 286, 288, 290, 295, 297, 300, 301, 302, 303, 307, 308, 309, 310, 311, 313, 314, 315, 318, 319, 320, 324, 327, 330, 334, 335, 338, 341, 345, 346, 349, 350, 352, 354, 361, 362, 364, 367, 372, 374, 375, 378, 379, 380, 390, 391, 392, 393, 395, 396, 407, 408, 410, 417, 420, 422, 423, 428, 429, 433, 449, 453, 463, 467, 475, 477, 481, 482, 487, 492, 493, 495, 524, 544, 548, 554, 566, 584, 588, 595, 600, 607, 620, 627
+
+Removed zero-length segments:
+    283, 287, 305, 317, 325, 389, 394, 432, 434, 446, 447, 448, 454, 528, 550, 570, 598, 613, 621, 630, 645, 649, 655
+
+Removed zero-length segments:
+    289, 472, 499, 512, 521, 523, 526, 589, 618, 631, 644
+
+Removed zero-length segments:
+    284, 294, 312, 470, 538, 586, 605
+
+Removed zero-length segments:
+    298
+
+Removed zero-length segments:
+    444
+
+Merged small segments:
+    426, 427, 431, 435, 436, 437, 441, 442, 443, 445, 450, 452, 456, 458, 459, 460, 461, 462, 464, 465, 466, 469, 473, 476, 478, 479, 480, 484, 485, 486, 488, 489, 490, 491, 494, 500, 501, 502, 503, 504, 505, 507, 508, 509, 511, 514, 516, 519, 527, 529, 530, 531, 533, 537, 539, 540, 541, 542, 543, 546, 547, 551, 552, 553, 555, 556, 558, 559, 561, 562, 563, 564, 565, 571, 572, 574, 576, 577, 578, 580, 582, 583, 585, 591, 592, 596, 597, 599, 601, 602, 603, 604, 606, 611, 612, 615, 616, 619, 622, 633, 635, 637, 638, 641, 646, 647, 650, 651, 652, 653, 656
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+142 anchor segments (4,876,473 bp) out of 421 total segments (5,015,032 bp)
+
+
+Creating SPAdes contig bridges (2025-11-10 12:09:37)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                                                      Bridge
+Start                          Path                          End     quality
+  -93   -286 -> -218 -> -351 -> 183 -> 280 -> 311 -> -249    128        25.8
+  -37                          -243                          42         63.0
+  -36                          -156                          85         24.9
+    7                                                        -14        63.0
+   12                                                        76         63.1
+   37                          156                           -85        24.4
+   58                  -189 -> -198 -> -241                  -104       27.8
+   74                          -243                          23         63.2
+   80   343 -> -228 -> -361 -> -415 -> -276 -> -229 -> 282   79         38.5
+  102   -272 -> 342 -> -228 -> 220 -> -278 -> 282 -> -358    135        33.6
+
+
+Creating loop unrolling bridges (2025-11-10 12:09:37)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+  -36     -156       85     -37         1.12         1.05       1      42.0
+
+
+Applying bridges (2025-11-10 12:09:37)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type   Start -> end   Path                                     Quality
+SPAdes          74 -> 23     -243                                      63.213
+SPAdes          12 -> 76                                               63.097
+SPAdes           7 -> -14                                              62.990
+SPAdes         -37 -> 42     -243                                      62.964
+SPAdes          80 -> 79     343, -228, -361, -415, -276, -229, 282    38.470
+SPAdes         102 -> 135    -272, 342, -228, 220, -278, 282, -358     33.612
+SPAdes          58 -> -104   -189, -198, -241                          27.822
+SPAdes         -93 -> 128    -286, -218, -351, 183, 280, 311, -249     25.761
+SPAdes         -36 -> 85     -156                                      24.891
+SPAdes          37 -> -85    156                                       24.418
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-11-10 12:09:37)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50      Longest segment   Status    
+        1        353     562   5,014,748   77,220           205,352   incomplete
+
+
+Polishing assembly with Pilon (2025-11-10 12:09:37)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  252
+Insert size 99th percentile: 831
+
+Pilon polish round 1
+Total number of changes: 64
+
+Pilon polish round 2
+Total number of changes: 45
+
+Pilon polish round 3
+Total number of changes: 32
+
+Pilon polish round 4
+Total number of changes: 21
+
+Pilon polish round 5
+Total number of changes: 10
+
+Pilon polish round 6
+Total number of changes: 4
+
+Pilon polish round 7
+No Pilon changes
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/005_polished.gfa
+
+
+Assembly complete (2025-11-10 13:35:08)
+---------------------------------------
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/NCPPB_1324.unicycler/assembly.fasta
+

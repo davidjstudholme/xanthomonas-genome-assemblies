@@ -1,0 +1,34 @@
+2025-11-10 20:32:53.688 | INFO     | dnaapler.utils.validation:instantiate_dirs:24 - Checking the output directory hybracter-hybrid/processing/complete/dnaapler/NCPPB_488
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:74 - You are using dnaapler version 1.3.0
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:75 - Repository homepage is https://github.com/gbouras13/dnaapler
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:76 - Written by George Bouras: george.bouras@adelaide.edu.au
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:77 - Your input file is hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_488/NCPPB_488_medaka_rd_1.fasta
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:78 - Your output directory  is hybracter-hybrid/processing/complete/dnaapler/NCPPB_488
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:79 - You have specified 8 threads to use with MMseqs2
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:begin_dnaapler:80 - You have specified all gene(s) to reorient your sequence
+2025-11-10 20:32:53.698 | INFO     | dnaapler.utils.util:check_mmseqs2_version:122 - Checking MMseqs2 installation.
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:check_mmseqs2_version:142 - MMseqs2 version found is 18.8cc5c
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:check_mmseqs2_version:156 - MMseqs2 version is ok.
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:check_pyrodigal_version:95 - Checking pyrodigal installation.
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:check_pyrodigal_version:106 - Pyrodigal version is v3.6.3
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:check_pyrodigal_version:107 - Pyrodigal version is ok.
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --input hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_488/NCPPB_488_medaka_rd_1.fasta
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --output hybracter-hybrid/processing/complete/dnaapler/NCPPB_488
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --threads 8
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --force True
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --prefix NCPPB_488
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --evalue 1e-10
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --autocomplete nearest
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --seed_value 13
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --ignore hybracter-hybrid/processing/pre_polish/NCPPB_488_ignore_list.txt
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --custom_db 
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.util:begin_dnaapler:85 - Parameter: --db dnaa,cog1474,repa
+2025-11-10 20:32:53.710 | INFO     | dnaapler.utils.validation:validate_input_all:112 - Checking that the input file hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_488/NCPPB_488_medaka_rd_1.fasta is in FASTA or GFA format and has at least 1 entry.
+2025-11-10 20:32:53.751 | INFO     | dnaapler.utils.validation:check_file_format:61 - hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_488/NCPPB_488_medaka_rd_1.fasta is in FASTA format.
+2025-11-10 20:32:53.810 | INFO     | dnaapler.utils.validation:validate_input_all:117 - hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_488/NCPPB_488_medaka_rd_1.fasta has only one entry.
+2025-11-10 20:32:53.861 | INFO     | dnaapler.utils.validation:check_evalue:184 - You have specified an evalue of 1e-10.
+2025-11-10 20:32:53.862 | INFO     | dnaapler:all:965 - You have specified contigs to ignore: contig_3
+2025-11-10 20:32:53.941 | INFO     | dnaapler.utils.external_tools:run:52 - Started running mmseqs easy-search hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/rotated_input.fasta /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_/lib/python3.13/site-packages/dnaapler/db/all_db hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/NCPPB_488_MMseqs2_output.txt hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/tmp_MMseqs2_output --search-type 2 --threads 8 -e 1e-10 --format-output query,qlen,target,tlen,alnlen,qstart,qend,tstart,tend,fident,nident,gapopen,mismatch,evalue,bits,qaln,taln ...
+2025-11-10 20:33:14.366 | INFO     | dnaapler.utils.external_tools:run:54 - Done running mmseqs easy-search hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/rotated_input.fasta /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_/lib/python3.13/site-packages/dnaapler/db/all_db hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/NCPPB_488_MMseqs2_output.txt hybracter-hybrid/processing/complete/dnaapler/NCPPB_488/tmp_MMseqs2_output --search-type 2 --threads 8 -e 1e-10 --format-output query,qlen,target,tlen,alnlen,qstart,qend,tstart,tend,fident,nident,gapopen,mismatch,evalue,bits,qaln,taln
+2025-11-10 20:33:14.452 | INFO     | dnaapler.utils.util:end_dnaapler:173 - dnaapler has finished
+2025-11-10 20:33:14.452 | INFO     | dnaapler.utils.util:end_dnaapler:174 - Elapsed time: 20.76 seconds

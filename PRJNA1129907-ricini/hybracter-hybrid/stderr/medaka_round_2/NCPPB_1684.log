@@ -1,0 +1,100 @@
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[16:46:16 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpxfadutzz.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[16:46:18 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmppdd3is4l.
+Creating fai index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_1684/NCPPB_1684_reoriented_chrom_and_plasmids.fasta.fai
+Creating mmi index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_1684/NCPPB_1684_reoriented_chrom_and_plasmids.fasta.map-ont.mmi
+[M::mm_idx_gen::0.196*0.67] collected minimizers
+[M::mm_idx_gen::0.246*0.96] sorted minimizers
+[M::main::0.301*0.91] loaded/built the index for 4 target sequence(s)
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 4
+[M::mm_idx_stat::0.320*0.89] distinct minimizers: 925955 (94.76% are singletons); average occurrences: 1.085; average spacing: 5.351; total length: 5374720
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 -I 16G -x map-ont -d /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_1684/NCPPB_1684_reoriented_chrom_and_plasmids.fasta.map-ont.mmi /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_1684/NCPPB_1684_reoriented_chrom_and_plasmids.fasta
+[M::main] Real time: 0.332 sec; CPU: 0.293 sec; Peak RSS: 0.055 GB
+[M::main::0.080*0.64] loaded/built the index for 4 target sequence(s)
+[M::mm_mapopt_update::0.104*0.65] mid_occ = 50
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 4
+[M::mm_idx_stat::0.122*0.64] distinct minimizers: 925955 (94.76% are singletons); average occurrences: 1.085; average spacing: 5.351; total length: 5374720
+[M::worker_pipeline::46.815*3.81] mapped 22193 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 12 -a /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/complete/dnaapler/NCPPB_1684/NCPPB_1684_reoriented_chrom_and_plasmids.fasta.map-ont.mmi /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/hybracter-hybrid/processing/qc/NCPPB_1684_filt_trim.fastq.gz
+[M::main] Real time: 46.833 sec; CPU: 178.501 sec; Peak RSS: 2.450 GB
+[bam_sort_core] merging from 0 files and 12 in-memory blocks...
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[16:47:16 - Predict] Processing region(s): contig_1:0-5251512 1:0-48103 2:0-46123 3:0-28982
+[16:47:16 - Predict] Using model: /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/data/r1041_e82_400bps_sup_v5.0.0_model_pt.tar.gz.
+[16:47:16 - Predict] Using minimum mapQ threshold of 1 for read filtering.
+[16:47:16 - MdlStrTGZ] Model GRUModel(
+  (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
+  (linear): Linear(in_features=256, out_features=5, bias=True)
+)
+[16:47:16 - MdlStrTGZ] loading weights from /tmp/tmp27la0nul/model/weights.pt
+[16:47:17 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp27la0nul.
+[16:47:17 - Predict] Model device: cpu
+[16:47:17 - Predict] Running prediction at full precision
+[16:47:17 - BAMFile] Creating pool of 16 BAM file sets.
+[16:47:17 - Predict] Processing 9 long region(s) with batching.
+[16:47:17 - Sampler] Initializing sampler for consensus of region contig_1:0-1000000.
+[16:47:17 - Sampler] Initializing sampler for consensus of region contig_1:999000-1999000.
+[16:47:17 - PWorker] Running inference for 5.4M draft bases.
+[16:47:19 - Feature] Processed contig_1:0.0-999999.1 (median depth 94.0)
+[16:47:19 - Sampler] Took 2.21s to make features.
+[16:47:19 - Sampler] Initializing sampler for consensus of region contig_1:1998000-2998000.
+[16:47:19 - Feature] Processed contig_1:999000.0-1998999.0 (median depth 77.0)
+[16:47:19 - Sampler] Took 2.24s to make features.
+[16:47:19 - Sampler] Initializing sampler for consensus of region contig_1:2997000-3997000.
+[16:47:20 - Feature] Processed contig_1:1998000.0-2997999.0 (median depth 70.0)
+[16:47:20 - Sampler] Took 1.73s to make features.
+[16:47:20 - Sampler] Initializing sampler for consensus of region contig_1:3996000-4996000.
+[16:47:21 - Feature] Processed contig_1:2997000.0-3996999.0 (median depth 75.0)
+[16:47:21 - Sampler] Took 2.42s to make features.
+[16:47:21 - Sampler] Initializing sampler for consensus of region contig_1:4995000-5251512.
+[16:47:22 - Feature] Processed contig_1:4995000.0-5251511.0 (median depth 97.0)
+[16:47:22 - Sampler] Took 0.97s to make features.
+[16:47:22 - Sampler] Initializing sampler for consensus of region 1:0-48103.
+[16:47:22 - Feature] Processed 1:0.0-48102.0 (median depth 83.0)
+[16:47:22 - Sampler] Took 0.25s to make features.
+[16:47:22 - Sampler] Initializing sampler for consensus of region 2:0-46123.
+[16:47:23 - Feature] Processed 2:0.0-46122.0 (median depth 38.0)
+[16:47:23 - Sampler] Took 0.19s to make features.
+[16:47:23 - Sampler] Initializing sampler for consensus of region 3:0-28982.
+[16:47:23 - Feature] Processed contig_1:3996000.0-4995999.0 (median depth 88.0)
+[16:47:23 - Sampler] Took 2.23s to make features.
+[16:47:23 - Feature] Processed 3:0.0-28981.0 (median depth 14.0)
+[16:47:23 - Sampler] Took 0.21s to make features.
+[17:17:07 - PWorker] Batches in cache: 8.
+[17:17:07 - PWorker] 13.8% Done (0.7/5.4 Mbases) in 1790.9s
+[17:46:32 - PWorker] Batches in cache: 7.
+[17:46:32 - PWorker] 28.0% Done (1.5/5.4 Mbases) in 3555.6s
+[18:08:47 - PWorker] Batches in cache: 6.
+[18:08:47 - PWorker] 42.7% Done (2.3/5.4 Mbases) in 4890.9s
+[18:08:55 - PWorker] Batches in cache: 5.
+[18:09:10 - PWorker] Batches in cache: 4.
+[18:09:10 - PWorker] 72.0% Done (3.9/5.4 Mbases) in 4913.7s
+[18:09:22 - PWorker] Batches in cache: 3.
+[18:09:22 - PWorker] 85.9% Done (4.6/5.4 Mbases) in 4925.3s
+[18:09:31 - PWorker] Batches in cache: 2.
+[18:09:32 - PWorker] 100.0% Done (5.4/5.4 Mbases) in 4935.6s
+[18:09:32 - PWorker] Processed 8 batches
+[18:09:32 - PWorker] All done, 0 remainder regions.
+[18:09:32 - Predict] Finished processing all regions.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[18:09:39 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[18:09:40 - DataIndx] Loaded 1/1 (100.00%) sample files.
