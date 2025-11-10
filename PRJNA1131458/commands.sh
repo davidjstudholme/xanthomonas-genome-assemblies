@@ -1,2 +1,0 @@
-./fastq-dump --gzip --split-files SRR29695059 SRR29695060 SRR30037787 SRR30037788
-

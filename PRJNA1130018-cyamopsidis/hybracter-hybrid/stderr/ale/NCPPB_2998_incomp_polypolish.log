@@ -1,0 +1,6 @@
+[bam_header_read] EOF marker is absent. The input is probably truncated.
+[bam_header_read] invalid BAM binary header (this is not a BAM file).
+[samopen] SAM header is present: 49 sequences.
+[bam_header_read] EOF marker is absent. The input is probably truncated.
+[bam_header_read] invalid BAM binary header (this is not a BAM file).
+[samopen] SAM header is present: 49 sequences.

@@ -1,0 +1,55 @@
+2025-11-09 21:18:44.089 | INFO     | pypolca.utils.validation:instantiate_dirs:23 - Checking the output directory hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:84 - pypolca: Standalone Python implementation of the POLCA polisher from MaSuRCA
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:87 - You are using pypolca version 0.3.1
+
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:88 - Repository homepage is https://github.com/gbouras13/pypolca.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:89 - Written by George Bouras: george.bouras@adelaide.edu.au adapting the original POLCA code by Aleksey Zimin.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:93 - Listing input parameters.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --assembly hybracter-hybrid/processing/incomplete/polypolish_incomplete/NCPPB_573.fasta.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --reads1 hybracter-hybrid/processing/qc/fastp/NCPPB_573_1.fastq.gz.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --reads2 hybracter-hybrid/processing/qc/fastp/NCPPB_573_2.fastq.gz.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --output hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --threads 8.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --force True.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --careful True.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --min_alt 4.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --min_ratio 3.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --memory_limit 2G.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --no_polish False.
+2025-11-09 21:18:44.095 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --prefix NCPPB_573.
+2025-11-09 21:18:44.106 | INFO     | pypolca.utils.validation:check_dependencies:112 - Samtools v1.22.1 found.
+2025-11-09 21:18:44.110 | INFO     | pypolca.utils.validation:check_dependencies:123 - freebayes v1.3.6 found.
+2025-11-09 21:18:44.111 | INFO     | pypolca.utils.validation:check_dependencies:140 - bwa v0.7.19-r1273 found.
+2025-11-09 21:18:44.111 | INFO     | pypolca.utils.validation:validate_fasta:46 - Checking that the input file hybracter-hybrid/processing/incomplete/polypolish_incomplete/NCPPB_573.fasta is in FASTA format.
+2025-11-09 21:18:44.112 | INFO     | pypolca.utils.validation:validate_fasta:51 - hybracter-hybrid/processing/incomplete/polypolish_incomplete/NCPPB_573.fasta file checked.
+2025-11-09 21:18:44.112 | INFO     | pypolca.utils.validation:validate_fastq:73 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_573_1.fastq.gz checked
+2025-11-09 21:18:44.112 | INFO     | pypolca.utils.validation:validate_fastq:73 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_573_2.fastq.gz checked
+2025-11-09 21:18:44.113 | INFO     | pypolca:run:219 - Checking memory limit of 2G.
+2025-11-09 21:18:44.113 | INFO     | pypolca:run:224 - Creating BWA index
+2025-11-09 21:18:44.117 | INFO     | pypolca.utils.external_tools:run:50 - Started running bwa index hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta ...
+2025-11-09 21:18:46.133 | INFO     | pypolca.utils.external_tools:run:52 - Done running bwa index hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta
+2025-11-09 21:18:46.133 | INFO     | pypolca:run:230 - Aligning reads with BWA
+2025-11-09 21:18:46.135 | INFO     | pypolca.utils.external_tools:run_to_stdout:59 - Started running bwa mem -SP -t 8 hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_573_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_573_2.fastq.gz ...
+2025-11-09 21:19:18.908 | INFO     | pypolca.utils.external_tools:run_to_stdout:61 - Done running bwa mem -SP -t 8 hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_573_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_573_2.fastq.gz
+2025-11-09 21:19:18.909 | INFO     | pypolca:run:237 - Sorting and indexing alignment file
+2025-11-09 21:19:18.909 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools view -h -@ 8 -b hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.sam -o hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.bam ...
+2025-11-09 21:19:24.273 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools view -h -@ 8 -b hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.sam -o hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.bam
+2025-11-09 21:19:24.274 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools sort -m 2G -@ 8 hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.bam -o hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam ...
+2025-11-09 21:19:29.451 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools sort -m 2G -@ 8 hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa.bam -o hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam
+2025-11-09 21:19:29.451 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools index -@ hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam ...
+2025-11-09 21:19:29.457 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools index -@ hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam
+2025-11-09 21:19:29.457 | INFO     | pypolca:run:244 - Calling variants.
+2025-11-09 21:19:29.457 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools faidx hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta ...
+2025-11-09 21:19:29.543 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools faidx hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta
+2025-11-09 21:19:29.545 | INFO     | pypolca.utils.external_tools:run:50 - Started running freebayes -m 0 --min-coverage 3 -R 0 -p 1 -F 0.2 -E 0 -b hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam -f hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta -v hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/NCPPB_573.vcf ...
+2025-11-09 21:20:14.255 | INFO     | pypolca.utils.external_tools:run:52 - Done running freebayes -m 0 --min-coverage 3 -R 0 -p 1 -F 0.2 -E 0 -b hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/temp_bwa_sorted.bam -f hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/temp/assembly.fasta -v hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/NCPPB_573.vcf
+2025-11-09 21:20:14.380 | INFO     | pypolca.utils.fix_consensus_from_vcf:fix_consensus_from_vcf:134 - POLCA has found variants. Fixing
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:27 - Stats BEFORE polishing:
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:29 - Substitution Errors Found: 7357
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:31 - Insertion/Deletion Errors Found: 2798
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:33 - Assembly Size: 4824999
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:35 - Consensus Quality Before Polishing: 99.79
+2025-11-09 21:20:14.425 | INFO     | pypolca.utils.report:create_report:37 - Consensus QV Before Polishing: 26.77
+2025-11-09 21:20:14.426 | INFO     | pypolca:run:267 - Final report is in hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/NCPPB_573.report; polished assembly is in hybracter-hybrid/processing/incomplete/pypolca/NCPPB_573/NCPPB_573_corrected.fasta
+2025-11-09 21:20:14.627 | INFO     | pypolca.utils.util:end_pypolca:110 - pypolca has finished
+2025-11-09 21:20:14.627 | INFO     | pypolca.utils.util:end_pypolca:111 - Elapsed time: 90.54 seconds
