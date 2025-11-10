@@ -1,0 +1,89 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2025-11-10 09:24:35)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_2352/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_2352_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_2352_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2025-11-10 09:24:35)[0m
+contig_2 (5,005,579 bp)
+1 (235,472 bp)
+2 (4,100 bp)
+3 (2,438 bp)
+4 (993 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2025-11-10 09:24:35)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_2352_1.sam: 3,208,860 alignments from 2,206,083 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_2352_2.sam: 3,303,063 alignments from 2,205,526 reads
+
+Filtering for high-quality end-to-end alignments:
+  3,146,807 alignments kept
+  3,365,116 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2025-11-10 09:24:57)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_2 (5,005,579 bp):
+  mean read depth: 117.4x
+  62 bp have a depth of zero (99.9988% coverage)
+  39 positions changed (0.0008% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9992% (Q51.08)
+
+Polishing 1 (235,472 bp):
+  mean read depth: 215.1x
+  3 bp have a depth of zero (99.9987% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+Polishing 2 (4,100 bp):
+  mean read depth: 82.4x
+  25 bp have a depth of zero (99.3902% coverage)
+  21 positions changed (0.5122% of total positions)
+  estimated pre-polishing sequence accuracy: 99.4878% (Q22.91)
+
+Polishing 3 (2,438 bp):
+  mean read depth: 70.1x
+  94 bp have a depth of zero (96.1444% coverage)
+  16 positions changed (0.6563% of total positions)
+  estimated pre-polishing sequence accuracy: 99.3437% (Q21.83)
+
+Polishing 4 (993 bp):
+  mean read depth: 74.4x
+  3 bp have a depth of zero (99.6979% coverage)
+  0 positions changed (0.0000% of total positions)
+  estimated pre-polishing sequence accuracy: 100.0000% (Q∞)
+
+
+[1;4;93mFinished![0m [2m(2025-11-10 09:24:58)[0m
+Polished sequence (to stdout):
+  contig_2_polypolish (5,005,593 bp)
+  1_polypolish (235,472 bp)
+  2_polypolish (4,114 bp)
+  3_polypolish (2,441 bp)
+  4_polypolish (993 bp)
+
+Time to run: 0:00:22.593851
+
