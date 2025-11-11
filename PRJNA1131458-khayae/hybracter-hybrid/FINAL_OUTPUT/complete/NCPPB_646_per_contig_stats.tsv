@@ -1,0 +1,7 @@
+contig_name	contig_type	length	gc	circular
+chromosome00001	chromosome	5235966	64.63	True
+plasmid00001	plasmid	81024	63.04	True
+plasmid00002	plasmid	75760	61.37	False
+plasmid00003	plasmid	48945	61.39	True
+plasmid00004	plasmid	30851	63.14	False
+plasmid00005	plasmid	3303	64.64	False
