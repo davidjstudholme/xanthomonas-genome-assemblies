@@ -69,3 +69,29 @@ Creating mmi index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJN
 [12:08:14 - Sampler] Took 1.18s to make features.
 [12:40:26 - PWorker] Batches in cache: 7.
 [12:40:26 - PWorker] 15.7% Done (0.8/5.3 Mbases) in 1937.0s
+[13:12:46 - PWorker] Batches in cache: 6.
+[13:12:46 - PWorker] 31.5% Done (1.7/5.3 Mbases) in 3876.9s
+[13:44:57 - PWorker] Batches in cache: 5.
+[13:44:57 - PWorker] 47.6% Done (2.5/5.3 Mbases) in 5808.0s
+[14:17:12 - PWorker] Batches in cache: 4.
+[14:17:12 - PWorker] 63.5% Done (3.3/5.3 Mbases) in 7743.1s
+[14:49:22 - PWorker] Batches in cache: 3.
+[14:49:22 - PWorker] 79.3% Done (4.2/5.3 Mbases) in 9673.4s
+[15:21:29 - PWorker] Batches in cache: 2.
+[15:21:29 - PWorker] 94.9% Done (5.0/5.3 Mbases) in 11600.1s
+[15:42:53 - PWorker] Batches in cache: 1.
+[15:42:53 - PWorker] 100.0% Done (5.3/5.3 Mbases) in 12884.0s
+[15:42:53 - PWorker] Processed 7 batches
+[15:42:53 - PWorker] All done, 0 remainder regions.
+[15:42:53 - Predict] Finished processing all regions.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.

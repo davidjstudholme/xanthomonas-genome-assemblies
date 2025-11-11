@@ -69,3 +69,31 @@ Creating mmi index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJN
 [12:09:03 - Sampler] Took 2.48s to make features.
 [12:41:16 - PWorker] Batches in cache: 8.
 [12:41:16 - PWorker] 14.2% Done (0.7/5.3 Mbases) in 1940.1s
+[13:13:24 - PWorker] Batches in cache: 7.
+[13:13:24 - PWorker] 28.3% Done (1.5/5.3 Mbases) in 3868.8s
+[13:45:30 - PWorker] Batches in cache: 6.
+[13:45:30 - PWorker] 42.3% Done (2.2/5.3 Mbases) in 5794.4s
+[14:17:37 - PWorker] Batches in cache: 5.
+[14:17:37 - PWorker] 57.2% Done (3.0/5.3 Mbases) in 7721.2s
+[14:49:43 - PWorker] Batches in cache: 4.
+[14:49:43 - PWorker] 71.6% Done (3.8/5.3 Mbases) in 9647.1s
+[15:21:49 - PWorker] Batches in cache: 3.
+[15:21:49 - PWorker] 86.0% Done (4.5/5.3 Mbases) in 11573.8s
+[15:52:24 - PWorker] Batches in cache: 2.
+[15:52:24 - PWorker] 100.0% Done (5.3/5.3 Mbases) in 13408.3s
+[15:56:54 - PWorker] Batches in cache: 1.
+[15:56:54 - PWorker] 100.0% Done (5.3/5.3 Mbases) in 13678.1s
+[15:56:54 - PWorker] Processed 8 batches
+[15:56:54 - PWorker] All done, 0 remainder regions.
+[15:56:54 - Predict] Finished processing all regions.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:56:56 - DataIndx] Loaded 1/1 (100.00%) sample files.

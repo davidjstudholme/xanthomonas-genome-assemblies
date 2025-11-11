@@ -1,0 +1,4 @@
+Sample	Complete	Total_assembly_length	Number_of_contigs	Most_accurate_polishing_round	Longest_contig_length	Longest_contig_coverage	Number_circular_plasmids
+NCPPB_2973	True	5253130	3	pypolca	5087595	14	2
+NCPPB_1475	True	5258768	6	pypolca	5064733	54	1
+NCPPB_645	True	5254179	3	pypolca	5088852	84	2
