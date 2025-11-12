@@ -1,0 +1,3 @@
+Assembly	# contigs (>= 0 bp)	# contigs (>= 1000 bp)	# contigs (>= 5000 bp)	# contigs (>= 10000 bp)	# contigs (>= 25000 bp)	# contigs (>= 50000 bp)	Total length (>= 0 bp)	Total length (>= 1000 bp)	Total length (>= 5000 bp)	Total length (>= 10000 bp)	Total length (>= 25000 bp)	Total length (>= 50000 bp)	# contigs	Largest contig	Total length	GC (%)	N50	N75	L50	L75	# N's per 100 kbp
+NCPPB_485.unfiltered.unicycler_assembly	27	16	13	13	11	7	5108110	5104306	5095800	5095800	5051681	4918883	19	3117845	5106101	64.97	3117845	784434	1	2	0.00
+NCPPB_485.unicycler_assembly	28	18	13	11	10	8	5111645	5107347	5099539	5086885	5074549	5009293	21	2653055	5109842	64.95	2653055	662591	1	3	0.00

@@ -1,0 +1,22 @@
+Assembly	NCPPB2856.unicycler_assembly	NCPPB2864.unicycler_assembly	NCPPB3959.unicycler_assembly
+# contigs (>= 0 bp)	48	41	70
+# contigs (>= 1000 bp)	31	27	46
+# contigs (>= 5000 bp)	27	22	38
+# contigs (>= 10000 bp)	27	21	35
+# contigs (>= 25000 bp)	24	19	30
+# contigs (>= 50000 bp)	21	16	25
+Total length (>= 0 bp)	4880029	4810019	5163211
+Total length (>= 1000 bp)	4873977	4805443	5154372
+Total length (>= 5000 bp)	4858132	4793352	5135771
+Total length (>= 10000 bp)	4858132	4787813	5117433
+Total length (>= 25000 bp)	4792878	4752917	5038096
+Total length (>= 50000 bp)	4674954	4625220	4884154
+# contigs	37	31	52
+Largest contig	1114917	1180840	755867
+Total length	4877949	4808051	5158675
+GC (%)	65.80	65.84	63.81
+N50	243543	510130	258183
+N75	162380	215767	132762
+L50	5	3	8
+L75	12	7	14
+# N's per 100 kbp	0.00	0.00	0.00

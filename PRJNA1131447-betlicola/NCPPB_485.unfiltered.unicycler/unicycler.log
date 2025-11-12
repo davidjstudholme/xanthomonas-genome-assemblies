@@ -1,0 +1,623 @@
+Error: could not find /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/SRR30036952_1.fastq
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Unicycler (2025-11-11 20:14:33)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided both short and long reads, Unicycler will perform a hybrid assembly. It will first use SPAdes to make a short-read assembly graph, and then it will use various methods to scaffold that graph with the long reads.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -l SRR30036952_1.fastq.gz -1 SRR29695153_1.fastq.gz -2 SRR29695153_2.fastq.gz -o NCPPB_485.unfiltered.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+The output directory already exists and files may be reused or overwritten:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon           1.4.20    good    
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-11 20:15:01)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/SRR29695153_1.fastq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/SRR29695153_2.fastq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Unicycler (2025-11-11 20:25:37)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided both short and long reads, Unicycler will perform a hybrid assembly. It will first use SPAdes to make a short-read assembly graph, and then it will use various methods to scaffold that graph with the long reads.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -l SRR30036952_1.fastq.gz -1 SRR29695153_1.fastq.gz -2 SRR29695153_2.fastq.gz -o NCPPB_485.unfiltered.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+The output directory already exists and files may be reused or overwritten:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon           1.4.20    good    
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-11 20:26:06)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/SRR29695153_1.fastq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/SRR29695153_2.fastq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2025-11-11 21:08:30)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 250
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2025-11-11 21:09:24)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+Error: SPAdes encountered an error: Traceback (most recent call last):
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       461           0   1.08e-03 <-best
+
+Read depth filter: removed 1082 contigs totalling 421914 bp
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-11-11 23:23:16)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2025-11-11 23:23:16)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    228, 229, 230, 231, 239, 241, 243, 244, 251, 252, 255, 257, 258, 261, 262, 263, 264, 271, 276, 277, 283, 285, 288, 290, 291, 292, 293, 294, 295, 296, 297, 299, 301, 302, 303, 309, 321, 324, 329, 330, 338, 351, 353, 354, 357, 359, 360, 362, 368, 369, 371, 377, 378, 381, 385, 387, 389, 391, 392, 395, 397, 401, 402, 404, 405, 406, 407, 416, 435, 437, 441, 446, 447, 448, 450
+
+Removed zero-length segments:
+    282, 284, 289, 304, 305, 311, 396, 408, 409, 417, 418, 444
+
+Removed zero-length segments:
+    364, 419, 462
+
+Merged small segments:
+    352, 358, 366, 367, 372, 373, 374, 375, 379, 383, 393, 398, 399, 403, 420, 423, 424, 425, 427, 428, 429, 430, 431, 432, 436, 443, 445, 451, 452, 454, 457, 458, 459
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+76 anchor segments (4,839,241 bp) out of 343 total segments (5,077,869 bp)
+
+
+Creating SPAdes contig bridges (2025-11-11 23:23:16)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                        Bridge
+Start           Path           End     quality
+  -75           168            89         56.5
+  -31                          32         62.9
+   -7   -175 -> 114 -> -182    64         26.1
+   -5                          55         63.2
+    1                          35         63.0
+    2                          -57        63.1
+    5                          54         62.9
+    8    -118 -> 93 -> -118    30         10.8
+   11                          -14        63.1
+   12                          -44        63.2
+   13                          33         62.6
+   17            45            -55         4.3
+   21                          -31        63.2
+   22                          86         20.3
+   25           -176           19         63.2
+   27                          11         63.2
+   33                          22         63.0
+   34                          3          63.1
+   36           -99            -58        21.8
+   38   -180 -> -106 -> -180   40         13.9
+   43                          14         63.0
+   48                          26         62.6
+   54    182 -> 112 -> 175     -64        25.5
+   56                          50         63.2
+   62           -176           36         63.2
+   71   -178 -> 132 -> -173    -80        27.6
+   76           168            9          62.4
+   81    173 -> 133 -> 178     70         35.4
+   85                          -89        56.7
+
+
+Creating loop unrolling bridges (2025-11-11 23:23:16)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+  -40      180      106     -38         1.56         1.03       1      40.2
+    8     -118       93      30         0.68         1.01       1      42.9
+  -41      159      113      57         0.83         1.10       1      43.2
+
+
+Loading reads (2025-11-11 23:23:16)
+-----------------------------------
+6,676 / 6,676 (100.0%) - 24,771,046 bp
+
+
+Assembling contigs and long reads with miniasm (2025-11-11 23:23:18)
+--------------------------------------------------------------------
+    Unicycler uses miniasm to construct a string graph assembly using both the short read contigs and the long reads. It will then use the resulting string graph to produce bridges between contigs. This method requires decent coverage of long reads and therefore may not be fruitful if long reads are sparse. However, it does not rely on the short read assembly graph having good connectivity and is able to bridge an assembly graph even when it contains many dead ends.
+    Unicycler uses two types of "reads" as assembly input: anchor contigs from the short-read assembly and actual long reads which overlap two or more of these contigs. It then assembles them with miniasm.
+
+Aligning long reads to graph using minimap
+
+Saving to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/miniasm_assembly/01_assembly_reads.fastq:
+  76 short-read contigs
+  486 long reads
+
+Finding overlaps with minimap... 
+success
+  4,033 overlaps
+
+Assembling reads with miniasm... 
+success
+  7 segments, 6 links
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/miniasm_assembly/11_branching_paths_removed.gfa
+Merging segments into unitigs:
+  1 linear unitig
+  total size = 277,313 bp
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/miniasm_assembly/12_unitig_graph.gfa
+
+miniasm assembly too small for bridging
+
+
+Creating simple long read bridges (2025-11-11 23:23:23)
+-------------------------------------------------------
+    Unicycler uses long read alignments (from minimap) to resolve simple repeat structures in the graph. This takes care of some "low-hanging fruit" of the graph simplification.
+
+Aligning long reads to graph using minimap
+
+    Two-way junctions are defined as cases where two graph contigs (A and B) join together (C) and then split apart again (D and E). This usually represents a simple 2-copy repeat, and there are two possible options for its resolution: (A->C->D and B->C->E) or (A->C->E and B->C->D). Each read which spans such a junction gets to "vote" for option 1, option 2 or neither. Unicycler creates a bridge at each junction for the most voted for option.
+
+                                                     Op. 1   Op. 2   Neither   Final    Bridge
+Junction        Option 1             Option 2        votes   votes     votes     op.   quality
+     176   -36 -> 176 -> -62,   -36 -> 176 -> -25,      10       0         2       1      81.6
+           -19 -> 176 -> -25    -19 -> 176 -> -62                                             
+     168    -75 -> 168 -> 9,    -75 -> 168 -> 89,        0       2         1       2      49.3
+            76 -> 168 -> 89       76 -> 168 -> 9                                              
+     120   -20 -> 120 -> -50,   -20 -> 120 -> -24,       0       5         2       2      65.3
+            35 -> 120 -> -24     35 -> 120 -> -50                                             
+
+    Simple loops are parts of the graph where two contigs (A and B) are connected via a repeat (C) which loops back to itself (via D). It is possible to traverse the loop zero times (A->C->B), one time (A->C->D->C->B), two times (A->C->D->C->D->C->B), etc. Long reads which span the loop inform which is the correct number of times through. In this step, such reads are found and each is aligned against alternative loop counts. A reads casts its "vote" for the loop count it agrees best with, and Unicycler creates a bridge using the most voted for count.
+
+                                   Read                         Loop    Bridge
+Start   Repeat   Middle     End   count   Read votes           count   quality
+  -41      159      113      57       3   1 loop: 2 votes          1      49.8
+                                          2 loops: 1 vote                     
+  -40      180      106     -38       2   1 loop: 2 votes          1      86.6
+    8     -118       93      30       2   1 loop: 2 votes          1      86.2
+
+
+Determining low score threshold (2025-11-11 23:23:37)
+-----------------------------------------------------
+    Before conducting semi-global alignment of the long reads to the assembly graph, Unicycler must determine a minimum alignment score threshold such that nonsense alignments are excluded. To choose a threshold automatically, it examines alignments between random sequences and selects a score a few standard deviations above the mean.
+
+Automatically choosing a threshold using random alignment scores.
+
+Random alignment mean score: 61.66
+         standard deviation:  1.31
+        Low score threshold: 61.66 + (7 x 1.31) = 70.86
+
+
+Aligning reads (2025-11-11 23:23:39)
+------------------------------------
+6,676 / 6,676 (100.0%)
+
+
+Read alignment summary (2025-11-11 23:36:29)
+--------------------------------------------
+Total read count:             6,676
+Fully aligned reads:          4,144
+Partially aligned reads:        285
+Unaligned reads:              2,247
+Total bases aligned:     19,835,102 bp
+Mean alignment identity:         89.0%
+
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/read_alignment/
+
+
+Building long read bridges (2025-11-11 23:36:29)
+------------------------------------------------
+    Unicycler uses the long read alignments to produce bridges between anchor segments. These bridges can be formed using as few as one long read, giving Unicycler the ability to bridge the graph even when long-read depth is low.
+
+       Start -> end    Best path                                 Quality
+ 1/75    44 -> -12                                                22.075
+ 2/75    -9 -> 68      -168, -76, -115, 109, 157, 127, -161       54.605
+ 3/75    68 -> 71      129, 123, 82, 91, 110, -104, 142           59.135
+ 4/75    73 -> -70     129, 122, 82, 90, 110, -105, 142           42.054
+ 5/75    40 -> -6      77                                         87.770
+ 6/75    73 -> 90      129, 122, 82                                2.203
+ 7/75    86 -> 17      78                                         14.339
+ 8/75    68 -> 91      129, 123, 82                               33.601
+ 9/75   -10 -> 47                                                 14.800
+10/75     8 -> 30      -118, 93, -118                             70.341
+11/75   -41 -> 57      159, 113, 159                              46.537
+12/75    75 -> 73      -115, 108, 157, 127, -161                  57.828
+13/75   -68 -> 76      161, -127, -157, -109, 115                 53.206
+14/75   -29 -> 48                                                 11.386
+15/75    90 -> -70     110, -105, 142                             43.564
+16/75    31 -> -21     direct connection                          82.757
+17/75    91 -> 71      110, -104, 142                             19.195
+18/75   -43 -> 80      -174, 100, 117                             41.401
+19/75   -10 -> 13                                                  9.585
+20/75   -13 -> 88      102, 202, -169                             22.466
+21/75    58 -> -36     99                                         90.031
+22/75    83 -> 10      102, 202                                   44.224
+23/75    79 -> -65     -177, -124, 162, -277, 293, 284, 334,      34.365
+                       246, 331, 315, 279, 199, 337, 199, 246,          
+                       331, 315, 281, -335, 214, 282, 333, 199,         
+                       337, 295, 210, 334, 246, 331, 315, 279,          
+                       199, 337, 295, -211, -198, -238, -131,           
+                       -121, 96                                         
+24/75    61 -> 65      -69, -72, 87                               41.091
+25/75     9 -> 2                                                  17.985
+26/75    16 -> 37      -324, -141, 273, 116, -130, 84, 102        80.162
+27/75   -23 -> 58                                                 34.099
+28/75    65 -> 61      -96, 121, 131, 238, 198, 211, -295,        75.691
+                       -337, -199, -279, -315, -331, -246,              
+                       -334, -210, -295, -337, -199, -333,              
+                       -282, -214, 335, -281, -315, -331, -246,         
+                       -199, -333, -342, -210, -292, -342, 185,         
+                       -294, -246, -334, -284, -293, 277, -162,         
+                       124, 177, -79, 111, -190, -158, 179,             
+                       -332, 327, 126, -125, -233, -256, -250,          
+                       184, -119, 187, 126, -189, -125, -233,           
+                       259, -233, -256, 255, 248, -256, 255,            
+                       248, -256, -250, 184, -119, -92, 332,            
+                       -179, 158, 190, -111, -95, -339, 134,            
+                       186, 121, -276, -181, 312, 268, 170,             
+                       -281, -315, 170, 286, -343, -214, -285,          
+                       -214, 335, -281, -315, -331, -246, -199,         
+                       -279, -315, -331, -246, 280, -315, -331,         
+                       -246, 280, -215, 335, -281, -315, -331,          
+                       -246, -199, -333, -282, -214, 335, 274,          
+                       278, -162, 124, 177, 266, -340, -200,            
+                       98, 200, -336, -266, -177, -124, 162,            
+                       -277, 293, 284, 334, 246, 331, 315, 281,         
+                       -335, 214, 343, 284, 334, 246, 294,              
+                       -185, 342, 292, 210, 342, 292, 210, 334,         
+                       246, 294, 343, 284, 334, 246, 294, 343,          
+                       284, 334, 246, 294, 343, -286, -170,             
+                       -268, -312, 181, 276, -121, -186, -134,          
+                       338                                              
+29/75   -27 -> 34      111, -190, -158, 179, 304                  67.766
+30/75    59 -> -41     -304, -179, 158, 190, -111                 62.120
+31/75   -47 -> 83      306, -179, 158, 190, -111                  63.285
+32/75    39 -> -29     111, -190, -158, 179, -332                 72.094
+33/75    84 -> 37      102                                        53.293
+34/75    64 -> -54     -175, -112, -182                           68.606
+35/75    -7 -> 64      -175, 114, -182                            64.996
+36/75   -61 -> 79      -338, 134, 186, 121, -276, -181, 312,      64.714
+                       268, 170, 286, -343, -294, -246, -334,           
+                       -284, -343, -294, -246, -334, -284,              
+                       -343, -294, -246, -334, -210, -292,              
+                       -342, -210, -292, -342, 185, -294, -246,         
+                       -334, -284, -343, -214, 335, -281, -315,         
+                       -331, -246, -334, -284, -293, 277, -162,         
+                       124, 177, 266, 336, -200, -98, 200, 340,         
+                       -266, -177, -124, 162, -278, -274, -335,         
+                       214, 282, 333, 199, 246, 331, 315, 281,          
+                       -335, 215, -280, 246, 331, 315, -280,            
+                       246, 331, 315, 279, 199, 246, 331, 315,          
+                       281, -335, 214, 285, 214, 343, -286,             
+                       -170, 315, 281, -170, -268, -312, 181,           
+                       276, -121, -186, -134, 339, 95, 111,             
+                       -190, -158, 179, -332, 92, 119, -184,            
+                       250, 256, -248, -255, 256, -248, -255,           
+                       256, 233, -259, 233, 125, 189, -126,             
+                       -187, 119, -184, 250, 256, 233, 125,             
+                       -126, -327, 332, -179, 158, 190, -111            
+37/75    38 -> 40      -180, -106, -180                           79.019
+38/75    81 -> 70      173, -132, 178                             40.081
+39/75    80 -> -71     173, -132, 178                             22.838
+40/75    50 -> -35     -120                                       86.096
+41/75    24 -> 20      -120                                       41.050
+42/75    76 -> 9       168                                        60.320
+43/75   -75 -> 89      168                                        36.794
+44/75    62 -> 36      -176                                       75.547
+45/75    25 -> 19      -176                                       94.327
+46/75    -5 -> 55      direct connection                          69.099
+47/75     4 -> 52      direct connection                          80.967
+48/75   -46 -> 62      direct connection                          80.614
+49/75   -31 -> 32      direct connection                          41.737
+50/75   -18 -> 28      direct connection                          60.999
+51/75    -6 -> 86      direct connection                          11.400
+52/75     1 -> 35      direct connection                          61.359
+53/75     5 -> 54      direct connection                          40.786
+54/75    13 -> 33      direct connection                          38.360
+55/75    14 -> -11     direct connection                          75.998
+56/75    22 -> 86      direct connection                           9.801
+57/75    26 -> -15     direct connection                          42.851
+58/75    27 -> 11      direct connection                          76.557
+59/75    33 -> 22      direct connection                          40.369
+60/75    34 -> 3       direct connection                          43.039
+61/75    43 -> 14      direct connection                          25.950
+62/75    46 -> -32     direct connection                          82.565
+63/75    47 -> 15      direct connection                          66.033
+64/75    48 -> 26      direct connection                          41.149
+65/75    52 -> -37     direct connection                          78.314
+66/75    56 -> 50      direct connection                          40.031
+67/75    57 -> -2      direct connection                          78.578
+68/75    89 -> -85     direct connection                          23.447
+69/75   -39 -> 59      111, -190, -158, 179, 305                  48.323
+70/75    10 -> 56      329, 130, -116, -273, 141, 324             71.472
+71/75    16 -> 84      -324, -141, 273, 116, -130                 35.585
+72/75    19 -> -7      -324, -141, 273, 116, -130, -329           62.345
+73/75    30 -> -18     329, 130, -116, -273, 141, 323             40.582
+74/75     3 -> 25      329, 130, -116, -273, 141, 324             49.208
+75/75   -16 -> 21      329, 130, -116, -273, 141, 324             68.770
+
+
+Applying bridges (2025-11-11 23:47:08)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type        Start -> end   Path                                       Quality
+long read            25 -> 19     -176                                        94.327
+long read            58 -> -36    99                                          90.031
+long read            40 -> -6     77                                          87.770
+simple long read    -40 -> -38    180, 106, 180                               86.599
+simple long read      8 -> 30     -118, 93, -118                              86.161
+long read            50 -> -35    -120                                        86.096
+long read            31 -> -21                                                82.757
+long read            46 -> -32                                                82.565
+simple long read    -36 -> -62    176                                         81.536
+long read             4 -> 52                                                 80.967
+long read           -46 -> 62                                                 80.614
+long read            16 -> 84     -324, -141, 273, 116, -130                  80.162
+long read            84 -> 37     102                                         80.162
+long read            57 -> -2                                                 78.578
+long read            52 -> -37                                                78.314
+long read            27 -> 11                                                 76.557
+long read            14 -> -11                                                75.998
+long read            65 -> -79    -96, 121, 131, 238, 198, 211, -295,         75.691
+                                  -337, -199, -279, -315, -331, -246,               
+                                  -334, -210, -295, -337, -199, -333,               
+                                  -282, -214, 335, -281, -315, -331, -246,          
+                                  -199, -333, -342, -210, -292, -342, 185,          
+                                  -294, -246, -334, -284, -293, 277, -162,          
+                                  124, 177                                          
+long read           -79 -> 61     111, -190, -158, 179, -332, 327, 126,       75.691
+                                  -125, -233, -256, -250, 184, -119, 187,           
+                                  126, -189, -125, -233, 259, -233, -256,           
+                                  255, 248, -256, 255, 248, -256, -250,             
+                                  184, -119, -92, 332, -179, 158, 190,              
+                                  -111, -95, -339, 134, 186, 121, -276,             
+                                  -181, 312, 268, 170, -281, -315, 170,             
+                                  286, -343, -214, -285, -214, 335, -281,           
+                                  -315, -331, -246, -199, -279, -315,               
+                                  -331, -246, 280, -315, -331, -246, 280,           
+                                  -215, 335, -281, -315, -331, -246, -199,          
+                                  -333, -282, -214, 335, 274, 278, -162,            
+                                  124, 177, 266, -340, -200, 98, 200,               
+                                  -336, -266, -177, -124, 162, -277, 293,           
+                                  284, 334, 246, 331, 315, 281, -335, 214,          
+                                  343, 284, 334, 246, 294, -185, 342, 292,          
+                                  210, 342, 292, 210, 334, 246, 294, 343,           
+                                  284, 334, 246, 294, 343, 284, 334, 246,           
+                                  294, 343, -286, -170, -268, -312, 181,            
+                                  276, -121, -186, -134, 338                        
+long read            39 -> -29    111, -190, -158, 179, -332                  72.094
+long read            10 -> 56     329, 130, -116, -273, 141, 324              71.472
+long read            -5 -> 55                                                 69.099
+long read           -16 -> 21     329, 130, -116, -273, 141, 324              68.770
+long read            64 -> -54    -175, -112, -182                            68.606
+long read           -27 -> 34     111, -190, -158, 179, 304                   67.766
+long read            47 -> 15                                                 66.033
+simple long read    -20 -> -24    120                                         65.391
+long read            -7 -> 64     -175, 114, -182                             64.996
+long read           -47 -> 83     306, -179, 158, 190, -111                   63.285
+long read            19 -> -7     -324, -141, 273, 116, -130, -329            62.345
+long read            59 -> -41    -304, -179, 158, 190, -111                  62.120
+long read             1 -> 35                                                 61.359
+long read           -18 -> 28                                                 60.999
+long read            76 -> 9      168                                         60.320
+long read            68 -> 91     129, 123, 82                                59.135
+long read            91 -> 71     110, -104, 142                              59.135
+long read            75 -> 73     -115, 108, 157, 127, -161                   57.828
+long read           -76 -> 68     -115, 109, 157, 127, -161                   54.605
+simple long read    -41 -> 57     159, 113, 159                               49.788
+long read             3 -> 25     329, 130, -116, -273, 141, 324              49.208
+long read           -39 -> 59     111, -190, -158, 179, 305                   48.323
+simple long read    -75 -> 89     168                                         44.651
+long read            83 -> 10     102, 202                                    44.224
+long read            90 -> -70    110, -105, 142                              43.564
+long read            34 -> 3                                                  43.039
+long read            26 -> -15                                                42.851
+long read            73 -> 90     129, 122, 82                                42.054
+long read           -31 -> 32                                                 41.737
+long read           -43 -> 80     -174, 100, 117                              41.401
+long read            48 -> 26                                                 41.149
+long read            61 -> 65     -69, -72, 87                                41.091
+long read             5 -> 54                                                 40.786
+long read            30 -> -18    329, 130, -116, -273, 141, 323              40.582
+long read            33 -> 22                                                 40.369
+long read            81 -> 70     173, -132, 178                              40.081
+long read            56 -> 50                                                 40.031
+long read            13 -> 33                                                 38.360
+long read           -23 -> 58                                                 34.099
+long read            43 -> 14                                                 25.950
+long read            89 -> -85                                                23.447
+long read            80 -> -71    173, 133, 178                               22.838
+long read           -13 -> 88     102, 202, -169                              22.466
+long read            44 -> -12                                                22.075
+long read             9 -> 2                                                  17.985
+long read            86 -> 17     78                                          14.339
+long read            -6 -> 86                                                 11.400
+long read           -29 -> 48                                                 11.386
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-11-11 23:47:09)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+
+Merged small segments:
+    37
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50         Longest segment   Status    
+    total         36      38   5,108,358   3,117,827         3,117,827             
+        1         35      37   5,049,527   3,117,827         3,117,827   incomplete
+        2          1       1      58,831      58,831            58,831     complete
+
+
+Polishing assembly with Pilon (2025-11-11 23:47:09)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  249
+Insert size 99th percentile: 852
+
+Pilon polish round 1
+Total number of changes: 307
+
+Pilon polish round 2
+Total number of changes: 123
+
+Pilon polish round 3
+Total number of changes: 64
+
+Pilon polish round 4
+Total number of changes: 13
+
+Pilon polish round 5
+Total number of changes: 6
+
+Pilon polish round 6
+No Pilon changes
+
+Pilon polish round 7
+Unable to polish assembly using Pilon: Pilon encountered an error:
+Pilon version 1.24 Thu Jan 28 13:00:45 2021 -0500
+Genome: 7_polish_input.fasta
+Fixing snps, indels, gaps, local
+Input genome size: 5095800
+Scanning BAMs
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at htsjdk.samtools.util.BlockCompressedInputStream.inflateBlock(BlockCompressedInputStream.java:548)
+	at htsjdk.samtools.util.BlockCompressedInputStream.processNextBlock(BlockCompressedInputStream.java:532)
+	at htsjdk.samtools.util.BlockCompressedInputStream.nextBlock(BlockCompressedInputStream.java:468)
+	at htsjdk.samtools.util.BlockCompressedInputStream.readBlock(BlockCompressedInputStream.java:458)
+	at htsjdk.samtools.util.BlockCompressedInputStream.available(BlockCompressedInputStream.java:196)
+	at htsjdk.samtools.util.BlockCompressedInputStream.read(BlockCompressedInputStream.java:331)
+	at java.base/java.io.DataInputStream.read(DataInputStream.java:158)
+	at htsjdk.samtools.util.BinaryCodec.readBytesOrFewer(BinaryCodec.java:421)
+	at htsjdk.samtools.util.BinaryCodec.readBytes(BinaryCodec.java:394)
+	at htsjdk.samtools.util.BinaryCodec.readByteBuffer(BinaryCodec.java:507)
+	at htsjdk.samtools.util.BinaryCodec.readInt(BinaryCodec.java:518)
+	at htsjdk.samtools.BAMRecordCodec.decode(BAMRecordCodec.java:261)
+	at htsjdk.samtools.BAMFileReader$BAMFileIterator.getNextRecord(BAMFileReader.java:866)
+	at htsjdk.samtools.BAMFileReader$BAMFileIterator.advance(BAMFileReader.java:840)
+	at htsjdk.samtools.BAMFileReader$BAMFileIterator.next(BAMFileReader.java:834)
+	at htsjdk.samtools.BAMFileReader$BAMFileIterator.next(BAMFileReader.java:802)
+	at htsjdk.samtools.SamReader$AssertingIterator.next(SamReader.java:574)
+	at htsjdk.samtools.SamReader$AssertingIterator.next(SamReader.java:553)
+	at scala.collection.convert.JavaCollectionWrappers$JIteratorWrapper.next(JavaCollectionWrappers.scala:38)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:563)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:561)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1279)
+	at org.broadinstitute.pilon.BamFile.scan(BamFile.scala:297)
+	at org.broadinstitute.pilon.GenomeFile.$anonfun$processRegions$2(GenomeFile.scala:91)
+	at org.broadinstitute.pilon.GenomeFile.$anonfun$processRegions$2$adapted(GenomeFile.scala:91)
+	at org.broadinstitute.pilon.GenomeFile$$Lambda/0x00007f7ef0103990.apply(Unknown Source)
+	at scala.collection.immutable.List.map(List.scala:246)
+	at org.broadinstitute.pilon.GenomeFile.processRegions(GenomeFile.scala:91)
+	at org.broadinstitute.pilon.Pilon$.main(Pilon.scala:111)
+	at org.broadinstitute.pilon.Pilon.main(Pilon.scala)
+
+
+
+Rotating completed replicons (2025-11-12 03:57:50)
+--------------------------------------------------
+    Any completed circular contigs (i.e. single contigs which have one link connecting end to start) can have their start position changed without altering the sequence. For consistency, Unicycler now searches for a starting gene (dnaA or repA) in each such contig, and if one is found, the contig is rotated to start with that gene on the forward strand.
+
+Segment   Length   Depth   Starting gene   Position   Strand   Identity   Coverage
+      7   58,828   3.25x   none found                                             
+
+
+Assembly complete (2025-11-12 03:58:15)
+---------------------------------------
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131447-betlicola/NCPPB_485.unfiltered.unicycler/assembly.fasta
+

@@ -1,0 +1,72 @@
+/data/djs217/miniconda3/envs/quast_env/bin/quast NCPPB_113.unicycler/assembly.fasta NCPPB_1324.unfiltered.unicycler/assembly.fasta NCPPB_1324.unicycler/assembly.fasta
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-6.8.0-87-generic-x86_64-with-debian-trixie-sid (linux_64)
+  Python version: 3.6.13
+  CPUs number: 16
+
+Started: 2025-11-12 15:51:53
+
+Logging to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini
+Main parameters: 
+  MODE: default, threads: 4, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  1  NCPPB_113.unicycler/assembly.fasta ==> NCPPB_113.unicycler_assembly
+  2  NCPPB_1324.unfiltered.unicycler/assembly.fasta ==> NCPPB_1324.unfiltered.unicycler_assembly
+  3  NCPPB_1324.unicycler/assembly.fasta ==> NCPPB_1324.unicycler_assembly
+
+2025-11-12 15:51:54
+Running Basic statistics processor...
+  Contig files: 
+    1  NCPPB_113.unicycler_assembly
+    2  NCPPB_1324.unfiltered.unicycler_assembly
+    3  NCPPB_1324.unicycler_assembly
+  Calculating N50 and L50...
+    1  NCPPB_113.unicycler_assembly, N50 = 364818, L50 = 5, Total length = 4736527, GC % = 65.66, # N's per 100 kbp =  0.00
+    2  NCPPB_1324.unfiltered.unicycler_assembly, N50 = 77220, L50 = 21, Total length = 4992996, GC % = 64.83, # N's per 100 kbp =  0.00
+    3  NCPPB_1324.unicycler_assembly, N50 = 77221, L50 = 21, Total length = 4993355, GC % = 64.83, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/GC_content_plot.pdf
+  Drawing NCPPB_113.unicycler_assembly GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/NCPPB_113.unicycler_assembly_GC_content_plot.pdf
+  Drawing NCPPB_1324.unfiltered.unicycler_assembly GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/NCPPB_1324.unfiltered.unicycler_assembly_GC_content_plot.pdf
+  Drawing NCPPB_1324.unicycler_assembly GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/basic_stats/NCPPB_1324.unicycler_assembly_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-11-12 15:51:56
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2025-11-12 15:51:57
+RESULTS:
+  Text versions of total report are saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/report.html
+  PDF version (tables and plots) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/report.pdf
+  Icarus (contig browser) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/icarus.html
+  Log is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1129907-ricini/quast_results/results_2025_11_12_15_51_53/quast.log
+
+Finished: 2025-11-12 15:51:57
+Elapsed time: 0:00:03.633557
+NOTICEs: 2; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

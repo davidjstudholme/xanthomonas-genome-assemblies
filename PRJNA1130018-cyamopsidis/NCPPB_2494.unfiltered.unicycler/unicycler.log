@@ -1,0 +1,1768 @@
+
+Starting Unicycler (2025-11-12 01:47:58)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided both short and long reads, Unicycler will perform a hybrid assembly. It will first use SPAdes to make a short-read assembly graph, and then it will use various methods to scaffold that graph with the long reads.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 SRR29655433_1.fastq.gz -2 SRR29655433_2.fastq.gz -l SRR30037606_1.fastq.gz -o NCPPB_2494.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon           1.4.20    good    
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-12 01:48:03)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/SRR29655433_1.fastq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/SRR29655433_2.fastq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2025-11-12 01:51:08)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 250
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2025-11-12 01:51:10)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       418         262   9.06e-06 <-best
+
+Read depth filter: removed 358 contigs totalling 147555 bp
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-11-12 01:56:17)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2025-11-12 01:56:17)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    350, 351, 352, 353, 362, 363, 379
+
+Merged small segments:
+    347, 357, 358, 359, 360, 361, 364, 365, 366, 368, 369, 372, 373, 375, 376, 378, 380, 382, 384, 385, 386, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 402, 405, 406, 408, 409, 411, 412, 413, 414, 415, 416, 418
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+255 anchor segments (4,718,275 bp) out of 365 total segments (4,812,625 bp)
+
+
+Creating SPAdes contig bridges (2025-11-12 01:56:18)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                         Bridge
+Start    Path   End     quality
+ -206           217        62.7
+ -189           251        36.7
+ -173           252        55.7
+ -151           162        62.7
+ -142           144        57.4
+  -95           255        59.6
+  -89           226        50.3
+  -52    328    178        63.2
+  -50           258        25.7
+  -18    -337   229        58.0
+   12           -209       31.9
+   37           -208       39.4
+   42    -271   -99        26.5
+   75           -126       53.1
+   79    271    99         18.3
+  166           257        59.8
+  178           -246       17.8
+  180           256        38.1
+  192           58         61.2
+  193           138        57.8
+  229    -337   168        61.1
+  234           219        61.2
+  247           10         62.0
+
+
+Creating loop unrolling bridges (2025-11-12 01:56:18)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+ -178     -328       52     184         0.25         0.83       1      27.3
+  -18     -337      229     168         1.24         0.89       1      34.2
+   79      271       99     -42         1.07         1.12       1      27.2
+
+
+Loading reads (2025-11-12 01:56:18)
+-----------------------------------
+24,526 / 24,526 (100.0%) - 65,158,655 bp
+
+
+Assembling contigs and long reads with miniasm (2025-11-12 01:56:20)
+--------------------------------------------------------------------
+    Unicycler uses miniasm to construct a string graph assembly using both the short read contigs and the long reads. It will then use the resulting string graph to produce bridges between contigs. This method requires decent coverage of long reads and therefore may not be fruitful if long reads are sparse. However, it does not rely on the short read assembly graph having good connectivity and is able to bridge an assembly graph even when it contains many dead ends.
+    Unicycler uses two types of "reads" as assembly input: anchor contigs from the short-read assembly and actual long reads which overlap two or more of these contigs. It then assembles them with miniasm.
+
+Aligning long reads to graph using minimap
+
+Saving to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/01_assembly_reads.fastq:
+  248 short-read contigs
+  3,279 long reads
+
+Finding overlaps with minimap... 
+success
+  61,869 overlaps
+
+Assembling reads with miniasm... 
+success
+  246 segments, 222 links
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/11_branching_paths_removed.gfa
+Merging segments into unitigs:
+  1 circular unitig
+  24 linear unitigs
+  total size = 3,343,172 bp
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/12_unitig_graph.gfa
+
+
+Polishing miniasm assembly with Racon (2025-11-12 01:56:30)
+-----------------------------------------------------------
+    Unicycler now uses Racon to polish the miniasm assembly. It does multiple rounds of polishing to get the best consensus. Circular unitigs are rotated between rounds such that all parts (including the ends) are polished well.
+
+Saving to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/racon_polish/polishing_reads.fastq:
+  248 short-read contigs
+  24,526 long reads
+
+Polish       Assembly          Mapping
+round            size          quality
+begin       3,343,172        18,020.42
+1           3,345,454        18,641.79
+
+Best polish: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/racon_polish/006_rotated.fasta
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/13_racon_polished.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/003_long_read_assembly.gfa
+
+    Contigs in the short-read assembly graph which end in dead ends may contain bogus sequence near the dead end. Unicycler therefore uses the read clipping values from the miniasm assembly to trim these dead ends to only the parts which aligned well to long reads.
+
+                       Trimmed   Trimmed             
+            Previous      from      from        Final
+Segment       length     start       end       length
+100           16,076        66         -       16,010
+101           16,040         3         -       16,037
+103           15,097         3        53       15,041
+107           14,571        58         -       14,513
+108           14,479         -         4       14,475
+112           14,013         -        63       13,950
+113           13,988         3         -       13,985
+114           13,799         3        40       13,756
+116           13,541         3         -       13,538
+117           13,524         -        27       13,497
+118           13,495        21         -       13,474
+11            62,827         -         1       62,826
+121           12,875         1         -       12,874
+123           12,737        52         1       12,684
+124           12,595         2         -       12,593
+126           11,919        26         -       11,893
+127           11,903        49        61       11,793
+130           11,484         4         -       11,480
+133           11,199         5         3       11,191
+134           10,984         -         2       10,982
+137           10,372         1         1       10,370
+138           10,262         -         3       10,259
+13            61,898         4         -       61,894
+140           10,028         -         3       10,025
+143            9,804        24         -        9,780
+147            9,574         4         1        9,569
+148            9,235         -         3        9,232
+14            61,594        55         -       61,539
+150            8,969        46         -        8,923
+154            8,095        24         -        8,071
+155            7,922         -        22        7,900
+157            7,859        56         -        7,803
+158            7,753         1         -        7,752
+159            7,691         -        72        7,619
+15            60,570         -         1       60,569
+162            7,401         -         1        7,400
+168            6,685         -        84        6,601
+170            6,507        57         -        6,450
+171            6,285         2         -        6,283
+173            6,200         -        64        6,136
+179            5,821         -        15        5,806
+180            5,743        47         -        5,696
+181            5,574         -        44        5,530
+185            4,983         -        32        4,951
+187            4,801        62         -        4,739
+189            4,669         -        38        4,631
+190            4,662         2         -        4,660
+191            4,503         -        56        4,447
+192            4,422         4         -        4,418
+194            4,357         4         1        4,352
+196            4,340         1        53        4,286
+19            52,341        45         -       52,296
+1            112,917         3         -      112,914
+200            3,949         2         3        3,944
+207            3,758         -         2        3,756
+208            3,743         4         -        3,739
+209            3,713        53         -        3,660
+20            51,615        20        56       51,539
+211            3,316         3         -        3,313
+216            3,109         1         -        3,108
+217            3,039         -         2        3,037
+219            2,979         -        27        2,952
+21            50,779        63         -       50,716
+220            2,856         -         2        2,854
+224            2,620         4         -        2,616
+228            2,505         1         -        2,504
+22            49,394         -         1       49,393
+233            2,299         3         -        2,296
+235            2,215        46         -        2,169
+237            2,175        52         2        2,121
+23            49,054         -         4       49,050
+241            2,113         -         2        2,111
+243            2,099         3         4        2,092
+24            47,776        11         -       47,765
+26            44,628         3         4       44,621
+27            44,281         4         -       44,277
+31            41,210         -        20       41,190
+33            40,470         2         -       40,468
+34            40,368         1         -       40,367
+38            36,298         1         -       36,297
+39            35,869         1         -       35,868
+3             85,751         4         -       85,747
+41            34,347         -         3       34,344
+42            33,924         2         -       33,922
+44            32,975        52         4       32,919
+45            32,613         -        17       32,596
+47            32,017        61        19       31,937
+48            31,978         -         2       31,976
+4             82,482         -         1       82,481
+53            30,468         -         8       30,460
+57            29,787         1         -       29,786
+59            28,501         2         3       28,496
+5             80,452         -         1       80,451
+60            28,112        92         -       28,020
+61            26,636         1         2       26,633
+63            26,060        67         4       25,989
+64            25,759        17        54       25,688
+65            25,716         3         3       25,710
+66            23,956         1         -       23,955
+67            23,809         -        23       23,786
+68            23,449         4         -       23,445
+6             76,313         2         -       76,311
+70            22,783        11         -       22,772
+73            22,151        21         1       22,129
+75            22,064        19         -       22,045
+79            21,378        68         -       21,310
+7             72,751         4         -       72,747
+80            21,197         -        22       21,175
+82            20,874         -         4       20,870
+83            20,493         -         3       20,490
+86            19,327         -         3       19,324
+87            19,306         -         3       19,303
+90            18,538         -        79       18,459
+91            18,511         1        37       18,473
+94            18,068         -         1       18,067
+96            17,478        57         -       17,421
+97            17,299         -        43       17,256
+98            17,207         -        68       17,139
+
+    Unicycler now places the single copy contigs back into the unitig graph. This serves two purposes: a) it replaces long read assembly sequences (which may be error prone) with Illumina assembly sequence (which is probably quite accurate), improving the assembly quality, and b) it defines inter-contig sequences for use in building bridges.
+
+Searching for contigs using 5,000 bp of contig ends.
+
+Contig   Result               Start pos   End pos   Strand
+     1   found in unitig 1       201036    314072        +
+     2   not found                                        
+     3   found in unitig 13        1585     87329        -
+     4   found in unitig 5        70464    152912        +
+     5   found in unitig 11       35427    115905        +
+     6   found in unitig 9        52312    128620        +
+     7   found in unitig 6        74338    147008        +
+     8   found in unitig 7            0     71966        +
+     9   found in unitig 12       25014     95777        +
+    10   found in unitig 3        25915     95639        -
+    11   not found                                        
+    12   found in unitig 4        29677     91763        +
+    13   found in unitig 4       133415    195310        -
+    14   found in unitig 3        97914    159456        -
+    15   found in unitig 10       31437     92033        +
+    16   found in unitig 18       34193     91092        -
+    17   not found                                        
+    18   not found                                        
+    19   not found                                        
+    20   found in unitig 6            0     51539        +
+    21   not found                                        
+    22   not found                                        
+    23   found in unitig 19         119     49169        -
+    24   not found                                        
+    25   not found                                        
+    26   found in unitig 22        5060     49681        +
+    27   not found                                        
+    28   not found                                        
+    29   found in unitig 14         182     42290        -
+    30   found in unitig 7        72357    114313        +
+    31   found in unitig 2       202324    243514        +
+    32   found in unitig 1        90817    131989        +
+    33   not found                                        
+    34   found in unitig 20           0     38864        -
+    35   not found                                        
+    36   not found                                        
+    37   found in unitig 5         7482     44391        -
+    38   found in unitig 1            0     36255        +
+    39   found in unitig 8        71371    107239        +
+    40   found in unitig 2            0     34460        +
+    41   found in unitig 2        40861     75214        -
+    42   not found                                        
+    43   not found                                        
+    44   not found                                        
+    45   found in unitig 9        18878     51472        +
+    46   found in unitig 2        76458    108498        +
+    47   found in unitig 17       62987     94924        +
+    48   found in unitig 5       153084    185065        +
+    49   found in unitig 3       187651    219600        +
+    50   found in unitig 7       114252    145504        -
+    51   found in unitig 17         255     31294        +
+    52   found in unitig 24        7888     38906        -
+    53   not found                                        
+    54   found in unitig 16           0     30283        +
+    55   found in unitig 15       48214     78492        -
+    56   found in unitig 10           0     30232        +
+    57   not found                                        
+    58   found in unitig 15          72     29112        -
+    59   not found                                        
+    60   found in unitig 3       159441    187461        +
+    61   found in unitig 2       150588    177221        -
+    62   not found                                        
+    63   found in unitig 8        14860     40972        -
+    64   found in unitig 1        56837     82524        +
+    65   not found                                        
+    66   not found                                        
+    67   found in unitig 2       177405    201191        -
+    68   found in unitig 19       50022     73465        -
+    69   found in unitig 1       155310    178436        +
+    70   found in unitig 20       39711     62471        +
+    71   not found                                        
+    72   found in unitig 18           0     22479        +
+    73   not found                                        
+    74   found in unitig 12           0     22075        -
+    75   found in unitig 2       243558    265613        +
+    76   not found                                        
+    77   found in unitig 7       146980    168654        -
+    78   found in unitig 17       38523     60175        +
+    79   not found                                        
+    80   not found                                        
+    81   found in unitig 1       133184    154106        -
+    82   not found                                        
+    83   found in unitig 5       185740    206230        -
+    84   not found                                        
+    85   found in unitig 3            0     19958        -
+    86   not found                                        
+    87   found in unitig 1        36912     56236        +
+    88   found in unitig 6        53917     72979        +
+    89   found in unitig 14       59483     78448        +
+    90   not found                                        
+    91   found in unitig 19       74203     92676        -
+    92   found in unitig 2       110031    128497        +
+    93   found in unitig 25        4667     22771        +
+    94   found in unitig 11           0     18064        +
+    95   not found                                        
+    96   not found                                        
+    97   not found                                        
+    98   not found                                        
+    99   found in unitig 23       30454     46680        +
+   100   not found                                        
+   101   not found                                        
+   102   not found                                        
+   103   found in unitig 11       20427     35467        +
+   104   found in unitig 4       117085    132179        -
+   105   not found                                        
+   106   found in unitig 9            0     15085        -
+   107   not found                                        
+   108   not found                                        
+   109   found in unitig 4        98882    113270        -
+   110   not found                                        
+   111   not found                                        
+   112   not found                                        
+   113   found in unitig 1       181714    195699        +
+   114   found in unitig 20       62612     76368        -
+   115   found in unitig 15       33718     47345        +
+   116   found in unitig 12       96058    109594        -
+   117   not found                                        
+   118   not found                                        
+   119   not found                                        
+   120   found in unitig 14       43159     56615        +
+   121   found in unitig 8        58403     71270        +
+   122   not found                                        
+   123   found in unitig 8        40988     53672        +
+   124   not found                                        
+   125   found in unitig 2       129700    142288        -
+   126   not found                                        
+   127   not found                                        
+   129   not found                                        
+   130   not found                                        
+   131   found in unitig 5        44391     55865        -
+   132   not found                                        
+   133   not found                                        
+   134   found in unitig 13       89048    100030        -
+   135   not found                                        
+   136   not found                                        
+   137   found in unitig 4       195416    205786        +
+   138   not found                                        
+   139   found in unitig 4        19722     29795        +
+   140   found in unitig 8       114145    124179        -
+   141   not found                                        
+   142   not found                                        
+   143   not found                                        
+   144   not found                                        
+   145   found in unitig 21       15401     25048        -
+   146   found in unitig 18       23694     33324        +
+   147   found in unitig 10       92108    101685        +
+   148   found in unitig 21       67872     77104        +
+   149   not found                                        
+   150   not found                                        
+   151   found in unitig 9       136531    145378        +
+   152   found in unitig 6       151295    160050        +
+   153   found in unitig 5        56060     64591        +
+   154   found in unitig 1        82418     90489        +
+   155   not found                                        
+   157   not found                                        
+   158   not found                                        
+   159   found in unitig 10      102628    110080        -
+   160   not found                                        
+   161   not found                                        
+   162   found in unitig 9       129133    136531        -
+   163   found in unitig 3       220836    228045        -
+   164   not found                                        
+   165   not found                                        
+   166   not found                                        
+   167   not found                                        
+   168   found in unitig 21        1233      7837        +
+   169   not found                                        
+   170   found in unitig 2       143460    149909        -
+   171   found in unitig 21        7893     14181        +
+   173   not found                                        
+   174   found in unitig 8       124498    130640        +
+   176   not found                                        
+   177   found in unitig 3        19958     25962        +
+   178   found in unitig 24       -3395      2555        +
+   179   not found                                        
+   180   found in unitig 10      111591    117284        -
+   181   found in unitig 8       132307    137837        +
+   182   found in unitig 6       161299    166832        -
+   183   not found                                        
+   184   found in unitig 24        2555      7647        -
+   185   not found                                        
+   186   found in unitig 8         8398     13199        +
+   187   found in unitig 22       50576     55315        +
+   188   not found                                        
+   189   not found                                        
+   190   not found                                        
+   191   found in unitig 4         9176     13622        -
+   192   found in unitig 15       29112     33529        -
+   193   not found                                        
+   194   found in unitig 8       109513    113865        +
+   195   found in unitig 1       195876    200197        +
+   196   not found                                        
+   197   not found                                        
+   198   not found                                        
+   199   found in unitig 16       31519     35510        +
+   200   found in unitig 25         647      4644        +
+   202   found in unitig 14       80019     83941        +
+   203   found in unitig 2        34825     38698        +
+   204   found in unitig 25       22948     26798        -
+   205   found in unitig 16       75422     79249        -
+   206   not found                                        
+   207   not found                                        
+   208   found in unitig 5         3743      7482        +
+   209   found in unitig 4        91763     95423        -
+   211   not found                                        
+   212   not found                                        
+   213   not found                                        
+   214   not found                                        
+   215   not found                                        
+   216   found in unitig 4        95398     98506        +
+   217   not found                                        
+   218   not found                                        
+   219   found in unitig 8         2968      5921        -
+   220   not found                                        
+   221   not found                                        
+   222   not found                                        
+   224   not found                                        
+   225   not found                                        
+   226   found in unitig 14       56926     59483        -
+   227   found in unitig 6       167189    169710        -
+   228   found in unitig 21       26284     28785        -
+   229   not found                                        
+   230   found in unitig 6       147008    149375        -
+   231   found in unitig 8       107239    109550        -
+   232   not found                                        
+   233   not found                                        
+   234   found in unitig 8         5921      8240        -
+   235   found in unitig 5        65706     67875        +
+   237   not found                                        
+   238   not found                                        
+   241   found in unitig 4       113849    115960        -
+   242   found in unitig 16       50482     52585        +
+   243   found in unitig 17       60783     62875        +
+   244   not found                                        
+   245   found in unitig 6        51853     53917        -
+   246   found in unitig 16       64405     66431        -
+   247   found in unitig 3        95639     97630        -
+   248   found in unitig 6       149375    151352        +
+   249   found in unitig 5         1449      3406        -
+   250   not found                                        
+   251   not found                                        
+   252   not found                                        
+   253   found in unitig 20       76958     78758        +
+   254   not found                                        
+   255   not found                                        
+   256   found in unitig 10      110119    111591        -
+   257   not found                                        
+   258   found in unitig 7       145504    146888        +
+
+Searching for contigs using 2,500 bp of contig ends.
+
+Contig   Result      Start pos   End pos   Strand
+     2   not found                               
+    11   not found                               
+    17   not found                               
+    18   not found                               
+    19   not found                               
+    21   not found                               
+    22   not found                               
+    24   not found                               
+    25   not found                               
+    27   not found                               
+    28   not found                               
+    33   not found                               
+    35   not found                               
+    36   not found                               
+    42   not found                               
+    43   not found                               
+    44   not found                               
+    53   not found                               
+    57   not found                               
+    59   not found                               
+    62   not found                               
+    65   not found                               
+    66   not found                               
+    71   not found                               
+    73   not found                               
+    76   not found                               
+    79   not found                               
+    80   not found                               
+    82   not found                               
+    84   not found                               
+    86   not found                               
+    90   not found                               
+    95   not found                               
+    96   not found                               
+    97   not found                               
+    98   not found                               
+   100   not found                               
+   101   not found                               
+   102   not found                               
+   105   not found                               
+   107   not found                               
+   108   not found                               
+   110   not found                               
+   111   not found                               
+   112   not found                               
+   117   not found                               
+   118   not found                               
+   119   not found                               
+   122   not found                               
+   124   not found                               
+   126   not found                               
+   127   not found                               
+   129   not found                               
+   130   not found                               
+   132   not found                               
+   133   not found                               
+   135   not found                               
+   136   not found                               
+   138   not found                               
+   141   not found                               
+   142   not found                               
+   143   not found                               
+   144   not found                               
+   149   not found                               
+   150   not found                               
+   155   not found                               
+   157   not found                               
+   158   not found                               
+   160   not found                               
+   161   not found                               
+   164   not found                               
+   165   not found                               
+   166   not found                               
+   167   not found                               
+   169   not found                               
+   173   not found                               
+   176   not found                               
+   179   not found                               
+   183   not found                               
+   185   not found                               
+   188   not found                               
+   189   not found                               
+   190   not found                               
+   193   not found                               
+   196   not found                               
+   197   not found                               
+   198   not found                               
+   206   not found                               
+   207   not found                               
+   211   not found                               
+   212   not found                               
+   213   not found                               
+   214   not found                               
+   215   not found                               
+   217   not found                               
+   218   not found                               
+   220   not found                               
+   221   not found                               
+   222   not found                               
+   224   not found                               
+   225   not found                               
+   229   not found                               
+   232   not found                               
+   233   not found                               
+   237   not found                               
+   238   not found                               
+   244   not found                               
+   250   not found                               
+   251   not found                               
+   252   not found                               
+   254   not found                               
+   255   not found                               
+   257   not found                               
+
+Searching for contigs using 1,000 bp of contig ends.
+
+Contig   Result               Start pos   End pos   Strand
+     2   not found                                        
+    11   not found                                        
+    17   not found                                        
+    18   not found                                        
+    19   not found                                        
+    21   not found                                        
+    22   not found                                        
+    24   not found                                        
+    25   not found                                        
+    27   not found                                        
+    28   not found                                        
+    33   not found                                        
+    35   not found                                        
+    36   not found                                        
+    42   not found                                        
+    43   not found                                        
+    44   not found                                        
+    53   not found                                        
+    57   not found                                        
+    59   not found                                        
+    62   not found                                        
+    65   not found                                        
+    66   not found                                        
+    71   not found                                        
+    73   not found                                        
+    76   not found                                        
+    79   not found                                        
+    80   not found                                        
+    82   not found                                        
+    84   not found                                        
+    86   not found                                        
+    90   not found                                        
+    95   not found                                        
+    96   not found                                        
+    97   not found                                        
+    98   not found                                        
+   100   not found                                        
+   101   not found                                        
+   102   not found                                        
+   105   not found                                        
+   107   not found                                        
+   108   not found                                        
+   110   not found                                        
+   111   not found                                        
+   112   not found                                        
+   117   not found                                        
+   118   not found                                        
+   119   not found                                        
+   122   not found                                        
+   124   not found                                        
+   126   not found                                        
+   127   not found                                        
+   129   not found                                        
+   130   not found                                        
+   132   not found                                        
+   133   not found                                        
+   135   not found                                        
+   136   not found                                        
+   138   not found                                        
+   141   not found                                        
+   142   not found                                        
+   143   not found                                        
+   144   not found                                        
+   149   not found                                        
+   150   not found                                        
+   155   not found                                        
+   157   not found                                        
+   158   not found                                        
+   160   not found                                        
+   161   not found                                        
+   164   not found                                        
+   165   not found                                        
+   166   not found                                        
+   167   not found                                        
+   169   not found                                        
+   173   not found                                        
+   176   not found                                        
+   179   not found                                        
+   183   not found                                        
+   185   not found                                        
+   188   not found                                        
+   189   not found                                        
+   190   not found                                        
+   193   not found                                        
+   196   not found                                        
+   197   not found                                        
+   198   not found                                        
+   206   not found                                        
+   207   not found                                        
+   211   not found                                        
+   212   not found                                        
+   213   not found                                        
+   214   not found                                        
+   215   not found                                        
+   217   not found                                        
+   218   not found                                        
+   220   not found                                        
+   221   found in unitig 16       90362     92979        -
+   222   not found                                        
+   224   not found                                        
+   225   not found                                        
+   229   not found                                        
+   232   not found                                        
+   233   not found                                        
+   237   not found                                        
+   238   not found                                        
+   244   not found                                        
+   250   not found                                        
+   251   not found                                        
+   252   not found                                        
+   254   not found                                        
+   255   not found                                        
+   257   not found                                        
+
+Searching for contigs using 500 bp of contig ends.
+
+Contig   Result               Start pos   End pos   Strand
+     2   not found                                        
+    11   not found                                        
+    17   not found                                        
+    18   not found                                        
+    19   not found                                        
+    21   not found                                        
+    22   not found                                        
+    24   not found                                        
+    25   not found                                        
+    27   not found                                        
+    28   not found                                        
+    33   not found                                        
+    35   not found                                        
+    36   not found                                        
+    42   not found                                        
+    43   not found                                        
+    44   not found                                        
+    53   not found                                        
+    57   not found                                        
+    59   not found                                        
+    62   not found                                        
+    65   not found                                        
+    66   not found                                        
+    71   not found                                        
+    73   not found                                        
+    76   not found                                        
+    79   found in unitig 23        9419     29323        +
+    80   not found                                        
+    82   not found                                        
+    84   not found                                        
+    86   not found                                        
+    90   not found                                        
+    95   not found                                        
+    96   not found                                        
+    97   not found                                        
+    98   not found                                        
+   100   not found                                        
+   101   not found                                        
+   102   not found                                        
+   105   not found                                        
+   107   not found                                        
+   108   not found                                        
+   110   not found                                        
+   111   not found                                        
+   112   not found                                        
+   117   not found                                        
+   118   not found                                        
+   119   not found                                        
+   122   not found                                        
+   124   not found                                        
+   126   not found                                        
+   127   not found                                        
+   129   not found                                        
+   130   not found                                        
+   132   not found                                        
+   133   not found                                        
+   135   not found                                        
+   136   not found                                        
+   138   not found                                        
+   141   not found                                        
+   142   not found                                        
+   143   not found                                        
+   144   not found                                        
+   149   not found                                        
+   150   not found                                        
+   155   not found                                        
+   157   not found                                        
+   158   not found                                        
+   160   not found                                        
+   161   not found                                        
+   164   not found                                        
+   165   not found                                        
+   166   not found                                        
+   167   not found                                        
+   169   not found                                        
+   173   not found                                        
+   176   not found                                        
+   179   not found                                        
+   183   not found                                        
+   185   not found                                        
+   188   not found                                        
+   189   not found                                        
+   190   not found                                        
+   193   not found                                        
+   196   not found                                        
+   197   not found                                        
+   198   not found                                        
+   206   not found                                        
+   207   not found                                        
+   211   not found                                        
+   212   not found                                        
+   213   not found                                        
+   214   not found                                        
+   215   not found                                        
+   217   not found                                        
+   218   not found                                        
+   220   not found                                        
+   222   not found                                        
+   224   not found                                        
+   225   not found                                        
+   229   not found                                        
+   232   not found                                        
+   233   not found                                        
+   237   not found                                        
+   238   not found                                        
+   244   not found                                        
+   250   not found                                        
+   251   not found                                        
+   252   not found                                        
+   254   not found                                        
+   255   not found                                        
+   257   not found                                        
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/miniasm_assembly/15_contigs_placed.gfa
+
+
+Creating miniasm/Racon bridges (2025-11-12 01:57:09)
+----------------------------------------------------
+    Now that the miniasm/Racon string graph is complete, Unicycler will use it to build bridges between anchor segments.
+
+         Start -> end    Best path                                 Quality
+  1/113    38 -> 87                                                 76.179
+  2/113  -192 -> 115                                                98.132
+  3/113   115 -> -55     -277                                       92.161
+  4/113   -29 -> 120     -277                                       60.277
+  5/113   120 -> -226                                               43.844
+  6/113  -226 -> 89      direct connection                          79.563
+  7/113    89 -> 202                                                18.298
+  8/113    40 -> 203                                                68.232
+  9/113    51 -> 78                                                 52.642
+ 10/113    78 -> 243                                                58.995
+ 11/113   243 -> 47                                                 60.376
+ 12/113    54 -> 199     355, 272, -364, -362                       67.743
+ 13/113   199 -> 242                                                 7.446
+ 14/113   242 -> -246                                               12.509
+ 15/113  -246 -> -205    172, 236                                   60.794
+ 16/113  -205 -> -221                                               18.130
+ 17/113   203 -> -41                                                70.744
+ 18/113    72 -> 146     264                                        89.449
+ 19/113   146 -> -16     -277                                       92.294
+ 20/113   -23 -> -68                                                67.523
+ 21/113   -68 -> -91                                                75.055
+ 22/113   -34 -> 70                                                 92.446
+ 23/113    70 -> -114                                               96.524
+ 24/113  -114 -> 253                                                83.094
+ 25/113   -41 -> 46      -264                                       85.833
+ 26/113   168 -> 171                                                90.230
+ 27/113   171 -> -145    356, 272, -364, -362                       78.168
+ 28/113  -145 -> -228    355, 272, -364, -363                       82.097
+ 29/113  -228 -> 148                                                33.369
+ 30/113    26 -> 187                                                88.901
+ 31/113    46 -> 92                                                 53.550
+ 32/113    79 -> 99      271                                        62.367
+ 33/113   178 -> -184    direct connection                          67.031
+ 34/113  -184 -> -52     328                                        63.188
+ 35/113   -52 -> 178     328                                        97.545
+ 36/113   200 -> 93                                                 56.484
+ 37/113    93 -> -204                                               81.772
+ 38/113    92 -> -125    357, -273, -335                            77.606
+ 39/113  -125 -> -170                                               47.026
+ 40/113  -170 -> -61                                                93.476
+ 41/113   -61 -> -67                                                94.780
+ 42/113   -67 -> 31      270                                        87.179
+ 43/113    87 -> 64                                                 90.486
+ 44/113    31 -> 75                                                 90.002
+ 45/113   -85 -> 177     direct connection                          79.392
+ 46/113   -10 -> -247    direct connection                          98.004
+ 47/113  -247 -> -14                                                94.874
+ 48/113    60 -> 49                                                 82.114
+ 49/113    49 -> -163    -360, 364, -272, -355                      89.134
+ 50/113  -191 -> 139     175                                        63.045
+ 51/113    12 -> -209    direct connection                          50.463
+ 52/113   216 -> -109                                               76.608
+ 53/113  -109 -> -241                                               87.188
+ 54/113  -241 -> -104                                               58.330
+ 55/113  -104 -> -13     356, 272, -364, -362                       88.921
+ 56/113   -13 -> 137                                                80.008
+ 57/113   154 -> 32                                                 77.032
+ 58/113  -249 -> 208                                                60.882
+ 59/113   208 -> -37     direct connection                          62.309
+ 60/113   -37 -> -131    direct connection                          99.764
+ 61/113  -131 -> 153                                                75.579
+ 62/113   153 -> 235                                                86.528
+ 63/113   235 -> 4                                                  71.888
+ 64/113     4 -> 48                                                 98.239
+ 65/113    48 -> -83                                                92.432
+ 66/113    32 -> -81     -359, -270                                 68.584
+ 67/113    20 -> -245                                               83.169
+ 68/113  -245 -> 88      direct connection                          98.475
+ 69/113    88 -> 7                                                  68.051
+ 70/113     7 -> -230    direct connection                          58.465
+ 71/113  -230 -> 248     direct connection                          98.723
+ 72/113   152 -> -182    266                                        74.283
+ 73/113  -182 -> -227                                               61.775
+ 74/113   -81 -> 69      335, 273, -357                             69.561
+ 75/113     8 -> 30                                                 78.690
+ 76/113   -50 -> 258     direct connection                          40.704
+ 77/113   258 -> -77                                                43.166
+ 78/113  -219 -> -234    direct connection                          96.797
+ 79/113  -234 -> 186                                                79.186
+ 80/113   186 -> -63                                                86.592
+ 81/113   -63 -> 123                                                99.743
+ 82/113    69 -> 113                                                59.217
+ 83/113   123 -> 121                                                46.986
+ 84/113   121 -> 39                                                 59.091
+ 85/113    39 -> -231    direct connection                          91.208
+ 86/113   194 -> -140                                               88.941
+ 87/113  -140 -> 174                                                65.554
+ 88/113   174 -> 181                                                39.750
+ 89/113  -106 -> 45      -265, 261, 356, 272, -364, -363            16.658
+ 90/113    45 -> 6                                                  81.360
+ 91/113   113 -> 195                                                81.082
+ 92/113     6 -> -162                                               92.869
+ 93/113  -162 -> 151     direct connection                          99.204
+ 94/113    56 -> 15      357, -273, -335                            80.731
+ 95/113    15 -> 147                                                57.878
+ 96/113   147 -> -159                                               65.926
+ 97/113  -159 -> -256                                               46.903
+ 98/113  -256 -> -180    direct connection                          60.320
+ 99/113    94 -> 103                                                72.437
+100/113   195 -> 1                                                  57.188
+101/113   -74 -> 9                                                  66.385
+102/113     9 -> -116                                               47.373
+103/113    -3 -> -134                                               80.756
+104/113   -58 -> -192    direct connection                          96.775
+105/113   177 -> -10                                                73.720
+106/113   -14 -> 60                                                 98.791
+107/113    64 -> 154                                                96.268
+108/113   139 -> 12                                                 67.596
+109/113  -209 -> 216                                                61.116
+110/113   248 -> 152                                                83.142
+111/113    30 -> -50                                                83.108
+112/113  -231 -> 194                                                96.701
+113/113   103 -> 5                                                  82.664
+
+
+Creating simple long read bridges (2025-11-12 01:57:09)
+-------------------------------------------------------
+    Unicycler uses long read alignments (from minimap) to resolve simple repeat structures in the graph. This takes care of some "low-hanging fruit" of the graph simplification.
+
+Aligning long reads to graph using minimap
+
+    Two-way junctions are defined as cases where two graph contigs (A and B) join together (C) and then split apart again (D and E). This usually represents a simple 2-copy repeat, and there are two possible options for its resolution: (A->C->D and B->C->E) or (A->C->E and B->C->D). Each read which spans such a junction gets to "vote" for option 1, option 2 or neither. Unicycler creates a bridge at each junction for the most voted for option.
+
+                                                         Op. 1   Op. 2   Neither   Final    Bridge
+Junction         Option 1               Option 2         votes   votes     votes     op.   quality
+     328   -184 -> 328 -> -52,    -184 -> 328 -> 178,       38       0         2       1      94.7
+            -52 -> 328 -> 178      -52 -> 328 -> -52                                              
+     260    -225 -> 260 -> 62,     -225 -> 260 -> 90,        0      13         4       2      65.1
+             238 -> 260 -> 90       238 -> 260 -> 62                                              
+     175    -191 -> 175 -> 78,    -191 -> 175 -> 139,        0       2        14       2       0.0
+             51 -> 175 -> 139       51 -> 175 -> 78                                               
+     337   -229 -> 337 -> -229,    -229 -> 337 -> 18,        0      10         2       2      78.9
+            -168 -> 337 -> 18     -168 -> 337 -> -229                                             
+     271   79 -> 271 -> -42, 99   79 -> 271 -> 99, 99        0      14         8       2      52.2
+               -> 271 -> 99          -> 271 -> -42                                                
+
+    Simple loops are parts of the graph where two contigs (A and B) are connected via a repeat (C) which loops back to itself (via D). It is possible to traverse the loop zero times (A->C->B), one time (A->C->D->C->B), two times (A->C->D->C->D->C->B), etc. Long reads which span the loop inform which is the correct number of times through. In this step, such reads are found and each is aligned against alternative loop counts. A reads casts its "vote" for the loop count it agrees best with, and Unicycler creates a bridge using the most voted for count.
+
+                                   Read                         Loop    Bridge
+Start   Repeat   Middle     End   count   Read votes           count   quality
+ -178     -328       52     184       9   bad: 7 votes    1      bad          
+                                          loop: 2 votes        reads          
+  -18     -337      229     168       2   1 loop: 2 votes          1      69.5
+   79      271       99     -42       0                           no          
+                                                               reads          
+
+
+Determining low score threshold (2025-11-12 01:58:31)
+-----------------------------------------------------
+    Before conducting semi-global alignment of the long reads to the assembly graph, Unicycler must determine a minimum alignment score threshold such that nonsense alignments are excluded. To choose a threshold automatically, it examines alignments between random sequences and selects a score a few standard deviations above the mean.
+
+Automatically choosing a threshold using random alignment scores.
+
+Random alignment mean score: 61.66
+         standard deviation:  1.31
+        Low score threshold: 61.66 + (7 x 1.31) = 70.86
+
+
+Aligning reads (2025-11-12 01:58:33)
+------------------------------------
+24,526 / 24,526 (100.0%)
+
+
+Read alignment summary (2025-11-12 02:08:46)
+--------------------------------------------
+Total read count:            24,526
+Fully aligned reads:         19,929
+Partially aligned reads:      2,521
+Unaligned reads:              2,076
+Total bases aligned:     56,474,537 bp
+Mean alignment identity:         91.3%
+
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/read_alignment/
+
+
+Building long read bridges (2025-11-12 02:08:46)
+------------------------------------------------
+    Unicycler uses the long read alignments to produce bridges between anchor segments. These bridges can be formed using as few as one long read, giving Unicycler the ability to bridge the graph even when long-read depth is low.
+
+         Start -> end    Best path                                 Quality
+  1/348    61 -> -46                                                16.173
+  2/348    -2 -> 90                                                 20.655
+  3/348    -4 -> 37                                                 11.131
+  4/348    70 -> 28                                                 21.044
+  5/348    92 -> -61                                                17.702
+  6/348   221 -> 111                                                 1.922
+  7/348    26 -> -24                                                10.239
+  8/348    55 -> 58                                                  9.932
+  9/348    70 -> 185                                                15.614
+ 10/348  -164 -> 205                                                 4.296
+ 11/348   -29 -> 89                                                 12.968
+ 12/348   -63 -> 121                                                14.246
+ 13/348   185 -> 170                                                16.757
+ 14/348    70 -> 253                                                14.082
+ 15/348    28 -> -22                                                16.426
+ 16/348   199 -> 242                                                 0.701
+ 17/348    43 -> -7                                                  5.517
+ 18/348    -4 -> 131                                                 9.513
+ 19/348   117 -> -73                                                21.540
+ 20/348   127 -> 140                                                16.988
+ 21/348   197 -> -167                                               16.848
+ 22/348   107 -> -18                                                14.983
+ 23/348   118 -> 90                                                  8.334
+ 24/348   187 -> -24                                                 6.244
+ 25/348    63 -> 80                                                 17.340
+ 26/348     5 -> 100                                                27.313
+ 27/348   -51 -> 101                                                13.578
+ 28/348    84 -> -75                                                 8.729
+ 29/348   163 -> 143                                                14.759
+ 30/348   242 -> -205                                                1.646
+ 31/348   246 -> -242                                                1.339
+ 32/348   -77 -> 98                                                 16.346
+ 33/348   100 -> 51      128, -353, 272, -364, -363                 42.863
+ 34/348   184 -> 184     -178, -328, 52, -328                       82.752
+ 35/348   346 -> 242                                                 0.011
+ 36/348    49 -> 24                                                 18.292
+ 37/348   -17 -> 144                                                12.676
+ 38/348   221 -> 346                                                 0.079
+ 39/348   149 -> 119                                                 2.698
+ 40/348   163 -> 250                                                 7.872
+ 41/348   -26 -> 62                                                 10.719
+ 42/348   105 -> 167     357, -273, -335, -125, 357, -273, -335,     0.115
+                         -199, 362, 364, -272                             
+ 43/348   109 -> -104                                                9.094
+ 44/348   199 -> 54                                                  5.050
+ 45/348    89 -> 102                                                13.404
+ 46/348    19 -> 141                                                 9.476
+ 47/348   346 -> -198                                                0.026
+ 48/348     6 -> 151                                                 9.643
+ 49/348   102 -> -93                                                 7.574
+ 50/348   187 -> 212                                                11.020
+ 51/348   221 -> 167                                                 1.549
+ 52/348   246 -> 346                                                 0.052
+ 53/348  -133 -> 139                                                26.024
+ 54/348   168 -> -145                                               17.001
+ 55/348    27 -> -24                                                 9.874
+ 56/348    86 -> -85                                                17.746
+ 57/348   136 -> 159                                                16.241
+ 58/348   109 -> -12                                                14.085
+ 59/348   174 -> -127                                               16.709
+ 60/348    65 -> 135                                                22.502
+ 61/348   196 -> -98                                                18.997
+ 62/348    80 -> 149                                                11.668
+ 63/348    37 -> 59                                                 26.074
+ 64/348   140 -> -39                                                17.984
+ 65/348   176 -> -26                                                11.513
+ 66/348    51 -> 78                                                 16.678
+ 67/348   -80 -> 186                                                16.085
+ 68/348    61 -> 125                                                22.909
+ 69/348   152 -> -43                                                13.422
+ 70/348    41 -> -40                                                40.110
+ 71/348  -139 -> 191     -175                                       35.332
+ 72/348    10 -> 85                                                 33.058
+ 73/348   153 -> 4                                                  14.041
+ 74/348   111 -> 73                                                 11.017
+ 75/348   167 -> 111                                                10.249
+ 76/348   -26 -> 238                                                 6.998
+ 77/348   136 -> 256                                                 5.849
+ 78/348   198 -> 205                                                10.964
+ 79/348  -143 -> 176                                                 5.653
+ 80/348    54 -> 54      355, 272, -364, 360, -263, -272, -356,      0.548
+                         -223, -204, 223, 356, 272, -364, -361            
+ 81/348   241 -> -109                                               15.594
+ 82/348   129 -> -124                                                9.347
+ 83/348   161 -> 158                                                29.656
+ 84/348    36 -> 145                                                17.117
+ 85/348    33 -> 138                                                14.364
+ 86/348   176 -> -163                                                1.959
+ 87/348   246 -> 119                                                 3.914
+ 88/348   123 -> 121                                                21.608
+ 89/348   -58 -> 115                                                14.512
+ 90/348    21 -> 42                                                 21.685
+ 91/348   178 -> -52     -184, 328                                  63.819
+ 92/348   113 -> 1                                                  29.493
+ 93/348   164 -> -132                                               12.351
+ 94/348   207 -> -118                                               23.632
+ 95/348    52 -> 52      -328, 184, -178, -328                      84.715
+ 96/348   -90 -> 207     -260, 225, -264                            50.674
+ 97/348   189 -> 98                                                 50.345
+ 98/348    23 -> 215                                                13.706
+ 99/348   178 -> 205                                                 2.304
+100/348   -93 -> 110                                                34.620
+101/348   -56 -> 91                                                 17.102
+102/348     7 -> 152                                                 9.101
+103/348   346 -> -242                                                0.035
+104/348   102 -> 204     363, 364, -272, -356, -223                 49.124
+105/348   346 -> 54                                                  0.141
+106/348  -141 -> 206                                                14.393
+107/348   -19 -> 166                                                28.133
+108/348   199 -> 346                                                 0.235
+109/348    43 -> 182                                                23.351
+110/348   202 -> 102                                                 6.378
+111/348  -119 -> 346                                                 0.106
+112/348  -111 -> 134                                                 9.119
+113/348   -59 -> 208                                                24.144
+114/348   105 -> 183                                                16.325
+115/348   109 -> 209                                                23.208
+116/348   -45 -> 106     363, 364, -272, -356, -261, 265            19.100
+117/348   212 -> -24                                                14.606
+118/348   -69 -> 81      357, -273, -335                            61.923
+119/348   148 -> 127                                                32.995
+120/348   120 -> 89                                                 20.907
+121/348    78 -> 47                                                 56.441
+122/348   -77 -> 189                                                14.638
+123/348   215 -> -133                                               10.160
+124/348   -18 -> 168     -337, 229, -337                            25.583
+125/348   228 -> 145     363, 364, -272, -355                       63.826
+126/348   145 -> -111                                               14.237
+127/348   104 -> 109                                                45.039
+128/348   205 -> 246     -236, -172                                 39.471
+129/348    82 -> 105                                                26.118
+130/348   235 -> 4                                                  43.400
+131/348   157 -> 56                                                 10.259
+132/348   -24 -> 163                                                47.571
+133/348  -186 -> 219                                                22.748
+134/348   213 -> 95                                                  6.952
+135/348    69 -> 113                                                38.234
+136/348   166 -> -151                                               15.625
+137/348    94 -> 103                                                57.898
+138/348  -114 -> 185                                                35.882
+139/348   224 -> -135                                               25.911
+140/348    71 -> 55                                                 28.635
+141/348    14 -> 10                                                 23.886
+142/348   -40 -> 94                                                 10.907
+143/348   183 -> 221                                                 7.407
+144/348    39 -> 194                                                41.713
+145/348    20 -> 88                                                 51.549
+146/348   130 -> -1                                                 23.673
+147/348    -9 -> 74                                                 28.042
+148/348   106 -> -3      270, 359                                   12.355
+149/348  -152 -> 230                                                26.040
+150/348   137 -> 97                                                 35.745
+151/348   222 -> -21                                                31.203
+152/348    23 -> 233                                                20.592
+153/348   -66 -> 79                                                 64.670
+154/348   174 -> 181                                                11.127
+155/348  -164 -> 198                                                17.886
+156/348   125 -> -92     335, 273, -357                             72.394
+157/348   203 -> -41                                                46.242
+158/348   110 -> 173                                                16.230
+159/348  -155 -> 238                                                10.318
+160/348   134 -> 3                                                  56.855
+161/348   180 -> 159                                                15.807
+162/348   199 -> 119     335, 273, -358, 303                        36.720
+163/348    77 -> 50                                                 27.828
+164/348    -2 -> 118                                                56.180
+165/348    46 -> 92                                                 24.107
+166/348    44 -> 53                                                 62.835
+167/348    90 -> -47                                                38.835
+168/348   186 -> -63                                                58.627
+169/348   123 -> 211                                                54.889
+170/348    89 -> 202                                                 7.824
+171/348   138 -> -95                                                33.799
+172/348    36 -> 228                                                48.432
+173/348   118 -> 214     direct connection                          76.206
+174/348    -8 -> 220                                                26.401
+175/348   238 -> 62      260                                        56.812
+176/348    88 -> 7                                                  48.614
+177/348   124 -> 218                                                15.883
+178/348   142 -> 144                                                19.365
+179/348   -90 -> 225     -260                                       62.514
+180/348   -27 -> 57                                                 67.762
+181/348   179 -> -85                                                38.102
+182/348    29 -> 22                                                 27.859
+183/348   214 -> -207                                               56.184
+184/348   108 -> -22                                                48.291
+185/348   163 -> -49     355, 272, -364, 360                        81.380
+186/348   171 -> -145    356, 272, -364, -362                       59.497
+187/348   182 -> -152    -266                                       32.733
+188/348    13 -> 104     362, 364, -272, -356                       76.855
+189/348    27 -> 212     361, 364, -272, -352                       39.347
+190/348   190 -> 149     361, 364, -272, -356                       42.456
+191/348  -112 -> 213     362, 364, -272, 353                        37.094
+192/348    74 -> 84      361, 364, -272, -355                       43.214
+193/348    56 -> 15      357, -273, -335                            75.163
+194/348   188 -> -111    362, 364, -272, -356                       31.800
+195/348   169 -> 122     361, 364, -272, -355                       30.257
+196/348     2 -> 136     335, 273, -357                             54.395
+197/348   -24 -> 102                                                49.920
+198/348    43 -> 227     -266                                       49.248
+199/348   119 -> -35     265                                         9.503
+200/348    81 -> -32     270, 359                                   47.279
+201/348   218 -> -129    335, 273, -358                             23.208
+202/348    79 -> 99      271                                        57.778
+203/348   187 -> -176    364, -272, 353                             25.915
+204/348   -34 -> 70                                                 77.523
+205/348   -33 -> 35                                                 24.940
+206/348   -11 -> 25                                                 24.804
+207/348   170 -> 125                                                21.133
+208/348    76 -> 160     363, 364, -272                             48.221
+209/348   153 -> 235                                                42.117
+210/348    99 -> -42     271                                        65.231
+211/348   257 -> -151                                               41.872
+212/348   -31 -> 67      -270                                       82.682
+213/348    54 -> 199     355, 272, -364, -362                       49.021
+214/348   -95 -> 255                                                14.817
+215/348    80 -> 190                                                70.152
+216/348   219 -> 80                                                 53.662
+217/348   104 -> 241                                                24.876
+218/348   -65 -> 82                                                 54.698
+219/348   159 -> -147                                               49.883
+220/348   -21 -> 26                                                 62.021
+221/348    57 -> 76                                                 59.479
+222/348   155 -> -25                                                38.523
+223/348    34 -> 43                                                 10.529
+224/348   225 -> 207     -264                                       70.219
+225/348    68 -> 23                                                 32.110
+226/348    26 -> 187                                                67.820
+227/348   206 -> -19                                                33.256
+228/348   -29 -> 120     -277                                       48.435
+229/348   251 -> 77                                                 12.090
+230/348   144 -> 169                                                27.998
+231/348   146 -> -16     -277                                       69.251
+232/348    33 -> 193                                                24.521
+233/348   249 -> 59                                                 44.208
+234/348   141 -> 86                                                 50.421
+235/348    84 -> 126                                                58.414
+236/348    72 -> 146     264                                        76.976
+237/348    45 -> 6                                                  72.805
+238/348    38 -> 87                                                 31.760
+239/348   150 -> 129                                                35.086
+240/348   -41 -> 46      -264                                       80.790
+241/348   -72 -> 161     272, -364, -362                            63.681
+242/348   217 -> 141                                                65.618
+243/348   237 -> -133                                               35.379
+244/348    83 -> -48                                                77.845
+245/348   185 -> 28                                                 63.827
+246/348   115 -> -55     -277                                       83.834
+247/348   250 -> 143                                                31.251
+248/348   101 -> -5                                                 30.428
+249/348   248 -> -51                                                 5.988
+250/348   -16 -> 83      -360, 364, -272, -356                      81.905
+251/348   195 -> 1                                                  48.928
+252/348    78 -> 243                                                49.431
+253/348    87 -> 64                                                 57.008
+254/348  -114 -> 253                                                52.619
+255/348  -127 -> 244                                                36.816
+256/348    17 -> 96                                                 79.327
+257/348   -67 -> 94                                                 12.076
+258/348    98 -> -66                                                82.198
+259/348    91 -> 68                                                 67.015
+260/348   162 -> -6                                                 70.344
+261/348   183 -> 167     361, 364, -272, -355, 145, 362, 364,        0.186
+                         -272                                             
+262/348   216 -> -109                                               32.138
+263/348   232 -> -212                                               20.581
+264/348   160 -> -143                                               58.293
+265/348   245 -> -20                                                60.345
+266/348     8 -> 30                                                 39.457
+267/348    31 -> 75                                                 87.818
+268/348   154 -> 32                                                 35.809
+269/348  -208 -> 249                                                41.096
+270/348   204 -> -93                                                39.982
+271/348   244 -> -148                                               41.312
+272/348    61 -> 170                                                82.439
+273/348   173 -> -58                                                44.062
+274/348  -140 -> 174                                                21.147
+275/348   227 -> 182                                                28.126
+276/348    40 -> 203                                                32.771
+277/348    14 -> 247                                                64.777
+278/348   158 -> 71                                                 28.457
+279/348   116 -> -9                                                 22.186
+280/348    28 -> 108                                                26.923
+281/348   194 -> -140                                               69.922
+282/348   226 -> -120                                               19.557
+283/348    86 -> 179                                                58.848
+284/348  -115 -> 192                                                75.282
+285/348   -42 -> 222                                                35.254
+286/348   -36 -> 148                                                35.488
+287/348    24 -> 232                                                37.646
+288/348  -131 -> 153                                                32.587
+289/348    60 -> 49                                                 33.670
+290/348   122 -> -62                                                36.596
+291/348     4 -> 48                                                 77.376
+292/348   113 -> 195                                                39.742
+293/348   241 -> 109                                                73.034
+294/348   229 -> 168     -337                                       66.334
+295/348  -116 -> 130                                                85.070
+296/348    67 -> 61                                                 86.483
+297/348   213 -> 255                                                 3.494
+298/348   -18 -> 229     -337                                       44.805
+299/348   114 -> -70                                                72.963
+300/348   105 -> 106                                                 5.532
+301/348    52 -> 184     -328                                       52.544
+302/348    96 -> 44                                                 60.950
+303/348  -186 -> 234                                                36.515
+304/348   258 -> -77                                                22.115
+305/348   243 -> 47                                                 51.617
+306/348   -91 -> 157                                                36.958
+307/348   211 -> 121                                                43.224
+308/348   121 -> 39                                                 34.049
+309/348   168 -> 171                                                75.849
+310/348    11 -> 197                                                73.638
+311/348   -13 -> 137                                                76.303
+312/348   256 -> 159                                                33.497
+313/348   117 -> -107                                               50.321
+314/348   -63 -> 123                                                91.935
+315/348   126 -> -75     direct connection                          68.456
+316/348  -150 -> 224                                                65.158
+317/348  -206 -> 217     direct connection                          66.285
+318/348  -189 -> 251     direct connection                          32.217
+319/348    59 -> 124                                                78.170
+320/348  -151 -> 162     direct connection                          78.974
+321/348  -142 -> 144     direct connection                          19.799
+322/348  -110 -> 200                                                48.105
+323/348   200 -> 93                                                 34.053
+324/348   -88 -> 245     direct connection                          74.463
+325/348   -85 -> 177     direct connection                          27.276
+326/348  -135 -> 165     direct connection                          36.697
+327/348   131 -> 37      direct connection                          72.699
+328/348   166 -> 257     direct connection                          40.550
+329/348   -50 -> 258     direct connection                          24.802
+330/348   184 -> -178    direct connection                          45.228
+331/348   180 -> 256     direct connection                          36.014
+332/348   193 -> 138     direct connection                          55.677
+333/348   208 -> -37     direct connection                          34.487
+334/348   192 -> 58      direct connection                          77.108
+335/348   230 -> -7      direct connection                          31.302
+336/348   231 -> -39     direct connection                          29.885
+337/348   -52 -> 178     328                                        81.922
+338/348   234 -> 219     direct connection                          70.077
+339/348   246 -> -178    direct connection                           5.394
+340/348   209 -> -12     direct connection                          37.790
+341/348   253 -> 185     direct connection                          52.921
+342/348   247 -> 10      direct connection                          66.082
+343/348   233 -> 215     direct connection                          44.650
+344/348  -173 -> 252     direct connection                          49.784
+345/348   -89 -> 226     direct connection                          61.264
+346/348   215 -> 237                                                59.616
+347/348    15 -> 147                                                43.675
+348/348  -230 -> 248     direct connection                          27.929
+
+
+Applying bridges (2025-11-12 02:08:53)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type        Start -> end   Path                              Quality
+miniasm             -37 -> -131                                      99.764
+miniasm             -63 -> 123                                       99.743
+miniasm            -162 -> 151                                       99.204
+miniasm             -14 -> 60                                        98.791
+miniasm            -230 -> 248                                       98.723
+miniasm            -245 -> 88                                        98.475
+miniasm               4 -> 48                                        98.239
+miniasm            -192 -> 115                                       98.132
+miniasm             -10 -> -247                                      98.004
+miniasm             -52 -> 178    328                                97.545
+miniasm            -219 -> -234                                      96.797
+miniasm             -58 -> -192                                      96.775
+miniasm            -231 -> 194                                       96.701
+miniasm              70 -> -114                                      96.524
+miniasm              64 -> 154                                       96.268
+miniasm            -247 -> -14                                       94.874
+miniasm             -61 -> -67                                       94.780
+miniasm            -170 -> -61                                       93.476
+miniasm               6 -> -162                                      92.869
+miniasm             -34 -> 70                                        92.446
+miniasm              48 -> -83                                       92.432
+miniasm             146 -> -16    -277                               92.294
+miniasm             115 -> -55    -277                               92.161
+miniasm              39 -> -231                                      91.208
+miniasm              87 -> 64                                        90.486
+miniasm             168 -> 171                                       90.230
+miniasm              31 -> 75                                        90.002
+miniasm              72 -> 146    264                                89.449
+miniasm              49 -> -163   -360, 364, -272, -355              89.134
+miniasm             194 -> -140                                      88.941
+miniasm            -104 -> -13    356, 272, -364, -362               88.921
+miniasm              26 -> 187                                       88.901
+miniasm            -109 -> -241                                      87.188
+miniasm             -67 -> 31     270                                87.179
+miniasm             186 -> -63                                       86.592
+miniasm             153 -> 235                                       86.528
+miniasm             -41 -> 46     -264                               85.833
+long read          -116 -> 130                                       85.070
+long read            52 -> 184    -328                               84.715
+long read           184 -> -178                                      84.715
+miniasm              20 -> -245                                      83.169
+miniasm             248 -> 152                                       83.142
+miniasm              30 -> -50                                       83.108
+miniasm            -114 -> 253                                       83.094
+miniasm             103 -> 5                                         82.664
+long read            98 -> -66                                       82.198
+miniasm              60 -> 49                                        82.114
+miniasm            -145 -> -228   355, 272, -364, -363               82.097
+long read           -16 -> 83     -360, 364, -272, -356              81.905
+miniasm              93 -> -204                                      81.772
+miniasm              45 -> 6                                         81.360
+miniasm             113 -> 195                                       81.082
+miniasm              -3 -> -134                                      80.756
+miniasm              56 -> 15     357, -273, -335                    80.731
+miniasm             -13 -> 137                                       80.008
+miniasm            -226 -> 89                                        79.563
+miniasm             -85 -> 177                                       79.392
+long read            17 -> 96                                        79.327
+miniasm            -234 -> 186                                       79.186
+simple long read   -168 -> -229   337                                78.927
+miniasm               8 -> 30                                        78.690
+long read            59 -> 124                                       78.170
+miniasm             171 -> -145   356, 272, -364, -362               78.168
+miniasm              92 -> -125   357, -273, -335                    77.606
+miniasm             154 -> 32                                        77.032
+miniasm             216 -> -109                                      76.608
+long read           118 -> 214                                       76.206
+miniasm              38 -> 87                                        76.179
+miniasm            -131 -> 153                                       75.579
+miniasm             -68 -> -91                                       75.055
+simple long read   -229 -> 18     337                                74.814
+miniasm             152 -> -182   266                                74.283
+miniasm             177 -> -10                                       73.720
+long read            11 -> 197                                       73.638
+miniasm              94 -> 103                                       72.437
+miniasm             235 -> 4                                         71.888
+miniasm             203 -> -41                                       70.744
+long read           225 -> 207    -264                               70.219
+long read            80 -> 190                                       70.152
+miniasm             -81 -> 69     335, 273, -357                     69.561
+miniasm              32 -> -81    -359, -270                         68.584
+long read           126 -> -75                                       68.456
+miniasm              40 -> 203                                       68.232
+miniasm              88 -> 7                                         68.051
+long read           -27 -> 57                                        67.762
+miniasm              54 -> 199    355, 272, -364, -362               67.743
+miniasm             139 -> 12                                        67.596
+miniasm             -23 -> -68                                       67.523
+miniasm             -74 -> 9                                         66.385
+long read          -206 -> 217                                       66.285
+miniasm             147 -> -159                                      65.926
+long read           217 -> 141                                       65.618
+miniasm            -140 -> 174                                       65.554
+long read            99 -> -42    271                                65.231
+long read          -150 -> 224                                       65.158
+simple long read    238 -> 62     260                                65.103
+long read           -66 -> 79                                        64.670
+long read           185 -> 28                                        63.827
+long read           -72 -> 161    272, -364, -362                    63.681
+miniasm            -191 -> 139    175                                63.045
+long read            44 -> 53                                        62.835
+long read           -90 -> 225    -260                               62.514
+miniasm              79 -> 99     271                                62.367
+miniasm             208 -> -37                                       62.309
+long read           -21 -> 26                                        62.021
+miniasm            -182 -> -227                                      61.775
+miniasm            -209 -> 216                                       61.116
+long read            96 -> 44                                        60.950
+miniasm            -249 -> 208                                       60.882
+miniasm            -246 -> -205   172, 236                           60.794
+miniasm             243 -> 47                                        60.376
+miniasm            -256 -> -180                                      60.320
+miniasm             -29 -> 120    -277                               60.277
+long read           215 -> 237                                       59.616
+long read            57 -> 76                                        59.479
+miniasm              69 -> 113                                       59.217
+miniasm             121 -> 39                                        59.091
+miniasm              78 -> 243                                       58.995
+long read            86 -> 179                                       58.848
+miniasm               7 -> -230                                      58.465
+long read            84 -> 126                                       58.414
+miniasm            -241 -> -104                                      58.330
+long read           160 -> -143                                      58.293
+miniasm              15 -> 147                                       57.878
+miniasm             195 -> 1                                         57.188
+miniasm             200 -> 93                                        56.484
+long read           214 -> -207                                      56.184
+long read            -2 -> 118                                       56.180
+long read           193 -> 138                                       55.677
+long read           123 -> 211                                       54.889
+long read           -65 -> 82                                        54.698
+long read             2 -> 136    335, 273, -357                     54.395
+long read           219 -> 80                                        53.662
+miniasm              46 -> 92                                        53.550
+long read           253 -> 185                                       52.921
+miniasm              51 -> 78                                        52.642
+miniasm              12 -> -209                                      50.463
+long read           141 -> 86                                        50.421
+long read           189 -> 98                                        50.345
+long read           117 -> -107                                      50.321
+long read           -24 -> 102                                       49.920
+long read          -173 -> 252                                       49.784
+long read            43 -> 227    -266                               49.248
+long read           102 -> 204    363, 364, -272, -356, -223         49.124
+long read            36 -> 228                                       48.432
+long read           108 -> -22                                       48.291
+long read            76 -> 160    363, 364, -272                     48.221
+long read          -110 -> 200                                       48.105
+miniasm               9 -> -116                                      47.373
+miniasm            -125 -> -170                                      47.026
+miniasm            -159 -> -256                                      46.903
+long read           233 -> 215                                       44.650
+long read           249 -> 59                                        44.208
+long read           173 -> -58                                       44.062
+miniasm             120 -> -226                                      43.844
+long read           211 -> 121                                       43.224
+long read            74 -> 84     361, 364, -272, -355               43.214
+miniasm             258 -> -77                                       43.166
+long read           100 -> 51     128, -353, 272, -364, -363         42.863
+long read           190 -> 149    361, 364, -272, -356               42.456
+long read           257 -> -151                                      41.872
+long read           244 -> -148                                      41.312
+miniasm             -50 -> 258                                       40.704
+long read           166 -> 257                                       40.550
+miniasm             174 -> 181                                       39.750
+long read            27 -> 212    361, 364, -272, -352               39.347
+long read            90 -> -47                                       38.835
+long read           155 -> -25                                       38.523
+long read           179 -> -85                                       38.102
+long read            24 -> 232                                       37.646
+long read          -112 -> 213    362, 364, -272, 353                37.094
+long read           -91 -> 157                                       36.958
+long read          -127 -> 244                                       36.816
+long read           199 -> 119    335, 273, -358, 303                36.720
+long read          -135 -> 165                                       36.697
+long read           122 -> -62                                       36.596
+long read           137 -> 97                                        35.745
+long read           -36 -> 148                                       35.488
+long read           237 -> -133                                      35.379
+long read           -42 -> 222                                       35.254
+long read           150 -> 129                                       35.086
+long read           138 -> -95                                       33.799
+long read           206 -> -19                                       33.256
+long read          -189 -> 251                                       32.217
+long read           188 -> -111   362, 364, -272, -356               31.800
+long read           250 -> 143                                       31.251
+long read           222 -> -21                                       31.203
+long read           101 -> -5                                        30.428
+long read           169 -> 122    361, 364, -272, -355               30.257
+long read           161 -> 158                                       29.656
+long read            71 -> 55                                        28.635
+long read           158 -> 71                                        28.457
+long read           -19 -> 166                                       28.133
+long read           144 -> 169                                       27.998
+long read            29 -> 22                                        27.859
+long read            28 -> 108                                       26.923
+long read            -8 -> 220                                       26.401
+long read            82 -> 105                                       26.118
+long read           187 -> -176   364, -272, 353                     25.915
+long read           224 -> -135                                      25.911
+long read           -33 -> 35                                        24.940
+long read           -11 -> 25                                        24.804
+long read            33 -> 193                                       24.521
+long read           130 -> -1                                        23.673
+long read           218 -> -129   335, 273, -358                     23.208
+long read            23 -> 233                                       20.592
+long read           232 -> -212                                      20.581
+long read          -142 -> 144                                       19.799
+long read           -45 -> 106    363, 364, -272, -356, -261, 265    19.100
+miniasm              89 -> 202                                       18.298
+miniasm            -205 -> -221                                      18.130
+long read          -164 -> 198                                       17.886
+long read           197 -> -167                                      16.848
+long read           105 -> 183                                       16.325
+long read           124 -> 218                                       15.883
+long read           -95 -> 255                                       14.817
+miniasm             242 -> -246                                      12.509
+long read           106 -> -3     270, 359                           12.355
+long read           164 -> -132                                      12.351
+long read           251 -> 77                                        12.090
+long read           -40 -> 94                                        10.907
+long read            34 -> 43                                        10.529
+long read          -155 -> 238                                       10.318
+long read           157 -> 56                                        10.259
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/004_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-11-12 02:08:53)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/005_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+    total         35      21   4,990,637   416,260           872,349             
+        1          1       0     872,349   872,349           872,349   incomplete
+        2         19      20   1,636,095   484,971           584,705   incomplete
+        3          1       0     522,760   522,760           522,760   incomplete
+        4          1       0     416,260   416,260           416,260   incomplete
+        5          1       0     273,871   273,871           273,871   incomplete
+        6          1       0     242,107   242,107           242,107   incomplete
+        7          1       0     236,138   236,138           236,138   incomplete
+        8          1       0     215,604   215,604           215,604   incomplete
+        9          1       0     173,007   173,007           173,007   incomplete
+       10          1       0     147,457   147,457           147,457   incomplete
+       11          1       0     138,019   138,019           138,019   incomplete
+       12          1       1      42,542    42,542            42,542     complete
+       13          1       0      28,021    28,021            28,021   incomplete
+       14          1       0      22,129    22,129            22,129   incomplete
+       15          1       0      18,457    18,457            18,457   incomplete
+       16          1       0       4,286     4,286             4,286   incomplete
+       17          1       0       1,535     1,535             1,535   incomplete
+
+
+Polishing assembly with Pilon (2025-11-12 02:08:53)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  252
+Insert size 99th percentile: 904
+
+Pilon polish round 1
+Total number of changes: 292
+
+Pilon polish round 2
+Total number of changes: 36
+
+Pilon polish round 3
+Total number of changes: 6
+
+Pilon polish round 4
+Total number of changes: 1
+
+Pilon polish round 5
+Total number of changes: 1
+
+Pilon polish round 6
+Total number of changes: 1
+
+Pilon polish round 7
+Total number of changes: 1
+
+Pilon polish round 8
+Total number of changes: 1
+
+Pilon polish round 9
+Total number of changes: 1
+
+Pilon polish round 10
+Total number of changes: 1
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/006_polished.gfa
+
+
+Rotating completed replicons (2025-11-12 02:29:32)
+--------------------------------------------------
+    Any completed circular contigs (i.e. single contigs which have one link connecting end to start) can have their start position changed without altering the sequence. For consistency, Unicycler now searches for a starting gene (dnaA or repA) in each such contig, and if one is found, the contig is rotated to start with that gene on the forward strand.
+
+Segment   Length   Depth   Starting gene   Position   Strand   Identity   Coverage
+     17   42,542   2.07x   none found                                             
+
+
+Assembly complete (2025-11-12 02:29:55)
+---------------------------------------
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1130018-cyamopsidis/NCPPB_2494.unicycler/assembly.fasta
+

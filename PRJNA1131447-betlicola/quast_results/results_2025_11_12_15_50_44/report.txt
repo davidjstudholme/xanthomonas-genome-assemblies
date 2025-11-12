@@ -1,0 +1,24 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    NCPPB_485.unfiltered.unicycler_assembly  NCPPB_485.unicycler_assembly
+# contigs (>= 0 bp)         27                                       28                          
+# contigs (>= 1000 bp)      16                                       18                          
+# contigs (>= 5000 bp)      13                                       13                          
+# contigs (>= 10000 bp)     13                                       11                          
+# contigs (>= 25000 bp)     11                                       10                          
+# contigs (>= 50000 bp)     7                                        8                           
+Total length (>= 0 bp)      5108110                                  5111645                     
+Total length (>= 1000 bp)   5104306                                  5107347                     
+Total length (>= 5000 bp)   5095800                                  5099539                     
+Total length (>= 10000 bp)  5095800                                  5086885                     
+Total length (>= 25000 bp)  5051681                                  5074549                     
+Total length (>= 50000 bp)  4918883                                  5009293                     
+# contigs                   19                                       21                          
+Largest contig              3117845                                  2653055                     
+Total length                5106101                                  5109842                     
+GC (%)                      64.97                                    64.95                       
+N50                         3117845                                  2653055                     
+N75                         784434                                   662591                      
+L50                         1                                        1                           
+L75                         2                                        3                           
+# N's per 100 kbp           0.00                                     0.00                        

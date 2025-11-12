@@ -1,0 +1,883 @@
+Error: could not find /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/SRR29694809_1_val_1.fastq.gz
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Unicycler (2025-11-12 12:24:36)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided both short and long reads, Unicycler will perform a hybrid assembly. It will first use SPAdes to make a short-read assembly graph, and then it will use various methods to scaffold that graph with the long reads.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -l SRR30037371_1.fastq.gz -1 SRR29694809_1_val_1.fq.gz -2 SRR29694809_2_val_2.fq.gz -o NCPPB_573.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+The output directory already exists and files may be reused or overwritten:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon           1.4.20    good    
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2025-11-12 12:24:47)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/SRR29694809_1_val_1.fq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/SRR29694809_2_val_2.fq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2025-11-12 12:27:36)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 249
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2025-11-12 12:27:43)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       870          17   6.05e-05 <-best
+
+Read depth filter: removed 27 contigs totalling 10692 bp
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-11-12 12:34:46)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2025-11-12 12:34:47)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    260, 263, 267, 272, 274, 275, 276, 278, 280, 281, 282, 283, 286, 287, 288, 289, 292, 293, 299, 302, 304, 306, 307, 309, 311, 315, 316, 317, 318, 320, 323, 324, 325, 326, 327, 328, 329, 331, 332, 334, 335, 341, 342, 343, 344, 345, 347, 349, 350, 351, 354, 355, 356, 357, 358, 359, 360, 361, 364, 365, 368, 375, 376, 378, 382, 401, 403, 404, 408, 409, 410, 412, 421, 422, 423, 424, 425, 433, 434, 439, 440, 442, 443, 444, 445, 446, 450, 453, 454, 455, 457, 458, 460, 461, 462, 463, 464, 466, 472, 476, 477, 478, 479, 484, 486, 490, 491, 492, 493, 495, 496, 500, 501, 514, 515, 516, 517, 525, 526, 527, 528, 531, 533, 534, 535, 536, 540, 541, 545, 546, 547, 554, 557, 558, 561, 563, 565, 567, 568, 569, 578, 580, 582, 583, 584, 585, 586, 589, 590, 591, 592, 599, 601, 602, 603, 604, 605, 606, 607, 609, 610, 611, 612, 613, 616, 620, 627, 629, 630, 633, 634, 636, 639, 641, 642, 647, 648, 651, 652, 655, 656, 657, 659, 661, 666, 668, 671, 673, 680, 686, 694, 703, 714, 715, 718, 719, 726, 728, 729, 731, 734, 735, 736, 737, 738, 743, 744, 746, 754, 758, 759, 760, 761, 762, 764, 769, 773, 774, 777, 779, 781, 786, 788, 792, 793, 801, 807, 808, 824, 826, 835, 843, 849, 858, 862, 868
+
+Removed zero-length segments:
+    269, 270, 291, 298, 321, 353, 366, 383, 405, 411, 452, 471, 577, 608, 619, 623, 670, 681, 685, 689, 693, 695, 696, 708, 710, 717, 720, 732, 739, 770, 778, 787, 799, 845, 848, 857
+
+Removed zero-length segments:
+    264, 716, 789, 809, 823, 832, 842, 860
+
+Removed zero-length segments:
+    804, 816, 819
+
+Removed zero-length segments:
+    813
+
+Merged small segments:
+    721, 733, 741, 742, 749, 750, 753, 755, 767, 775, 780, 785, 790, 796, 810, 811, 815, 821, 822, 825, 827, 828, 829, 830, 831, 837, 838, 846, 851, 854, 855, 863, 864, 865, 866
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+122 anchor segments (5,061,279 bp) out of 562 total segments (5,385,480 bp)
+
+
+Creating SPAdes contig bridges (2025-11-12 12:34:47)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                                             Bridge
+Start                      Path                     End     quality
+ -128                      252                      140        63.0
+  -85                                               123        38.4
+  -56                      267                      76         32.4
+  -33                      222                      50         28.9
+  -22   221 -> -164 -> -367 -> -471 -> 205 -> 306   84         22.3
+  -13                      -177                     40         35.3
+    4                      -208                     -32        55.8
+    8                      -244                     15         34.4
+   13                      201                      78         62.6
+   25                      -256                     130        49.6
+   27                      150                      -73        17.6
+   36               169 -> -176 -> 169              58         12.4
+   44                      -309                     -124       49.8
+   50                      -150                     73         25.2
+   53                      227                      8          57.8
+   70                      -262                     99         38.8
+   99                      -252                     -111       51.8
+  106                      256                      -130       49.9
+  107                      -248                     65         41.0
+  126                                               14         41.5
+  137                      248                      134        63.1
+
+
+Creating loop unrolling bridges (2025-11-12 12:34:47)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+  -58     -169      176     -36         1.20         0.91       1      40.4
+   50     -150       73     -27         1.12         1.20       1      23.4
+   12      225      444     -58         0.03         0.68       1      13.2
+   25     -256      130    -106         0.00         1.28       1      34.7
+
+
+Loading reads (2025-11-12 12:34:47)
+-----------------------------------
+25,430 / 25,430 (100.0%) - 53,916,573 bp
+
+
+Assembling contigs and long reads with miniasm (2025-11-12 12:34:48)
+--------------------------------------------------------------------
+    Unicycler uses miniasm to construct a string graph assembly using both the short read contigs and the long reads. It will then use the resulting string graph to produce bridges between contigs. This method requires decent coverage of long reads and therefore may not be fruitful if long reads are sparse. However, it does not rely on the short read assembly graph having good connectivity and is able to bridge an assembly graph even when it contains many dead ends.
+    Unicycler uses two types of "reads" as assembly input: anchor contigs from the short-read assembly and actual long reads which overlap two or more of these contigs. It then assembles them with miniasm.
+
+Aligning long reads to graph using minimap
+
+Saving to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/miniasm_assembly/01_assembly_reads.fastq:
+  122 short-read contigs
+  2,786 long reads
+
+Finding overlaps with minimap... 
+success
+  47,500 overlaps
+
+Assembling reads with miniasm... 
+success
+  46 segments, 39 links
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/miniasm_assembly/11_branching_paths_removed.gfa
+Merging segments into unitigs:
+  7 linear unitigs
+  total size = 1,166,227 bp
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/miniasm_assembly/12_unitig_graph.gfa
+
+miniasm assembly too small for bridging
+
+
+Creating simple long read bridges (2025-11-12 12:34:55)
+-------------------------------------------------------
+    Unicycler uses long read alignments (from minimap) to resolve simple repeat structures in the graph. This takes care of some "low-hanging fruit" of the graph simplification.
+
+Aligning long reads to graph using minimap
+
+    Two-way junctions are defined as cases where two graph contigs (A and B) join together (C) and then split apart again (D and E). This usually represents a simple 2-copy repeat, and there are two possible options for its resolution: (A->C->D and B->C->E) or (A->C->E and B->C->D). Each read which spans such a junction gets to "vote" for option 1, option 2 or neither. Unicycler creates a bridge at each junction for the most voted for option.
+
+                                                       Op. 1   Op. 2   Neither   Final    Bridge
+Junction         Option 1              Option 2        votes   votes     votes     op.   quality
+     150    -73 -> 150 -> -73,    -73 -> 150 -> -50,       0      12         7       2      35.6
+             27 -> 150 -> -50      27 -> 150 -> -73                                             
+     248   -65 -> 248 -> -107,    -65 -> 248 -> 134,      11       0         4       1      68.2
+            137 -> 248 -> 134     137 -> 248 -> -107                                            
+     252   -128 -> 252 -> -99,   -128 -> 252 -> 140,       0      13         4       2      59.6
+            111 -> 252 -> 140     111 -> 252 -> -99                                             
+     165    -43 -> 165 -> -26,    -43 -> 165 -> 26,        1       0         6       1       0.0
+             40 -> 165 -> 26       40 -> 165 -> -26                                             
+     199    -27 -> 199 -> -89,    -27 -> 199 -> 37,        7       0         4       1      50.0
+             46 -> 199 -> 37       46 -> 199 -> -89                                             
+
+    Simple loops are parts of the graph where two contigs (A and B) are connected via a repeat (C) which loops back to itself (via D). It is possible to traverse the loop zero times (A->C->B), one time (A->C->D->C->B), two times (A->C->D->C->D->C->B), etc. Long reads which span the loop inform which is the correct number of times through. In this step, such reads are found and each is aligned against alternative loop counts. A reads casts its "vote" for the loop count it agrees best with, and Unicycler creates a bridge using the most voted for count.
+
+                                   Read                         Loop    Bridge
+Start   Repeat   Middle     End   count   Read votes           count   quality
+  -58     -169      176     -36       6   0 loops: 1 vote          1      79.3
+                                          1 loop: 5 votes                     
+   12      225      444     -58       7   0 loops: 1 vote          2      57.5
+                                          1 loop: 1 vote                      
+                                          2 loops: 5 votes                    
+   25     -256      130    -106       0                           no          
+                                                               reads          
+   50     -150       73     -27       1   1 loop: 1 vote           1      47.5
+
+
+Determining low score threshold (2025-11-12 12:35:40)
+-----------------------------------------------------
+    Before conducting semi-global alignment of the long reads to the assembly graph, Unicycler must determine a minimum alignment score threshold such that nonsense alignments are excluded. To choose a threshold automatically, it examines alignments between random sequences and selects a score a few standard deviations above the mean.
+
+Automatically choosing a threshold using random alignment scores.
+
+Random alignment mean score: 61.66
+         standard deviation:  1.31
+        Low score threshold: 61.66 + (7 x 1.31) = 70.86
+
+
+Aligning reads (2025-11-12 12:35:42)
+------------------------------------
+25,430 / 25,430 (100.0%)
+
+
+Read alignment summary (2025-11-12 12:44:25)
+--------------------------------------------
+Total read count:            25,430
+Fully aligned reads:         21,817
+Partially aligned reads:      1,998
+Unaligned reads:              1,615
+Total bases aligned:     47,572,392 bp
+Mean alignment identity:         87.3%
+
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/read_alignment/
+
+
+Building long read bridges (2025-11-12 12:44:25)
+------------------------------------------------
+    Unicycler uses the long read alignments to produce bridges between anchor segments. These bridges can be formed using as few as one long read, giving Unicycler the ability to bridge the graph even when long-read depth is low.
+
+         Start -> end    Best path                                 Quality
+  1/131   -66 -> 92                                                  3.807
+  2/131   135 -> 116     109, 488, -324, -408, -404, -449, -290,    46.831
+                         -152, 231, 285, 195, 406, 324, 487, -109         
+  3/131    61 -> 44      478, 376, 529, 364, -426, 477, 339, 317,   34.599
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -470, -81, -474, -375, 529,            
+                         364, -426, 477, 339, 317, -263, -298,            
+                         357, -318, -261, 415, -348, 523, 217,            
+                         -394                                             
+  4/131   -19 -> 27      273, 173, -201, 89, -199                   79.145
+  5/131    -1 -> 149     -184, -88, 470, -217, -523, 348, -415,      4.624
+                         261, 318, -357, 298, 263, -317, -339,            
+                         -477, 426, -364, -529, -376, -462, 307,          
+                         -456, 236, 342, 232, 272, -166, -520             
+  6/131    72 -> -22     -209, -105, 470, -217, -523, 348, -415,    78.815
+                         261, 318, -357, 298, 263, -317, -339,            
+                         -477, 426, -364, -529, -376, -478, -268,         
+                         -155                                             
+  7/131    97 -> -5      478, 376, 529, 364, -426, 477, 339, 317,   15.594
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499, -442, 142, -447, 499,            
+                         -217, -523, 348, -415, 261, 318, -357,           
+                         298, 263, -317, -339, -477, 426, -364,           
+                         -529, -376, -478, -162, 470, -217, -523,         
+                         348, -415, 261, 318, -357, 298, 263,             
+                         -317, -339, -477, 426, -364, -529, -376,         
+                         482, -119, 529, 364, -426, 477, 339,             
+                         317, -263, -298, 357, -318, -261, 415,           
+                         -348, 523, 217, -499                             
+  8/131    41 -> 106                                                18.812
+  9/131    -4 -> 52      410, 120, -127, -160, -337, 214, 276       70.529
+ 10/131    -1 -> 10                                                 26.751
+ 11/131   149 -> 148     529, 364, -426, 477, 339, 317, -263,       10.159
+                         -298, 357, -318, -261, 415, -348, 523,           
+                         217, -499, -519, 104, 196                        
+ 12/131   134 -> 146     -125, 360, -233, 158, 443, 207, -548,      16.388
+                         355, 555, -296, -334, -396, 485, 511,            
+                         401, 277, 389, 513, 547, 281, -428,              
+                         -295, -292, 445, 308, 483, -274, -295,           
+                         247, -359, 437, 370, -454, -436, 543,            
+                         370, -454, -436, 543, 370, -454, -435,           
+                         545, 313, 235, -416, -292, 284, -420,            
+                         -295, -476, -316, 536, 281, -311, 440,           
+                         -551, 241, 363, 347, 363, -314, -369,            
+                         -254, -283, 537, 331, 245, 501, 320,             
+                         506, 280, 379, -332, -430, -294, 431,            
+                         253, 371, 553, -243, -172, 249                   
+ 13/131    29 -> 65      490, 251, -297, -556, -509, -238, 203,     32.693
+                         -259, -421, 323, 240, 384, 309, -374,            
+                         -496, -211, -322, 529, 364, -426, 477,           
+                         339, 317, -263, -298, 357, -318, -261,           
+                         415, -348, 523, 217, -470, 479, 133,             
+                         125, 107, -248                                   
+ 14/131   -18 -> 71                                                 27.093
+ 15/131   116 -> 98      181, 532, -304, 361, 383, 516, 407, 446,   72.466
+                         207, 549, 355, 552, -296, -334, -396,            
+                         441, 401, 277, 389, 513, -425, 544, 313,         
+                         235, -369, -528, -550, 530, 288, 545,            
+                         313, -438, 275, -412, 293, 286, 554,             
+                         -388, 460, 245, 501, 320, 506, 280, 377,         
+                         -332, -429, -294, -432, -255, 368, -524,         
+                         264, 93, 223, 382, -386, 345, -216,              
+                         -206, -285, -229, -167, 185, 290, 216,           
+                         450, -466, -366, -391, -546, -224, -147,         
+                         168                                              
+ 16/131    33 -> 94      189, -110, -160, -337, 214, 276            27.406
+ 17/131   129 -> -114    -131, 187, -163, -183, 193                  8.095
+ 18/131   113 -> 121     -131, -188, -163, -182, 193                21.502
+ 19/131    29 -> 107     490, 251, -297, -556, -509, -238, 203,     71.731
+                         -259, -421, 323, 240, 384, 309, -374,            
+                         -496, -211, -322, 529, 364, -426, 477,           
+                         339, 317, -263, -298, 357, -318, -261,           
+                         415, -348, 523, 217, -470, 479, 133, 125         
+ 20/131   -54 -> 85                                                 22.400
+ 21/131    -9 -> 75      242, -132, -539, -456, 236, 342, 232,      43.175
+                         272, -166, -520                                  
+ 22/131   127 -> 4       -120, -410                                 45.317
+ 23/131   103 -> 101     492, 374, -309, -384, -240, -291, 259,     17.209
+                         -203, 238, -510, -560, 297, -251, -494,          
+                         153, -145                                        
+ 24/131   134 -> 135     -125, 360, -233, 158, 443, 207, -548,      24.736
+                         355, 555, -296, -334, -396, 485, 511,            
+                         401, 277, 389, 513, 547, 281, -428,              
+                         -295, -292, 445, 308, 483, -274, -295,           
+                         247, -359, 437, 370, -454, -436, 543,            
+                         370, -454, -436, 543, 370, -454, -435,           
+                         545, 534, 287, 530, 288, 543, 370, -454,         
+                         -435, 545, 313, -438, 279, 308, 483,             
+                         299, -311, 440, -551, 241, 363, 347,             
+                         363, -314, -369, -254, -283, 537, 331,           
+                         245, 501, 320, 506, 280, 379, -332,              
+                         -430, -294, 431, 253, 371, 553, -243,            
+                         -172, 249, 146, 376, 529, 364, -426,             
+                         477, 339, 317, -263, -298, 357, -318,            
+                         -261, 415, -348, 523, 217, -499                  
+ 25/131    51 -> -16                                                13.198
+ 26/131    94 -> 57      -276, -214, 337, 160, -112, 491, 251,      41.043
+                         -297, -556, -509, -238, 203, -259, -421,         
+                         323, 240, 384, 309, -374, -497                   
+ 27/131     1 -> 32      494, 251, -297, -556, -509, -238, 203,     80.138
+                         -259, -421, 323, 240, 384, 309, -374,            
+                         -497, -143, -160, -337, 214, 276, 239,           
+                         -380, 529, 364, -426, 477, 339, 317,             
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -470, -481                             
+ 28/131   122 -> 1                                                   2.510
+ 29/131   133 -> 107     125                                        32.311
+ 30/131   142 -> -119    -447, 499, -217, -523, 348, -415, 261,     12.526
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, -376, -478, -162, 470,          
+                         -217, -523, 348, -415, 261, 318, -357,           
+                         298, 263, -317, -339, -477, 426, -364,           
+                         -529, -376, 482                                  
+ 31/131    29 -> 133     490, 251, -297, -556, -509, -238, 203,     35.879
+                         -259, -421, 323, 240, 384, 309, -374,            
+                         -496, -211, -322, 529, 364, -426, 477,           
+                         339, 317, -263, -298, 357, -318, -261,           
+                         415, -348, 523, 217, -470, 479                   
+ 32/131    66 -> 14                                                 25.514
+ 33/131    78 -> -76     -266, 161, -276, -214, 337, 160            77.816
+ 34/131    56 -> 51      529, 364, -426, 477, 339, 317, -263,       50.439
+                         -298, 357, -318, -261, 415, -348, 523,           
+                         217, -180, 494, 251, -297, 560, 510,             
+                         -238, 203, -259, 291, 240, 384, 309,             
+                         -374                                             
+ 35/131   -32 -> 143     481, 470, -217, -523, 348, -415, 261,      48.461
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, 380, -239, -276, -214,          
+                         337, 160                                         
+ 36/131    42 -> 66                                                 12.196
+ 37/131    36 -> 58      169, -176, 169                             82.485
+ 38/131    50 -> 73      -150                                       72.844
+ 39/131   -22 -> 84      221, -164, -367, -471, 205, 306            76.450
+ 40/131    21 -> 30      -144                                       79.631
+ 41/131    45 -> 17      -145                                       40.898
+ 42/131   119 -> -97     -482, 376, 529, 364, -426, 477, 339,       21.674
+                         317, -263, -298, 357, -318, -261, 415,           
+                         -348, 523, 217, -470, 162, 478, 376,             
+                         529, 364, -426, 477, 339, 317, -263,             
+                         -298, 357, -318, -261, 415, -348, 523,           
+                         217, -499, 447, -142, 442, 499, -217,            
+                         -523, 348, -415, 261, 318, -357, 298,            
+                         263, -317, -339, -477, 426, -364, -529,          
+                         -376, -478                                       
+ 43/131   -52 -> 127     -276, -214, 337, 160                       74.976
+ 44/131   112 -> -94     -160, -337, 214, 276                       52.223
+ 45/131   -57 -> 112     497, 374, -309, -384, -240, -323, 421,     52.867
+                         259, -203, 238, 509, 556, 297, -251,             
+                         -491                                             
+ 46/131   -41 -> 55      -343, -309, -384, -240, -291, 259, -203,   61.547
+                         238, 509, 556, 297, -251                         
+ 47/131   -39 -> 92      491, 251, -297, -556, -509, -238, 203,     21.338
+                         -259, 291, 240, 384, 309, -374, -496             
+ 48/131   143 -> -1      497, 374, -309, -384, -240, -323, 421,     31.530
+                         259, -203, 238, 509, 556, 297, -251,             
+                         -494                                             
+ 49/131   -29 -> 79      -493, 374, -309, -384, -240, -323, 421,    36.120
+                         259, -203, 238, -510, -560, 297, -251,           
+                         -494                                             
+ 50/131   -45 -> 47      494, 251, -297, 560, -509, -238, 203,      20.066
+                         -259, -421, 323, 240, 384, 309, -374,            
+                         -492                                             
+ 51/131    62 -> 70      520, 166, -272, -232, -342, -236, 456      66.833
+ 52/131   128 -> 113     -276, -214, 337, 160                       29.715
+ 53/131   148 -> -138    -456, 236, 342, 232, 272, -166             20.550
+ 54/131    91 -> 114     -456, 236, 342, 232, 272, -166, -520       32.835
+ 55/131   101 -> -69     -160, -337, 214, 276                       33.214
+ 56/131    57 -> -52     520, 166, -272, -232, -342, -236, 456      72.959
+ 57/131   -91 -> 114     -456, 236, 342, 232, 272, -166, -520       14.659
+ 58/131    90 -> 91      520, 166, -272, -232, -342, -236, 456      18.138
+ 59/131   124 -> 77                                                  4.540
+ 60/131   140 -> -85     -456, 236, 342, 232, 272, -166, -520       19.804
+ 61/131   -69 -> 97      499, -217, -523, 348, -415, 261, 318,      47.554
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529, 380                                  
+ 62/131    73 -> -27     -150                                       60.493
+ 63/131    97 -> 142     478, 376, 529, 364, -426, 477, 339, 317,   38.368
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499, -442                             
+ 64/131  -122 -> 138     -479, 470, -217, -523, 348, -415, 261,     19.760
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, 321                             
+ 65/131    54 -> -7      -322, 529, 364, -426, 477, 339, 317,       78.724
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499, -457, 144                        
+ 66/131   -61 -> 74      -479, 470, -217, -523, 348, -415, 261,     48.000
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, -376, 482                       
+ 67/131   122 -> -95     499, -217, -523, 348, -415, 261, 318,      16.836
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529, -376, 482                            
+ 68/131    92 -> -38     -475, 376, 529, 364, -426, 477, 339,       36.878
+                         317, -263, -298, 357, -318, -261, 415,           
+                         -348, 523, 217, -470, 479                        
+ 69/131    35 -> -6      457, 499, -217, -523, 348, -415, 261,      75.146
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, -326                            
+ 70/131    -7 -> 115     -475, 376, 529, 364, -426, 477, 339,       33.160
+                         317, -263, -298, 357, -318, -261, 415,           
+                         -348, 523, 217, 393                              
+ 71/131    60 -> -3      481, 470, -217, -523, 348, -415, 261,      58.756
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, -376, 482                       
+ 72/131    86 -> -15     520, 166, -272, -232, -342, -236, 456      71.323
+ 73/131    20 -> -14     -475, 376, 529, 364, -426, 477, 339,       75.959
+                         317, -263, -298, 357, -318, -261, 415,           
+                         -348, 523, 217, 469                              
+ 74/131     9 -> 77      -493, 374, -309, -384, -240, -323, 489,    46.586
+                         376, 529, 364, -426, 477, 339, 317,              
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -394, 402, 259, -203, 238,             
+                         509, 556, 297, -251, -490                        
+ 75/131  -111 -> 129     -325, 529, 364, -426, 477, 339, 317,       12.908
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -470                                   
+ 76/131   115 -> 90      326, 529, 364, -426, 477, 339, 317,        12.131
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499                                   
+ 77/131    59 -> 21      -479, 470, -217, -523, 348, -415, 261,     65.911
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529                                  
+ 78/131   -71 -> 96      499, -217, -523, 348, -415, 261, 318,      34.958
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529, -376, 482                            
+ 79/131   -60 -> 86      -479, 470, -217, -523, 348, -415, 261,     51.452
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529                                  
+ 80/131    55 -> -43     499, -217, -523, 348, -415, 261, 318,      39.092
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529, -376, 467                            
+ 81/131     2 -> 24      529, 364, -426, 477, 339, 317, -263,       50.909
+                         -298, 357, -318, -261, 415, -348, 523,           
+                         217, -499, -442                                  
+ 82/131     5 -> 119     499, -217, -523, 348, -415, 261, 318,      54.309
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529                                       
+ 83/131   123 -> 54                                                 44.306
+ 84/131   146 -> 135     376, 529, 364, -426, 477, 339, 317,        18.098
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499                                   
+ 85/131   -33 -> 50      222                                        64.831
+ 86/131    40 -> 26      165                                        31.608
+ 87/131    58 -> -12     -225, -444, -225, -444, -225               69.195
+ 88/131   -19 -> 89      273, 173, -201                             75.426
+ 89/131    75 -> 25                                                 44.602
+ 90/131   -13 -> 40      -177                                       69.996
+ 91/131    46 -> 37      199                                        68.514
+ 92/131    13 -> 78      201                                        75.468
+ 93/131    89 -> 27      -199                                       59.405
+ 94/131    32 -> -4      208                                        48.311
+ 95/131    74 -> -65     -325, 529, 364, -426, 477, 339, 317,       70.199
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499                                   
+ 96/131  -137 -> 141     -210                                       50.888
+ 97/131    53 -> 8       227                                        70.793
+ 98/131    19 -> 35                                                 82.225
+ 99/131   137 -> 134     248                                        46.896
+100/131   107 -> 65      -248                                       36.377
+101/131     8 -> 15      -244                                       60.866
+102/131   111 -> -99     252                                        63.568
+103/131   124 -> 47      309, -374, -492                            31.265
+104/131  -128 -> 140     252                                        40.626
+105/131   124 -> 92      309, -374, -496                            28.958
+106/131   143 -> -124    497, 374, -309                             34.156
+107/131   124 -> -108    309, -374, -496                            16.912
+108/131   124 -> 29      309, -374, 493                             14.793
+109/131   130 -> -106    -256                                       53.656
+110/131   124 -> 57      309, -374, -497                            22.249
+111/131    25 -> 130     -256                                       61.059
+112/131   -38 -> 42      529, 364, -426, 477, 339, 317, -263,       46.149
+                         -298, 357, -318, -261, 415, -348, 523,           
+                         217, -470                                        
+113/131    28 -> 72      -265                                       81.087
+114/131   124 -> -103    309, -374, -492                            20.268
+115/131    70 -> 99      -262                                       58.057
+116/131   -10 -> 95                                                 40.408
+117/131   -56 -> 76      267                                        62.757
+118/131    96 -> 18                                                 31.205
+119/131    10 -> 62                                                 34.965
+120/131   124 -> 20      309, -374                                  52.691
+121/131   124 -> -44     309                                        45.024
+122/131   -17 -> 101                                                12.469
+123/131    71 -> -24                                                36.195
+124/131   -85 -> 123     direct connection                          40.270
+125/131   -14 -> 126                                                48.899
+126/131   126 -> -66     direct connection                          55.903
+127/131    31 -> 6                                                  51.792
+128/131    18 -> 46      519, 499, -217, -523, 348, -415, 261,      57.445
+                         318, -357, 298, 263, -317, -339, -477,           
+                         426, -364, -529, -376, -462                      
+129/131   -36 -> 59      470, -217, -523, 348, -415, 261, 318,      81.492
+                         -357, 298, 263, -317, -339, -477, 426,           
+                         -364, -529, -376, -186, -522, 499, -217,         
+                         -523, 348, -415, 261, 318, -357, 298,            
+                         263, -317, -339, -477, 426, -364, -529,          
+                         322                                              
+130/131   134 -> 116     -125, 360, -233, 158, 443, 207, -548,      52.033
+                         355, 555, -296, -334, -396, 485, 511,            
+                         401, 277, 389, 513, 547, 281, -428,              
+                         -295, -292, 445, 308, 483, -274, -295,           
+                         247, -359, 437, 370, -454, -436, 543,            
+                         370, -454, -436, 543, 370, -454, -435,           
+                         545, 534, 287, 530, 288, 543, 370, -454,         
+                         -435, 545, 313, 235, -416, -292, 445,            
+                         308, 483, 299, -311, 440, -551, 235,             
+                         -369, -254, -283, 537, 331, 245, 501,            
+                         320, 506, 280, 379, -332, -430, -294,            
+                         431, 253, 371, 553, -243, -172, 249,             
+                         146, 376, 529, 364, -426, 477, 339, 317,         
+                         -263, -298, 357, -318, -261, 415, -348,          
+                         523, 217, -499, 135, 109, 488, -324,             
+                         -408, -404, -449, -290, -152, 231, 285,          
+                         195, 406, 324, 487, -109                         
+131/131    98 -> 102     -139, 500, 251, -297, 560, 510, -238,      67.856
+                         203, -259, -421, 323, 240, 384, 309,             
+                         343, -157, -212, 204, 139, -200, -178,           
+                         -194, 181, 532, -304, 361, 383, 516,             
+                         407, 446, 207, 549, 355, 552, -296, 335,         
+                         525, 419, 441, 401, 277, 389, -515,              
+                         -435, 545, 534, 287, 530, 288, 545, 534,         
+                         287, 530, 288, 543, 370, -454, -436,             
+                         543, 370, -454, -436, 543, 370, 329,             
+                         288, 543, 370, -454, -436, 543, 370,             
+                         -454, -436, 543, 370, 329, 288, 543,             
+                         370, 329, 411, 293, 286, 554, -388, 460,         
+                         245, -498, 320, 507, 280, 377, -332,             
+                         -429, -294, -432, -255, 368, -524, 264,          
+                         230, 218, 175, -214, 337, 160, -174,             
+                         221, -170, 480, -278, -367, -471, 205,           
+                         306, -409, 198, -357, 220                        
+
+
+Applying bridges (2025-11-12 12:45:26)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type        Start -> end   Path                                       Quality
+long read            36 -> 58     169, -176, 169                              82.485
+long read            19 -> 35                                                 82.225
+long read           -36 -> 59     470, -217, -523, 348, -415, 261, 318,       81.492
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529, -376, -186, -522, 499, -217,          
+                                  -523, 348, -415, 261, 318, -357, 298,             
+                                  263, -317, -339, -477, 426, -364, -529,           
+                                  322                                               
+long read            28 -> 72     -265                                        81.087
+long read             1 -> -143   494, 251, -297, -556, -509, -238, 203,      80.138
+                                  -259, -421, 323, 240, 384, 309, -374,             
+                                  -497                                              
+long read          -143 -> 32     -160, -337, 214, 276, 239, -380, 529,       80.138
+                                  364, -426, 477, 339, 317, -263, -298,             
+                                  357, -318, -261, 415, -348, 523, 217,             
+                                  -470, -481                                        
+long read            21 -> 30     -144                                        79.631
+long read           -19 -> 89     273, 173, -201                              79.145
+long read            89 -> 27     -199                                        79.145
+long read            72 -> -22    -209, -105, 470, -217, -523, 348, -415,     78.815
+                                  261, 318, -357, 298, 263, -317, -339,             
+                                  -477, 426, -364, -529, -376, -478, -268,          
+                                  -155                                              
+long read            54 -> -7     -322, 529, 364, -426, 477, 339, 317,        78.724
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -499, -457, 144                         
+long read            78 -> -76    -266, 161, -276, -214, 337, 160             77.816
+long read           -22 -> 84     221, -164, -367, -471, 205, 306             76.450
+long read            20 -> -14    -475, 376, 529, 364, -426, 477, 339,        75.959
+                                  317, -263, -298, 357, -318, -261, 415,            
+                                  -348, 523, 217, 469                               
+long read            13 -> 78     201                                         75.468
+long read            35 -> -6     457, 499, -217, -523, 348, -415, 261,       75.146
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529, -326                             
+long read           -52 -> 127    -276, -214, 337, 160                        74.976
+long read            57 -> -52    520, 166, -272, -232, -342, -236, 456       72.959
+long read            50 -> 73     -150                                        72.844
+long read           116 -> 98     181, 532, -304, 361, 383, 516, 407, 446,    72.466
+                                  207, 549, 355, 552, -296, -334, -396,             
+                                  441, 401, 277, 389, 513, -425, 544, 313,          
+                                  235, -369, -528, -550, 530, 288, 545,             
+                                  313, -438, 275, -412, 293, 286, 554,              
+                                  -388, 460, 245, 501, 320, 506, 280, 377,          
+                                  -332, -429, -294, -432, -255, 368, -524,          
+                                  264, 93, 223, 382, -386, 345, -216,               
+                                  -206, -285, -229, -167, 185, 290, 216,            
+                                  450, -466, -366, -391, -546, -224, -147,          
+                                  168                                               
+simple long read   -128 -> 140    252                                         72.457
+long read            29 -> 133    490, 251, -297, -556, -509, -238, 203,      71.731
+                                  -259, -421, 323, 240, 384, 309, -374,             
+                                  -496, -211, -322, 529, 364, -426, 477,            
+                                  339, 317, -263, -298, 357, -318, -261,            
+                                  415, -348, 523, 217, -470, 479                    
+long read           133 -> 107    125                                         71.731
+long read            86 -> -15    520, 166, -272, -232, -342, -236, 456       71.323
+long read            53 -> 8      227                                         70.793
+long read            -4 -> -127   410, 120                                    70.529
+long read            74 -> -65    -325, 529, 364, -426, 477, 339, 317,        70.199
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -499                                    
+long read           -13 -> 40     -177                                        69.996
+long read            58 -> -12    -225, -444, -225, -444, -225                69.195
+long read            46 -> 37     199                                         68.514
+simple long read    137 -> 134    248                                         68.157
+long read            98 -> 102    -139, 500, 251, -297, 560, 510, -238,       67.856
+                                  203, -259, -421, 323, 240, 384, 309,              
+                                  343, -157, -212, 204, 139, -200, -178,            
+                                  -194, 181, 532, -304, 361, 383, 516,              
+                                  407, 446, 207, 549, 355, 552, -296, 335,          
+                                  525, 419, 441, 401, 277, 389, -515,               
+                                  -435, 545, 534, 287, 530, 288, 545, 534,          
+                                  287, 530, 288, 543, 370, -454, -436,              
+                                  543, 370, -454, -436, 543, 370, 329,              
+                                  288, 543, 370, -454, -436, 543, 370,              
+                                  -454, -436, 543, 370, 329, 288, 543,              
+                                  370, 329, 411, 293, 286, 554, -388, 460,          
+                                  245, -498, 320, 507, 280, 377, -332,              
+                                  -429, -294, -432, -255, 368, -524, 264,           
+                                  230, 218, 175, -214, 337, 160, -174,              
+                                  221, -170, 480, -278, -367, -471, 205,            
+                                  306, -409, 198, -357, 220                         
+long read            62 -> 70     520, 166, -272, -232, -342, -236, 456       66.833
+long read            59 -> 21     -479, 470, -217, -523, 348, -415, 261,      65.911
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529                                   
+long read           -33 -> 50     222                                         64.831
+long read           111 -> -99    252                                         63.568
+long read           -56 -> 76     267                                         62.757
+long read           -41 -> 55     -343, -309, -384, -240, -291, 259, -203,    61.547
+                                  238, 509, 556, 297, -251                          
+long read            25 -> 130    -256                                        61.059
+long read             8 -> 15     -244                                        60.866
+long read            73 -> -27    -150                                        60.493
+long read            60 -> -3     481, 470, -217, -523, 348, -415, 261,       58.756
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529, -376, 482                        
+long read            70 -> 99     -262                                        58.057
+long read            18 -> 46     519, 499, -217, -523, 348, -415, 261,       57.445
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529, -376, -462                       
+long read           126 -> -66                                                55.903
+long read             5 -> 119    499, -217, -523, 348, -415, 261, 318,       54.309
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529                                        
+long read           130 -> -106   -256                                        53.656
+long read           -57 -> 112    497, 374, -309, -384, -240, -323, 421,      52.867
+                                  259, -203, 238, 509, 556, 297, -251,              
+                                  -491                                              
+long read           124 -> 20     309, -374                                   52.691
+long read           112 -> -94    -160, -337, 214, 276                        52.223
+long read           134 -> 146    -125, 360, -233, 158, 443, 207, -548,       52.033
+                                  355, 555, -296, -334, -396, 485, 511,             
+                                  401, 277, 389, 513, 547, 281, -428,               
+                                  -295, -292, 445, 308, 483, -274, -295,            
+                                  247, -359, 437, 370, -454, -436, 543,             
+                                  370, -454, -436, 543, 370, -454, -435,            
+                                  545, 534, 287, 530, 288, 543, 370, -454,          
+                                  -435, 545, 313, 235, -416, -292, 445,             
+                                  308, 483, 299, -311, 440, -551, 235,              
+                                  -369, -254, -283, 537, 331, 245, 501,             
+                                  320, 506, 280, 379, -332, -430, -294,             
+                                  431, 253, 371, 553, -243, -172, 249               
+long read           146 -> 135    376, 529, 364, -426, 477, 339, 317,         52.033
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -499                                    
+long read           135 -> 116    109, 488, -324, -408, -404, -449, -290,     52.033
+                                  -152, 231, 285, 195, 406, 324, 487, -109          
+long read            31 -> 6                                                  51.792
+long read           -60 -> 86     -479, 470, -217, -523, 348, -415, 261,      51.452
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529                                   
+long read             2 -> 24     529, 364, -426, 477, 339, 317, -263,        50.909
+                                  -298, 357, -318, -261, 415, -348, 523,            
+                                  217, -499, -442                                   
+long read          -137 -> 141    -210                                        50.888
+long read            56 -> 51     529, 364, -426, 477, 339, 317, -263,        50.439
+                                  -298, 357, -318, -261, 415, -348, 523,            
+                                  217, -180, 494, 251, -297, 560, 510,              
+                                  -238, 203, -259, 291, 240, 384, 309,              
+                                  -374                                              
+long read           -14 -> 126                                                48.899
+long read            32 -> -4     208                                         48.311
+long read           -61 -> 74     -479, 470, -217, -523, 348, -415, 261,      48.000
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529, -376, 482                        
+long read           -69 -> 97     499, -217, -523, 348, -415, 261, 318,       47.554
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529, 380                                   
+long read             9 -> 77     -493, 374, -309, -384, -240, -323, 489,     46.586
+                                  376, 529, 364, -426, 477, 339, 317,               
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -394, 402, 259, -203, 238,              
+                                  509, 556, 297, -251, -490                         
+long read           -38 -> 42     529, 364, -426, 477, 339, 317, -263,        46.149
+                                  -298, 357, -318, -261, 415, -348, 523,            
+                                  217, -470                                         
+long read            75 -> 25                                                 44.602
+long read           123 -> 54                                                 44.306
+simple long read    -65 -> -107   248                                         44.238
+long read            -9 -> 75     242, -132, -539, -456, 236, 342, 232,       43.175
+                                  272, -166, -520                                   
+long read            45 -> 17     -145                                        40.898
+long read           -10 -> 95                                                 40.408
+long read           -85 -> 123                                                40.270
+long read            55 -> -43    499, -217, -523, 348, -415, 261, 318,       39.092
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529, -376, 467                             
+long read            97 -> 142    478, 376, 529, 364, -426, 477, 339, 317,    38.368
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -499, -442                              
+long read            92 -> -38    -475, 376, 529, 364, -426, 477, 339,        36.878
+                                  317, -263, -298, 357, -318, -261, 415,            
+                                  -348, 523, 217, -470, 479                         
+long read            71 -> -24                                                36.195
+long read           -29 -> 79     -493, 374, -309, -384, -240, -323, 421,     36.120
+                                  259, -203, 238, -510, -560, 297, -251,            
+                                  -494                                              
+long read            10 -> 62                                                 34.965
+long read           -71 -> 96     499, -217, -523, 348, -415, 261, 318,       34.958
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529, -376, 482                             
+long read            61 -> 44     478, 376, 529, 364, -426, 477, 339, 317,    34.599
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -470, -81, -474, -375, 529,             
+                                  364, -426, 477, 339, 317, -263, -298,             
+                                  357, -318, -261, 415, -348, 523, 217,             
+                                  -394                                              
+long read           101 -> -69    -160, -337, 214, 276                        33.214
+long read            -7 -> 115    -475, 376, 529, 364, -426, 477, 339,        33.160
+                                  317, -263, -298, 357, -318, -261, 415,            
+                                  -348, 523, 217, 393                               
+long read            91 -> 114    -456, 236, 342, 232, 272, -166, -520        32.835
+long read            40 -> 26     165                                         31.608
+long read            96 -> 18                                                 31.205
+long read           128 -> 113    -276, -214, 337, 160                        29.715
+long read            33 -> 94     189, -110, -160, -337, 214, 276             27.406
+long read           119 -> -142   -482, 376, 529, 364, -426, 477, 339,        21.674
+                                  317, -263, -298, 357, -318, -261, 415,            
+                                  -348, 523, 217, -470, 162, 478, 376,              
+                                  529, 364, -426, 477, 339, 317, -263,              
+                                  -298, 357, -318, -261, 415, -348, 523,            
+                                  217, -499, 447                                    
+long read           113 -> 121    -131, -188, -163, -182, 193                 21.502
+long read           -39 -> 92     491, 251, -297, -556, -509, -238, 203,      21.338
+                                  -259, 291, 240, 384, 309, -374, -496              
+long read           148 -> -138   -456, 236, 342, 232, 272, -166              20.550
+long read           -45 -> 47     494, 251, -297, 560, -509, -238, 203,       20.066
+                                  -259, -421, 323, 240, 384, 309, -374,             
+                                  -492                                              
+long read           140 -> -85    -456, 236, 342, 232, 272, -166, -520        19.804
+long read          -122 -> 138    -479, 470, -217, -523, 348, -415, 261,      19.760
+                                  318, -357, 298, 263, -317, -339, -477,            
+                                  426, -364, -529, 321                              
+long read            41 -> 106                                                18.812
+long read            90 -> 91     520, 166, -272, -232, -342, -236, 456       18.138
+long read           103 -> 101    492, 374, -309, -384, -240, -291, 259,      17.209
+                                  -203, 238, -510, -560, 297, -251, -494,           
+                                  153, -145                                         
+long read           122 -> -95    499, -217, -523, 348, -415, 261, 318,       16.836
+                                  -357, 298, 263, -317, -339, -477, 426,            
+                                  -364, -529, -376, 482                             
+long read            51 -> -16                                                13.198
+long read          -111 -> 129    -325, 529, 364, -426, 477, 339, 317,        12.908
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -470                                    
+long read            42 -> 66                                                 12.196
+long read           115 -> 90     326, 529, 364, -426, 477, 339, 317,         12.131
+                                  -263, -298, 357, -318, -261, 415, -348,           
+                                  523, 217, -499                                    
+long read           149 -> 148    529, 364, -426, 477, 339, 317, -263,        10.159
+                                  -298, 357, -318, -261, 415, -348, 523,            
+                                  217, -499, -519, 104, 196                         
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-11-12 12:45:27)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+        1        282     392   5,507,241   482,437         1,074,419   incomplete
+
+
+Polishing assembly with Pilon (2025-11-12 12:45:27)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  52
+Insert size 99th percentile: 815
+
+Pilon polish round 1
+Total number of changes: 89
+
+Pilon polish round 2
+Total number of changes: 24
+
+Pilon polish round 3
+Total number of changes: 10
+
+Pilon polish round 4
+Total number of changes: 1
+
+Pilon polish round 5
+No Pilon changes
+
+Pilon polish round 6
+Total number of changes: 1
+
+Pilon polish round 7
+No Pilon changes
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/005_polished.gfa
+
+
+Assembly complete (2025-11-12 13:23:56)
+---------------------------------------
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131453-cajani/NCPPB_573.unicycler/assembly.fasta
+

@@ -1,0 +1,24 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    NCPPB_536.unfiltered.unicycler_assembly  NCPPB_646.unfiltered.unicycler_assembly
+# contigs (>= 0 bp)         92                                       45                                     
+# contigs (>= 1000 bp)      17                                       9                                      
+# contigs (>= 5000 bp)      7                                        7                                      
+# contigs (>= 10000 bp)     7                                        7                                      
+# contigs (>= 25000 bp)     7                                        5                                      
+# contigs (>= 50000 bp)     6                                        3                                      
+Total length (>= 0 bp)      5478631                                  5510512                                
+Total length (>= 1000 bp)   5459032                                  5502116                                
+Total length (>= 5000 bp)   5435785                                  5497354                                
+Total length (>= 10000 bp)  5435785                                  5497354                                
+Total length (>= 25000 bp)  5435785                                  5464351                                
+Total length (>= 50000 bp)  5393376                                  5386250                                
+# contigs                   30                                       14                                     
+Largest contig              2404107                                  5230637                                
+Total length                5467610                                  5505909                                
+GC (%)                      64.52                                    64.52                                  
+N50                         1369091                                  5230637                                
+N75                         1258739                                  5230637                                
+L50                         2                                        1                                      
+L75                         3                                        1                                      
+# N's per 100 kbp           0.00                                     0.00                                   

@@ -1,0 +1,28 @@
+Error: could not find /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131458-khayae/SRR29695060_1_val_1.fastq.gz
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starting Unicycler (2025-11-12 14:00:05)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided both short and long reads, Unicycler will perform a hybrid assembly. It will first use SPAdes to make a short-read assembly graph, and then it will use various methods to scaffold that graph with the long reads.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -l SRR30037788_1.fastq.gz -1 SRR29695060_1_val_1.fq.gz -2 SRR29695060_2_val_2.fq.gz -o NCPPB_536.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+The output directory already exists and files may be reused or overwritten:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131458-khayae/NCPPB_536.unicycler
+
+Dependencies:

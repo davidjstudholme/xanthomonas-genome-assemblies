@@ -1,0 +1,62 @@
+/data/djs217/miniconda3/envs/quast_env/bin/quast NCPPB1629.unicycler/assembly.fasta
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-6.8.0-87-generic-x86_64-with-debian-trixie-sid (linux_64)
+  Python version: 3.6.13
+  CPUs number: 16
+
+Started: 2025-11-12 15:52:36
+
+Logging to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae
+Main parameters: 
+  MODE: default, threads: 4, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  NCPPB1629.unicycler/assembly.fasta ==> assembly
+
+2025-11-12 15:52:37
+Running Basic statistics processor...
+  Contig files: 
+    assembly
+  Calculating N50 and L50...
+    assembly, N50 = 107025, L50 = 17, Total length = 5197656, GC % = 64.65, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/basic_stats/GC_content_plot.pdf
+  Drawing assembly GC content plot...
+    saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/basic_stats/assembly_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-11-12 15:52:38
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2025-11-12 15:52:38
+RESULTS:
+  Text versions of total report are saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/report.html
+  PDF version (tables and plots) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/report.pdf
+  Icarus (contig browser) is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/icarus.html
+  Log is saved to /data/djs217/PROJECTS/xanthomonas-genome-assemblies/PRJNA1131443-bauhiniae/quast_results/results_2025_11_12_15_52_36/quast.log
+
+Finished: 2025-11-12 15:52:38
+Elapsed time: 0:00:02.187246
+NOTICEs: 2; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

@@ -1,0 +1,24 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    NCPPB_1827.unicycler_assembly  NCPPB_2060.unicycler_assembly  NCPPB_2914.unicycler_assembly
+# contigs (>= 0 bp)         168                            122                            134                          
+# contigs (>= 1000 bp)      77                             51                             61                           
+# contigs (>= 5000 bp)      58                             39                             44                           
+# contigs (>= 10000 bp)     53                             35                             38                           
+# contigs (>= 25000 bp)     44                             27                             26                           
+# contigs (>= 50000 bp)     33                             20                             18                           
+Total length (>= 0 bp)      5192742                        5222035                        5030235                      
+Total length (>= 1000 bp)   5172046                        5202454                        5009715                      
+Total length (>= 5000 bp)   5124090                        5175208                        4973584                      
+Total length (>= 10000 bp)  5088864                        5144842                        4929394                      
+Total length (>= 25000 bp)  4942064                        4999581                        4737702                      
+Total length (>= 50000 bp)  4569203                        4749216                        4457687                      
+# contigs                   88                             65                             70                           
+Largest contig              475774                         818501                         1013329                      
+Total length                5178881                        5211606                        5016104                      
+GC (%)                      64.57                          64.54                          64.62                        
+N50                         170988                         285980                         277028                       
+N75                         72204                          194303                         200360                       
+L50                         10                             7                              6                            
+L75                         23                             12                             11                           
+# N's per 100 kbp           0.00                           0.00                           0.00                         

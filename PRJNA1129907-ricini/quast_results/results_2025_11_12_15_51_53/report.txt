@@ -1,0 +1,24 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    NCPPB_113.unicycler_assembly  NCPPB_1324.unfiltered.unicycler_assembly  NCPPB_1324.unicycler_assembly
+# contigs (>= 0 bp)         53                            239                                       232                          
+# contigs (>= 1000 bp)      37                            147                                       148                          
+# contigs (>= 5000 bp)      32                            108                                       108                          
+# contigs (>= 10000 bp)     30                            87                                        87                           
+# contigs (>= 25000 bp)     24                            60                                        60                           
+# contigs (>= 50000 bp)     22                            35                                        35                           
+Total length (>= 0 bp)      4739239                       5010692                                   5009627                      
+Total length (>= 1000 bp)   4734446                       4980245                                   4981315                      
+Total length (>= 5000 bp)   4723741                       4887598                                   4887410                      
+Total length (>= 10000 bp)  4708949                       4743835                                   4743609                      
+Total length (>= 25000 bp)  4611740                       4272989                                   4272888                      
+Total length (>= 50000 bp)  4529210                       3364040                                   3363975                      
+# contigs                   40                            165                                       165                          
+Largest contig              719386                        205352                                    205352                       
+Total length                4736527                       4992996                                   4993355                      
+GC (%)                      65.66                         64.83                                     64.83                        
+N50                         364818                        77220                                     77221                        
+N75                         136576                        38063                                     38063                        
+L50                         5                             21                                        21                           
+L75                         11                            44                                        44                           
+# N's per 100 kbp           0.00                          0.00                                      0.00                         
