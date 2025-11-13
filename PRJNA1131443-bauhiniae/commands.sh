@@ -13,7 +13,6 @@ conda env export > hybracter_env.yaml
 
 hybracter hybrid -i PRJNA1131443.csv -o PRJNA1131443.hybracter -t 12
 
-
 conda activate unicycler_env
 conda create -n unicycler_env
 conda activate unicycler_env
@@ -21,7 +20,6 @@ conda install bioconda::unicycler
 
 conda list -n unicycler_env > unicycler_env_packages.txt
 conda env export > unicycler_env.yaml
-
 
 unicycler -1 SRR29695112_1_val_1.fq.gz -2 SRR29695112_2_val_2.fq.gz -o NCPPB1629.unicycler
 

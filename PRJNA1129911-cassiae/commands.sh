@@ -17,7 +17,7 @@ hybracter hybrid -i cassiae.csv -o hybracter-hybrid -t 12
 conda activate unicycler_env
 #conda install bioconda::unicycler
 
-conda list -n unicycler_env > hybracter_env_packages.txt
+conda list -n unicycler_env > unicycler_env_packages.txt
 conda env export > unicycler_env.yaml
 
 unicycler -1 SRR29654630_1_val_1.fq.gz  -2 SRR29654630_2_val_2.fq.gz -o NCPPB_478.unicycler

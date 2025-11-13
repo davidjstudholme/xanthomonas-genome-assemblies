@@ -17,7 +17,7 @@ hybracter hybrid -i PRJNA1131447.csv -o hybracter-hybrid -t 12
 conda activate unicycler_env
 #conda install bioconda::unicycler
 
-conda list -n unicycler_env > hybracter_env_packages.txt
+conda list -n unicycler_env > unicycler_env_packages.txt
 conda env export > unicycler_env.yaml
 
 unicycler -l SRR30036952_1.fastq.gz -1 SRR29695153_1.fastq.gz -2 SRR29695153_2.fastq.gz -o NCPPB_485.unfiltered.unicycler

@@ -8,7 +8,7 @@ trim_galore -q 30 --paired SRR25205314_1.fastq.gz  SRR25205314_2.fastq.gz
 conda activate unicycler_env
 #conda install bioconda::unicycler
 
-conda list -n unicycler_env > hybracter_env_packages.txt
+conda list -n unicycler_env > unicycler_env_packages.txt
 conda env export > unicycler_env.yaml
 
 unicycler -1 SRR25205310_1_val_1.fq.gz -2 SRR25205310_2_val_2.fq.gz -o WHRI_3873.unicycler
