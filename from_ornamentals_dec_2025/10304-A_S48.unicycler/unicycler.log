@@ -1,0 +1,200 @@
+
+Starting Unicycler (2025-12-01 20:59:15)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 10304-A_S48_R1_001_val_1.fq.gz -2 10304-A_S48_R2_001_val_2.fq.gz -o 10304-A_S48.unicycler
+
+Unicycler version: v0.5.1
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler
+
+Dependencies:
+  Program       Version   Status  
+  spades.py     4.0.0     good    
+  racon                   not used
+  makeblastdb   2.16.0+   good    
+  tblastn       2.16.0+   good    
+
+
+Choosing k-mer range for assembly (2025-12-01 20:59:24)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 150
+K-mer range: 27, 53, 71, 87, 99, 111, 119, 127
+
+
+SPAdes assemblies (2025-12-01 20:59:30)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27 --threads 8 --gfa11 --isolate -1 /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48_R1_001_val_1.fq.gz -2 /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48_R2_001_val_2.fq.gz -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53 --threads 8 --gfa11 --restart-from k27 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71 --threads 8 --gfa11 --restart-from k53 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71,87 --threads 8 --gfa11 --restart-from k71 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71,87,99 --threads 8 --gfa11 --restart-from k87 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71,87,99,111 --threads 8 --gfa11 --restart-from k99 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71,87,99,111,119 --threads 8 --gfa11 --restart-from k111 -m 1024
+
+spades.py -o /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly -k 27,53,71,87,99,111,119,127 --threads 8 --gfa11 --restart-from k119 -m 1024
+
+K-mer   Contigs   Dead ends   Score      
+   27                         too complex
+   53       981          74      1.34e-05
+   71       715          89      1.54e-05
+   87       554          97      1.82e-05
+   99       466          98      2.15e-05
+  111       433          99      2.29e-05
+  119       441         100      2.22e-05
+  127       397         104      2.38e-05 <-best
+
+Read depth filter: removed 30 contigs totalling 9365 bp
+Deleting /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2025-12-01 21:11:53)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/002_depth_filter.gfa
+
+
+Cleaning graph (2025-12-01 21:11:53)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    223, 226, 227, 228, 229, 230, 233, 234, 235, 237, 238, 243, 245, 247, 250, 252, 262, 265, 267, 271, 274, 278, 279, 280, 281, 283, 298, 299, 302, 307, 309, 316, 323, 326, 333, 341, 342, 343, 349, 354, 359, 385, 387, 388, 393, 394
+
+Removed zero-length segments:
+    222, 257, 319, 355, 361, 371, 380, 383
+
+Merged small segments:
+    348, 351, 353, 356, 358, 360, 363, 364, 365, 367, 369, 372, 373, 374, 375, 377, 382, 384, 386, 389, 390, 392
+
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/003_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+105 anchor segments (4,979,298 bp) out of 322 total segments (5,043,383 bp)
+
+
+Creating SPAdes contig bridges (2025-12-01 21:11:53)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                                             Bridge
+Start                      Path                     End     quality
+  -97                      106                      105        13.0
+  -55                      155                      96         61.3
+  -53                      195                      59         63.0
+  -23               273 -> 169 -> 285               61         63.2
+  -18                   169 -> 285                  54         63.1
+   14                  -289 -> 189                  13         63.2
+   23              174 -> -310 -> -185              -73        63.2
+   25                  -289 -> 189                  14         63.2
+   27                      -189                     -97        61.5
+   33               178 -> -224 -> 186              21         55.6
+   34               170 -> -148 -> 170              -69        25.0
+   47               178 -> 223 -> 186               24         55.8
+   48   164 -> -244 -> 279 -> -167 -> 127 -> -227   107        21.6
+   80                      155                      76         63.0
+   83               185 -> 304 -> -174              49         63.0
+   84                   281 -> 204                  -107       63.2
+   85                      -162                     -94        61.2
+   96                      -162                     80         63.2
+  105                      106                      46         13.0
+
+
+Creating loop unrolling bridges (2025-12-01 21:11:53)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+   69     -170      148     -34         0.84         0.96       1      42.8
+  -97      106      105      46         1.05         1.02       1      42.4
+
+
+Applying bridges (2025-12-01 21:11:53)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type   Start -> end   Path                              Quality
+SPAdes          14 -> 13     -289, 189                          63.240
+SPAdes          23 -> -73    174, -310, -185                    63.224
+SPAdes          84 -> -107   281, 204                           63.195
+SPAdes          25 -> 14     -289, 189                          63.153
+SPAdes          96 -> 80     -162                               63.152
+SPAdes         -23 -> 61     273, 169, 285                      63.151
+SPAdes         -18 -> 54     169, 285                           63.110
+SPAdes         -53 -> 59     195                                63.045
+SPAdes          83 -> 49     185, 304, -174                     63.028
+SPAdes          80 -> 76     155                                62.994
+SPAdes          27 -> -97    -189                               61.514
+SPAdes         -55 -> 96     155                                61.323
+SPAdes          85 -> -94    -162                               61.219
+SPAdes          47 -> 24     178, 223, 186                      55.779
+SPAdes          33 -> 21     178, -224, 186                     55.650
+SPAdes          34 -> -69    170, -148, 170                     24.998
+SPAdes          48 -> 107    164, -244, 279, -167, 127, -227    21.597
+SPAdes         105 -> 46     106                                12.998
+SPAdes         -97 -> 105    106                                12.989
+
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/004_bridges_applied.gfa
+
+
+Bridged assembly graph (2025-12-01 21:11:53)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e. a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/005_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+    total        265     312   5,041,641    99,490           275,733             
+        1        234     304   3,695,468   118,807           275,733   incomplete
+        2          1       0     148,075   148,075           148,075   incomplete
+        3          1       0     140,766   140,766           140,766   incomplete
+        4          1       0     126,051   126,051           126,051   incomplete
+        5          1       0      93,036    93,036            93,036   incomplete
+        6          1       0      92,116    92,116            92,116   incomplete
+        7          1       0      90,644    90,644            90,644   incomplete
+        8          1       0      77,866    77,866            77,866   incomplete
+        9          7       8     128,148    69,347            69,347   incomplete
+       10          1       0      69,248    69,248            69,248   incomplete
+       11          1       0      61,919    61,919            61,919   incomplete
+       12          1       0      52,260    52,260            52,260   incomplete
+       13          1       0      47,419    47,419            47,419   incomplete
+       14          1       0      44,016    44,016            44,016   incomplete
+       15          1       0      34,043    34,043            34,043   incomplete
+       16          1       0      27,697    27,697            27,697   incomplete
+       17          1       0      19,902    19,902            19,902   incomplete
+       18          1       0      19,880    19,880            19,880   incomplete
+       19          1       0      18,792    18,792            18,792   incomplete
+       20          1       0      15,032    15,032            15,032   incomplete
+       21          1       0       8,434     8,434             8,434   incomplete
+       22          1       0       8,082     8,082             8,082   incomplete
+       23          1       0       6,428     6,428             6,428   incomplete
+       24          1       0       5,685     5,685             5,685   incomplete
+       25          1       0       5,493     5,493             5,493   incomplete
+       26          1       0       5,141     5,141             5,141   incomplete
+
+
+Assembly complete (2025-12-01 21:11:53)
+---------------------------------------
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/50_Xci_assemblies/xanthomonas-genome-assemblies/from_ornamentals_dec_2025/10304-A_S48.unicycler/assembly.fasta
+
