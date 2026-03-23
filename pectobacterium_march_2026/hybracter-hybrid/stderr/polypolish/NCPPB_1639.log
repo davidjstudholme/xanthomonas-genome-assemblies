@@ -1,0 +1,57 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2026-03-22 19:30:14)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_1639/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_1639_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_1639_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2026-03-22 19:30:14)[0m
+contig_1 (4,780,807 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2026-03-22 19:30:14)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_1639_1.sam: 15,193,756 alignments from 13,213,402 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_1639_2.sam: 15,195,348 alignments from 13,215,777 reads
+
+Filtering for high-quality end-to-end alignments:
+  29,176,380 alignments kept
+  1,212,724 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2026-03-22 19:31:57)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_1 (4,780,807 bp):
+  mean read depth: 678.7x
+  37 bp have a depth of zero (99.9992% coverage)
+  14 positions changed (0.0003% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9997% (Q55.33)
+
+
+[1;4;93mFinished![0m [2m(2026-03-22 19:31:57)[0m
+Polished sequence (to stdout):
+  contig_1_polypolish (4,780,803 bp)
+
+Time to run: 0:01:43.304514
+

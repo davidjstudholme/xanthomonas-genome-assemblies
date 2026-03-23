@@ -1,0 +1,183 @@
+
+Starting Unicycler (2026-03-19 12:38:55)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 12037_3074_S46_R1_001_fastp_val_1.fq.gz -2 12037_3074_S46_R2_001_fastp_val_2.fq.gz -o NCPPB_3074.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon                     not used
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2026-03-19 12:40:15)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/12037_3074_S46_R1_001_fastp_val_1.fq.gz -2 /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/12037_3074_S46_R2_001_fastp_val_2.fq.gz -o /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2026-03-19 13:00:32)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 148
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2026-03-19 13:01:54)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       155           0   3.23e-03 <-best
+
+Read depth filter: removed 97 contigs totalling 42478 bp
+Deleting /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2026-03-19 13:19:14)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2026-03-19 13:19:14)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    103, 104, 105, 106, 107, 108, 109, 110, 111, 115, 116, 130, 143
+
+Merged small segments:
+    147, 148, 149, 151, 152, 153, 154, 155
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+45 anchor segments (4,866,697 bp) out of 136 total segments (4,926,133 bp)
+
+
+Creating SPAdes contig bridges (2026-03-19 13:19:14)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                                                         Bridge
+Start                            Path                           End     quality
+  -38                             66                            44         20.8
+  -24   -100 -> 103 -> -100 -> -56 -> -107 -> -72 -> 86 -> 86   43          9.7
+  -23                      98 -> -136 -> 98                     25         32.2
+    3                     -73 -> -57 -> -73                     22          7.6
+    5                     -102 -> -76 -> 88                     -8         19.8
+    6                       89 -> 55 -> 89                      7           8.3
+   11                            105                            -12        63.2
+   13                      82 -> -51 -> 82                      -14         7.3
+   15   94 -> 69 -> 94 -> 74 -> 107 -> 63 -> 93 -> -111 -> 93   -43         9.8
+   19                     -88 -> -75 -> 102                     11         19.8
+   21                            -66                            -44        20.8
+   24                            -105                           30         63.2
+   47                             95                            40         63.1
+
+
+Creating loop unrolling bridges (2026-03-19 13:19:14)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+    6       89       55       7         0.99         1.01       1      44.5
+  -25      -98      136      23         0.31         0.88       1      24.9
+  -38       66       44     -21         1.01         0.99       1      44.5
+  -22       73       57      -3         1.00         1.03       1      43.6
+   14      -82       51     -13         0.97         1.05       1      42.8
+
+
+Applying bridges (2026-03-19 13:19:14)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type   Start -> end   Path            Quality
+SPAdes          11 -> -12    105              63.212
+SPAdes          24 -> 30     -105             63.162
+SPAdes          47 -> 40     95               63.098
+SPAdes         -23 -> 25     98, -136, 98     32.237
+SPAdes         -38 -> 44     66               20.835
+SPAdes          21 -> -44    -66              20.817
+SPAdes          19 -> 11     -88, -75, 102    19.805
+SPAdes           5 -> -8     -102, -76, 88    19.803
+loop             6 -> 7      89, 55, 89       44.465
+loop           -22 -> -3     73, 57, 73       43.639
+loop            14 -> -13    -82, 51, -82     42.782
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2026-03-19 13:19:14)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+        1        109     150   4,929,225   396,733           541,053   incomplete
+
+
+Polishing assembly with Pilon (2026-03-19 13:19:14)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  63
+Insert size 99th percentile: 484
+
+Pilon polish round 1
+Total number of changes: 17
+
+Pilon polish round 2
+Total number of changes: 2
+
+Pilon polish round 3
+No Pilon changes
+
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/005_polished.gfa
+
+
+Assembly complete (2026-03-19 14:14:56)
+---------------------------------------
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pectobacterium/NCPPB_3074.unicycler/assembly.fasta
+

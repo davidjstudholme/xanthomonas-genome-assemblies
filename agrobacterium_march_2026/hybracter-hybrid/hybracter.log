@@ -1,0 +1,2035 @@
+[2026:03:22 13:17:17] Copying system default config to hybracter-hybrid/config.yaml
+[2026:03:22 13:17:17] Updating config file with new values
+[2026:03:22 13:17:17] Writing config file to hybracter-hybrid/config.yaml
+[2026:03:22 13:17:17] ------------------
+[2026:03:22 13:17:17] | Runtime config |
+[2026:03:22 13:17:17] ------------------
+
+args:
+  auto: false
+  configfile: hybracter-hybrid/config.yaml
+  contaminants: none
+  databases: null
+  datadir: null
+  depth_filter: 0.25
+  dnaapler_custom_db: none
+  extra_params_flye: null
+  flyeModel: --nano-hq
+  input: hybracter.csv
+  log: hybracter-hybrid/hybracter.log
+  logic: last
+  mac: false
+  medakaModel: r1041_e82_400bps_sup_v5.0.0
+  medaka_override: false
+  min_depth: 0
+  min_length: 1000
+  min_quality: 9
+  no_medaka: false
+  no_pypolca: false
+  output: hybracter-hybrid
+  single: false
+  skip_qc: false
+  subsample_depth: 100
+qc:
+  compression: 5
+  hostRemoveFlagstat: -f 4 -F 3584
+  minimapIndex: -I 8G
+  minimapModel: map-ont
+resources:
+  big:
+    cpu: 16
+    mem: 32000
+    time: '23:59:00'
+  med:
+    cpu: 8
+    mem: 16000
+    time: 08:00:00
+  sml:
+    cpu: 1
+    mem: 4000
+    time: 00:00:05
+
+[2026:03:22 13:17:17] ---------------------
+[2026:03:22 13:17:17] | Snakemake command |
+[2026:03:22 13:17:17] ---------------------
+
+snakemake -s /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/hybrid.smk --configfile hybracter-hybrid/config.yaml --jobs 12 --use-conda --conda-prefix /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda --rerun-incomplete --printshellcmds --nolock --show-failed-logs --conda-frontend conda
+Config file /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../config/config.yaml is extended by additional config specified via the command line.
+Assuming unrestricted shared filesystem usage.
+host: studholme-training-server
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                      count
+-------------------------------------  -------
+aggr_ale_flag                                1
+aggr_assemble                                1
+aggr_combine_plassembler_info                1
+aggr_final_flag                              1
+aggr_long_qc                                 1
+aggr_long_read_polish_flag                   1
+aggr_lrge                                    1
+aggr_plassembler_flag                        1
+aggr_polca_flag                              1
+aggr_seqkit_long                             1
+aggr_seqkit_short                            1
+aggr_short_qc                                1
+aggr_short_read_polish_flag                  1
+aggregate_ale_input_files                    2
+aggregate_finalised_assemblies_rule          2
+aggregate_long_read_polish_input_rule        2
+aggregate_plassembler_input_rule             2
+aggregate_polca_polish_input                 2
+aggregate_short_read_polish_input            2
+all                                          1
+assemble                                     2
+check_completeness                           2
+combine_plassembler_info                     1
+create_final_summary                         1
+estimate_lr_coverage                         2
+fastp                                        2
+filtlong                                     2
+lrge                                         2
+porechop_abi                                 2
+run_seqkit_long                              2
+run_seqkit_short                             2
+total                                       46
+
+Select jobs to execute...
+Failed to solve scheduling problem with ILP solver, falling back to greedy scheduler. You likely have to fix your ILP solver installation. Error message: PULP_CBC_CMD: Not Available (check permissions on cbc)
+Execute 3 jobs...
+[Sun Mar 22 13:17:20 2026]
+localrule fastp:
+    input: 12037_4800_S66_R1_001_fastp.fastq.gz, 12037_4800_S66_R2_001_fastp.fastq.gz
+    output: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800.html, hybracter-hybrid/processing/qc/fastp/NCPPB_4800.json, hybracter-hybrid/versions/NCPPB_4800/fastp.version
+    log: hybracter-hybrid/stderr/fastp/NCPPB_4800.log
+    jobid: 9
+    benchmark: hybracter-hybrid/benchmarks/fastp/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        fastp --in1 12037_4800_S66_R1_001_fastp.fastq.gz --in2 12037_4800_S66_R2_001_fastp.fastq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_4800.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_4800.json --thread 1 2> hybracter-hybrid/stderr/fastp/NCPPB_4800.log
+        fastp --version 2> hybracter-hybrid/versions/NCPPB_4800/fastp.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/c2ef56c0c1d0f64a7c681eaab9ad7f1d_
+[Sun Mar 22 13:17:20 2026]
+localrule fastp:
+    input: 12037_4801_S67_R1_001_fastp.fastq.gz, 12037_4801_S67_R2_001_fastp.fastq.gz
+    output: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801.html, hybracter-hybrid/processing/qc/fastp/NCPPB_4801.json, hybracter-hybrid/versions/NCPPB_4801/fastp.version
+    log: hybracter-hybrid/stderr/fastp/NCPPB_4801.log
+    jobid: 10
+    benchmark: hybracter-hybrid/benchmarks/fastp/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        fastp --in1 12037_4801_S67_R1_001_fastp.fastq.gz --in2 12037_4801_S67_R2_001_fastp.fastq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_4801.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_4801.json --thread 1 2> hybracter-hybrid/stderr/fastp/NCPPB_4801.log
+        fastp --version 2> hybracter-hybrid/versions/NCPPB_4801/fastp.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/c2ef56c0c1d0f64a7c681eaab9ad7f1d_
+[Sun Mar 22 13:17:20 2026]
+localrule lrge:
+    input: 12037_4801_PBK60708_pass_dtrim.fastq.gz
+    output: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    log: hybracter-hybrid/stderr/lrge/NCPPB_4801.log
+    jobid: 7
+    benchmark: hybracter-hybrid/benchmarks/lrge/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        if [[ 12037_4801_PBK60708_pass_dtrim.fastq.gz =~ \.gz$ ]]; then
+        INPUT_CMD="zcat 12037_4801_PBK60708_pass_dtrim.fastq.gz"
+        else
+        INPUT_CMD="cat 12037_4801_PBK60708_pass_dtrim.fastq.gz"
+        fi
+
+        # Now run the awk command on the decompressed file
+        if $INPUT_CMD | awk '{if (NR % 4 == 1) count++} END {exit count > 10000 ? 0 : 1}'; then
+            # There are more than 10,000 reads, run lrge with defaults
+            lrge -t 8 -s 42 12037_4801_PBK60708_pass_dtrim.fastq.gz -o hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+        else
+            # There are less than 10,000 reads, use the all-vs-all strategy with all available reads
+            lrge -t 8 -s 42 -n 10000 12037_4801_PBK60708_pass_dtrim.fastq.gz -o hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+        fi
+
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/c13c3001710609a2a1e73bf988308794_
+Select jobs to execute...
+[Sun Mar 22 13:18:18 2026]
+Finished jobid: 7 (Rule: lrge)
+1 of 46 steps (2%) done
+Execute 2 jobs...
+[Sun Mar 22 13:18:18 2026]
+localrule lrge:
+    input: 12037_4800_PBK60708_pass_dtrim.fastq.gz
+    output: hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    log: hybracter-hybrid/stderr/lrge/NCPPB_4800.log
+    jobid: 4
+    benchmark: hybracter-hybrid/benchmarks/lrge/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        if [[ 12037_4800_PBK60708_pass_dtrim.fastq.gz =~ \.gz$ ]]; then
+        INPUT_CMD="zcat 12037_4800_PBK60708_pass_dtrim.fastq.gz"
+        else
+        INPUT_CMD="cat 12037_4800_PBK60708_pass_dtrim.fastq.gz"
+        fi
+
+        # Now run the awk command on the decompressed file
+        if $INPUT_CMD | awk '{if (NR % 4 == 1) count++} END {exit count > 10000 ? 0 : 1}'; then
+            # There are more than 10,000 reads, run lrge with defaults
+            lrge -t 8 -s 42 12037_4800_PBK60708_pass_dtrim.fastq.gz -o hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+        else
+            # There are less than 10,000 reads, use the all-vs-all strategy with all available reads
+            lrge -t 8 -s 42 -n 10000 12037_4800_PBK60708_pass_dtrim.fastq.gz -o hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+        fi
+
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/c13c3001710609a2a1e73bf988308794_
+[Sun Mar 22 13:18:18 2026]
+localrule filtlong:
+    input: 12037_4801_PBK60708_pass_dtrim.fastq.gz, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz, hybracter-hybrid/versions/NCPPB_4801/filtlong.version
+    log: hybracter-hybrid/stderr/filtlong/NCPPB_4801.log
+    jobid: 6
+    benchmark: hybracter-hybrid/benchmarks/filtlong/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz, hybracter-hybrid/versions/NCPPB_4801/filtlong.version; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        filtlong --target_bases 250000000 --min_mean_q 9 --min_length 1000 12037_4801_PBK60708_pass_dtrim.fastq.gz | pigz > hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz 2> hybracter-hybrid/stderr/filtlong/NCPPB_4801.log
+        filtlong --version > hybracter-hybrid/versions/NCPPB_4801/filtlong.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/e29627940fc67a691bea045b2752a205_
+[Sun Mar 22 13:18:37 2026]
+Finished jobid: 9 (Rule: fastp)
+2 of 46 steps (4%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:18:37 2026]
+localrule run_seqkit_short:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz
+    output: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt
+    log: hybracter-hybrid/stderr/seqkit/NCPPB_4800_short.log
+    jobid: 13
+    benchmark: hybracter-hybrid/benchmarks/seqkit/NCPPB_4800_short.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt; Input files updated by another job: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        seqkit stats hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz -T  > hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt
+        seqkit stats hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz -T  > hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/a8fea94bb79190b87077380117f14d7d_
+[Sun Mar 22 13:18:55 2026]
+Finished jobid: 10 (Rule: fastp)
+3 of 46 steps (7%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 13:18:55 2026]
+localrule aggr_short_qc:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz
+    output: hybracter-hybrid/flags/aggr_short_qc.flag
+    jobid: 8
+    reason: Missing output files: hybracter-hybrid/flags/aggr_short_qc.flag; Input files updated by another job: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_short_qc.flag
+        
+[Sun Mar 22 13:18:55 2026]
+localrule run_seqkit_short:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz
+    output: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt
+    log: hybracter-hybrid/stderr/seqkit/NCPPB_4801_short.log
+    jobid: 14
+    benchmark: hybracter-hybrid/benchmarks/seqkit/NCPPB_4801_short.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt; Input files updated by another job: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        seqkit stats hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz -T  > hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt
+        seqkit stats hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz -T  > hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/a8fea94bb79190b87077380117f14d7d_
+[Sun Mar 22 13:18:55 2026]
+Finished jobid: 8 (Rule: aggr_short_qc)
+4 of 46 steps (9%) done
+[Sun Mar 22 13:19:16 2026]
+Finished jobid: 4 (Rule: lrge)
+5 of 46 steps (11%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 13:19:16 2026]
+localrule filtlong:
+    input: 12037_4800_PBK60708_pass_dtrim.fastq.gz, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz, hybracter-hybrid/versions/NCPPB_4800/filtlong.version
+    log: hybracter-hybrid/stderr/filtlong/NCPPB_4800.log
+    jobid: 3
+    benchmark: hybracter-hybrid/benchmarks/filtlong/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz, hybracter-hybrid/versions/NCPPB_4800/filtlong.version; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        filtlong --target_bases 250000000 --min_mean_q 9 --min_length 1000 12037_4800_PBK60708_pass_dtrim.fastq.gz | pigz > hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz 2> hybracter-hybrid/stderr/filtlong/NCPPB_4800.log
+        filtlong --version > hybracter-hybrid/versions/NCPPB_4800/filtlong.version
+        
+[Sun Mar 22 13:19:16 2026]
+localrule aggr_lrge:
+    input: hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/flags/aggr_lrge.flag
+    jobid: 11
+    reason: Missing output files: hybracter-hybrid/flags/aggr_lrge.flag; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_lrge.flag
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/e29627940fc67a691bea045b2752a205_
+[Sun Mar 22 13:19:16 2026]
+Finished jobid: 11 (Rule: aggr_lrge)
+6 of 46 steps (13%) done
+[Sun Mar 22 13:19:33 2026]
+Finished jobid: 6 (Rule: filtlong)
+7 of 46 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:19:33 2026]
+localrule porechop_abi:
+    input: hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz
+    output: hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz, hybracter-hybrid/versions/NCPPB_4801/porechop.version
+    log: hybracter-hybrid/stderr/porechop/NCPPB_4801.log
+    jobid: 5
+    benchmark: hybracter-hybrid/benchmarks/porechop/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/versions/NCPPB_4801/porechop.version, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz; Input files updated by another job: hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        porechop_abi -i hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz  -o hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -t 8 --discard_middle 2> hybracter-hybrid/stderr/porechop/NCPPB_4801.log
+        porechop_abi --version > hybracter-hybrid/versions/NCPPB_4801/porechop.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/9e6a12a596af867d599204110ec25f2a_
+[Sun Mar 22 13:20:33 2026]
+Finished jobid: 3 (Rule: filtlong)
+8 of 46 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:20:33 2026]
+localrule porechop_abi:
+    input: hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz
+    output: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz, hybracter-hybrid/versions/NCPPB_4800/porechop.version
+    log: hybracter-hybrid/stderr/porechop/NCPPB_4800.log
+    jobid: 2
+    benchmark: hybracter-hybrid/benchmarks/porechop/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/versions/NCPPB_4800/porechop.version, hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz; Input files updated by another job: hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        porechop_abi -i hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz  -o hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -t 8 --discard_middle 2> hybracter-hybrid/stderr/porechop/NCPPB_4800.log
+        porechop_abi --version > hybracter-hybrid/versions/NCPPB_4800/porechop.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/9e6a12a596af867d599204110ec25f2a_
+[Sun Mar 22 13:21:08 2026]
+Finished jobid: 13 (Rule: run_seqkit_short)
+9 of 46 steps (20%) done
+[Sun Mar 22 13:21:58 2026]
+Finished jobid: 14 (Rule: run_seqkit_short)
+10 of 46 steps (22%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:21:58 2026]
+localrule aggr_seqkit_short:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt
+    output: hybracter-hybrid/flags/aggr_seqkit_short.flag
+    jobid: 12
+    reason: Missing output files: hybracter-hybrid/flags/aggr_seqkit_short.flag; Input files updated by another job: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_seqkit_short.flag
+        
+[Sun Mar 22 13:21:58 2026]
+Finished jobid: 12 (Rule: aggr_seqkit_short)
+11 of 46 steps (24%) done
+[Sun Mar 22 13:22:33 2026]
+Finished jobid: 5 (Rule: porechop_abi)
+12 of 46 steps (26%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:22:33 2026]
+localrule run_seqkit_long:
+    input: hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt
+    log: hybracter-hybrid/stderr/seqkit/NCPPB_4801_long.log
+    jobid: 17
+    benchmark: hybracter-hybrid/benchmarks/seqkit/NCPPB_4801_long.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt; Input files updated by another job: hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        seqkit stats hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -T -N 50 -N 90 > hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/a8fea94bb79190b87077380117f14d7d_
+[Sun Mar 22 13:22:37 2026]
+Finished jobid: 17 (Rule: run_seqkit_long)
+13 of 46 steps (28%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:22:37 2026]
+localrule estimate_lr_coverage:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt
+    jobid: 19
+    reason: Missing output files: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:22:38 2026]
+Finished jobid: 19 (Rule: estimate_lr_coverage)
+14 of 46 steps (30%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:22:38 2026]
+localrule assemble:
+    input: hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt
+    output: hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/versions/NCPPB_4801/flye.version, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt
+    log: hybracter-hybrid/stderr/assemble/NCPPB_4801.log
+    jobid: 22
+    benchmark: hybracter-hybrid/benchmarks/assemble/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/versions/NCPPB_4801/flye.version; Input files updated by another job: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        if [ "False" = "True" ]; then 
+            flye --nano-hq hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -t 12  --out-dir hybracter-hybrid/processing/assemblies/NCPPB_4801 None 2> hybracter-hybrid/stderr/assemble/NCPPB_4801.log
+        else
+            flye --nano-hq hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -t 12  --out-dir hybracter-hybrid/processing/assemblies/NCPPB_4801  2> hybracter-hybrid/stderr/assemble/NCPPB_4801.log
+        fi
+        flye --version > hybracter-hybrid/versions/NCPPB_4801/flye.version   
+        cp hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/867e79b85cea33b7804e36b625a69929_
+[Sun Mar 22 13:26:54 2026]
+Finished jobid: 2 (Rule: porechop_abi)
+15 of 46 steps (33%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 13:26:54 2026]
+localrule aggr_long_qc:
+    input: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz, hybracter-hybrid/versions/NCPPB_4800/filtlong.version, hybracter-hybrid/versions/NCPPB_4801/filtlong.version, hybracter-hybrid/versions/NCPPB_4800/porechop.version, hybracter-hybrid/versions/NCPPB_4801/porechop.version
+    output: hybracter-hybrid/flags/aggr_long_qc.flag
+    jobid: 1
+    reason: Missing output files: hybracter-hybrid/flags/aggr_long_qc.flag; Input files updated by another job: hybracter-hybrid/versions/NCPPB_4801/porechop.version, hybracter-hybrid/versions/NCPPB_4800/porechop.version, hybracter-hybrid/versions/NCPPB_4800/filtlong.version, hybracter-hybrid/versions/NCPPB_4801/filtlong.version, hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_long_qc.flag
+        
+[Sun Mar 22 13:26:54 2026]
+localrule run_seqkit_long:
+    input: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt
+    log: hybracter-hybrid/stderr/seqkit/NCPPB_4800_long.log
+    jobid: 16
+    benchmark: hybracter-hybrid/benchmarks/seqkit/NCPPB_4800_long.txt
+    reason: Missing output files: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt; Input files updated by another job: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        seqkit stats hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -T -N 50 -N 90 > hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/a8fea94bb79190b87077380117f14d7d_
+[Sun Mar 22 13:26:54 2026]
+Finished jobid: 1 (Rule: aggr_long_qc)
+16 of 46 steps (35%) done
+[Sun Mar 22 13:26:59 2026]
+Finished jobid: 16 (Rule: run_seqkit_long)
+17 of 46 steps (37%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:26:59 2026]
+localrule estimate_lr_coverage:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt
+    jobid: 18
+    reason: Missing output files: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt; Input files updated by another job: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:27:00 2026]
+Finished jobid: 18 (Rule: estimate_lr_coverage)
+18 of 46 steps (39%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 13:27:00 2026]
+localrule assemble:
+    input: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt
+    output: hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/versions/NCPPB_4800/flye.version, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt
+    log: hybracter-hybrid/stderr/assemble/NCPPB_4800.log
+    jobid: 21
+    benchmark: hybracter-hybrid/benchmarks/assemble/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/versions/NCPPB_4800/flye.version; Input files updated by another job: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt, hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        if [ "False" = "True" ]; then 
+            flye --nano-hq hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -t 12  --out-dir hybracter-hybrid/processing/assemblies/NCPPB_4800 None 2> hybracter-hybrid/stderr/assemble/NCPPB_4800.log
+        else
+            flye --nano-hq hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -t 12  --out-dir hybracter-hybrid/processing/assemblies/NCPPB_4800  2> hybracter-hybrid/stderr/assemble/NCPPB_4800.log
+        fi
+        flye --version > hybracter-hybrid/versions/NCPPB_4800/flye.version   
+        cp hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/867e79b85cea33b7804e36b625a69929_
+[Sun Mar 22 13:27:00 2026]
+localrule aggr_seqkit_long:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt, hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt
+    output: hybracter-hybrid/flags/aggr_seqkit_long.flag
+    jobid: 15
+    reason: Missing output files: hybracter-hybrid/flags/aggr_seqkit_long.flag; Input files updated by another job: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_lr.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_long.txt, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_lr.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_long.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_seqkit_long.flag
+        
+[Sun Mar 22 13:27:00 2026]
+Finished jobid: 15 (Rule: aggr_seqkit_long)
+19 of 46 steps (41%) done
+[Sun Mar 22 13:31:36 2026]
+Finished jobid: 21 (Rule: assemble)
+20 of 46 steps (43%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:31:36 2026]
+localcheckpoint check_completeness:
+    input: hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/completeness/NCPPB_4800.txt
+    jobid: 25
+    reason: Missing output files: <TBD>; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+DAG of jobs will be updated after completion.
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:31:38 2026]
+Finished jobid: 25 (Rule: check_completeness)
+21 of 46 steps (46%) done
+Updating checkpoint dependencies.
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Mar 22 13:31:38 2026]
+localrule extract_chromosome_complete:
+    input: hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/completeness/NCPPB_4800.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt
+    jobid: 73
+    reason: Missing output files: hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 13:31:38 2026]
+localrule plassembler_hybrid:
+    input: hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_summary.tsv, hybracter-hybrid/versions/NCPPB_4800/plassembler.version
+    log: hybracter-hybrid/stderr/plassembler_hybrid/NCPPB_4800.log
+    jobid: 74
+    benchmark: hybracter-hybrid/benchmarks/plassembler_hybrid/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_summary.tsv, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        plassembler run -l hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -o hybracter-hybrid/processing/plassembler/NCPPB_4800 -1 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz -2 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz -d /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases -t 12 -c 2500000 --skip_qc --flye_directory hybracter-hybrid/processing/assemblies/NCPPB_4800 --depth_filter 0.25 -f 2> hybracter-hybrid/stderr/plassembler_hybrid/NCPPB_4800.log
+        touch hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+        touch hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_summary.tsv
+        plassembler --version > hybracter-hybrid/versions/NCPPB_4800/plassembler.version
+        
+[Sun Mar 22 13:31:38 2026]
+localrule estimate_sr_coverage:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4800_r2.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt
+    jobid: 77
+    reason: Missing output files: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/78019da34467f1ccbd2a1e2321558605_
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:31:39 2026]
+Finished jobid: 77 (Rule: estimate_sr_coverage)
+22 of 74 steps (30%) done
+[Sun Mar 22 13:31:39 2026]
+Finished jobid: 73 (Rule: extract_chromosome_complete)
+23 of 74 steps (31%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:31:39 2026]
+localrule dnaapler_pre_chrom:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta
+    log: hybracter-hybrid/stderr/dnaapler/NCPPB_4800_pre_chrom.log
+    jobid: 84
+    benchmark: hybracter-hybrid/benchmarks/dnaapler/NCPPB_4800_pre_chrom.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        dnaapler all -i hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta -o hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom --ignore hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt -p NCPPB_4800 -t 8 -a nearest --db dnaa,cog1474,repa -f 2> hybracter-hybrid/stderr/dnaapler/NCPPB_4800_pre_chrom.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_
+[Sun Mar 22 13:32:10 2026]
+Finished jobid: 84 (Rule: dnaapler_pre_chrom)
+24 of 74 steps (32%) done
+[Sun Mar 22 13:48:19 2026]
+Finished jobid: 22 (Rule: assemble)
+25 of 74 steps (34%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 13:48:19 2026]
+localrule aggr_assemble:
+    input: hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt, hybracter-hybrid/versions/NCPPB_4800/flye.version, hybracter-hybrid/versions/NCPPB_4801/flye.version
+    output: hybracter-hybrid/flags/aggr_assemble.flag
+    jobid: 20
+    reason: Missing output files: hybracter-hybrid/flags/aggr_assemble.flag; Input files updated by another job: hybracter-hybrid/versions/NCPPB_4801/flye.version, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/versions/NCPPB_4800/flye.version
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_assemble.flag
+        
+[Sun Mar 22 13:48:19 2026]
+localcheckpoint check_completeness:
+    input: hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/completeness/NCPPB_4801.txt
+    jobid: 27
+    reason: Missing output files: <TBD>; Input files updated by another job: hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+DAG of jobs will be updated after completion.
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:48:19 2026]
+Finished jobid: 20 (Rule: aggr_assemble)
+26 of 74 steps (35%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:48:24 2026]
+Finished jobid: 27 (Rule: check_completeness)
+27 of 74 steps (36%) done
+Updating checkpoint dependencies.
+Removing temporary output hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz.
+Removing temporary output hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz.
+Removing temporary output hybracter-hybrid/processing/qc/NCPPB_4801_filt.fastq.gz.
+Removing temporary output hybracter-hybrid/processing/qc/NCPPB_4800_filt.fastq.gz.
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Mar 22 13:48:24 2026]
+localrule plassembler_hybrid:
+    input: hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_summary.tsv, hybracter-hybrid/versions/NCPPB_4801/plassembler.version
+    log: hybracter-hybrid/stderr/plassembler_hybrid/NCPPB_4801.log
+    jobid: 114
+    benchmark: hybracter-hybrid/benchmarks/plassembler_hybrid/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_summary.tsv
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        plassembler run -l hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -o hybracter-hybrid/processing/plassembler/NCPPB_4801 -1 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz -2 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz -d /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases -t 12 -c 2500000 --skip_qc --flye_directory hybracter-hybrid/processing/assemblies/NCPPB_4801 --depth_filter 0.25 -f 2> hybracter-hybrid/stderr/plassembler_hybrid/NCPPB_4801.log
+        touch hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta
+        touch hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_summary.tsv
+        plassembler --version > hybracter-hybrid/versions/NCPPB_4801/plassembler.version
+        
+[Sun Mar 22 13:48:24 2026]
+localrule estimate_sr_coverage:
+    input: hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r1.txt, hybracter-hybrid/processing/qc/seqkit/NCPPB_4801_r2.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt
+    jobid: 117
+    reason: Missing output files: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/78019da34467f1ccbd2a1e2321558605_
+Shell command: None
+[Sun Mar 22 13:48:24 2026]
+localrule extract_chromosome_complete:
+    input: hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly.fasta, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/completeness/NCPPB_4801.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt
+    jobid: 113
+    reason: Missing output files: hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 13:48:26 2026]
+Finished jobid: 117 (Rule: estimate_sr_coverage)
+28 of 102 steps (27%) done
+[Sun Mar 22 13:48:26 2026]
+Finished jobid: 113 (Rule: extract_chromosome_complete)
+29 of 102 steps (28%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 13:48:26 2026]
+localrule dnaapler_pre_chrom:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta
+    log: hybracter-hybrid/stderr/dnaapler/NCPPB_4801_pre_chrom.log
+    jobid: 124
+    benchmark: hybracter-hybrid/benchmarks/dnaapler/NCPPB_4801_pre_chrom.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        dnaapler all -i hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta -o hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom --ignore hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt -p NCPPB_4801 -t 8 -a nearest --db dnaa,cog1474,repa -f 2> hybracter-hybrid/stderr/dnaapler/NCPPB_4801_pre_chrom.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_
+[Sun Mar 22 13:48:56 2026]
+Finished jobid: 124 (Rule: dnaapler_pre_chrom)
+30 of 102 steps (29%) done
+[Sun Mar 22 14:14:09 2026]
+Finished jobid: 74 (Rule: plassembler_hybrid)
+31 of 102 steps (30%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:14:09 2026]
+localrule concatenate_chrom_plassembler:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+    output: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+    jobid: 72
+    reason: Missing output files: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        cat hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome.fasta hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta > hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+        
+[Sun Mar 22 14:14:09 2026]
+localrule add_sample_plassembler:
+    input: hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_summary.tsv
+    output: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4800_plassembler_summary.tsv
+    jobid: 85
+    reason: Missing output files: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4800_plassembler_summary.tsv; Input files updated by another job: hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_summary.tsv
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:14:09 2026]
+Finished jobid: 72 (Rule: concatenate_chrom_plassembler)
+32 of 102 steps (31%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:14:09 2026]
+localrule assess_chrom_pre_polish:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/chrom_pre_polish.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4800/chrom_pre_polish.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4800_chrom_pre_polish_1.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4800_chrom_pre_polish.log
+    jobid: 90
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4800_chrom_pre_polish.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/chrom_pre_polish.score; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4800_chrom_pre_polish_1.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4800_chrom_pre_polish.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4800_chrom_pre_polish_1.sam hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4800/chrom_pre_polish.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4800_chrom_pre_polish.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4800/chrom_pre_polish.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/chrom_pre_polish.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4800_chrom_pre_polish.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:14:09 2026]
+localrule medaka_round_1:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta, hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta, hybracter-hybrid/versions/NCPPB_4800/medaka_complete.version
+    log: hybracter-hybrid/stderr/medaka_round_1/NCPPB_4800.log
+    jobid: 71
+    benchmark: hybracter-hybrid/benchmarks/medaka_round_1/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        export CUDA_VISIBLE_DEVICES=""
+        if [ "True" = "True" ]; then
+           # from v 0.10.0, hybracter supports --bacteria
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -d hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800 --bacteria  -t 12 2> hybracter-hybrid/stderr/medaka_round_1/NCPPB_4800.log
+            medaka --version > hybracter-hybrid/versions/NCPPB_4800/medaka_complete.version
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus_probs.hdf
+        else
+           
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -d hybracter-hybrid/processing/pre_polish/NCPPB_4800_chromosome_plus_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800 -m r1041_e82_400bps_sup_v5.0.0 -t 12 2> hybracter-hybrid/stderr/medaka_round_1/NCPPB_4800.log
+            medaka --version > hybracter-hybrid/versions/NCPPB_4800/medaka_complete.version
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus_probs.hdf
+        fi
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:14:21 2026]
+Finished jobid: 85 (Rule: add_sample_plassembler)
+33 of 102 steps (32%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:14:21 2026]
+localrule aggregate_plassembler_input_rule:
+    input: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4800_plassembler_summary.tsv
+    output: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4800.txt
+    jobid: 35
+    reason: Missing output files: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4800_plassembler_summary.tsv
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        echo hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4800_plassembler_summary.tsv
+        touch hybracter-hybrid/flags/aggr_plassembler/NCPPB_4800.txt
+        
+[Sun Mar 22 14:14:21 2026]
+Finished jobid: 35 (Rule: aggregate_plassembler_input_rule)
+34 of 102 steps (33%) done
+[Sun Mar 22 14:17:40 2026]
+Finished jobid: 71 (Rule: medaka_round_1)
+35 of 102 steps (34%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:17:40 2026]
+localrule medaka_round_1_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta, hybracter-hybrid/completeness/NCPPB_4800.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_1.fasta, hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800_ignore_list.txt
+    jobid: 70
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_1.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:17:52 2026]
+Finished jobid: 70 (Rule: medaka_round_1_extract_intermediate_assembly)
+36 of 102 steps (35%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:17:52 2026]
+localrule dnaapler:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_1.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/versions/NCPPB_4800/dnaapler.version
+    log: hybracter-hybrid/stderr/dnaapler/NCPPB_4800.log
+    jobid: 69
+    benchmark: hybracter-hybrid/benchmarks/dnaapler/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_1.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        dnaapler all -i hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_1.fasta -o hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800 --ignore hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt -p NCPPB_4800 -t 8 -a nearest --db "dnaa,cog1474,repa" -f 2> hybracter-hybrid/stderr/dnaapler/NCPPB_4800.log
+        dnaapler --version > hybracter-hybrid/versions/NCPPB_4800/dnaapler.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_
+[Sun Mar 22 14:18:28 2026]
+Finished jobid: 69 (Rule: dnaapler)
+37 of 102 steps (36%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:18:28 2026]
+localrule concatenate_intermediate_dnaapler_with_plassembler:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta
+    jobid: 68
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        cat hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta > hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta
+        
+[Sun Mar 22 14:18:28 2026]
+localrule compare_assemblies_medaka_round_1:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_1_vs_pre_polish.txt
+    jobid: 83
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_1_vs_pre_polish.txt; Input files updated by another job: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+[Sun Mar 22 14:18:28 2026]
+Finished jobid: 68 (Rule: concatenate_intermediate_dnaapler_with_plassembler)
+38 of 102 steps (37%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:18:28 2026]
+localrule medaka_round_2:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta, hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    log: hybracter-hybrid/stderr/medaka_round_2/NCPPB_4800.log
+    jobid: 67
+    benchmark: hybracter-hybrid/benchmarks/medaka_round_2/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        export CUDA_VISIBLE_DEVICES=""
+        if [ "True" = "True" ]; then
+           # from v 0.10.0, hybracter supports --bacteria
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -d hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800 --bacteria  -t 12 2> hybracter-hybrid/stderr/medaka_round_2/NCPPB_4800.log
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus_probs.hdf
+        else
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4800_filt_trim.fastq.gz -d hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented_chrom_and_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800 -m r1041_e82_400bps_sup_v5.0.0 -t 12 2> hybracter-hybrid/stderr/medaka_round_2/NCPPB_4800.log
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus_probs.hdf
+        fi
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:18:31 2026]
+Finished jobid: 83 (Rule: compare_assemblies_medaka_round_1)
+39 of 102 steps (38%) done
+[Sun Mar 22 14:21:19 2026]
+Finished jobid: 67 (Rule: medaka_round_2)
+40 of 102 steps (39%) done
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Mar 22 14:21:19 2026]
+localrule aggregate_long_read_polish_input_rule:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    output: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4800.txt
+    jobid: 29
+    reason: Missing output files: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        echo hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+        touch hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4800.txt
+        
+[Sun Mar 22 14:21:19 2026]
+localrule bwa_index:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    output: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt
+    jobid: 76
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=00:00:05
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/57e68a1fd955487e6566fe7e1ff93469_
+[Sun Mar 22 14:21:19 2026]
+localrule medaka_round_2_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/completeness/NCPPB_4800.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800_ignore_list.txt
+    jobid: 81
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:21:19 2026]
+Finished jobid: 29 (Rule: aggregate_long_read_polish_input_rule)
+41 of 102 steps (40%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:21:22 2026]
+Finished jobid: 76 (Rule: bwa_index)
+42 of 102 steps (41%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:21:22 2026]
+localrule bwa_mem:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt
+    output: hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam
+    log: hybracter-hybrid/stderr/bwa_mem/NCPPB_4800.log
+    jobid: 75
+    benchmark: hybracter-hybrid/benchmarks/bwa_mem/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa mem -t 8 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz > hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam 2> hybracter-hybrid/stderr/bwa_mem/NCPPB_4800.log
+        bwa mem -t 8 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam 2> hybracter-hybrid/stderr/bwa_mem/NCPPB_4800.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/57e68a1fd955487e6566fe7e1ff93469_
+[Sun Mar 22 14:21:24 2026]
+Finished jobid: 81 (Rule: medaka_round_2_extract_intermediate_assembly)
+43 of 102 steps (42%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:21:24 2026]
+localrule compare_assemblies_medaka_round_2:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_1_vs_pre_polish.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_2_vs_medaka_round_1.txt
+    jobid: 82
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_2_vs_medaka_round_1.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800/NCPPB_4800_reoriented.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_1_vs_pre_polish.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:21:28 2026]
+Finished jobid: 82 (Rule: compare_assemblies_medaka_round_2)
+44 of 102 steps (43%) done
+[Sun Mar 22 14:23:35 2026]
+Finished jobid: 75 (Rule: bwa_mem)
+45 of 102 steps (44%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:23:35 2026]
+localrule polypolish:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt
+    output: hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta, hybracter-hybrid/versions/NCPPB_4800/polypolish.version
+    log: hybracter-hybrid/stderr/polypolish/NCPPB_4800.log
+    jobid: 66
+    benchmark: hybracter-hybrid/benchmarks/polypolish/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        coverage=$(head -n 1 hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt)
+        if [ "$coverage" -gt 25 ]; then
+            polypolish polish hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam > hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta 2> hybracter-hybrid/stderr/polypolish/NCPPB_4800.log
+        else
+            polypolish polish --careful hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam > hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta 2> hybracter-hybrid/stderr/polypolish/NCPPB_4800.log
+        fi
+        polypolish --version > hybracter-hybrid/versions/NCPPB_4800/polypolish.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/5d460770182e50ff6a7e28cac53691b9_
+[Sun Mar 22 14:26:39 2026]
+Finished jobid: 90 (Rule: assess_chrom_pre_polish)
+46 of 102 steps (45%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4800/chrom_pre_polish.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4800_chrom_pre_polish_1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:26:40 2026]
+localrule assess_medaka_rd_1:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/chrom_pre_polish.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_1.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_1.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_1.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_1.log
+    jobid: 89
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4800_medaka_rd_1.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_1.score; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/chrom_pre_polish.score
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_1.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_1.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_1.sam hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_1.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_1.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_1.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_1.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_1.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:28:32 2026]
+Finished jobid: 66 (Rule: polypolish)
+47 of 102 steps (46%) done
+Removing temporary output hybracter-hybrid/processing/complete/bwa/NCPPB_4800_2.sam.
+Removing temporary output hybracter-hybrid/processing/complete/bwa/NCPPB_4800_1.sam.
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:28:32 2026]
+localrule polypolish_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta, hybracter-hybrid/completeness/NCPPB_4800.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta, hybracter-hybrid/processing/complete/polypolish/NCPPB_4800_ignore_list.txt
+    jobid: 65
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:28:32 2026]
+localrule pypolca:
+    input: hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt
+    output: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta, hybracter-hybrid/versions/NCPPB_4800/pypolca_complete.version
+    log: hybracter-hybrid/stderr/pypolca/NCPPB_4800.log
+    jobid: 79
+    benchmark: hybracter-hybrid/benchmarks/pypolca/NCPPB_4800.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta; Input files updated by another job: hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt, hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        coverage=$(head -n 1 hybracter-hybrid/processing/qc/coverage/NCPPB_4800_sr.txt)
+        if [ "$coverage" -gt 5 ]; then
+            pypolca run -a hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta -1 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz -2 hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz -o hybracter-hybrid/processing/complete/pypolca/NCPPB_4800 -t 8 -f -p NCPPB_4800 --careful 2> hybracter-hybrid/stderr/pypolca/NCPPB_4800.log
+        else
+            cp hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+        fi
+
+        pypolca --version > hybracter-hybrid/versions/NCPPB_4800/pypolca_complete.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/0fcc9ec241b3ce0e30038e5f40c171b9_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:28:36 2026]
+Finished jobid: 65 (Rule: polypolish_extract_intermediate_assembly)
+48 of 102 steps (47%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:28:36 2026]
+localrule compare_assemblies_polypolish_vs_medaka_round_2:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_2_vs_medaka_round_1.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/polypolish_vs_medaka_round_2.txt
+    jobid: 80
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/polypolish_vs_medaka_round_2.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/medaka_round_2_vs_medaka_round_1.txt, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:28:40 2026]
+Finished jobid: 80 (Rule: compare_assemblies_polypolish_vs_medaka_round_2)
+49 of 102 steps (48%) done
+[Sun Mar 22 14:37:43 2026]
+Finished jobid: 89 (Rule: assess_medaka_rd_1)
+50 of 102 steps (49%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_1.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:37:44 2026]
+localrule assess_medaka_rd_2:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_1.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_2.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_2.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_2.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_2.log
+    jobid: 88
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4800_medaka_rd_2.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_2.score; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta.bwt, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_1.score
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_2.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_2.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_2.sam hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4800/consensus.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_2.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_2.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_2.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_2.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4800_medaka_rd_2.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:40:55 2026]
+Finished jobid: 79 (Rule: pypolca)
+51 of 102 steps (50%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:40:55 2026]
+localrule pypolca_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta, hybracter-hybrid/completeness/NCPPB_4800.txt, hybracter-hybrid/processing/assemblies/NCPPB_4800/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4800_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_pypolca.fasta, hybracter-hybrid/processing/complete/pypolca/NCPPB_4800_ignore_list.txt
+    jobid: 78
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_pypolca.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:40:55 2026]
+localrule aggregate_polca_polish_input:
+    input: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+    output: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4800.txt
+    jobid: 32
+    reason: Missing output files: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4800.txt
+        
+[Sun Mar 22 14:40:55 2026]
+Finished jobid: 32 (Rule: aggregate_polca_polish_input)
+52 of 102 steps (51%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:40:57 2026]
+Finished jobid: 78 (Rule: pypolca_extract_intermediate_assembly)
+53 of 102 steps (52%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:40:57 2026]
+localrule compare_assemblies_pypolca_vs_polypolish:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_pypolca.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/polypolish_vs_medaka_round_2.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt
+    jobid: 64
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_polypolish.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4800/NCPPB_4800_pypolca.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/polypolish_vs_medaka_round_2.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:41:01 2026]
+Finished jobid: 64 (Rule: compare_assemblies_pypolca_vs_polypolish)
+54 of 102 steps (53%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:41:01 2026]
+localrule aggregate_short_read_polish_input:
+    input: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt
+    output: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4800.txt
+    jobid: 24
+    reason: Missing output files: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4800.txt
+        
+[Sun Mar 22 14:41:01 2026]
+Finished jobid: 24 (Rule: aggregate_short_read_polish_input)
+55 of 102 steps (54%) done
+[Sun Mar 22 14:43:24 2026]
+Finished jobid: 114 (Rule: plassembler_hybrid)
+56 of 102 steps (55%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:43:24 2026]
+localrule concatenate_chrom_plassembler:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta
+    output: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+    jobid: 112
+    reason: Missing output files: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        cat hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome.fasta hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta > hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+        
+[Sun Mar 22 14:43:24 2026]
+localrule add_sample_plassembler:
+    input: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_summary.tsv
+    output: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4801_plassembler_summary.tsv
+    jobid: 125
+    reason: Missing output files: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4801_plassembler_summary.tsv; Input files updated by another job: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_summary.tsv
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:43:24 2026]
+Finished jobid: 112 (Rule: concatenate_chrom_plassembler)
+57 of 102 steps (56%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:43:24 2026]
+localrule assess_chrom_pre_polish:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/chrom_pre_polish.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4801/chrom_pre_polish.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4801_chrom_pre_polish_1.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4801_chrom_pre_polish.log
+    jobid: 130
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4801_chrom_pre_polish.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/chrom_pre_polish.score; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4801_chrom_pre_polish_1.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4801_chrom_pre_polish.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4801_chrom_pre_polish_1.sam hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4801/chrom_pre_polish.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4801_chrom_pre_polish.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4801/chrom_pre_polish.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/chrom_pre_polish.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4801_chrom_pre_polish.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:43:24 2026]
+localrule medaka_round_1:
+    input: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta, hybracter-hybrid/versions/NCPPB_4801/medaka_complete.version
+    log: hybracter-hybrid/stderr/medaka_round_1/NCPPB_4801.log
+    jobid: 111
+    benchmark: hybracter-hybrid/benchmarks/medaka_round_1/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        export CUDA_VISIBLE_DEVICES=""
+        if [ "True" = "True" ]; then
+           # from v 0.10.0, hybracter supports --bacteria
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -d hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801 --bacteria  -t 12 2> hybracter-hybrid/stderr/medaka_round_1/NCPPB_4801.log
+            medaka --version > hybracter-hybrid/versions/NCPPB_4801/medaka_complete.version
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus_probs.hdf
+        else
+           
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -d hybracter-hybrid/processing/pre_polish/NCPPB_4801_chromosome_plus_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801 -m r1041_e82_400bps_sup_v5.0.0 -t 12 2> hybracter-hybrid/stderr/medaka_round_1/NCPPB_4801.log
+            medaka --version > hybracter-hybrid/versions/NCPPB_4801/medaka_complete.version
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus_probs.hdf
+        fi
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:43:26 2026]
+Finished jobid: 125 (Rule: add_sample_plassembler)
+58 of 102 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:43:26 2026]
+localrule aggregate_plassembler_input_rule:
+    input: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4801_plassembler_summary.tsv
+    output: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4801.txt
+    jobid: 36
+    reason: Missing output files: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4801_plassembler_summary.tsv
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        echo hybracter-hybrid/supplementary_results/plassembler_individual_summaries/NCPPB_4801_plassembler_summary.tsv
+        touch hybracter-hybrid/flags/aggr_plassembler/NCPPB_4801.txt
+        
+[Sun Mar 22 14:43:26 2026]
+Finished jobid: 36 (Rule: aggregate_plassembler_input_rule)
+59 of 102 steps (58%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:43:26 2026]
+localrule aggr_plassembler_flag:
+    input: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_plassembler/NCPPB_4801.txt
+    output: hybracter-hybrid/flags/aggr_plassembler.flag
+    jobid: 34
+    reason: Missing output files: hybracter-hybrid/flags/aggr_plassembler.flag; Input files updated by another job: hybracter-hybrid/flags/aggr_plassembler/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_plassembler/NCPPB_4801.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_plassembler.flag
+        
+[Sun Mar 22 14:43:26 2026]
+Finished jobid: 34 (Rule: aggr_plassembler_flag)
+60 of 102 steps (59%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:43:26 2026]
+localrule combine_plassembler_info:
+    input: hybracter-hybrid/flags/aggr_plassembler.flag
+    output: hybracter-hybrid/supplementary_results/plassembler_all_assembly_summary/plassembler_assembly_info.tsv
+    jobid: 38
+    reason: Missing output files: hybracter-hybrid/supplementary_results/plassembler_all_assembly_summary/plassembler_assembly_info.tsv; Input files updated by another job: hybracter-hybrid/flags/aggr_plassembler.flag
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:43:27 2026]
+Finished jobid: 38 (Rule: combine_plassembler_info)
+61 of 102 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:43:27 2026]
+localrule aggr_combine_plassembler_info:
+    input: hybracter-hybrid/supplementary_results/plassembler_all_assembly_summary/plassembler_assembly_info.tsv
+    output: hybracter-hybrid/flags/aggr_combine_plassembler_info.flag
+    jobid: 37
+    reason: Missing output files: hybracter-hybrid/flags/aggr_combine_plassembler_info.flag; Input files updated by another job: hybracter-hybrid/supplementary_results/plassembler_all_assembly_summary/plassembler_assembly_info.tsv
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_combine_plassembler_info.flag
+        
+[Sun Mar 22 14:43:27 2026]
+Finished jobid: 37 (Rule: aggr_combine_plassembler_info)
+62 of 102 steps (61%) done
+[Sun Mar 22 14:46:06 2026]
+Finished jobid: 111 (Rule: medaka_round_1)
+63 of 102 steps (62%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:46:06 2026]
+localrule medaka_round_1_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta, hybracter-hybrid/completeness/NCPPB_4801.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_1.fasta, hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801_ignore_list.txt
+    jobid: 110
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_1.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:46:08 2026]
+Finished jobid: 110 (Rule: medaka_round_1_extract_intermediate_assembly)
+64 of 102 steps (63%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:46:08 2026]
+localrule dnaapler:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_1.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta, hybracter-hybrid/versions/NCPPB_4801/dnaapler.version
+    log: hybracter-hybrid/stderr/dnaapler/NCPPB_4801.log
+    jobid: 109
+    benchmark: hybracter-hybrid/benchmarks/dnaapler/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta; Input files updated by another job: hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_1.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        dnaapler all -i hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_1.fasta -o hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801 --ignore hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt -p NCPPB_4801 -t 8 -a nearest --db "dnaa,cog1474,repa" -f 2> hybracter-hybrid/stderr/dnaapler/NCPPB_4801.log
+        dnaapler --version > hybracter-hybrid/versions/NCPPB_4801/dnaapler.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/2e20c9685892c8c53c04f44043c92cbf_
+[Sun Mar 22 14:46:26 2026]
+Finished jobid: 109 (Rule: dnaapler)
+65 of 102 steps (64%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:46:26 2026]
+localrule concatenate_intermediate_dnaapler_with_plassembler:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta
+    output: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta
+    jobid: 108
+    reason: Missing output files: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta; Input files updated by another job: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        cat hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta > hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta
+        
+[Sun Mar 22 14:46:26 2026]
+localrule compare_assemblies_medaka_round_1:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_1_vs_pre_polish.txt
+    jobid: 123
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_1_vs_pre_polish.txt; Input files updated by another job: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:46:26 2026]
+Finished jobid: 108 (Rule: concatenate_intermediate_dnaapler_with_plassembler)
+66 of 102 steps (65%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:46:26 2026]
+localrule medaka_round_2:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta, hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz
+    output: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    log: hybracter-hybrid/stderr/medaka_round_2/NCPPB_4801.log
+    jobid: 107
+    benchmark: hybracter-hybrid/benchmarks/medaka_round_2/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, mem=32000MB, time=08:00:00
+Shell command: 
+        export CUDA_VISIBLE_DEVICES=""
+        if [ "True" = "True" ]; then
+           # from v 0.10.0, hybracter supports --bacteria
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -d hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801 --bacteria  -t 12 2> hybracter-hybrid/stderr/medaka_round_2/NCPPB_4801.log
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus_probs.hdf
+        else
+            medaka_consensus -i hybracter-hybrid/processing/qc/NCPPB_4801_filt_trim.fastq.gz -d hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented_chrom_and_plasmids.fasta -o hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801 -m r1041_e82_400bps_sup_v5.0.0 -t 12 2> hybracter-hybrid/stderr/medaka_round_2/NCPPB_4801.log
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/calls_to_draft.bam
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/calls_to_draft.bam
+            touch hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus_probs.hdf
+            rm hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus_probs.hdf
+        fi
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:46:29 2026]
+Finished jobid: 123 (Rule: compare_assemblies_medaka_round_1)
+67 of 102 steps (66%) done
+[Sun Mar 22 14:47:23 2026]
+Finished jobid: 88 (Rule: assess_medaka_rd_2)
+68 of 102 steps (67%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4800/medaka_rd_2.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4800_medaka_rd_2.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:47:24 2026]
+localrule assess_polypolish:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_2.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/polypolish.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4800/polypolish.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4800_polypolish.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4800_polypolish.log
+    jobid: 87
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4800_polypolish.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/polypolish.score; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/medaka_rd_2.score, hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4800_polypolish.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4800_polypolish.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4800_polypolish.sam hybracter-hybrid/processing/complete/polypolish/NCPPB_4800.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4800/polypolish.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4800_polypolish.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4800/polypolish.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/polypolish.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4800_polypolish.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:50:50 2026]
+Finished jobid: 107 (Rule: medaka_round_2)
+69 of 102 steps (68%) done
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Mar 22 14:50:50 2026]
+localrule aggregate_long_read_polish_input_rule:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    output: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4801.txt
+    jobid: 30
+    reason: Missing output files: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        echo hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+        touch hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4801.txt
+        
+[Sun Mar 22 14:50:50 2026]
+localrule medaka_round_2_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta, hybracter-hybrid/completeness/NCPPB_4801.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801_ignore_list.txt
+    jobid: 121
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:50:50 2026]
+localrule bwa_index:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    output: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt
+    jobid: 116
+    reason: Missing output files: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=00:00:05
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/57e68a1fd955487e6566fe7e1ff93469_
+[Sun Mar 22 14:50:50 2026]
+Finished jobid: 30 (Rule: aggregate_long_read_polish_input_rule)
+70 of 102 steps (69%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:50:50 2026]
+localrule aggr_long_read_polish_flag:
+    input: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4801.txt
+    output: hybracter-hybrid/flags/aggr_long_read_polish.flag
+    jobid: 28
+    reason: Missing output files: hybracter-hybrid/flags/aggr_long_read_polish.flag; Input files updated by another job: hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4801.txt, hybracter-hybrid/flags/aggr_long_read_polish/NCPPB_4800.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_long_read_polish.flag
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:50:50 2026]
+Finished jobid: 28 (Rule: aggr_long_read_polish_flag)
+71 of 102 steps (70%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:50:51 2026]
+Finished jobid: 121 (Rule: medaka_round_2_extract_intermediate_assembly)
+72 of 102 steps (71%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:50:51 2026]
+localrule compare_assemblies_medaka_round_2:
+    input: hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_1_vs_pre_polish.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_2_vs_medaka_round_1.txt
+    jobid: 122
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_2_vs_medaka_round_1.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801/NCPPB_4801_reoriented.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_1_vs_pre_polish.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 14:50:53 2026]
+Finished jobid: 116 (Rule: bwa_index)
+73 of 102 steps (72%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:50:53 2026]
+localrule bwa_mem:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt
+    output: hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam
+    log: hybracter-hybrid/stderr/bwa_mem/NCPPB_4801.log
+    jobid: 115
+    benchmark: hybracter-hybrid/benchmarks/bwa_mem/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa mem -t 8 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz > hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam 2> hybracter-hybrid/stderr/bwa_mem/NCPPB_4801.log
+        bwa mem -t 8 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam 2> hybracter-hybrid/stderr/bwa_mem/NCPPB_4801.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/57e68a1fd955487e6566fe7e1ff93469_
+[Sun Mar 22 14:50:56 2026]
+Finished jobid: 122 (Rule: compare_assemblies_medaka_round_2)
+74 of 102 steps (73%) done
+[Sun Mar 22 14:53:10 2026]
+Finished jobid: 115 (Rule: bwa_mem)
+75 of 102 steps (74%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:53:10 2026]
+localrule polypolish:
+    input: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta, hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam, hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam, hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt
+    output: hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta, hybracter-hybrid/versions/NCPPB_4801/polypolish.version
+    log: hybracter-hybrid/stderr/polypolish/NCPPB_4801.log
+    jobid: 106
+    benchmark: hybracter-hybrid/benchmarks/polypolish/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam, hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt, hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        coverage=$(head -n 1 hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt)
+        if [ "$coverage" -gt 25 ]; then
+            polypolish polish hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam > hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta 2> hybracter-hybrid/stderr/polypolish/NCPPB_4801.log
+        else
+            polypolish polish --careful hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam > hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta 2> hybracter-hybrid/stderr/polypolish/NCPPB_4801.log
+        fi
+        polypolish --version > hybracter-hybrid/versions/NCPPB_4801/polypolish.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/5d460770182e50ff6a7e28cac53691b9_
+[Sun Mar 22 14:55:30 2026]
+Finished jobid: 87 (Rule: assess_polypolish)
+76 of 102 steps (75%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4800/polypolish.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4800_polypolish.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:55:30 2026]
+localrule assess_pypolca:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz, hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/polypolish.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4800/pypolca.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4800_pypolca.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4800_pypolca.log
+    jobid: 86
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4800_pypolca.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/polypolish.score, hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+    wildcards: sample=NCPPB_4800
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=23:59:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4800_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4800_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4800_pypolca.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4800_pypolca.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4800_pypolca.sam hybracter-hybrid/processing/complete/pypolca/NCPPB_4800/NCPPB_4800_corrected.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4800/pypolca.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4800_pypolca.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4800/pypolca.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4800_pypolca.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:56:18 2026]
+Finished jobid: 130 (Rule: assess_chrom_pre_polish)
+77 of 102 steps (75%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4801/chrom_pre_polish.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4801_chrom_pre_polish_1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 14:56:19 2026]
+localrule assess_medaka_rd_1:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/chrom_pre_polish.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_1.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_1.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_1.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_1.log
+    jobid: 129
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4801_medaka_rd_1.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_1.score; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/chrom_pre_polish.score
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_1.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_1.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_1.sam hybracter-hybrid/processing/complete/medaka_rd_1/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_1.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_1.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_1.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_1.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_1.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 14:59:57 2026]
+Finished jobid: 106 (Rule: polypolish)
+78 of 102 steps (76%) done
+Removing temporary output hybracter-hybrid/processing/complete/bwa/NCPPB_4801_1.sam.
+Removing temporary output hybracter-hybrid/processing/complete/bwa/NCPPB_4801_2.sam.
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 14:59:57 2026]
+localrule polypolish_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta, hybracter-hybrid/completeness/NCPPB_4801.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta, hybracter-hybrid/processing/complete/polypolish/NCPPB_4801_ignore_list.txt
+    jobid: 105
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 14:59:57 2026]
+localrule pypolca:
+    input: hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt
+    output: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta, hybracter-hybrid/versions/NCPPB_4801/pypolca_complete.version
+    log: hybracter-hybrid/stderr/pypolca/NCPPB_4801.log
+    jobid: 119
+    benchmark: hybracter-hybrid/benchmarks/pypolca/NCPPB_4801.txt
+    reason: Missing output files: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta; Input files updated by another job: hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt, hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        coverage=$(head -n 1 hybracter-hybrid/processing/qc/coverage/NCPPB_4801_sr.txt)
+        if [ "$coverage" -gt 5 ]; then
+            pypolca run -a hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta -1 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz -2 hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz -o hybracter-hybrid/processing/complete/pypolca/NCPPB_4801 -t 8 -f -p NCPPB_4801 --careful 2> hybracter-hybrid/stderr/pypolca/NCPPB_4801.log
+        else
+            cp hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+        fi
+
+        pypolca --version > hybracter-hybrid/versions/NCPPB_4801/pypolca_complete.version
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/0fcc9ec241b3ce0e30038e5f40c171b9_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:00:01 2026]
+Finished jobid: 105 (Rule: polypolish_extract_intermediate_assembly)
+79 of 102 steps (77%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:00:01 2026]
+localrule compare_assemblies_polypolish_vs_medaka_round_2:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_2_vs_medaka_round_1.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/polypolish_vs_medaka_round_2.txt
+    jobid: 120
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/polypolish_vs_medaka_round_2.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_medaka_rd_2.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/medaka_round_2_vs_medaka_round_1.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:00:05 2026]
+Finished jobid: 120 (Rule: compare_assemblies_polypolish_vs_medaka_round_2)
+80 of 102 steps (78%) done
+[Sun Mar 22 15:02:57 2026]
+Finished jobid: 129 (Rule: assess_medaka_rd_1)
+81 of 102 steps (79%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_1.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:02:57 2026]
+localrule assess_medaka_rd_2:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_1.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_2.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_2.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_2.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_2.log
+    jobid: 128
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4801_medaka_rd_2.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_2.score; Input files updated by another job: hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta.bwt, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_1.score, hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_2.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_2.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_2.sam hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4801/consensus.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_2.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_2.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_2.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_2.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4801_medaka_rd_2.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 15:07:54 2026]
+Finished jobid: 86 (Rule: assess_pypolca)
+82 of 102 steps (80%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4800/pypolca.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4800_pypolca.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:07:55 2026]
+localrule aggregate_ale_input_files:
+    input: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score
+    output: hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt
+    jobid: 40
+    reason: Missing output files: hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt
+        
+[Sun Mar 22 15:07:55 2026]
+Finished jobid: 40 (Rule: aggregate_ale_input_files)
+83 of 102 steps (81%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:07:55 2026]
+localrule select_best_chromosome_assembly_complete:
+    input: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score, hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4800_assembly_info.txt, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt
+    output: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_chromosome.fasta, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_plasmid.fasta, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_final.fasta, hybracter-hybrid/supplementary_results/ale_score_summaries/complete/NCPPB_4800.tsv, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_summary.tsv, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_per_contig_stats.tsv
+    jobid: 91
+    reason: Missing output files: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_final.fasta; Input files updated by another job: hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4800_ignore_list.txt, hybracter-hybrid/processing/plassembler/NCPPB_4800/plassembler_plasmids.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4800/pypolca.score, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4800_pre_chrom/NCPPB_4800_reoriented.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4800/pypolca_vs_polypolish.txt
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:07:57 2026]
+Finished jobid: 91 (Rule: select_best_chromosome_assembly_complete)
+84 of 102 steps (82%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:07:57 2026]
+localrule aggregate_finalised_assemblies_rule:
+    input: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_final.fasta
+    output: hybracter-hybrid/flags/aggr_final/NCPPB_4800.txt
+    jobid: 44
+    reason: Missing output files: hybracter-hybrid/flags/aggr_final/NCPPB_4800.txt; Input files updated by another job: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4800_final.fasta
+    wildcards: sample=NCPPB_4800
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_final/NCPPB_4800.txt
+        
+[Sun Mar 22 15:07:57 2026]
+Finished jobid: 44 (Rule: aggregate_finalised_assemblies_rule)
+85 of 102 steps (83%) done
+[Sun Mar 22 15:11:24 2026]
+Finished jobid: 128 (Rule: assess_medaka_rd_2)
+86 of 102 steps (84%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4801/medaka_rd_2.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4801_medaka_rd_2.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:11:25 2026]
+localrule assess_polypolish:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_2.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/polypolish.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4801/polypolish.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4801_polypolish.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4801_polypolish.log
+    jobid: 127
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4801_polypolish.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/polypolish.score; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/medaka_rd_2.score, hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4801_polypolish.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4801_polypolish.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4801_polypolish.sam hybracter-hybrid/processing/complete/polypolish/NCPPB_4801.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4801/polypolish.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4801_polypolish.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4801/polypolish.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/polypolish.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4801_polypolish.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 15:12:09 2026]
+Finished jobid: 119 (Rule: pypolca)
+87 of 102 steps (85%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 15:12:09 2026]
+localrule pypolca_extract_intermediate_assembly:
+    input: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta, hybracter-hybrid/completeness/NCPPB_4801.txt, hybracter-hybrid/processing/assemblies/NCPPB_4801/assembly_info.txt, hybracter-hybrid/processing/chrom_size/NCPPB_4801_lrge_estimated_chromosome_size.txt
+    output: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_pypolca.fasta, hybracter-hybrid/processing/complete/pypolca/NCPPB_4801_ignore_list.txt
+    jobid: 118
+    reason: Missing output files: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_pypolca.fasta; Input files updated by another job: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 15:12:09 2026]
+localrule aggregate_polca_polish_input:
+    input: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+    output: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4801.txt
+    jobid: 33
+    reason: Missing output files: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4801.txt
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:12:09 2026]
+Finished jobid: 33 (Rule: aggregate_polca_polish_input)
+88 of 102 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:12:09 2026]
+localrule aggr_polca_flag:
+    input: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4801.txt
+    output: hybracter-hybrid/flags/aggr_pypolca.flag
+    jobid: 31
+    reason: Missing output files: hybracter-hybrid/flags/aggr_pypolca.flag; Input files updated by another job: hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4801.txt, hybracter-hybrid/flags/aggr_pypolca_polish/NCPPB_4800.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_pypolca.flag
+        
+[Sun Mar 22 15:12:09 2026]
+Finished jobid: 31 (Rule: aggr_polca_flag)
+89 of 102 steps (87%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:12:10 2026]
+Finished jobid: 118 (Rule: pypolca_extract_intermediate_assembly)
+90 of 102 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:12:10 2026]
+localrule compare_assemblies_pypolca_vs_polypolish:
+    input: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_pypolca.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/polypolish_vs_medaka_round_2.txt
+    output: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt
+    jobid: 104
+    reason: Missing output files: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_polypolish.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/polypolish_vs_medaka_round_2.txt, hybracter-hybrid/supplementary_results/intermediate_chromosome_assemblies/NCPPB_4801/NCPPB_4801_pypolca.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=08:00:00
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:12:14 2026]
+Finished jobid: 104 (Rule: compare_assemblies_pypolca_vs_polypolish)
+91 of 102 steps (89%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:12:14 2026]
+localrule aggregate_short_read_polish_input:
+    input: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt
+    output: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4801.txt
+    jobid: 26
+    reason: Missing output files: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4801.txt
+        
+[Sun Mar 22 15:12:14 2026]
+Finished jobid: 26 (Rule: aggregate_short_read_polish_input)
+92 of 102 steps (90%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:12:14 2026]
+localrule aggr_short_read_polish_flag:
+    input: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4801.txt
+    output: hybracter-hybrid/flags/aggr_short_read_polish.flag
+    jobid: 23
+    reason: Missing output files: hybracter-hybrid/flags/aggr_short_read_polish.flag; Input files updated by another job: hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_short_read_polish/NCPPB_4801.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_short_read_polish.flag
+        
+[Sun Mar 22 15:12:14 2026]
+Finished jobid: 23 (Rule: aggr_short_read_polish_flag)
+93 of 102 steps (91%) done
+[Sun Mar 22 15:17:22 2026]
+Finished jobid: 127 (Rule: assess_polypolish)
+94 of 102 steps (92%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4801/polypolish.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4801_polypolish.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:17:23 2026]
+localrule assess_pypolca:
+    input: hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz, hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz, hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/polypolish.score
+    output: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score, hybracter-hybrid/processing/ale_out_files/NCPPB_4801/pypolca.ale, hybracter-hybrid/processing/ale_sams/NCPPB_4801_pypolca.sam
+    log: hybracter-hybrid/stderr/ale/NCPPB_4801_pypolca.log
+    jobid: 126
+    benchmark: hybracter-hybrid/benchmarks/ale/NCPPB_4801_pypolca.txt
+    reason: Missing output files: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/polypolish.score, hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+    wildcards: sample=NCPPB_4801
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=16000, mem_mib=15259, mem=16000MB, time=23:59:00
+Shell command: 
+        bwa index hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta
+        bwa mem -t 12 -a hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta hybracter-hybrid/processing/qc/fastp/NCPPB_4801_1.fastq.gz hybracter-hybrid/processing/qc/fastp/NCPPB_4801_2.fastq.gz > hybracter-hybrid/processing/ale_sams/NCPPB_4801_pypolca.sam 2> hybracter-hybrid/stderr/ale/NCPPB_4801_pypolca.log
+        ALE hybracter-hybrid/processing/ale_sams/NCPPB_4801_pypolca.sam hybracter-hybrid/processing/complete/pypolca/NCPPB_4801/NCPPB_4801_corrected.fasta hybracter-hybrid/processing/ale_out_files/NCPPB_4801/pypolca.ale 2> hybracter-hybrid/stderr/ale/NCPPB_4801_pypolca.log
+        grep "# ALE_score: " hybracter-hybrid/processing/ale_out_files/NCPPB_4801/pypolca.ale | sed 's/# ALE_score: //' > hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score
+        rm hybracter-hybrid/stderr/ale/NCPPB_4801_pypolca.log
+        
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/1f127272af595dbd32d91ba9155c0eef_
+[Sun Mar 22 15:22:56 2026]
+Finished jobid: 126 (Rule: assess_pypolca)
+95 of 102 steps (93%) done
+Removing temporary output hybracter-hybrid/processing/ale_out_files/NCPPB_4801/pypolca.ale.
+Removing temporary output hybracter-hybrid/processing/ale_sams/NCPPB_4801_pypolca.sam.
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:22:58 2026]
+localrule aggregate_ale_input_files:
+    input: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score
+    output: hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt
+    jobid: 41
+    reason: Missing output files: hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt
+        
+[Sun Mar 22 15:22:58 2026]
+Finished jobid: 41 (Rule: aggregate_ale_input_files)
+96 of 102 steps (94%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Mar 22 15:22:58 2026]
+localrule aggr_ale_flag:
+    input: hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt
+    output: hybracter-hybrid/flags/aggr_ale.flag
+    jobid: 39
+    reason: Missing output files: hybracter-hybrid/flags/aggr_ale.flag; Input files updated by another job: hybracter-hybrid/flags/aggr_ale/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_ale.flag
+        
+[Sun Mar 22 15:22:58 2026]
+localrule select_best_chromosome_assembly_complete:
+    input: hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score, hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt, hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta, hybracter-hybrid/supplementary_results/flye_individual_summaries/NCPPB_4801_assembly_info.txt, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt, hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt
+    output: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_chromosome.fasta, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_plasmid.fasta, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_final.fasta, hybracter-hybrid/supplementary_results/ale_score_summaries/complete/NCPPB_4801.tsv, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_summary.tsv, hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_per_contig_stats.tsv
+    jobid: 131
+    reason: Missing output files: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_final.fasta; Input files updated by another job: hybracter-hybrid/processing/plassembler/NCPPB_4801/plassembler_plasmids.fasta, hybracter-hybrid/processing/ale_scores_complete/NCPPB_4801/pypolca.score, hybracter-hybrid/processing/complete/dnaapler/NCPPB_4801_pre_chrom/NCPPB_4801_reoriented.fasta, hybracter-hybrid/processing/pre_polish/NCPPB_4801_ignore_list.txt, hybracter-hybrid/supplementary_results/comparisons/NCPPB_4801/pypolca_vs_polypolish.txt, hybracter-hybrid/flags/aggr_ale/NCPPB_4801.txt
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+[Sun Mar 22 15:22:58 2026]
+Finished jobid: 39 (Rule: aggr_ale_flag)
+97 of 102 steps (95%) done
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:22:59 2026]
+Finished jobid: 131 (Rule: select_best_chromosome_assembly_complete)
+98 of 102 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:22:59 2026]
+localrule aggregate_finalised_assemblies_rule:
+    input: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_final.fasta
+    output: hybracter-hybrid/flags/aggr_final/NCPPB_4801.txt
+    jobid: 45
+    reason: Missing output files: hybracter-hybrid/flags/aggr_final/NCPPB_4801.txt; Input files updated by another job: hybracter-hybrid/FINAL_OUTPUT/complete/NCPPB_4801_final.fasta
+    wildcards: sample=NCPPB_4801
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_final/NCPPB_4801.txt
+        
+[Sun Mar 22 15:22:59 2026]
+Finished jobid: 45 (Rule: aggregate_finalised_assemblies_rule)
+99 of 102 steps (97%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:22:59 2026]
+localrule create_final_summary:
+    input: hybracter-hybrid/flags/aggr_final/NCPPB_4800.txt, hybracter-hybrid/flags/aggr_final/NCPPB_4801.txt
+    output: hybracter-hybrid/FINAL_OUTPUT/hybracter_summary.tsv
+    jobid: 43
+    reason: Missing output files: hybracter-hybrid/FINAL_OUTPUT/hybracter_summary.tsv; Input files updated by another job: hybracter-hybrid/flags/aggr_final/NCPPB_4801.txt, hybracter-hybrid/flags/aggr_final/NCPPB_4800.txt
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: None
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+Activating conda environment: ../../../miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/639f4bf04df38f7c8704ca26e9afdad8_
+[Sun Mar 22 15:23:01 2026]
+Finished jobid: 43 (Rule: create_final_summary)
+100 of 102 steps (98%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:23:01 2026]
+localrule aggr_final_flag:
+    input: hybracter-hybrid/FINAL_OUTPUT/hybracter_summary.tsv
+    output: hybracter-hybrid/flags/aggr_final.flag
+    jobid: 42
+    reason: Missing output files: hybracter-hybrid/flags/aggr_final.flag; Input files updated by another job: hybracter-hybrid/FINAL_OUTPUT/hybracter_summary.tsv
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815, mem=4000MB, time=00:00:05
+Shell command: 
+        touch hybracter-hybrid/flags/aggr_final.flag
+        
+[Sun Mar 22 15:23:01 2026]
+Finished jobid: 42 (Rule: aggr_final_flag)
+101 of 102 steps (99%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 22 15:23:01 2026]
+localrule all:
+    input: hybracter-hybrid/flags/aggr_long_qc.flag, hybracter-hybrid/flags/aggr_short_qc.flag, hybracter-hybrid/flags/aggr_lrge.flag, hybracter-hybrid/flags/aggr_seqkit_short.flag, hybracter-hybrid/flags/aggr_seqkit_long.flag, hybracter-hybrid/flags/aggr_assemble.flag, hybracter-hybrid/flags/aggr_short_read_polish.flag, hybracter-hybrid/flags/aggr_long_read_polish.flag, hybracter-hybrid/flags/aggr_pypolca.flag, hybracter-hybrid/flags/aggr_plassembler.flag, hybracter-hybrid/flags/aggr_combine_plassembler_info.flag, hybracter-hybrid/flags/aggr_ale.flag, hybracter-hybrid/flags/aggr_final.flag
+    jobid: 0
+    reason: Input files updated by another job: hybracter-hybrid/flags/aggr_short_qc.flag, hybracter-hybrid/flags/aggr_combine_plassembler_info.flag, hybracter-hybrid/flags/aggr_long_qc.flag, hybracter-hybrid/flags/aggr_lrge.flag, hybracter-hybrid/flags/aggr_pypolca.flag, hybracter-hybrid/flags/aggr_ale.flag, hybracter-hybrid/flags/aggr_long_read_polish.flag, hybracter-hybrid/flags/aggr_final.flag, hybracter-hybrid/flags/aggr_short_read_polish.flag, hybracter-hybrid/flags/aggr_seqkit_short.flag, hybracter-hybrid/flags/aggr_plassembler.flag, hybracter-hybrid/flags/aggr_seqkit_long.flag, hybracter-hybrid/flags/aggr_assemble.flag
+    resources: tmpdir=/tmp
+Shell command: None
+[Sun Mar 22 15:23:01 2026]
+Finished jobid: 0 (Rule: all)
+102 of 102 steps (100%) done
+Complete log(s): /data/djs217/PROJECTS/xanthomonas-genome-assemblies/agrobacterium/.snakemake/log/2026-03-22T131717.865747.snakemake.log
+[2026:03:22 15:23:04] Snakemake finished successfully

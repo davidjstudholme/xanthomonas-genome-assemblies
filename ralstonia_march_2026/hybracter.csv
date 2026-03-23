@@ -1,0 +1,4 @@
+NCPPB_3219,12037_3219_PBK60708_pass_dtrim.fastq.gz,3000000,12037_3219_S26_R1_001_fastp_val_1.fq.gz,12037_3219_S26_R2_001_fastp_val_2.fq.gz
+NCPPB_3445,12037_3445_PBK60708_pass_dtrim.fastq.gz,3000000,12037_3445_S25_R1_001_fastp_val_1.fq.gz,12037_3445_S25_R2_001_fastp_val_2.fq.gz
+NCPPB_3792,12037_3792_PBK60708_pass_dtrim.fastq.gz,3000000,12037_3792_S27_R1_001_fastp_val_1.fq.gz,12037_3792_S27_R2_001_fastp_val_2.fq.gz
+NCPPB_3983,12037_3983_PBK60708_pass_dtrim.fastq.gz,3000000,12037_3983_S28_R1_001_fastp_val_1.fq.gz,12037_3983_S28_R2_001_fastp_val_2.fq.gz
