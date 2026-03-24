@@ -71,3 +71,29 @@ Creating mmi index file /data/djs217/PROJECTS/xanthomonas-genome-assemblies/pseu
 [12:18:58 - PWorker] 14.3% Done (0.9/6.0 Mbases) in 1707.9s
 [12:57:26 - PWorker] Batches in cache: 7.
 [12:57:26 - PWorker] 28.5% Done (1.7/6.0 Mbases) in 4016.1s
+[13:16:27 - PWorker] Batches in cache: 6.
+[13:16:27 - PWorker] 42.7% Done (2.6/6.0 Mbases) in 5157.0s
+[13:51:12 - PWorker] Batches in cache: 5.
+[13:51:12 - PWorker] 56.9% Done (3.4/6.0 Mbases) in 7241.9s
+[14:28:41 - PWorker] Batches in cache: 4.
+[14:28:41 - PWorker] 71.0% Done (4.3/6.0 Mbases) in 9491.1s
+[14:59:19 - PWorker] Batches in cache: 3.
+[14:59:19 - PWorker] 85.3% Done (5.2/6.0 Mbases) in 11328.7s
+[15:22:48 - PWorker] Batches in cache: 2.
+[15:22:48 - PWorker] 99.4% Done (6.0/6.0 Mbases) in 12737.8s
+[15:32:51 - PWorker] Batches in cache: 1.
+[15:32:51 - PWorker] 100.0% Done (6.0/6.0 Mbases) in 13341.3s
+[15:32:52 - PWorker] Processed 8 batches
+[15:32:52 - PWorker] All done, 0 remainder regions.
+[15:32:52 - Predict] Finished processing all regions.
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/7aafc1085ca44eee01942c03ca74ecad_/lib/python3.11/site-packages/medaka/common.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+[15:33:18 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.
+[15:33:19 - DataIndx] Loaded 1/1 (100.00%) sample files.

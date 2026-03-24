@@ -1,0 +1,64 @@
+[2026-03-23 16:44:28] INFO: Starting Flye 2.9.6-b1802
+[2026-03-23 16:44:28] INFO: >>>STAGE: configure
+[2026-03-23 16:44:28] INFO: Configuring run
+[2026-03-23 16:44:37] INFO: Total read length: 298173092
+[2026-03-23 16:44:37] INFO: Reads N50/N90: 25154 / 18121
+[2026-03-23 16:44:37] INFO: Minimum overlap set to 10000
+[2026-03-23 16:44:37] INFO: >>>STAGE: assembly
+[2026-03-23 16:44:37] INFO: Assembling disjointigs
+[2026-03-23 16:44:37] INFO: Reading sequences
+[2026-03-23 16:44:41] INFO: Building minimizer index
+[2026-03-23 16:44:41] INFO: Pre-calculating index storage
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+[2026-03-23 16:44:44] INFO: Filling index
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+[2026-03-23 16:44:59] INFO: Extending reads
+[2026-03-23 16:47:07] INFO: Overlap-based coverage: 62
+[2026-03-23 16:47:07] INFO: Median overlap divergence: 0.00423851
+0% 60% 90% 100% 
+[2026-03-23 16:49:01] INFO: Assembled 3 disjointigs
+[2026-03-23 16:49:01] INFO: Generating sequence
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+[2026-03-23 16:49:02] INFO: Filtering contained disjointigs
+0% 30% 60% 100% 
+[2026-03-23 16:49:04] INFO: Contained seqs: 0
+[2026-03-23 16:49:04] INFO: >>>STAGE: consensus
+[2026-03-23 16:49:04] INFO: Running Minimap2
+[2026-03-23 16:49:56] INFO: Computing consensus
+[2026-03-23 16:50:30] INFO: Alignment error rate: 0.007267
+[2026-03-23 16:50:31] INFO: >>>STAGE: repeat
+[2026-03-23 16:50:31] INFO: Building and resolving repeat graph
+[2026-03-23 16:50:31] INFO: Parsing disjointigs
+[2026-03-23 16:50:31] INFO: Building repeat graph
+0% 30% 60% 100% 
+[2026-03-23 16:50:34] INFO: Median overlap divergence: 0.00723842
+[2026-03-23 16:50:34] INFO: Parsing reads
+[2026-03-23 16:50:37] INFO: Aligning reads to the graph
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+[2026-03-23 16:51:05] INFO: Aligned read sequence: 296274109 / 298173092 (0.993631)
+[2026-03-23 16:51:05] INFO: Median overlap divergence: 0.00183553
+[2026-03-23 16:51:05] INFO: Mean edge coverage: 64
+[2026-03-23 16:51:05] INFO: Simplifying the graph
+[2026-03-23 16:51:05] INFO: >>>STAGE: contigger
+[2026-03-23 16:51:05] INFO: Generating contigs
+[2026-03-23 16:51:05] INFO: Reading sequences
+[2026-03-23 16:51:08] INFO: Generated 3 contigs
+[2026-03-23 16:51:08] INFO: Added 0 scaffold connections
+[2026-03-23 16:51:08] INFO: >>>STAGE: polishing
+[2026-03-23 16:51:08] INFO: Polishing genome (1/1)
+[2026-03-23 16:51:08] INFO: Running minimap2
+[2026-03-23 16:52:18] INFO: Separating alignment into bubbles
+[2026-03-23 16:53:06] INFO: Alignment error rate: 0.003799
+[2026-03-23 16:53:06] INFO: Correcting bubbles
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+[2026-03-23 16:54:07] INFO: >>>STAGE: finalize
+[2026-03-23 16:54:07] INFO: Assembly statistics:
+
+	Total length:	4676528
+	Fragments:	3
+	Fragments N50:	3012969
+	Largest frg:	3012969
+	Scaffolds:	0
+	Mean coverage:	63
+
+[2026-03-23 16:54:07] INFO: Final assembly: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/ralstonia_march_2026/hybracter-hybrid/processing/assemblies/NCPPB_3792/assembly.fasta
