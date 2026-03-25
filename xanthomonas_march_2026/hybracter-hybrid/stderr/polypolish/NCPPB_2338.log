@@ -1,0 +1,57 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2026-03-25 01:39:29)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_2338/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_2338_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_2338_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2026-03-25 01:39:29)[0m
+contig_1 (5,290,192 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2026-03-25 01:39:29)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_2338_1.sam: 10,752,684 alignments from 9,719,977 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_2338_2.sam: 10,756,074 alignments from 9,720,775 reads
+
+Filtering for high-quality end-to-end alignments:
+  20,846,540 alignments kept
+  662,218 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2026-03-25 01:40:42)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_1 (5,290,192 bp):
+  mean read depth: 474.0x
+  3 bp have a depth of zero (99.9999% coverage)
+  274 positions changed (0.0052% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9948% (Q42.86)
+
+
+[1;4;93mFinished![0m [2m(2026-03-25 01:40:43)[0m
+Polished sequence (to stdout):
+  contig_1_polypolish (5,290,176 bp)
+
+Time to run: 0:01:13.965560
+
