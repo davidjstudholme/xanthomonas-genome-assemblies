@@ -2,110 +2,117 @@
   parser = self.make_parser(ctx)
 /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/78019da34467f1ccbd2a1e2321558605_/lib/python3.12/site-packages/click/core.py:1206: UserWarning: The parameter --flye_directory is used more than once. Remove its duplicate as parameters should be unique.
   self.parse_args(ctx, args)
-2026-03-23 18:20:06.354 | INFO     | plassembler:begin_plassembler:101 - You are using Plassembler version 1.8.1
+2026-03-25 10:11:00.229 | INFO     | plassembler:begin_plassembler:101 - You are using Plassembler version 1.8.1
 
-2026-03-23 18:20:06.354 | INFO     | plassembler:begin_plassembler:102 - Repository homepage is https://github.com/gbouras13/plassembler
-2026-03-23 18:20:06.354 | INFO     | plassembler:begin_plassembler:103 - Written by George Bouras: george.bouras@adelaide.edu.au
-2026-03-23 18:20:06.354 | INFO     | plassembler:run:412 - Database directory is /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:413 - Longreads file is hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:414 - R1 fasta file is hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:415 - R2 fasta file is hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:416 - Chromosome length threshold is 450000
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:417 - Output directory is hybracter-hybrid/processing/plassembler/NCPPB_4682
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:418 - Min long read length is 500
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:419 - Min long read quality is 9
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:420 - Thread count is 12
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:421 - --force is True
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:422 - --skip_qc is True
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:423 - --raw_flag is False
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:424 - --pacbio_model is nothing
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:425 - --keep_fastqs is False
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:426 - --keep_chromosome is False
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:427 - --flye_directory is hybracter-hybrid/processing/assemblies/NCPPB_4682
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:428 - --flye_assembly is nothing
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:429 - --flye_info is nothing
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:430 - --no_chromosome is False
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:431 - --use_raven is False
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:432 - --depth_filter is 0.25
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:433 - --unicycler_options is None
-2026-03-23 18:20:06.355 | INFO     | plassembler:run:434 - --spades_options is None
-2026-03-23 18:20:06.356 | INFO     | plassembler:run:435 - --skip_mash is False
-2026-03-23 18:20:06.356 | INFO     | plassembler:run:439 - Checking dependencies
-2026-03-23 18:20:06.431 | INFO     | plassembler.utils.input_commands:check_dependencies:199 - Flye version found is v2.9.6-b1802.
-2026-03-23 18:20:06.431 | INFO     | plassembler.utils.input_commands:check_dependencies:209 - Flye version is ok.
-2026-03-23 18:20:06.434 | INFO     | plassembler.utils.input_commands:check_dependencies:218 - Raven v1.8.3 found.
-2026-03-23 18:20:06.434 | INFO     | plassembler.utils.input_commands:check_dependencies:220 - Raven version is ok.
-2026-03-23 18:20:06.493 | INFO     | plassembler.utils.input_commands:check_dependencies:242 - Unicycler version found is v0.5.1.
-2026-03-23 18:20:06.493 | INFO     | plassembler.utils.input_commands:check_dependencies:255 - Unicycler version is ok.
-2026-03-23 18:20:06.560 | INFO     | plassembler.utils.input_commands:check_dependencies:265 - SPAdes v4.2.0 found.
-2026-03-23 18:20:06.590 | INFO     | plassembler.utils.input_commands:check_dependencies:278 - Samtools v1.22.1 found.
-2026-03-23 18:20:06.614 | INFO     | plassembler.utils.input_commands:check_dependencies:289 - minimap2 v2.30-r1287 found.
-2026-03-23 18:20:06.620 | INFO     | plassembler.utils.input_commands:check_dependencies:300 - fastp v1.0.1 found.
-2026-03-23 18:20:06.624 | INFO     | plassembler.utils.input_commands:check_dependencies:311 - chopper v0.11.0 found.
-2026-03-23 18:20:06.645 | INFO     | plassembler.utils.input_commands:check_dependencies:326 - mash v2.3 found.
-2026-03-23 18:20:07.593 | INFO     | plassembler.utils.input_commands:check_dependencies:337 - canu v2.2 found.
-2026-03-23 18:20:08.394 | INFO     | plassembler.utils.input_commands:check_dependencies:348 - dnaapler v1.3.0 found.
-2026-03-23 18:20:08.493 | INFO     | plassembler.utils.input_commands:check_dependencies:365 - BLAST version found is v2.17.0.
-2026-03-23 18:20:08.493 | INFO     | plassembler.utils.input_commands:check_dependencies:371 - All dependencies found.
-2026-03-23 18:20:08.494 | INFO     | plassembler:run:448 - Checking database installation.
-2026-03-23 18:20:08.494 | INFO     | plassembler.utils.db:check_db_installation:52 - PLSDB Database mash sketch at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh exists.
-2026-03-23 18:20:08.494 | INFO     | plassembler.utils.db:check_db_installation:53 - PLSDB Database tsv metadata file at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.tsv exists.
-2026-03-23 18:20:08.494 | INFO     | plassembler.utils.db:check_db_installation:54 - PLSDB Database at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases has already been downloaded
-2026-03-23 18:20:08.494 | INFO     | plassembler:run:456 - Database successfully checked.
-2026-03-23 18:20:08.495 | INFO     | plassembler:run:459 - Checking input fastqs.
-2026-03-23 18:20:08.499 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz checked
-2026-03-23 18:20:08.544 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz checked
-2026-03-23 18:20:08.603 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz checked
-2026-03-23 18:20:08.603 | INFO     | plassembler:run:467 - FASTQ file hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz compression is True
-2026-03-23 18:20:08.604 | INFO     | plassembler:run:468 - FASTQ file hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz compression is True
-2026-03-23 18:20:08.604 | INFO     | plassembler:run:469 - FASTQ file hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz compression is True
-2026-03-23 18:20:08.638 | INFO     | plassembler:run:518 - You have specified a hybracter-hybrid/processing/assemblies/NCPPB_4682 with an existing flye assembly.
-2026-03-23 18:20:08.638 | INFO     | plassembler:run:521 - Copying files.
-2026-03-23 18:20:08.642 | INFO     | plassembler:run:562 - Counting Contigs.
-2026-03-23 18:20:08.668 | INFO     | plassembler.utils.plass_class:get_contig_count:87 - Assembled 2 contigs.
-2026-03-23 18:20:08.668 | INFO     | plassembler:run:773 - More than one contig was assembled with Flye.
-2026-03-23 18:20:08.668 | INFO     | plassembler:run:774 - Extracting Chromosome.
-2026-03-23 18:20:08.724 | INFO     | plassembler:run:809 - Chromosome Identified. Plassembler will now use long and short reads to assemble plasmids accurately.
-2026-03-23 18:20:08.724 | INFO     | plassembler:run:811 - Mapping long reads.
-2026-03-23 18:20:08.725 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz ...
-2026-03-23 18:20:10.943 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz
-2026-03-23 18:20:10.944 | INFO     | plassembler:run:820 - Skipping short read trimming as --skip_qc is True
-2026-03-23 18:21:37.101 | INFO     | plassembler:run:830 - Mapping short reads.
-2026-03-23 18:21:37.102 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq ...
-2026-03-23 18:23:06.022 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq
-2026-03-23 18:23:06.036 | INFO     | plassembler:run:837 - Processing Sam/Bam Files and extracting Fastqs.
-2026-03-23 18:23:07.546 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.sam ...
-2026-03-23 18:24:04.444 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.sam
-2026-03-23 18:24:04.445 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
-2026-03-23 18:24:08.524 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
-2026-03-23 18:24:08.526 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
-2026-03-23 18:24:14.989 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
-2026-03-23 18:24:14.990 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
-2026-03-23 18:25:07.626 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
-2026-03-23 18:25:07.628 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R2.fastq -0 /dev/null -s /dev/null -n ...
-2026-03-23 18:25:07.878 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R2.fastq -0 /dev/null -s /dev/null -n
-2026-03-23 18:25:07.879 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n ...
-2026-03-23 18:25:09.504 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n
-2026-03-23 18:25:27.594 | INFO     | plassembler:run:854 - Running Unicycler.
-2026-03-23 18:25:27.595 | INFO     | plassembler.utils.external_tools:run:58 - Started running unicycler -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/NCPPB_4682/unicycler_output ...
-2026-03-23 18:31:02.274 | INFO     | plassembler.utils.external_tools:run:60 - Done running unicycler -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/NCPPB_4682/unicycler_output
-2026-03-23 18:31:02.274 | INFO     | plassembler:run:879 - Unicycler identified plasmids. Calculating Plasmid Copy Numbers.
-2026-03-23 18:31:02.445 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz ...
-2026-03-23 18:31:05.250 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz
-2026-03-23 18:31:05.251 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_long.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_long.bam ...
-2026-03-23 18:31:06.139 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_long.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_long.bam
-2026-03-23 18:31:06.141 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq ...
-2026-03-23 18:33:54.240 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq
-2026-03-23 18:33:54.301 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_short.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_short.bam ...
-2026-03-23 18:37:00.063 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_short.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_short.bam
-2026-03-23 18:37:18.475 | INFO     | plassembler:run:887 - Calculating mash distances to PLSDB.
-2026-03-23 18:37:18.475 | INFO     | plassembler:run:895 - Calculating mash distances to PLSDB.
-2026-03-23 18:37:18.499 | INFO     | plassembler.utils.external_tools:run:58 - Started running mash sketch hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta -i ...
-2026-03-23 18:37:18.625 | INFO     | plassembler.utils.external_tools:run:60 - Done running mash sketch hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta -i
-2026-03-23 18:37:18.626 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running mash dist hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta.msh /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh -v 0.1 -d 0.1 -i ...
-2026-03-23 18:37:20.409 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running mash dist hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta.msh /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh -v 0.1 -d 0.1 -i
-2026-03-23 18:37:21.521 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:754 - Filtering contigs below depth filter: 0.25.
-2026-03-23 18:37:21.522 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:756 - All plasmids whose short and long read copy numbers are both below 0.25 will be removed.
-2026-03-23 18:37:21.522 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:772 - No plasmids were filtered due to low depth.
-2026-03-23 18:37:23.101 | INFO     | plassembler:end_plassembler:118 - Plassembler has finished
-2026-03-23 18:37:23.101 | INFO     | plassembler:end_plassembler:119 - Elapsed time: 1036.77 seconds
+2026-03-25 10:11:00.229 | INFO     | plassembler:begin_plassembler:102 - Repository homepage is https://github.com/gbouras13/plassembler
+2026-03-25 10:11:00.229 | INFO     | plassembler:begin_plassembler:103 - Written by George Bouras: george.bouras@adelaide.edu.au
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:412 - Database directory is /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:413 - Longreads file is hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:414 - R1 fasta file is hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:415 - R2 fasta file is hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:416 - Chromosome length threshold is 450000
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:417 - Output directory is hybracter-hybrid/processing/plassembler/NCPPB_4682
+2026-03-25 10:11:00.229 | INFO     | plassembler:run:418 - Min long read length is 500
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:419 - Min long read quality is 9
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:420 - Thread count is 12
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:421 - --force is True
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:422 - --skip_qc is True
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:423 - --raw_flag is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:424 - --pacbio_model is nothing
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:425 - --keep_fastqs is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:426 - --keep_chromosome is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:427 - --flye_directory is hybracter-hybrid/processing/assemblies/NCPPB_4682
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:428 - --flye_assembly is nothing
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:429 - --flye_info is nothing
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:430 - --no_chromosome is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:431 - --use_raven is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:432 - --depth_filter is 0.25
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:433 - --unicycler_options is None
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:434 - --spades_options is None
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:435 - --skip_mash is False
+2026-03-25 10:11:00.230 | INFO     | plassembler:run:439 - Checking dependencies
+2026-03-25 10:11:00.325 | INFO     | plassembler.utils.input_commands:check_dependencies:199 - Flye version found is v2.9.6-b1802.
+2026-03-25 10:11:00.325 | INFO     | plassembler.utils.input_commands:check_dependencies:209 - Flye version is ok.
+2026-03-25 10:11:00.328 | INFO     | plassembler.utils.input_commands:check_dependencies:218 - Raven v1.8.3 found.
+2026-03-25 10:11:00.328 | INFO     | plassembler.utils.input_commands:check_dependencies:220 - Raven version is ok.
+2026-03-25 10:11:00.430 | INFO     | plassembler.utils.input_commands:check_dependencies:242 - Unicycler version found is v0.5.1.
+2026-03-25 10:11:00.430 | INFO     | plassembler.utils.input_commands:check_dependencies:255 - Unicycler version is ok.
+2026-03-25 10:11:00.542 | INFO     | plassembler.utils.input_commands:check_dependencies:265 - SPAdes v4.2.0 found.
+2026-03-25 10:11:00.561 | INFO     | plassembler.utils.input_commands:check_dependencies:278 - Samtools v1.22.1 found.
+2026-03-25 10:11:00.565 | INFO     | plassembler.utils.input_commands:check_dependencies:289 - minimap2 v2.30-r1287 found.
+2026-03-25 10:11:00.570 | INFO     | plassembler.utils.input_commands:check_dependencies:300 - fastp v1.0.1 found.
+2026-03-25 10:11:00.575 | INFO     | plassembler.utils.input_commands:check_dependencies:311 - chopper v0.11.0 found.
+2026-03-25 10:11:00.595 | INFO     | plassembler.utils.input_commands:check_dependencies:326 - mash v2.3 found.
+2026-03-25 10:11:01.737 | INFO     | plassembler.utils.input_commands:check_dependencies:337 - canu v2.2 found.
+2026-03-25 10:11:02.751 | INFO     | plassembler.utils.input_commands:check_dependencies:348 - dnaapler v1.3.0 found.
+2026-03-25 10:11:02.905 | INFO     | plassembler.utils.input_commands:check_dependencies:365 - BLAST version found is v2.17.0.
+2026-03-25 10:11:02.906 | INFO     | plassembler.utils.input_commands:check_dependencies:371 - All dependencies found.
+2026-03-25 10:11:02.906 | INFO     | plassembler:run:448 - Checking database installation.
+2026-03-25 10:11:02.906 | INFO     | plassembler.utils.db:check_db_installation:52 - PLSDB Database mash sketch at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh exists.
+2026-03-25 10:11:02.907 | INFO     | plassembler.utils.db:check_db_installation:53 - PLSDB Database tsv metadata file at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.tsv exists.
+2026-03-25 10:11:02.907 | INFO     | plassembler.utils.db:check_db_installation:54 - PLSDB Database at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases has already been downloaded
+2026-03-25 10:11:02.907 | INFO     | plassembler:run:456 - Database successfully checked.
+2026-03-25 10:11:02.907 | INFO     | plassembler:run:459 - Checking input fastqs.
+2026-03-25 10:11:02.912 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz checked
+2026-03-25 10:11:02.961 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz checked
+2026-03-25 10:11:03.000 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz checked
+2026-03-25 10:11:03.001 | INFO     | plassembler:run:467 - FASTQ file hybracter-hybrid/processing/qc/NCPPB_4682_filt_trim.fastq.gz compression is True
+2026-03-25 10:11:03.001 | INFO     | plassembler:run:468 - FASTQ file hybracter-hybrid/processing/qc/fastp/NCPPB_4682_1.fastq.gz compression is True
+2026-03-25 10:11:03.001 | INFO     | plassembler:run:469 - FASTQ file hybracter-hybrid/processing/qc/fastp/NCPPB_4682_2.fastq.gz compression is True
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:126 - Flye directory hybracter-hybrid/processing/assemblies/NCPPB_4682 is not a directory or does not exist.
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:129 - Long read assembly will not be skipped.
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:134 - Flye assembly FASTA file hybracter-hybrid/processing/assemblies/NCPPB_4682/assembly.fasta does not exist.
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:135 - Long read assembly will not be skipped.
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:140 - Flye assembly info file hybracter-hybrid/processing/assemblies/NCPPB_4682/assembly_info.txt does not exist.
+2026-03-25 10:11:03.040 | WARNING  | plassembler.utils.input_commands:validate_flye_directory:141 - Long read assembly will not be skipped.
+2026-03-25 10:11:03.040 | INFO     | plassembler:run:511 - Running Flye.
+2026-03-25 10:11:03.041 | INFO     | plassembler.utils.external_tools:run:58 - Started running flye --nano-hq hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz --out-dir hybracter-hybrid/processing/plassembler/NCPPB_4682 --threads 12 ...
+2026-03-25 10:12:14.870 | INFO     | plassembler.utils.external_tools:run:60 - Done running flye --nano-hq hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz --out-dir hybracter-hybrid/processing/plassembler/NCPPB_4682 --threads 12
+2026-03-25 10:12:14.871 | INFO     | plassembler:run:562 - Counting Contigs.
+2026-03-25 10:12:14.921 | INFO     | plassembler.utils.plass_class:get_contig_count:87 - Assembled 2 contigs.
+2026-03-25 10:12:14.921 | INFO     | plassembler:run:773 - More than one contig was assembled with Flye.
+2026-03-25 10:12:14.921 | INFO     | plassembler:run:774 - Extracting Chromosome.
+2026-03-25 10:12:14.993 | INFO     | plassembler:run:809 - Chromosome Identified. Plassembler will now use long and short reads to assemble plasmids accurately.
+2026-03-25 10:12:14.994 | INFO     | plassembler:run:811 - Mapping long reads.
+2026-03-25 10:12:14.994 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz ...
+2026-03-25 10:12:17.576 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz
+2026-03-25 10:12:17.576 | INFO     | plassembler:run:820 - Skipping short read trimming as --skip_qc is True
+2026-03-25 10:13:49.466 | INFO     | plassembler:run:830 - Mapping short reads.
+2026-03-25 10:13:49.467 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq ...
+2026-03-25 10:15:55.296 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/flye_renamed.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq
+2026-03-25 10:15:55.329 | INFO     | plassembler:run:837 - Processing Sam/Bam Files and extracting Fastqs.
+2026-03-25 10:15:56.930 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.sam ...
+2026-03-25 10:19:06.976 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.sam
+2026-03-25 10:19:07.000 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
+2026-03-25 10:19:13.450 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
+2026-03-25 10:19:13.452 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
+2026-03-25 10:19:17.049 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
+2026-03-25 10:19:17.050 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam ...
+2026-03-25 10:19:56.044 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/NCPPB_4682/chromosome.bed hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read.bam
+2026-03-25 10:19:56.049 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R2.fastq -0 /dev/null -s /dev/null -n ...
+2026-03-25 10:19:56.283 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/unmapped_R2.fastq -0 /dev/null -s /dev/null -n
+2026-03-25 10:19:56.285 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n ...
+2026-03-25 10:19:58.276 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n
+2026-03-25 10:20:16.794 | INFO     | plassembler:run:854 - Running Unicycler.
+2026-03-25 10:20:16.795 | INFO     | plassembler.utils.external_tools:run:58 - Started running unicycler -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/NCPPB_4682/unicycler_output ...
+2026-03-25 10:25:07.088 | INFO     | plassembler.utils.external_tools:run:60 - Done running unicycler -1 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/NCPPB_4682/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/NCPPB_4682/unicycler_output
+2026-03-25 10:25:07.089 | INFO     | plassembler:run:879 - Unicycler identified plasmids. Calculating Plasmid Copy Numbers.
+2026-03-25 10:25:07.316 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz ...
+2026-03-25 10:25:09.952 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/chopper_long_reads.fastq.gz
+2026-03-25 10:25:09.954 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_long.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_long.bam ...
+2026-03-25 10:25:10.694 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_long.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_long.bam
+2026-03-25 10:25:10.696 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq ...
+2026-03-25 10:28:48.477 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined.fasta hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/NCPPB_4682/trimmed_R2.fastq
+2026-03-25 10:28:48.516 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_short.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_short.bam ...
+2026-03-25 10:32:41.257 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools sort -@ 12 hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_short.sam -o hybracter-hybrid/processing/plassembler/NCPPB_4682/combined_sorted_short.bam
+2026-03-25 10:33:03.155 | INFO     | plassembler:run:887 - Calculating mash distances to PLSDB.
+2026-03-25 10:33:03.155 | INFO     | plassembler:run:895 - Calculating mash distances to PLSDB.
+2026-03-25 10:33:03.184 | INFO     | plassembler.utils.external_tools:run:58 - Started running mash sketch hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta -i ...
+2026-03-25 10:33:03.233 | INFO     | plassembler.utils.external_tools:run:60 - Done running mash sketch hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta -i
+2026-03-25 10:33:03.235 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running mash dist hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta.msh /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh -v 0.1 -d 0.1 -i ...
+2026-03-25 10:33:05.584 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running mash dist hybracter-hybrid/processing/plassembler/NCPPB_4682/plasmids.fasta.msh /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh -v 0.1 -d 0.1 -i
+2026-03-25 10:33:07.105 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:754 - Filtering contigs below depth filter: 0.25.
+2026-03-25 10:33:07.106 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:756 - All plasmids whose short and long read copy numbers are both below 0.25 will be removed.
+2026-03-25 10:33:07.106 | INFO     | plassembler.utils.plass_class:combine_depth_mash_tsvs:772 - No plasmids were filtered due to low depth.
+2026-03-25 10:33:08.678 | INFO     | plassembler:end_plassembler:118 - Plassembler has finished
+2026-03-25 10:33:08.679 | INFO     | plassembler:end_plassembler:119 - Elapsed time: 1328.47 seconds
