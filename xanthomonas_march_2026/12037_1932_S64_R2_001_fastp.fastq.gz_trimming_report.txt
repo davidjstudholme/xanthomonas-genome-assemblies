@@ -19,7 +19,7 @@ Output file will be GZIP compressed
 This is cutadapt 4.4 with Python 3.12.3
 Command line parameters: -j 1 -e 0.1 -q 30 -O 1 -a AGATCGGAAGAGC 12037_1932_S64_R2_001_fastp.fastq.gz
 Processing single-end reads on 1 core ...
-Finished in 260.094 s (29.571 µs/read; 2.03 M reads/minute).
+Finished in 285.671 s (32.478 µs/read; 1.85 M reads/minute).
 
 === Summary ===
 

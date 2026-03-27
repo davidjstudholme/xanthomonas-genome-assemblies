@@ -1,58 +1,58 @@
-[2026-03-24 22:17:59] INFO: Starting Flye 2.9.6-b1802
-[2026-03-24 22:17:59] INFO: >>>STAGE: configure
-[2026-03-24 22:17:59] INFO: Configuring run
-[2026-03-24 22:18:01] INFO: Total read length: 44610471
-[2026-03-24 22:18:01] INFO: Reads N50/N90: 38400 / 32714
-[2026-03-24 22:18:01] INFO: Minimum overlap set to 10000
-[2026-03-24 22:18:01] INFO: >>>STAGE: assembly
-[2026-03-24 22:18:01] INFO: Assembling disjointigs
-[2026-03-24 22:18:01] INFO: Reading sequences
-[2026-03-24 22:18:02] INFO: Building minimizer index
-[2026-03-24 22:18:02] INFO: Pre-calculating index storage
+[2026-03-25 21:41:07] INFO: Starting Flye 2.9.6-b1802
+[2026-03-25 21:41:07] INFO: >>>STAGE: configure
+[2026-03-25 21:41:07] INFO: Configuring run
+[2026-03-25 21:41:08] INFO: Total read length: 44610471
+[2026-03-25 21:41:08] INFO: Reads N50/N90: 38400 / 32714
+[2026-03-25 21:41:08] INFO: Minimum overlap set to 10000
+[2026-03-25 21:41:08] INFO: >>>STAGE: assembly
+[2026-03-25 21:41:08] INFO: Assembling disjointigs
+[2026-03-25 21:41:08] INFO: Reading sequences
+[2026-03-25 21:41:09] INFO: Building minimizer index
+[2026-03-25 21:41:09] INFO: Pre-calculating index storage
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2026-03-24 22:18:02] INFO: Filling index
+[2026-03-25 21:41:09] INFO: Filling index
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2026-03-24 22:18:07] INFO: Extending reads
-[2026-03-24 22:18:35] INFO: Overlap-based coverage: 8
-[2026-03-24 22:18:35] INFO: Median overlap divergence: 0.00306925
+[2026-03-25 21:41:13] INFO: Extending reads
+[2026-03-25 21:41:42] INFO: Overlap-based coverage: 8
+[2026-03-25 21:41:42] INFO: Median overlap divergence: 0.00306925
 0% 20% 90% 100% 
-[2026-03-24 22:18:37] INFO: Assembled 2 disjointigs
-[2026-03-24 22:18:37] INFO: Generating sequence
+[2026-03-25 21:41:44] INFO: Assembled 2 disjointigs
+[2026-03-25 21:41:44] INFO: Generating sequence
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2026-03-24 22:18:38] INFO: Filtering contained disjointigs
+[2026-03-25 21:41:45] INFO: Filtering contained disjointigs
 0% 50% 100% 
-[2026-03-24 22:18:39] INFO: Contained seqs: 0
-[2026-03-24 22:18:39] INFO: >>>STAGE: consensus
-[2026-03-24 22:18:39] INFO: Running Minimap2
-[2026-03-24 22:18:44] INFO: Computing consensus
-[2026-03-24 22:18:55] INFO: Alignment error rate: 0.003901
-[2026-03-24 22:18:55] INFO: >>>STAGE: repeat
-[2026-03-24 22:18:55] INFO: Building and resolving repeat graph
-[2026-03-24 22:18:55] INFO: Parsing disjointigs
-[2026-03-24 22:18:55] INFO: Building repeat graph
+[2026-03-25 21:41:46] INFO: Contained seqs: 0
+[2026-03-25 21:41:46] INFO: >>>STAGE: consensus
+[2026-03-25 21:41:46] INFO: Running Minimap2
+[2026-03-25 21:41:49] INFO: Computing consensus
+[2026-03-25 21:41:59] INFO: Alignment error rate: 0.003901
+[2026-03-25 21:41:59] INFO: >>>STAGE: repeat
+[2026-03-25 21:41:59] INFO: Building and resolving repeat graph
+[2026-03-25 21:41:59] INFO: Parsing disjointigs
+[2026-03-25 21:41:59] INFO: Building repeat graph
 0% 50% 100% 
-[2026-03-24 22:18:56] INFO: Median overlap divergence: 0.000848436
-[2026-03-24 22:18:56] INFO: Parsing reads
-[2026-03-24 22:18:57] INFO: Aligning reads to the graph
+[2026-03-25 21:42:01] INFO: Median overlap divergence: 0.000848436
+[2026-03-25 21:42:01] INFO: Parsing reads
+[2026-03-25 21:42:02] INFO: Aligning reads to the graph
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2026-03-24 22:18:59] INFO: Aligned read sequence: 44472531 / 44610471 (0.996908)
-[2026-03-24 22:18:59] INFO: Median overlap divergence: 0.00141907
-[2026-03-24 22:18:59] INFO: Mean edge coverage: 8
-[2026-03-24 22:18:59] INFO: Simplifying the graph
-[2026-03-24 22:18:59] INFO: >>>STAGE: contigger
-[2026-03-24 22:18:59] INFO: Generating contigs
-[2026-03-24 22:18:59] INFO: Reading sequences
-[2026-03-24 22:19:00] INFO: Generated 1 contigs
-[2026-03-24 22:19:00] INFO: Added 0 scaffold connections
-[2026-03-24 22:19:00] INFO: >>>STAGE: polishing
-[2026-03-24 22:19:00] INFO: Polishing genome (1/1)
-[2026-03-24 22:19:00] INFO: Running minimap2
-[2026-03-24 22:19:04] INFO: Separating alignment into bubbles
-[2026-03-24 22:19:13] INFO: Alignment error rate: 0.002225
-[2026-03-24 22:19:13] INFO: Correcting bubbles
+[2026-03-25 21:42:04] INFO: Aligned read sequence: 44472531 / 44610471 (0.996908)
+[2026-03-25 21:42:04] INFO: Median overlap divergence: 0.00141907
+[2026-03-25 21:42:04] INFO: Mean edge coverage: 8
+[2026-03-25 21:42:04] INFO: Simplifying the graph
+[2026-03-25 21:42:04] INFO: >>>STAGE: contigger
+[2026-03-25 21:42:04] INFO: Generating contigs
+[2026-03-25 21:42:04] INFO: Reading sequences
+[2026-03-25 21:42:05] INFO: Generated 1 contigs
+[2026-03-25 21:42:05] INFO: Added 0 scaffold connections
+[2026-03-25 21:42:05] INFO: >>>STAGE: polishing
+[2026-03-25 21:42:05] INFO: Polishing genome (1/1)
+[2026-03-25 21:42:05] INFO: Running minimap2
+[2026-03-25 21:42:08] INFO: Separating alignment into bubbles
+[2026-03-25 21:42:16] INFO: Alignment error rate: 0.002225
+[2026-03-25 21:42:16] INFO: Correcting bubbles
 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
-[2026-03-24 22:19:45] INFO: >>>STAGE: finalize
-[2026-03-24 22:19:45] INFO: Assembly statistics:
+[2026-03-25 21:42:27] INFO: >>>STAGE: finalize
+[2026-03-25 21:42:27] INFO: Assembly statistics:
 
 	Total length:	5109366
 	Fragments:	1
@@ -61,4 +61,4 @@
 	Scaffolds:	0
 	Mean coverage:	8
 
-[2026-03-24 22:19:45] INFO: Final assembly: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/xanthomonas_march_2026/hybracter-hybrid/processing/assemblies/NCPPB_4350/assembly.fasta
+[2026-03-25 21:42:27] INFO: Final assembly: /data/djs217/PROJECTS/xanthomonas-genome-assemblies/xanthomonas_march_2026/hybracter-hybrid/processing/assemblies/NCPPB_4350/assembly.fasta

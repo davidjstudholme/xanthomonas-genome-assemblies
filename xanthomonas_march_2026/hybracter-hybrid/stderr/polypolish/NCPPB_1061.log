@@ -1,5 +1,5 @@
 
-[1;4;93mStarting Polypolish polish[0m [2m(2026-03-25 00:15:47)[0m
+[1;4;93mStarting Polypolish polish[0m [2m(2026-03-27 01:33:30)[0m
 [2m    Polypolish is a tool for polishing genome assemblies with short reads.
 Unlike other tools in this category, Polypolish uses SAM files where each read
 has been aligned to all possible locations (not just a single best location).
@@ -23,11 +23,11 @@ Settings:
   not logging debugging information
 
 
-[1;4;93mLoading assembly[0m [2m(2026-03-25 00:15:47)[0m
+[1;4;93mLoading assembly[0m [2m(2026-03-27 01:33:30)[0m
 contig_1 (5,333,395 bp)
 
 
-[1;4;93mLoading alignments[0m [2m(2026-03-25 00:15:47)[0m
+[1;4;93mLoading alignments[0m [2m(2026-03-27 01:33:30)[0m
 hybracter-hybrid/processing/complete/bwa/NCPPB_1061_1.sam: 13,082,521 alignments from 11,087,807 reads
 hybracter-hybrid/processing/complete/bwa/NCPPB_1061_2.sam: 13,083,980 alignments from 11,089,065 reads
 
@@ -36,7 +36,7 @@ Filtering for high-quality end-to-end alignments:
   1,129,683 alignments discarded
 
 
-[1;4;93mPolishing assembly sequences[0m [2m(2026-03-25 00:17:13)[0m
+[1;4;93mPolishing assembly sequences[0m [2m(2026-03-27 01:35:01)[0m
 [2m    For each position in the assembly, Polypolish determines the read depth
 at that position and collects all aligned bases. It then polishes the assembly
 by looking for positions where the pileup unambiguously supports a different
@@ -49,9 +49,9 @@ Polishing contig_1 (5,333,395 bp):
   estimated pre-polishing sequence accuracy: 99.9977% (Q46.30)
 
 
-[1;4;93mFinished![0m [2m(2026-03-25 00:17:14)[0m
+[1;4;93mFinished![0m [2m(2026-03-27 01:35:01)[0m
 Polished sequence (to stdout):
   contig_1_polypolish (5,333,389 bp)
 
-Time to run: 0:01:26.948601
+Time to run: 0:01:31.371525
 

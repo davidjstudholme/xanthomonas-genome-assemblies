@@ -8,7 +8,7 @@ args:
   dnaapler_custom_db: none
   extra_params_flye: null
   flyeModel: --nano-hq
-  input: hybracter.csv
+  input: hybracter.900.csv
   log: hybracter-hybrid/hybracter.log
   logic: last
   mac: false
