@@ -1,0 +1,43 @@
+args:
+  auto: false
+  configfile: hybracter-hybrid/config.yaml
+  contaminants: none
+  databases: null
+  datadir: null
+  depth_filter: 0.25
+  dnaapler_custom_db: none
+  extra_params_flye: null
+  flyeModel: --nano-hq
+  input: hybracter.xcc.csv
+  log: hybracter-hybrid/hybracter.log
+  logic: last
+  mac: false
+  medakaModel: r1041_e82_400bps_sup_v5.0.0
+  medaka_override: false
+  min_depth: 0
+  min_length: 1000
+  min_quality: 9
+  no_medaka: false
+  no_pypolca: false
+  output: hybracter-hybrid
+  single: false
+  skip_qc: false
+  subsample_depth: 100
+qc:
+  compression: 5
+  hostRemoveFlagstat: -f 4 -F 3584
+  minimapIndex: -I 8G
+  minimapModel: map-ont
+resources:
+  big:
+    cpu: 16
+    mem: 32000
+    time: '23:59:00'
+  med:
+    cpu: 8
+    mem: 16000
+    time: 08:00:00
+  sml:
+    cpu: 1
+    mem: 4000
+    time: 00:00:05

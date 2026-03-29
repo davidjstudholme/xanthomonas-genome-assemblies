@@ -1,0 +1,57 @@
+
+[1;4;93mStarting Polypolish polish[0m [2m(2026-03-28 08:38:41)[0m
+[2m    Polypolish is a tool for polishing genome assemblies with short reads.
+Unlike other tools in this category, Polypolish uses SAM files where each read
+has been aligned to all possible locations (not just a single best location).
+This allows it to repair errors in repeat regions that other alignment-based
+polishers cannot fix.[0m
+
+Polypolish version: 0.6.1
+
+Input assembly:
+  hybracter-hybrid/processing/complete/medaka_rd_2/NCPPB_4679_xcc/consensus.fasta
+
+Input short-read alignments:
+  hybracter-hybrid/processing/complete/bwa/NCPPB_4679_xcc_1.sam
+  hybracter-hybrid/processing/complete/bwa/NCPPB_4679_xcc_2.sam
+
+Settings:
+  --fraction_invalid 0.2
+  --fraction_valid 0.5
+  --max_errors 10
+  --min_depth 5
+  not logging debugging information
+
+
+[1;4;93mLoading assembly[0m [2m(2026-03-28 08:38:41)[0m
+contig_1 (5,111,855 bp)
+
+
+[1;4;93mLoading alignments[0m [2m(2026-03-28 08:38:41)[0m
+hybracter-hybrid/processing/complete/bwa/NCPPB_4679_xcc_1.sam: 10,145,053 alignments from 9,170,511 reads
+hybracter-hybrid/processing/complete/bwa/NCPPB_4679_xcc_2.sam: 10,149,485 alignments from 9,171,880 reads
+
+Filtering for high-quality end-to-end alignments:
+  19,598,847 alignments kept
+  695,691 alignments discarded
+
+
+[1;4;93mPolishing assembly sequences[0m [2m(2026-03-28 08:39:49)[0m
+[2m    For each position in the assembly, Polypolish determines the read depth
+at that position and collects all aligned bases. It then polishes the assembly
+by looking for positions where the pileup unambiguously supports a different
+sequence than the assembly.[0m
+
+Polishing contig_1 (5,111,855 bp):
+  mean read depth: 466.2x
+  4 bp have a depth of zero (99.9999% coverage)
+  66 positions changed (0.0013% of total positions)
+  estimated pre-polishing sequence accuracy: 99.9987% (Q48.89)
+
+
+[1;4;93mFinished![0m [2m(2026-03-28 08:39:50)[0m
+Polished sequence (to stdout):
+  contig_1_polypolish (5,111,864 bp)
+
+Time to run: 0:01:08.617240
+

@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 9834657
+total bases: 1301838978
+Q20 bases: 1297438117(99.662%)
+Q30 bases: 1274021396(97.8632%)
+Q40 bases: 1274021396(97.8632%)
+
+Read2 before filtering:
+total reads: 9834657
+total bases: 1303270533
+Q20 bases: 1297793816(99.5798%)
+Q30 bases: 1273826236(97.7407%)
+Q40 bases: 1273826236(97.7407%)
+
+Read1 after filtering:
+total reads: 9834442
+total bases: 1301810557
+Q20 bases: 1297414408(99.6623%)
+Q30 bases: 1274005377(97.8641%)
+Q40 bases: 1274005377(97.8641%)
+
+Read2 after filtering:
+total reads: 9834442
+total bases: 1303239859
+Q20 bases: 1297773907(99.5806%)
+Q30 bases: 1273818529(97.7424%)
+Q40 bases: 1273818529(97.7424%)
+
+Filtering result:
+reads passed filter: 19668884
+reads failed due to low quality: 430
+reads failed due to too many N: 0
+reads failed due to too short: 0
+reads with adapter trimmed: 78
+bases trimmed due to adapters: 3034
+
+Duplication rate: 6.87465%
+
+Insert size peak (evaluated by paired-end reads): 125
+
+JSON report: hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola.json
+HTML report: hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola.html
+
+fastp --in1 12037_151_S48_R1_001_fastp_val_1.fq.gz --in2 12037_151_S48_R2_001_fastp_val_2.fq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_151_papavericola.json --thread 1 
+fastp v1.0.1, time used: 88 seconds

@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 9909641
+total bases: 1305450061
+Q20 bases: 1300581934(99.6271%)
+Q30 bases: 1275611929(97.7143%)
+Q40 bases: 1275611929(97.7143%)
+
+Read2 before filtering:
+total reads: 9909641
+total bases: 1306922223
+Q20 bases: 1301260447(99.5668%)
+Q30 bases: 1276796171(97.6949%)
+Q40 bases: 1276796171(97.6949%)
+
+Read1 after filtering:
+total reads: 9909390
+total bases: 1305417204
+Q20 bases: 1300554489(99.6275%)
+Q30 bases: 1275593471(97.7154%)
+Q40 bases: 1275593471(97.7154%)
+
+Read2 after filtering:
+total reads: 9909390
+total bases: 1306884799
+Q20 bases: 1301235718(99.5677%)
+Q30 bases: 1276786319(97.6969%)
+Q40 bases: 1276786319(97.6969%)
+
+Filtering result:
+reads passed filter: 19818780
+reads failed due to low quality: 502
+reads failed due to too many N: 0
+reads failed due to too short: 0
+reads with adapter trimmed: 314
+bases trimmed due to adapters: 8022
+
+Duplication rate: 6.84971%
+
+Insert size peak (evaluated by paired-end reads): 133
+
+JSON report: hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii.json
+HTML report: hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii.html
+
+fastp --in1 12037_1337_S70_R1_001_fastp_val_1.fq.gz --in2 12037_1337_S70_R2_001_fastp_val_2.fq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_1337_nakataecorchorii.json --thread 1 
+fastp v1.0.1, time used: 89 seconds

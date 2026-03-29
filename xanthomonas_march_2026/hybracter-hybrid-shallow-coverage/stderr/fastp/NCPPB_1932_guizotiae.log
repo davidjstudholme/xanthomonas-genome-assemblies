@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 8757525
+total bases: 1180261615
+Q20 bases: 1175699927(99.6135%)
+Q30 bases: 1152401476(97.6395%)
+Q40 bases: 1152401476(97.6395%)
+
+Read2 before filtering:
+total reads: 8757525
+total bases: 1181746671
+Q20 bases: 1176309210(99.5399%)
+Q30 bases: 1152823162(97.5525%)
+Q40 bases: 1152823162(97.5525%)
+
+Read1 after filtering:
+total reads: 8757255
+total bases: 1180226000
+Q20 bases: 1175671270(99.6141%)
+Q30 bases: 1152383319(97.6409%)
+Q40 bases: 1152383319(97.6409%)
+
+Read2 after filtering:
+total reads: 8757255
+total bases: 1181706024
+Q20 bases: 1176280948(99.5409%)
+Q30 bases: 1152809706(97.5547%)
+Q40 bases: 1152809706(97.5547%)
+
+Filtering result:
+reads passed filter: 17514510
+reads failed due to low quality: 540
+reads failed due to too many N: 0
+reads failed due to too short: 0
+reads with adapter trimmed: 264
+bases trimmed due to adapters: 9712
+
+Duplication rate: 6.13951%
+
+Insert size peak (evaluated by paired-end reads): 142
+
+JSON report: hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae.json
+HTML report: hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae.html
+
+fastp --in1 12037_1932_S64_R1_001_fastp_val_1.fq.gz --in2 12037_1932_S64_R2_001_fastp_val_2.fq.gz --out1 hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae.html --json hybracter-hybrid/processing/qc/fastp/NCPPB_1932_guizotiae.json --thread 1 
+fastp v1.0.1, time used: 76 seconds
