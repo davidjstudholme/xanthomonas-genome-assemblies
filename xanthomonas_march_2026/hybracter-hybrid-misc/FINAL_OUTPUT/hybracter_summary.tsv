@@ -1,0 +1,16 @@
+Sample	Complete	Total_assembly_length	Number_of_contigs	Most_accurate_polishing_round	Longest_contig_length	Longest_contig_coverage	Number_circular_plasmids
+NCPPB_151_papavericola	True	5003623	1	pypolca	5003623	89	0
+NCPPB_4633_dyei	True	5215726	1	pypolca	5215726	85	0
+NCPPB_4630_dyei	True	5186850	1	pypolca	5186850	85	0
+NCPPB_557_lablab	True	5413410	5	pypolca	5271286	79	3
+NCPPB_881_gardneri	True	5220397	3	pypolca	5146478	86	2
+NCPPB_1933_guizotiae	True	5010166	2	pypolca	4950158	89	1
+NCPPB_2190_esculenti	True	4760103	1	pypolca	4760103	95	0
+NCPPB_1594_nakataecorchorii	True	5198060	4	pypolca	5100749	86	3
+NCPPB_1932_guizotiae	True	5010158	2	pypolca	4950150	89	1
+NCPPB_2439_zinniae	True	5127955	1	pypolca	5127955	87	0
+NCPPB_4350_codiaei	True	5109338	1	pypolca	5109338	87	0
+NCPPB_1059_papavericola	True	4942809	2	pypolca	4908408	89	1
+NCPPB_4632_dyei	True	5226599	2	pypolca	5182440	84	1
+NCPPB_4013_asclepiadis	True	5051020	2	pypolca	5029947	88	0
+NCPPB_1337_nakataecorchorii	True	5194634	4	pypolca	5097320	86	3

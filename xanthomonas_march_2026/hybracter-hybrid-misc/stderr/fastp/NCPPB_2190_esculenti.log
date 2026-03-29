@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 11454939
+total bases: 1524745834
+Q20 bases: 1519413057(99.6503%)
+Q30 bases: 1491214184(97.8008%)
+Q40 bases: 1491214184(97.8008%)
+
+Read2 before filtering:
+total reads: 11454939
+total bases: 1526717825
+Q20 bases: 1520588815(99.5985%)
+Q30 bases: 1493102836(97.7982%)
+Q40 bases: 1493102836(97.7982%)
+
+Read1 after filtering:
+total reads: 11454685
+total bases: 1524709239
+Q20 bases: 1519382191(99.6506%)
+Q30 bases: 1491192757(97.8018%)
+Q40 bases: 1491192757(97.8018%)
+
+Read2 after filtering:
+total reads: 11454685
+total bases: 1526677537
+Q20 bases: 1520561368(99.5994%)
+Q30 bases: 1493090555(97.8%)
+Q40 bases: 1493090555(97.8%)
+
+Filtering result:
+reads passed filter: 22909370
+reads failed due to low quality: 508
+reads failed due to too many N: 0
+reads failed due to too short: 0
+reads with adapter trimmed: 252
+bases trimmed due to adapters: 11237
+
+Duplication rate: 7.03344%
+
+Insert size peak (evaluated by paired-end reads): 134
+
+JSON report: hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti.json
+HTML report: hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti.html
+
+fastp --in1 12037_2190_S74_R1_001_fastp_val_1.fq.gz --in2 12037_2190_S74_R2_001_fastp_val_2.fq.gz --out1 hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti_1.fastq.gz --out2 hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti_2.fastq.gz --html hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti.html --json hybracter-hybrid-misc/processing/qc/fastp/NCPPB_2190_esculenti.json --thread 1 
+fastp v1.0.1, time used: 95 seconds
