@@ -19,7 +19,7 @@ args:
   min_quality: 9
   no_medaka: false
   no_pypolca: false
-  output: hybracter-hybrid-556
+  output: hybracter-hybrid-556/
   single: false
   skip_qc: false
   subsample_depth: 100
