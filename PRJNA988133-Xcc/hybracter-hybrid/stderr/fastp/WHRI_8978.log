@@ -1,0 +1,45 @@
+Read1 before filtering:
+total reads: 6700854
+total bases: 1004451726
+Q20 bases: 991294986(98.6902%)
+Q30 bases: 965292174(96.1014%)
+Q40 bases: 0(0%)
+
+Read2 before filtering:
+total reads: 6700854
+total bases: 1005142545
+Q20 bases: 991876104(98.6801%)
+Q30 bases: 965060499(96.0123%)
+Q40 bases: 0(0%)
+
+Read1 after filtering:
+total reads: 6687070
+total bases: 1002345445
+Q20 bases: 989490027(98.7175%)
+Q30 bases: 963650420(96.1396%)
+Q40 bases: 0(0%)
+
+Read2 after filtering:
+total reads: 6687070
+total bases: 1002958005
+Q20 bases: 990603458(98.7682%)
+Q30 bases: 964078140(96.1235%)
+Q40 bases: 0(0%)
+
+Filtering result:
+reads passed filter: 13374140
+reads failed due to low quality: 27548
+reads failed due to too many N: 20
+reads failed due to too short: 0
+reads with adapter trimmed: 4804
+bases trimmed due to adapters: 247262
+
+Duplication rate: 3.845%
+
+Insert size peak (evaluated by paired-end reads): 269
+
+JSON report: hybracter-hybrid/processing/qc/fastp/WHRI_8978.json
+HTML report: hybracter-hybrid/processing/qc/fastp/WHRI_8978.html
+
+fastp --in1 SRR25183094_1_val_1.fq.gz --in2 SRR25183094_2_val_2.fq.gz --out1 hybracter-hybrid/processing/qc/fastp/WHRI_8978_1.fastq.gz --out2 hybracter-hybrid/processing/qc/fastp/WHRI_8978_2.fastq.gz --html hybracter-hybrid/processing/qc/fastp/WHRI_8978.html --json hybracter-hybrid/processing/qc/fastp/WHRI_8978.json --thread 1 
+fastp v1.0.1, time used: 91 seconds

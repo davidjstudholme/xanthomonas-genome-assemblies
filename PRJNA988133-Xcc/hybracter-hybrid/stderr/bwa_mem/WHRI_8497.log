@@ -1,0 +1,10 @@
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 549800 sequences (80000221 bp)...
+[M::process] read 554134 sequences (80000149 bp)...
+[M::mem_process_seqs] Processed 549800 reads in 26.042 CPU sec, 3.264 real sec
+[M::process] read 39635 sequences (5739871 bp)...
+[M::mem_process_seqs] Processed 554134 reads in 25.883 CPU sec, 3.243 real sec
+[M::mem_process_seqs] Processed 39635 reads in 2.169 CPU sec, 0.258 real sec
+[main] Version: 0.7.19-r1273
+[main] CMD: bwa mem -t 8 -a hybracter-hybrid/processing/complete/medaka_rd_2/WHRI_8497/consensus.fasta hybracter-hybrid/processing/qc/fastp/WHRI_8497_2.fastq.gz
+[main] Real time: 9.465 sec; CPU: 55.419 sec

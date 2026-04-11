@@ -1,0 +1,55 @@
+2026-04-10 17:13:05.422 | INFO     | pypolca.utils.validation:instantiate_dirs:23 - Checking the output directory hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:84 - pypolca: Standalone Python implementation of the POLCA polisher from MaSuRCA
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:87 - You are using pypolca version 0.3.1
+
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:88 - Repository homepage is https://github.com/gbouras13/pypolca.
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:89 - Written by George Bouras: george.bouras@adelaide.edu.au adapting the original POLCA code by Aleksey Zimin.
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:93 - Listing input parameters.
+2026-04-10 17:13:05.437 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --assembly hybracter-hybrid/processing/incomplete/polypolish_incomplete/WHRI_8978.fasta.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --reads1 hybracter-hybrid/processing/qc/fastp/WHRI_8978_1.fastq.gz.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --reads2 hybracter-hybrid/processing/qc/fastp/WHRI_8978_2.fastq.gz.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --output hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --threads 8.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --force True.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --careful True.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --min_alt 4.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --min_ratio 3.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --memory_limit 2G.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --no_polish False.
+2026-04-10 17:13:05.438 | INFO     | pypolca.utils.util:begin_pypolca:95 - Parameter: --prefix WHRI_8978.
+2026-04-10 17:13:05.621 | INFO     | pypolca.utils.validation:check_dependencies:112 - Samtools v1.22.1 found.
+2026-04-10 17:13:05.629 | INFO     | pypolca.utils.validation:check_dependencies:123 - freebayes v1.3.6 found.
+2026-04-10 17:13:05.633 | INFO     | pypolca.utils.validation:check_dependencies:140 - bwa v0.7.19-r1273 found.
+2026-04-10 17:13:05.633 | INFO     | pypolca.utils.validation:validate_fasta:46 - Checking that the input file hybracter-hybrid/processing/incomplete/polypolish_incomplete/WHRI_8978.fasta is in FASTA format.
+2026-04-10 17:13:05.634 | INFO     | pypolca.utils.validation:validate_fasta:51 - hybracter-hybrid/processing/incomplete/polypolish_incomplete/WHRI_8978.fasta file checked.
+2026-04-10 17:13:05.635 | INFO     | pypolca.utils.validation:validate_fastq:73 - FASTQ hybracter-hybrid/processing/qc/fastp/WHRI_8978_1.fastq.gz checked
+2026-04-10 17:13:05.635 | INFO     | pypolca.utils.validation:validate_fastq:73 - FASTQ hybracter-hybrid/processing/qc/fastp/WHRI_8978_2.fastq.gz checked
+2026-04-10 17:13:05.636 | INFO     | pypolca:run:219 - Checking memory limit of 2G.
+2026-04-10 17:13:05.636 | INFO     | pypolca:run:224 - Creating BWA index
+2026-04-10 17:13:05.638 | INFO     | pypolca.utils.external_tools:run:50 - Started running bwa index hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta ...
+2026-04-10 17:13:06.223 | INFO     | pypolca.utils.external_tools:run:52 - Done running bwa index hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta
+2026-04-10 17:13:06.224 | INFO     | pypolca:run:230 - Aligning reads with BWA
+2026-04-10 17:13:06.225 | INFO     | pypolca.utils.external_tools:run_to_stdout:59 - Started running bwa mem -SP -t 8 hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta hybracter-hybrid/processing/qc/fastp/WHRI_8978_1.fastq.gz hybracter-hybrid/processing/qc/fastp/WHRI_8978_2.fastq.gz ...
+2026-04-10 17:14:49.086 | INFO     | pypolca.utils.external_tools:run_to_stdout:61 - Done running bwa mem -SP -t 8 hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta hybracter-hybrid/processing/qc/fastp/WHRI_8978_1.fastq.gz hybracter-hybrid/processing/qc/fastp/WHRI_8978_2.fastq.gz
+2026-04-10 17:14:49.087 | INFO     | pypolca:run:237 - Sorting and indexing alignment file
+2026-04-10 17:14:49.088 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools view -h -@ 8 -b hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.sam -o hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.bam ...
+2026-04-10 17:15:10.489 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools view -h -@ 8 -b hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.sam -o hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.bam
+2026-04-10 17:15:10.491 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools sort -m 2G -@ 8 hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.bam -o hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam ...
+2026-04-10 17:15:36.166 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools sort -m 2G -@ 8 hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa.bam -o hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam
+2026-04-10 17:15:36.167 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools index -@ hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam ...
+2026-04-10 17:15:36.174 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools index -@ hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam
+2026-04-10 17:15:36.174 | INFO     | pypolca:run:244 - Calling variants.
+2026-04-10 17:15:36.175 | INFO     | pypolca.utils.external_tools:run:50 - Started running samtools faidx hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta ...
+2026-04-10 17:15:36.249 | INFO     | pypolca.utils.external_tools:run:52 - Done running samtools faidx hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta
+2026-04-10 17:15:36.251 | INFO     | pypolca.utils.external_tools:run:50 - Started running freebayes -m 0 --min-coverage 3 -R 0 -p 1 -F 0.2 -E 0 -b hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam -f hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta -v hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/WHRI_8978.vcf ...
+2026-04-10 17:16:45.758 | INFO     | pypolca.utils.external_tools:run:52 - Done running freebayes -m 0 --min-coverage 3 -R 0 -p 1 -F 0.2 -E 0 -b hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/temp_bwa_sorted.bam -f hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/temp/assembly.fasta -v hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/WHRI_8978.vcf
+2026-04-10 17:16:45.823 | INFO     | pypolca.utils.fix_consensus_from_vcf:fix_consensus_from_vcf:134 - POLCA has found variants. Fixing
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:27 - Stats BEFORE polishing:
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:29 - Substitution Errors Found: 1674
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:31 - Insertion/Deletion Errors Found: 2880
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:33 - Assembly Size: 598397
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:35 - Consensus Quality Before Polishing: 99.24
+2026-04-10 17:16:45.832 | INFO     | pypolca.utils.report:create_report:37 - Consensus QV Before Polishing: 21.19
+2026-04-10 17:16:45.832 | INFO     | pypolca:run:267 - Final report is in hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/WHRI_8978.report; polished assembly is in hybracter-hybrid/processing/incomplete/pypolca/WHRI_8978/WHRI_8978_corrected.fasta
+2026-04-10 17:16:46.959 | INFO     | pypolca.utils.util:end_pypolca:110 - pypolca has finished
+2026-04-10 17:16:46.959 | INFO     | pypolca.utils.util:end_pypolca:111 - Elapsed time: 221.54 seconds

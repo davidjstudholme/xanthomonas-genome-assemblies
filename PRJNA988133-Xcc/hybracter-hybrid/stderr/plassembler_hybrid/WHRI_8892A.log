@@ -1,0 +1,96 @@
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/78019da34467f1ccbd2a1e2321558605_/lib/python3.12/site-packages/click/core.py:1213: UserWarning: The parameter --flye_directory is used more than once. Remove its duplicate as parameters should be unique.
+  parser = self.make_parser(ctx)
+/data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/conda/78019da34467f1ccbd2a1e2321558605_/lib/python3.12/site-packages/click/core.py:1206: UserWarning: The parameter --flye_directory is used more than once. Remove its duplicate as parameters should be unique.
+  self.parse_args(ctx, args)
+2026-04-10 16:38:56.848 | INFO     | plassembler:begin_plassembler:101 - You are using Plassembler version 1.8.1
+
+2026-04-10 16:38:56.848 | INFO     | plassembler:begin_plassembler:102 - Repository homepage is https://github.com/gbouras13/plassembler
+2026-04-10 16:38:56.848 | INFO     | plassembler:begin_plassembler:103 - Written by George Bouras: george.bouras@adelaide.edu.au
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:412 - Database directory is /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:413 - Longreads file is hybracter-hybrid/processing/qc/WHRI_8892A_filt_trim.fastq.gz
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:414 - R1 fasta file is hybracter-hybrid/processing/qc/fastp/WHRI_8892A_1.fastq.gz
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:415 - R2 fasta file is hybracter-hybrid/processing/qc/fastp/WHRI_8892A_2.fastq.gz
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:416 - Chromosome length threshold is 4700000
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:417 - Output directory is hybracter-hybrid/processing/plassembler/WHRI_8892A
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:418 - Min long read length is 500
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:419 - Min long read quality is 9
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:420 - Thread count is 12
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:421 - --force is True
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:422 - --skip_qc is True
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:423 - --raw_flag is False
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:424 - --pacbio_model is nothing
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:425 - --keep_fastqs is False
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:426 - --keep_chromosome is False
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:427 - --flye_directory is hybracter-hybrid/processing/assemblies/WHRI_8892A
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:428 - --flye_assembly is nothing
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:429 - --flye_info is nothing
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:430 - --no_chromosome is False
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:431 - --use_raven is False
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:432 - --depth_filter is 0.25
+2026-04-10 16:38:56.848 | INFO     | plassembler:run:433 - --unicycler_options is None
+2026-04-10 16:38:56.849 | INFO     | plassembler:run:434 - --spades_options is None
+2026-04-10 16:38:56.849 | INFO     | plassembler:run:435 - --skip_mash is False
+2026-04-10 16:38:56.849 | INFO     | plassembler:run:439 - Checking dependencies
+2026-04-10 16:38:56.946 | INFO     | plassembler.utils.input_commands:check_dependencies:199 - Flye version found is v2.9.6-b1802.
+2026-04-10 16:38:56.946 | INFO     | plassembler.utils.input_commands:check_dependencies:209 - Flye version is ok.
+2026-04-10 16:38:56.949 | INFO     | plassembler.utils.input_commands:check_dependencies:218 - Raven v1.8.3 found.
+2026-04-10 16:38:56.949 | INFO     | plassembler.utils.input_commands:check_dependencies:220 - Raven version is ok.
+2026-04-10 16:38:57.047 | INFO     | plassembler.utils.input_commands:check_dependencies:242 - Unicycler version found is v0.5.1.
+2026-04-10 16:38:57.047 | INFO     | plassembler.utils.input_commands:check_dependencies:255 - Unicycler version is ok.
+2026-04-10 16:38:57.159 | INFO     | plassembler.utils.input_commands:check_dependencies:265 - SPAdes v4.2.0 found.
+2026-04-10 16:38:57.167 | INFO     | plassembler.utils.input_commands:check_dependencies:278 - Samtools v1.22.1 found.
+2026-04-10 16:38:57.171 | INFO     | plassembler.utils.input_commands:check_dependencies:289 - minimap2 v2.30-r1287 found.
+2026-04-10 16:38:57.177 | INFO     | plassembler.utils.input_commands:check_dependencies:300 - fastp v1.0.1 found.
+2026-04-10 16:38:57.182 | INFO     | plassembler.utils.input_commands:check_dependencies:311 - chopper v0.11.0 found.
+2026-04-10 16:38:57.194 | INFO     | plassembler.utils.input_commands:check_dependencies:326 - mash v2.3 found.
+2026-04-10 16:38:57.305 | INFO     | plassembler.utils.input_commands:check_dependencies:337 - canu v2.2 found.
+2026-04-10 16:38:57.968 | INFO     | plassembler.utils.input_commands:check_dependencies:348 - dnaapler v1.3.0 found.
+2026-04-10 16:38:58.066 | INFO     | plassembler.utils.input_commands:check_dependencies:365 - BLAST version found is v2.17.0.
+2026-04-10 16:38:58.066 | INFO     | plassembler.utils.input_commands:check_dependencies:371 - All dependencies found.
+2026-04-10 16:38:58.066 | INFO     | plassembler:run:448 - Checking database installation.
+2026-04-10 16:38:58.067 | INFO     | plassembler.utils.db:check_db_installation:52 - PLSDB Database mash sketch at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.msh exists.
+2026-04-10 16:38:58.067 | INFO     | plassembler.utils.db:check_db_installation:53 - PLSDB Database tsv metadata file at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases/plsdb_2023_11_03_v2.tsv exists.
+2026-04-10 16:38:58.067 | INFO     | plassembler.utils.db:check_db_installation:54 - PLSDB Database at /data/djs217/miniconda3/envs/hybracter_env/lib/python3.11/site-packages/hybracter/workflow/../databases has already been downloaded
+2026-04-10 16:38:58.067 | INFO     | plassembler:run:456 - Database successfully checked.
+2026-04-10 16:38:58.067 | INFO     | plassembler:run:459 - Checking input fastqs.
+2026-04-10 16:38:58.069 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/WHRI_8892A_filt_trim.fastq.gz checked
+2026-04-10 16:38:58.070 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/WHRI_8892A_1.fastq.gz checked
+2026-04-10 16:38:58.070 | INFO     | plassembler.utils.input_commands:validate_fastq:24 - FASTQ hybracter-hybrid/processing/qc/fastp/WHRI_8892A_2.fastq.gz checked
+2026-04-10 16:38:58.070 | INFO     | plassembler:run:467 - FASTQ file hybracter-hybrid/processing/qc/WHRI_8892A_filt_trim.fastq.gz compression is True
+2026-04-10 16:38:58.071 | INFO     | plassembler:run:468 - FASTQ file hybracter-hybrid/processing/qc/fastp/WHRI_8892A_1.fastq.gz compression is True
+2026-04-10 16:38:58.071 | INFO     | plassembler:run:469 - FASTQ file hybracter-hybrid/processing/qc/fastp/WHRI_8892A_2.fastq.gz compression is True
+2026-04-10 16:38:58.189 | INFO     | plassembler:run:518 - You have specified a hybracter-hybrid/processing/assemblies/WHRI_8892A with an existing flye assembly.
+2026-04-10 16:38:58.189 | INFO     | plassembler:run:521 - Copying files.
+2026-04-10 16:38:58.193 | INFO     | plassembler:run:562 - Counting Contigs.
+2026-04-10 16:38:58.223 | INFO     | plassembler.utils.plass_class:get_contig_count:87 - Assembled 1 contigs.
+2026-04-10 16:38:58.223 | INFO     | plassembler:run:578 - Only one contig was assembled with Flye.
+2026-04-10 16:38:58.290 | INFO     | plassembler:run:605 - Chromosome Identified. Plassembler will now use long and short reads to assemble plasmids accurately.
+2026-04-10 16:38:58.290 | INFO     | plassembler:run:610 - Skipping short read trimming as --skip_qc was specified
+2026-04-10 16:39:24.460 | INFO     | plassembler:run:619 - Mapping long reads.
+2026-04-10 16:39:24.461 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/flye_renamed.fasta hybracter-hybrid/processing/plassembler/WHRI_8892A/chopper_long_reads.fastq.gz ...
+2026-04-10 16:39:33.188 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax map-ont -t 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/flye_renamed.fasta hybracter-hybrid/processing/plassembler/WHRI_8892A/chopper_long_reads.fastq.gz
+2026-04-10 16:39:33.189 | INFO     | plassembler:run:631 - Mapping short reads.
+2026-04-10 16:39:33.190 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/flye_renamed.fasta hybracter-hybrid/processing/plassembler/WHRI_8892A/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/WHRI_8892A/trimmed_R2.fastq ...
+2026-04-10 16:39:55.126 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running minimap2 -ax sr -t 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/flye_renamed.fasta hybracter-hybrid/processing/plassembler/WHRI_8892A/trimmed_R1.fastq hybracter-hybrid/processing/plassembler/WHRI_8892A/trimmed_R2.fastq
+2026-04-10 16:39:55.126 | INFO     | plassembler:run:635 - Processing Sam/Bam Files and extracting Fastqs.
+2026-04-10 16:39:55.513 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.sam ...
+2026-04-10 16:40:18.298 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -h -@ 12 -b hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.sam
+2026-04-10 16:40:18.300 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/WHRI_8892A/non_chromosome.bed hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam ...
+2026-04-10 16:40:20.186 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/WHRI_8892A/non_chromosome.bed hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam
+2026-04-10 16:40:20.188 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam ...
+2026-04-10 16:40:21.842 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -f 4 -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam
+2026-04-10 16:40:21.844 | INFO     | plassembler.utils.external_tools:run_to_stdout:67 - Started running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/WHRI_8892A/chromosome.bed hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam ...
+2026-04-10 16:40:41.088 | INFO     | plassembler.utils.external_tools:run_to_stdout:69 - Done running samtools view -b -h -@ 12 -L hybracter-hybrid/processing/plassembler/WHRI_8892A/chromosome.bed hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read.bam
+2026-04-10 16:40:41.090 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_R2.fastq -0 /dev/null -s /dev/null -n ...
+2026-04-10 16:40:41.242 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_bam_file.bam -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/unmapped_R2.fastq -0 /dev/null -s /dev/null -n
+2026-04-10 16:40:41.244 | INFO     | plassembler.utils.external_tools:run:58 - Started running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n ...
+2026-04-10 16:40:41.254 | INFO     | plassembler.utils.external_tools:run:60 - Done running samtools fastq -@ 12 hybracter-hybrid/processing/plassembler/WHRI_8892A/non_chromosome.bam -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/mapped_non_chromosome_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/mapped_non_chromosome_R2.fastq -0 /dev/null -s /dev/null -n
+2026-04-10 16:40:41.353 | INFO     | plassembler:run:652 - Running Unicycler.
+2026-04-10 16:40:41.353 | INFO     | plassembler.utils.external_tools:run:58 - Started running unicycler -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/WHRI_8892A/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/WHRI_8892A/unicycler_output ...
+2026-04-10 16:40:58.574 | INFO     | plassembler.utils.external_tools:run:60 - Done running unicycler -1 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read_concat_R1.fastq -2 hybracter-hybrid/processing/plassembler/WHRI_8892A/short_read_concat_R2.fastq -l hybracter-hybrid/processing/plassembler/WHRI_8892A/plasmid_long.fastq -t 12 -o hybracter-hybrid/processing/plassembler/WHRI_8892A/unicycler_output
+2026-04-10 16:40:58.574 | INFO     | plassembler:run:733 - No plasmids found.
+2026-04-10 16:40:58.574 | INFO     | plassembler:run:734 - Your sample probably has no plasmids.
+2026-04-10 16:40:58.575 | INFO     | plassembler:run:735 - Check the hybracter-hybrid/processing/plassembler/WHRI_8892A/plasmid_fastqs/long_plasmid.fastq file.
+2026-04-10 16:40:58.575 | INFO     | plassembler:run:738 - If this is small (indicating few unmapped reads and therefore Unicycler failed due to low depth), then your sample likely has no plasmids.
+2026-04-10 16:41:00.437 | INFO     | plassembler:end_plassembler:118 - Plassembler has finished
+2026-04-10 16:41:00.438 | INFO     | plassembler:end_plassembler:119 - Elapsed time: 123.6 seconds
