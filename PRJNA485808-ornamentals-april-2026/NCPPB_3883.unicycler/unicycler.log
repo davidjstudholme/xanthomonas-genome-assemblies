@@ -1,0 +1,220 @@
+
+Starting Unicycler (2026-04-18 17:19:40)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/unicycler -1 N_3883_S115_R1_001_val_1.fq.gz -2 N_3883_S115_R2_001_val_2.fq.gz -o NCPPB_3883.unicycler
+
+Unicycler version: v0.4.8
+Using 8 threads
+
+Making output directory:
+  /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler
+
+Dependencies:
+  Program         Version   Status  
+  spades.py       3.13.1    good    
+  racon                     not used
+  makeblastdb     2.12.0+   good    
+  tblastn         2.12.0+   good    
+  bowtie2-build   2.3.5.1   good    
+  bowtie2         2.3.5.1   good    
+  samtools        1.6       good    
+  java            21.0.6    good    
+  pilon           1.24      good    
+  bcftools                  not used
+
+
+SPAdes read error correction (2026-04-18 17:20:56)
+--------------------------------------------------
+    Unicycler uses the SPAdes read error correction module to reduce the number of errors in the short read before SPAdes assembly. This can make the assembly faster and simplify the assembly graph structure.
+
+Command: /data/djs217/miniconda3/envs/unicycler_env/bin/spades.py -1 /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/N_3883_S115_R1_001_val_1.fq.gz -2 /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/N_3883_S115_R2_001_val_2.fq.gz -o /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/spades_assembly/read_correction --threads 8 --only-error-correction
+
+Corrected reads:
+  /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/spades_assembly/corrected_1.fastq.gz
+  /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/spades_assembly/corrected_2.fastq.gz
+
+
+Choosing k-mer range for assembly (2026-04-18 17:41:26)
+-------------------------------------------------------
+    Unicycler chooses a k-mer range for SPAdes based on the length of the input reads. It uses a wide range of many k-mer sizes to maximise the chance of finding an ideal assembly.
+
+SPAdes maximum k-mer: 127
+Median read length: 144
+K-mer range: 27, 47, 63, 77, 89, 99, 107, 115, 121, 127
+
+
+SPAdes assemblies (2026-04-18 17:42:40)
+---------------------------------------
+    Unicycler now uses SPAdes to assemble the short reads. It scores the assembly graph for each k-mer using the number of contigs (fewer is better) and the number of dead ends (fewer is better). The score function is 1/(c*(d+2)), where c is the contig count and d is the dead end count.
+
+K-mer   Contigs   Dead ends   Score   
+   27                           failed
+   47                           failed
+   63                           failed
+   77                           failed
+   89                           failed
+   99                           failed
+  107                           failed
+  115                           failed
+  121                           failed
+  127       247          46   8.43e-05 <-best
+
+Read depth filter: removed 99 contigs totalling 48597 bp
+Deleting /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/spades_assembly/
+
+
+Determining graph multiplicity (2026-04-18 17:55:12)
+----------------------------------------------------
+    Multiplicity is the number of times a sequence occurs in the underlying sequence. Single-copy contigs (those with a multiplicity of one, occurring only once in the underlying sequence) are particularly useful.
+
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/001_best_spades_graph.gfa
+
+
+Cleaning graph (2026-04-18 17:55:12)
+------------------------------------
+    Unicycler now performs various cleaning procedures on the graph to remove overlaps and simplify the graph structure. The end result is a graph ready for bridging.
+
+Graph overlaps removed
+
+Removed zero-length segments:
+    136, 139, 140, 141, 142, 143, 160, 163, 164, 167, 169, 170, 172, 173, 175, 176, 183, 201, 228, 230, 235
+
+Removed zero-length segments:
+    207, 213, 231, 239
+
+Removed zero-length segments:
+    144, 145, 220, 222
+
+Merged small segments:
+    192, 197, 198, 199, 203, 205, 206, 208, 209, 210, 212, 214, 215, 216, 217, 218, 219, 221, 223, 224, 225, 226, 227, 229, 232, 234, 236, 237, 238, 240, 241, 242, 243, 244
+
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/002_overlaps_removed.gfa
+
+    Unicycler now selects a set of anchor contigs from the single-copy contigs. These are the contigs which will be connected via bridges to form the final assembly.
+
+78 anchor segments (4,769,907 bp) out of 184 total segments (4,925,822 bp)
+
+
+Creating SPAdes contig bridges (2026-04-18 17:55:13)
+----------------------------------------------------
+    SPAdes uses paired-end information to perform repeat resolution (RR) and produce contigs from the assembly graph. SPAdes saves the graph paths corresponding to these contigs in the contigs.paths file. When one of these paths contains two or more anchor contigs, Unicycler can create a bridge from the path.
+
+                                                                    Bridge
+Start                         Path                         End     quality
+  -44                         116                          63         52.7
+  -43                          96                          52         20.4
+  -34                         118                          65         57.4
+  -33                         -137                         70         62.7
+  -26                         -134                         55         62.6
+  -13                   135 -> 82 -> 135                   73          8.2
+   12                         -134                         28         63.2
+   22                         -96                          -52        21.1
+   26                  129 -> -102 -> 129                  51         15.0
+   29                 -128 -> 117 -> -128                  -51        22.4
+   35                 -113 -> -93 -> -113                  -41        10.8
+   46                 -111 -> -94 -> -111                  1          10.4
+   57   -140 -> -132 -> -171 -> 149 -> 144 -> 155 -> 168   32         33.0
+   58                         -130                         27         63.2
+
+
+Creating loop unrolling bridges (2026-04-18 17:55:13)
+-----------------------------------------------------
+    When a SPAdes contig path connects an anchor contig with the middle contig of a simple loop, Unicycler concludes that the sequences are contiguous (i.e. the loop is not a separate piece of DNA). It then uses the read depth of the middle and repeat contigs to guess the number of times to traverse the loop and makes a bridge.
+
+                                  Loop count   Loop count    Loop    Bridge
+Start   Repeat   Middle     End    by repeat    by middle   count   quality
+  -51     -129      102     -26         0.72         1.15       1      40.5
+  -13      135       82      73         1.72         1.06       1      39.5
+  -43       96       52     -22         1.25         1.04       1      41.1
+   29     -128      117     -51         0.56         0.78       1      37.2
+   -1      111       94     -46         0.96         1.14       1      40.3
+   41      113       93     -35         1.09         0.99       1      44.3
+
+
+Applying bridges (2026-04-18 17:55:13)
+--------------------------------------
+    Unicycler now applies to the graph in decreasing order of quality. This ensures that when multiple, contradictory bridges exist, the most supported option is used.
+
+Bridge type   Start -> end   Path                                   Quality
+SPAdes          12 -> 28     -134                                    63.229
+SPAdes          58 -> 27     -130                                    63.219
+SPAdes         -33 -> 70     -137                                    62.675
+SPAdes         -26 -> 55     -134                                    62.623
+SPAdes         -34 -> 65     118                                     57.416
+SPAdes         -44 -> 63     116                                     52.750
+SPAdes          57 -> 32     -140, -132, -171, 149, 144, 155, 168    33.014
+SPAdes          29 -> -51    -128, 117, -128                         22.427
+SPAdes          22 -> -52    -96                                     21.103
+SPAdes         -43 -> 52     96                                      20.412
+SPAdes          26 -> 51     129, -102, 129                          15.049
+SPAdes          35 -> -41    -113, -93, -113                         10.800
+SPAdes          46 -> 1      -111, -94, -111                         10.403
+loop           -13 -> 73     135, 82, 135                            39.501
+
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/003_bridges_applied.gfa
+
+
+Bridged assembly graph (2026-04-18 17:55:13)
+--------------------------------------------
+    The assembly is now mostly finished and no more structural changes will be made. Ideally the assembly graph should now have one contig per replicon and no erroneous contigs (i.e a complete assembly). If there are more contigs, then the assembly is not complete.
+
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/004_final_clean.gfa
+
+Component   Segments   Links   Length      N50       Longest segment   Status    
+    total        141     185   4,925,637   140,068           270,894             
+        1        125     170   4,136,540   130,579           270,894   incomplete
+        2          1       0     221,459   221,459           221,459   incomplete
+        3          1       0     212,679   212,679           212,679   incomplete
+        4          1       0     140,068   140,068           140,068   incomplete
+        5          1       0     105,548   105,548           105,548   incomplete
+        6          1       0      64,636    64,636            64,636   incomplete
+        7         10      15      36,606    36,160            36,160   incomplete
+        8          1       0       8,101     8,101             8,101   incomplete
+
+
+Polishing assembly with Pilon (2026-04-18 17:55:13)
+---------------------------------------------------
+    Unicycler now conducts multiple rounds of Pilon in an attempt to repair any remaining small-scale errors with the assembly.
+
+Aligning reads to find appropriate insert size range...
+Insert size 1st percentile:  33
+Insert size 99th percentile: 613
+
+Pilon polish round 1
+Total number of changes: 36
+
+Pilon polish round 2
+Total number of changes: 9
+
+Pilon polish round 3
+Total number of changes: 5
+
+Pilon polish round 4
+Total number of changes: 2
+
+Pilon polish round 5
+Total number of changes: 3
+
+Pilon polish round 6
+Total number of changes: 1
+
+Pilon polish round 7
+Total number of changes: 1
+
+Pilon polish round 8
+Total number of changes: 1
+
+Pilon polish round 9
+No Pilon changes
+
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/005_polished.gfa
+
+
+Assembly complete (2026-04-18 19:50:40)
+---------------------------------------
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/assembly.gfa
+Saving /data/djs217/PROJECTS/assembling-bacterial-genomes/PRJNA485808-ornamentals-april-2026/NCPPB_3883.unicycler/assembly.fasta
+

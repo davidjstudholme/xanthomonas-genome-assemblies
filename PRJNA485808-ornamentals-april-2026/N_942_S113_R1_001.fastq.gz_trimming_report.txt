@@ -1,0 +1,189 @@
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: N_942_S113_R1_001.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.6.10
+Cutadapt version: 4.4
+Number of cores used for trimming: 1
+Quality Phred score cutoff: 30
+Quality encoding type selected: ASCII+33
+Using Nextera adapter for trimming (count: 483). Second best hit was smallRNA (count: 16)
+Adapter sequence: 'CTGTCTCTTATA' (Nextera Transposase sequence; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+Output file will be GZIP compressed
+
+
+This is cutadapt 4.4 with Python 3.12.3
+Command line parameters: -j 1 -e 0.1 -q 30 -O 1 -a CTGTCTCTTATA N_942_S113_R1_001.fastq.gz
+Processing single-end reads on 1 core ...
+Finished in 187.198 s (28.854 µs/read; 2.08 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               6,487,682
+Reads with adapters:                 2,060,833 (31.8%)
+Reads written (passing filters):     6,487,682 (100.0%)
+
+Total basepairs processed:   824,713,033 bp
+Quality-trimmed:               9,292,154 bp (1.1%)
+Total written (filtered):    812,506,118 bp (98.5%)
+
+=== Adapter 1 ===
+
+Sequence: CTGTCTCTTATA; Type: regular 3'; Length: 12; Trimmed: 2060833 times
+
+Minimum overlap: 1
+No. of allowed errors:
+1-9 bp: 0; 10-12 bp: 1
+
+Bases preceding removed adapters:
+  A: 22.1%
+  C: 25.0%
+  G: 39.4%
+  T: 13.4%
+  none/other: 0.1%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+1	1810531	1621920.5	0	1810531
+2	136102	405480.1	0	136102
+3	98087	101370.0	0	98087
+4	4026	25342.5	0	4026
+5	2423	6335.6	0	2423
+6	599	1583.9	0	599
+7	123	396.0	0	123
+8	76	99.0	0	76
+9	261	24.7	0	223 38
+10	52	6.2	1	11 41
+11	155	1.5	1	36 119
+12	32	0.4	1	5 27
+13	171	0.4	1	21 150
+14	38	0.4	1	10 28
+15	172	0.4	1	31 141
+16	185	0.4	1	57 128
+17	55	0.4	1	7 48
+18	106	0.4	1	48 58
+19	46	0.4	1	11 35
+20	42	0.4	1	9 33
+21	69	0.4	1	14 55
+22	76	0.4	1	27 49
+23	198	0.4	1	57 141
+24	129	0.4	1	33 96
+25	138	0.4	1	49 89
+26	59	0.4	1	14 45
+27	148	0.4	1	52 96
+28	34	0.4	1	8 26
+29	86	0.4	1	28 58
+30	70	0.4	1	22 48
+31	101	0.4	1	32 69
+32	172	0.4	1	65 107
+33	164	0.4	1	64 100
+34	66	0.4	1	24 42
+35	98	0.4	1	39 59
+36	42	0.4	1	11 31
+37	95	0.4	1	33 62
+38	62	0.4	1	28 34
+39	97	0.4	1	30 67
+40	74	0.4	1	25 49
+41	84	0.4	1	23 61
+42	70	0.4	1	10 60
+43	89	0.4	1	33 56
+44	130	0.4	1	37 93
+45	309	0.4	1	120 189
+46	82	0.4	1	23 59
+47	70	0.4	1	29 41
+48	11	0.4	1	6 5
+49	54	0.4	1	28 26
+50	55	0.4	1	28 27
+51	56	0.4	1	21 35
+52	61	0.4	1	17 44
+53	92	0.4	1	30 62
+54	128	0.4	1	38 90
+55	138	0.4	1	58 80
+56	151	0.4	1	66 85
+57	159	0.4	1	61 98
+58	154	0.4	1	63 91
+59	103	0.4	1	44 59
+60	71	0.4	1	28 43
+61	58	0.4	1	18 40
+62	29	0.4	1	15 14
+63	21	0.4	1	10 11
+64	39	0.4	1	11 28
+65	43	0.4	1	20 23
+66	36	0.4	1	14 22
+67	50	0.4	1	17 33
+68	37	0.4	1	16 21
+69	45	0.4	1	20 25
+70	51	0.4	1	21 30
+71	54	0.4	1	19 35
+72	27	0.4	1	12 15
+73	39	0.4	1	13 26
+74	66	0.4	1	32 34
+75	89	0.4	1	28 61
+76	79	0.4	1	28 51
+77	90	0.4	1	28 62
+78	78	0.4	1	36 42
+79	80	0.4	1	24 56
+80	59	0.4	1	25 34
+81	46	0.4	1	17 29
+82	44	0.4	1	11 33
+83	50	0.4	1	16 34
+84	56	0.4	1	22 34
+85	75	0.4	1	22 53
+86	91	0.4	1	41 50
+87	89	0.4	1	32 57
+88	83	0.4	1	35 48
+89	63	0.4	1	22 41
+90	62	0.4	1	28 34
+91	48	0.4	1	23 25
+92	41	0.4	1	18 23
+93	31	0.4	1	10 21
+94	42	0.4	1	14 28
+95	64	0.4	1	20 44
+96	72	0.4	1	29 43
+97	86	0.4	1	38 48
+98	96	0.4	1	37 59
+99	68	0.4	1	28 40
+100	59	0.4	1	22 37
+101	42	0.4	1	9 33
+102	32	0.4	1	10 22
+103	24	0.4	1	11 13
+104	41	0.4	1	20 21
+105	54	0.4	1	19 35
+106	98	0.4	1	45 53
+107	100	0.4	1	38 62
+108	97	0.4	1	38 59
+109	81	0.4	1	31 50
+110	54	0.4	1	20 34
+111	52	0.4	1	15 37
+112	34	0.4	1	16 18
+113	21	0.4	1	6 15
+114	30	0.4	1	14 16
+115	52	0.4	1	25 27
+116	83	0.4	1	31 52
+117	67	0.4	1	23 44
+118	48	0.4	1	18 30
+119	37	0.4	1	15 22
+120	27	0.4	1	10 17
+121	23	0.4	1	11 12
+122	30	0.4	1	8 22
+123	15	0.4	1	4 11
+124	7	0.4	1	3 4
+126	1	0.4	1	0 1
+128	1	0.4	1	0 1
+131	2	0.4	1	0 2
+134	1	0.4	1	0 1
+137	8	0.4	1	0 8
+142	1	0.4	1	0 1
+143	1	0.4	1	0 1
+145	2	0.4	1	0 2
+146	1	0.4	1	0 1
+147	3	0.4	1	0 3
+
+RUN STATISTICS FOR INPUT FILE: N_942_S113_R1_001.fastq.gz
+=============================================
+6487682 sequences processed in total
+
